@@ -22,6 +22,10 @@ BookServer is a simple Book catalogue API.
 
   # users can delete any books title by DELETE request with param 'title'
 
+  **Upcoming features
+    #login module
+    #social login
+    
 
 **TECHNOLOGY USED**
     # PHP 5.5.9-1ubuntu4.14
