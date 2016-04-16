@@ -1,0 +1,8 @@
+DATETIME,ERRORLEVEL,TAG,VALUE,LINE,FILE
+"2016-04-16 14:11:51",INFO,--,"The program starts here.",178,/var/www/html/dev_portal/trunk/api/trace/MyLogPHP-1.2.1.class.php
+"2016-04-16 14:47:09",INFO,--,"Login Request Username gta4roy@gmail.com Password 2f760ec7f5de7c4ccce99c26880bc1c0",12,/var/www/html/dev_portal/trunk/api/api_login/login.php
+"2016-04-16 14:47:09",INFO,--,Array,37,/var/www/html/dev_portal/trunk/api/api_login/login.php
+"2016-04-16 14:53:16",INFO,--,"Login Request Username admin Password 2f760ec7f5de7c4ccce99c26880bc1c0",12,/var/www/html/dev_portal/trunk/api/api_login/login.php
+"2016-04-16 14:53:16",INFO,--,Array,37,/var/www/html/dev_portal/trunk/api/api_login/login.php
+"2016-04-16 14:55:59",INFO,--,"Login Request Username admin Password 2f760ec7f5de7c4ccce99c26880bc1c0",12,/var/www/html/dev_portal/trunk/api/api_login/login.php
+"2016-04-16 14:55:59",INFO,--,Array,37,/var/www/html/dev_portal/trunk/api/api_login/login.php

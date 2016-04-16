@@ -1,23 +1,27 @@
 <?php
 include_once 'connection.php';
+require("../trace/MyLogPHP-1.2.1.class.php");
 $method = $_SERVER['REQUEST_METHOD'];
-
+$log = new MyLogPHP();
 if ($method == 'POST') {
-  $username = trim($_POST['username']);
-  $email = trim($_POST['email']);
-  $password = md5(trim($_POST['password']));
 
-  if(empty($username) || empty($email) || empty($password)){
+  $username = trim($_POST['username']);
+//  $email = trim($_POST['email']);
+  $password = md5(trim($_POST['password']));
+ 
+  $log->info("Login Request Username $username Password $password");
+  if(empty($username) || empty($password)){
+    $log->info("HTTP/1.1 400 Bad Request");
     header("HTTP/1.1 400 Bad Request");
   } else {
     $result = [];
 
-    $validate_user = $database->get("users",[
+    $validate_user = $database->get("tbl_users",[
       "password"
     ],[
       "OR" => [
         "username" => $username,
-        "email" => $email
+        "email" => $username
       ]
     ]);
 
@@ -30,7 +34,7 @@ if ($method == 'POST') {
     } else {
       $result['error'] = "Wrong username or, email";
     }
-
+    $log->info($result);
     echo json_encode($result);
   }
 } else {
