@@ -6,3 +6,49 @@ DATETIME,ERRORLEVEL,TAG,VALUE,LINE,FILE
 "2016-04-16 14:53:16",INFO,--,Array,37,/var/www/html/dev_portal/trunk/api/api_login/login.php
 "2016-04-16 14:55:59",INFO,--,"Login Request Username admin Password 2f760ec7f5de7c4ccce99c26880bc1c0",12,/var/www/html/dev_portal/trunk/api/api_login/login.php
 "2016-04-16 14:55:59",INFO,--,Array,37,/var/www/html/dev_portal/trunk/api/api_login/login.php
+"2016-05-14 18:11:00",INFO,--,"School information by <user_id><user name>",31,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 18:11:00",INFO,--,Array,63,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 18:11:21",INFO,--,"School information by <user_id><user name>",31,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 18:11:21",INFO,--,Array,63,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 18:15:11",INFO,--,"School information by <user_id><user name>",31,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 18:16:57",INFO,--,"School information by <user_id><user name>",31,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 18:24:52",INFO,--,"School information by <user_id><user name>",31,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 18:25:07",INFO,--,"School information by <user_id><user name>",31,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 18:27:00",INFO,--,"School information by <user_id><user name>",31,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 18:27:46",INFO,--,"School information by <user_id><user name>",31,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 18:30:13",INFO,--,"School information by <user_id><user name>",31,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 18:30:29",INFO,--,"School information by <user_id><user name>",31,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 18:40:57",INFO,--,"School information by <user_id><user name>",37,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 18:43:56",INFO,--,"School information by <user_id><user name>",37,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 18:46:07",INFO,--,"School information by <user_id><user name>",37,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 18:46:42",INFO,--,"School information by <user_id><user name>",37,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 18:47:29",INFO,--,"School information by <user_id><user name>",37,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 18:50:42",INFO,--,"School information by <user_id><user name>",37,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 18:50:56",INFO,--,"School information by <user_id><user name>",37,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 18:51:54",INFO,--,"School information by <user_id><user name>",37,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 18:51:58",INFO,--,"School information by <user_id><user name>",37,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 19:20:20",INFO,--,"School information by <user_id><user name>",37,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 19:21:05",INFO,--,"School information by <user_id><user name>",37,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 19:21:47",INFO,--,"School information by <user_id><user name>",37,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 19:24:01",INFO,--,"School information by <user_id><user name>",37,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 19:25:50",INFO,--,"School information by <user_id><user name>",37,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 19:26:51",INFO,--,"School information by <user_id><user name>",37,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 19:32:04",INFO,--,"School information by <user_id><user name>",37,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 19:32:34",INFO,--,"School information by <user_id><user name>",37,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-14 19:42:35",INFO,--,"School information by <user_id><user name>",39,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-15 20:30:56",INFO,--,"School information by <user_id><user name>",39,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-15 20:31:25",INFO,--,"School information by <user_id><user name>",39,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-16 21:00:31",INFO,--,"School information by <user_id><user name>",39,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-16 21:08:53",INFO,--,"School information by <user_id><user name>",39,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-16 21:10:40",INFO,--,"School information by <user_id><user name>",39,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-16 21:12:32",INFO,--,"School information by <user_id><user name>",38,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-16 21:14:42",INFO,--,"School information by <user_id><user name>",38,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-16 21:25:13",INFO,--,"School information by <user_id><user name>",38,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-16 21:26:35",INFO,--,"School information by <user_id><user name>",38,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-16 21:26:35",INFO,--,0,71,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-16 21:26:35",INFO,--,Array,74,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-16 21:29:37",INFO,--,"School information by <user_id><user name>",38,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-16 21:29:37",INFO,--,Array,73,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-16 21:29:51",INFO,--,"School information by <user_id><user name>",38,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-16 21:29:51",INFO,--,Array,73,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php
+"2016-05-16 21:32:19",INFO,--,Array,72,/var/www/html/dev_portal/trunk/api/api_school_data/admin_form.php

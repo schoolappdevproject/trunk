@@ -1,5 +1,34 @@
 <?php
 
+/**
+ * Calculates the great-circle distance between two points, with
+ * the Haversine formula.
+ * @param float $latitudeFrom Latitude of start point in [deg decimal]
+ * @param float $longitudeFrom Longitude of start point in [deg decimal]
+ * @param float $latitudeTo Latitude of target point in [deg decimal]
+ * @param float $longitudeTo Longitude of target point in [deg decimal]
+ * @return float Distance between points in [Km] (same as earthRadius)
+ */
+function haversineGreatCircleDistance(
+  $latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo)
+{
+  // convert from degrees to radians
+  $earthRadius = 6371000;
+  $latFrom = deg2rad($latitudeFrom);
+  $lonFrom = deg2rad($longitudeFrom);
+  $latTo = deg2rad($latitudeTo);
+  $lonTo = deg2rad($longitudeTo);
+
+  $latDelta = $latTo - $latFrom;
+  $lonDelta = $lonTo - $lonFrom;
+
+  $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) +
+    cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
+  return $angle * $earthRadius;
+}
+
+
+
 // Get parameters from URL
 $center_lat = $_GET["lat"];
 $center_lng = $_GET["lng"];
@@ -21,14 +50,8 @@ $db_selected = mysql_select_db("school_db_test", $connection);
 if (!$db_selected) {
   die ("Can\'t use db : " . mysql_error());
 }
-
-
-$query = sprintf("SELECT address, school_name, latitude, longitude, ( 3959 * acos( cos( radians('%s') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians('%s') ) + sin( radians('%s') ) * sin( radians( latitude ) ) ) ) AS distance FROM tbl_school_main_table HAVING distance < '%s' ORDER BY distance LIMIT 0 , 20",
-  mysql_real_escape_string($center_lat),
-  mysql_real_escape_string($center_lng),
-  mysql_real_escape_string($center_lat),
-  mysql_real_escape_string($radius));
-$result = mysql_query($query);
+                 
+$query = "SELECT address, school_name, latitude, longitude ,city, session_timmings,category,school_type,courses,school_size,board, medium_of_teaching, mobility, small_description,religous_preference FROM tbl_school_main_table";
 
 $result = mysql_query($query);
 if (!$result) {
@@ -38,13 +61,30 @@ if (!$result) {
 header("Content-type: text/xml");
 
 while ($row = @mysql_fetch_assoc($result)){
-  $node = $dom->createElement("marker");
-  $newnode = $parnode->appendChild($node);
-  $newnode->setAttribute("name", $row['school_name']);
-  $newnode->setAttribute("address", $row['address']);
-  $newnode->setAttribute("lat", $row['latitude']);
-  $newnode->setAttribute("lng", $row['longitude']);
-  $newnode->setAttribute("distance", $row['distance']);
+  
+  $distanceInKm = haversineGreatCircleDistance($center_lat,$center_lng,$row['latitude'],$row['longitude']);
+  
+  if($distanceInKm < $radius *1000)
+  {  
+    $node = $dom->createElement("marker");
+    $newnode = $parnode->appendChild($node);
+    $newnode->setAttribute("name", $row['school_name']);
+    $newnode->setAttribute("address", $row['address']);
+    $newnode->setAttribute("lat", $row['latitude']);
+    $newnode->setAttribute("lng", $row['longitude']);
+    $newnode->setAttribute("distance", $distanceInKm);
+    $newnode->setAttribute("session_timing", $row['session_timmings']);
+    $newnode->setAttribute("city", $row['city']);
+    $newnode->setAttribute("category", $row['category']);
+    $newnode->setAttribute("school_type", $row['school_type']);
+    $newnode->setAttribute("courses", $row['courses']);
+    $newnode->setAttribute("school_size", $row['school_size']);
+    $newnode->setAttribute("board", $row['board']);
+    $newnode->setAttribute("medium_of_teaching", $row['medium_of_teaching']);
+    $newnode->setAttribute("mobility", $row['mobility']);
+    $newnode->setAttribute("religous_preference", $row['religous_preference']);
+    $newnode->setAttribute("small_description", $row['small_description']);
+  }
 }
 
 echo $dom->saveXML();

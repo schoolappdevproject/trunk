@@ -1,0 +1,1047 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0055)http://microsoftmsdn.com/schoolguru/parent-profile.aspx -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="keywords" content="HTML5 Template"><meta name="description" content="Listingpro - Template HTML5"><meta name="author">
+	
+	<!-- Title -->
+	<title>
+	School Guru
+</title>
+	
+	<!-- Mobile Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+    <meta charset="utf-8">
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="http://microsoftmsdn.com/schoolguru/images/favicon.png" type="image/x-icon">
+    <link href="js/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet" type="text/css">
+
+
+	<!-- CSS -->
+	<link href="./ParentProfile_files/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="./ParentProfile_files/colors.css" type="text/css" rel="stylesheet">
+    <link href="./ParentProfile_files/font.css" type="text/css" rel="stylesheet">
+    <!--<link href="./ParentProfile_files/jquery.filer.css" type="text/css" rel="stylesheet"> -->
+    <link href="./ParentProfile_files/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet">
+    <link href="./ParentProfile_files/component.css" type="text/css" rel="stylesheet">
+    <link href="./ParentProfile_files/styles.min.css" type="text/css" rel="stylesheet">
+    <link href="./ParentProfile_files/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="./ParentProfile_files/jquery.mmenu.all.css">
+    <link href="./ParentProfile_files/mapbox.css" rel="stylesheet">
+    <link href="./ParentProfile_files/chosen.css" rel="stylesheet">
+    <link href="./ParentProfile_files/MarkerCluster.css" rel="stylesheet">
+    <link href="./ParentProfile_files/MarkerCluster.Default.css" rel="stylesheet">
+    <link href="./ParentProfile_files/main.css" type="text/css" rel="stylesheet">
+    <style>
+    .user-text h3
+    {
+        margin-bottom:15px !important;
+    }
+    .page-container {
+    padding-bottom: 10px;
+}
+    </style>
+
+    
+<style>
+.form-control
+{
+    margin-bottom:15px;
+}
+.page-container-second {
+    padding-top: 30px;
+    padding-bottom: 60px
+}
+    
+    
+/* google map style */
+    
+    #map {
+        height: 300px;
+        width: 100%;
+      }
+      .controls {
+        margin-top: 10px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 300px;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      .pac-container {
+        font-family: Roboto;
+      }
+
+      #type-selector {
+        color: #fff;
+        background-color: #4d90fe;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #type-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+ 
+    
+/* Google map style*/
+</style>
+<!--  causing error
+<script type="text/javascript" charset="UTF-8" src="./ParentProfile_files/common.js">
+</script><script type="text/javascript" charset="UTF-8" src="./ParentProfile_files/util.js">
+</script><script type="text/javascript" charset="UTF-8" src="./ParentProfile_files/stats.js"></script>
+-->
+</head>
+<body><nav class="attireMainNav"><button class="toggleBtn iconMenu" type="button">Toggle navigation</button><ul></ul></nav>
+    <form method="post" action="#" id="form_id" onSubmit="return false">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE3OTk3MTgxMjRkZLg8PEAkusi4ZlcfuiGeVjsTLHojDXeRK0hOngGazPTa">
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="E4B3AF92">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdABg05+iJmPSsi8MrEp3rhXKcGesOOO7wi3Uzz+yy2Y0Kc7t0vKVmDtQYb7KLGs2qWD2fVFyO0cCPrpER53fgJQ2ef9ouzpSgh9JAYfaBgOBF1jbdtU+KanXQVlOfZzrpxsmCX8Lp7Gxx4o3+jPo9Eis3pQXh6ctc7d6Z8yTyIGLWqxQdbSkcOCjNLf/0uiwACmyROqJZ6VjZHAo4OubqQY60iQePsqwZBn0oj+rRyBHv15FzIkL/tSG/ylS5PBFydkoI1Ma7p+kCUrkeJGFDdBfuYE8qXcdAPFZsUblRg19QXlOXfF45eaOsi7KcgHjb4Ve9/ShFCA2bFWTnLYRgfETDOpiXbgSGI0DV3V9q7MvblRUcvf22VuxozB5Cft1ZVGUJjb7kHC9l5BGZOsRb1M53PIx6lV8ytF4pkUEFKchQKYpso3c0BNdidhpUx9B3c1INeSKFy2zxLVV4+zExdQxF5BPdHG87XtyblNclsuAS8Iw7t+aOQlJ+rpluCTaRNadLD3xijzncSADYhcTX/GmxTtKqu+65iXcAoaut6kDoIA==">
+</div>
+    <div>
+    <div id="page">
+    <header class="">
+		<div class="lp-topbar">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-sm-8 text-left">
+						<ul class="lp-topbar-menu">
+							<li>
+								<a href="http://microsoftmsdn.com/schoolguru/index.html">Home</a>
+							</li>
+							<li>
+								<a href="http://microsoftmsdn.com/schoolguru/about.html">About</a>
+							</li>
+							<li>
+								<a href="http://microsoftmsdn.com/schoolguru/contact.html">Contact</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-4 col-sm-4 text-right">
+						<div class="lp-join-now">
+							<span>
+								<!-- Contacts icon by Icons8 -->
+								<img class="icon icons8-Contacts" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADNElEQVRoge2ZLWhbURTHn3iig8IiIiomIgqrqJiomJgIrCKiomKig4iKioiKioiJiEJExURFRGEbRERMVERkENhE5BgTGUxEVERkUBERURFR8Zu45+5durzk3feRm7H8IRB455z3u9/3nOd5a6317wjYAcrAOdAEroAqcAhsuOabK8AHKsBX5qsP7LrmnSlgE+gasCMZhRpwDJwCDeBGnk+Bt8COa/Y/AjaAn0YDDgA/xNYH3j8YoUaY/VIlPQvwHdiKYO8De0AdGItvcxms86AKwL38rOe9bAoTacyzLBijglQE4jpBjHOJ8TFNNluItkAcJ4ixKzGGKaJZQ/QEopgwDgApYcUC0NtpIWEc5w3R227shQrkVqEhn4ThdYIYTyXGrzTZbCH04fYmQYznEqOfJpstRFUg3qUQ4zJNNluIA4H4nCDGtcQop8lmC1ESiElM/7zcCgD20+azAdE33lpMfx+4kBjttPlsQAYCETu/AIoSo5cmmy1E4vmNylcgwX0tsVDpLMAQqMbwr4mv88XuAx0BuYnhr6/wXVwnV8Aj4IcAvbDweyk+37LksxKqUgJQt/Cpi89VlmxWMnaeCZCLYJ8zplVxCYjRRZCbdObNd1lXOiFzt+WGieC6ohuTn2GTMxoBsOeCda5Qta2pATkGTlAFioL8HxnPR66ZQ2WcCQPCpbNKdzn6IhFcAPOow7ItozBGnRUVYHulG0JQDZkusNvSdqxSydTzPA9VOdTTaWGCBLSMKeh+wcsoNI0pBXARwa9m2N9LjOVWGlHnwCuCO5aGaROUT4/m+O8bdq0HndAFjsjyGwqq6n5GUHgGdTpfAttiUzeeNVBnS15+JbHVqolPAVUInxjPxqhS6sJbgm0jysCt8aIB6pvH5gzbU+COcE2Bs5COqhDUynRH/WUbpwE+6oONVh84jOC3I6PTkd4dy/86EbJJ1Ce6vvHe1qxOs2mIXgd3wEnsQPHfXzZGt0ecnIUgBR0ia8CFUAfoUFjsslDgCcHiK2XEaMOj04QpNgVzgg84X7LDs5MxzaMvfuCDtVPGQu2GAC0bJ3OrXTXdRm1EbmEo93ocd2TXWut/1W9KptrZf/2YyAAAAABJRU5ErkJggg==" alt="join-now">
+							</span>
+							<a class=" md-trigger" data-modal="modal-3">Join Now</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!-- ../topbar -->
+		
+	<div class="md-modal md-effect-3" id="modal-3">
+			<div class="login-form-popup lp-border-radius-8">
+				<div class="siginincontainer">
+					<h2 class="text-center" style="font-size:30px;">Sign in</h2>
+					<div class="form-horizontal margin-top-20" method="post">
+						<div class="form-group">
+						
+                            <input name="ctl00$txt_uname" type="text" id="txt_uname" placeholder="Username or Email Address *" class="form-control" style="height:36px;">
+							
+						</div>
+						<div class="form-group">
+							
+							<input name="ctl00$TextBox1" type="password" id="TextBox1" placeholder="Password *" class="form-control" style="height:36px;"> 
+						</div>
+						
+						
+						<div class="form-group">
+                        <input type="submit" name="ctl00$Button1" value="Sign in" id="Button1" class="lp-secondary-btn width-full btn-first-hover" style="padding:8px 30px;">
+						
+						</div>
+					</div>	
+					<div class="pop-form-bottom">
+						<div class="bottom-links">
+							<a class="signUpClick">Not a member? Sign up</a>
+							<a class="forgetPasswordClick pull-right">Forgot Password</a>
+						</div>
+						<p class="margin-top-15">Connect with your Social Network</p>
+						<ul class="social-login list-style-none">
+							<li><button id="logingoogle" class="google flaticon-googleplus"><i class="fa fa-google-plus"></i><span>Sign In</span></button></li>
+							<li><button id="loginfacebook" class="facebook flaticon-facebook"><i class="fa fa-facebook"></i><span>Sign In</span></button></li>
+							
+						</ul>
+					</div>
+				<a class="md-close"><i class="fa fa-close"></i></a>
+				</div>
+				<div class="siginupcontainer">
+					<h2 class="text-center" style="font-size:30px;">Sign Up</h2>
+					<div class="form-horizontal margin-top-30" method="post">
+						<div class="form-group">
+							
+							<input name="ctl00$TextBox2" type="text" id="TextBox2" placeholder="Username *" class="form-control" style="height:36px;">
+						</div>
+						<div class="form-group">
+						
+							<input name="ctl00$TextBox3" type="text" id="TextBox3" placeholder="Email Address *" class="form-control" style="height:36px;">
+						</div>
+						<div class="form-group">
+							
+							<input name="ctl00$TextBox4" type="password" id="TextBox4" placeholder="Password *" class="form-control" style="height:36px;"> 
+						</div>
+						<div class="form-group">
+							<input type="submit" name="ctl00$Button2" value="Sign in" id="Button2" class="lp-secondary-btn width-full btn-first-hover" style="padding:8px 30px;"> 
+						</div>
+					</div>	
+					<div class="pop-form-bottom">
+						<div class="bottom-links">
+							<a class="signInClick"> have an account? Sign in</a>
+							<a class="forgetPasswordClick pull-right">Forgot Password</a>
+						</div>
+						<p class="margin-top-15">Connect with your Social Network</p>
+						<ul class="social-login list-style-none">
+							<li><button id="Button3" class="google flaticon-googleplus"><i class="fa fa-google-plus"></i><span>Sign Up</span></button></li>
+							<li><button id="Button4" class="facebook flaticon-facebook"><i class="fa fa-facebook"></i><span>Sign Up</span></button></li>
+							
+						</ul>
+					</div>
+				<a class="md-close"><i class="fa fa-close"></i></a>
+				</div>
+				<div class="forgetpasswordcontainer">
+                <h2 class="text-center" style="font-size:30px;">Forgot Password?</h2>
+					<h1 class="text-center"></h1>
+					<div class="form-horizontal margin-top-30" method="post">
+						<div class="form-group">
+						<input name="ctl00$TextBox5" type="text" id="TextBox5" placeholder="Enter Your Email Address" class="form-control" style="height:36px;">
+						</div>
+						<div class="form-group">
+							<input type="submit" name="ctl00$Button5" value="Get New Password" id="Button5" class="lp-secondary-btn width-full btn-first-hover" style="padding:8px 30px;"> 
+						</div>
+					</div>	
+					<div class="pop-form-bottom">
+						<div class="bottom-links">
+							<a class="cancelClick">Cancel</a>
+						</div>
+					</div>
+				<a class="md-close"><i class="fa fa-close"></i></a>
+				</div>
+			</div>	
+		</div>
+		
+		<!-- Popup Open -->
+		<div class="md-modal md-effect-3" id="modal-2">
+			<div class="container">
+				<div class="md-content ">
+					<div class="row popup-inner-left-padding ">
+						<div class="col-md-6 lp-insert-data">
+						</div>
+						<div class="col-md-6">
+							<div id="quickmap" class="quickmap"></div>
+							<a class="md-close widget-map-click"><i class="fa fa-close"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Popup Close -->
+		<div class="md-overlay"></div> <!-- Overlay for Popup -->
+							
+		<div class="lp-menu-bar  lp-menu-bar-color">
+			<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-xs-6 lp-logo-container">
+							<div class="lp-logo">
+								<a href="http://microsoftmsdn.com/schoolguru/index.html">
+									<img src="./ParentProfile_files/logo.png" alt="">
+								</a>
+							</div>
+						</div>
+						<div class="col-xs-6 mobile-nav-icon">
+							<a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#menu" class="nav-icon">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</a>
+						</div>
+						<div class="col-md-8 col-xs-12 lp-menu-container">
+							<div class="pull-right lp-add-listing-btn">
+								<ul>
+									<li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#" style="line-height: 80px;"><i class="fa fa-plus"></i> Add Schools</a></li>
+								</ul>
+							</div>
+							<div class="lp-menu pull-right menu">
+								<ul>
+									<li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#" style="line-height: 80px;">Schools </a>
+										
+									</li>
+									<li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#" style="line-height: 80px;">Parents </a>
+										
+									</li>
+                                    <li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#" style="line-height: 80px;">Students </a>
+										
+									</li>
+								
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+		
+	</header>
+        
+<div class="page-heading listing-page archive-page ">
+			<div class="page-heading-inner-container text-center">
+				<h1>Create School Profile</h1>
+				
+			</div>
+			<div class="page-header-overlay"></div>
+		</div>
+        <section class="aliceblue">
+		<div class="container page-container-second">
+	
+            <div class="row">
+				<div class="col-md-12  padding-40 blog-single-inner-container lp-border lp-border-radius-8">
+                <div class="row">
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Name of the School</b></p></div>
+            <div class="col-md-5"><input name="school_name" type="text" id="school_name" class="form-control"></div>
+            
+            <div class="clearfix"></div>
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Principal</b></p></div>
+            <div class="col-md-5"><input name="principal_name" type="text" id="principal_name" class="form-control mb5"></div>
+            <!--<div class="col-md-1 plr0"><img src="./ParentProfile_files/plus.png" class="mt8 "></div> -->
+            <div class="clearfix"></div>
+
+                    <!--Map -->
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Location (City State school name)</b></p></div>        
+            <div class="col-md-5">
+                <!-- Google map form -->
+                <input id="pac-input" class="controls" type="text"
+                placeholder="Enter a location">
+            <div id="type-selector" class="controls">
+              <input type="radio" name="type" id="changetype-all" checked="checked">
+              <label for="changetype-all">All</label>
+
+              <input type="radio" name="type" id="changetype-establishment">
+              <label for="changetype-establishment">Establishments</label>
+
+              <input type="radio" name="type" id="changetype-address">
+              <label for="changetype-address">Addresses</label>
+
+              <input type="radio" name="type" id="changetype-geocode">
+              <label for="changetype-geocode">Geocodes</label>
+            </div>
+            <div id="map"></div>           
+                    
+            </div>
+                
+            <script>
+          // This example requires the Places library. Include the libraries=places
+          // parameter when you first load the API. For example:
+          // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+         var map_location_latitude;
+         var map_location_longitude;
+          function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: 12.9716, lng: 77.5946},   //bangalore cordinates
+              zoom: 13
+            });
+            var input = /** @type {!HTMLInputElement} */(
+                document.getElementById('pac-input'));
+
+            var types = document.getElementById('type-selector');
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
+
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.bindTo('bounds', map);
+
+            var infowindow = new google.maps.InfoWindow();
+            var marker = new google.maps.Marker({
+              map: map,
+              anchorPoint: new google.maps.Point(0, -29)
+            });
+
+            autocomplete.addListener('place_changed', function() {
+              infowindow.close();
+              marker.setVisible(false);
+              var place = autocomplete.getPlace();
+              if (!place.geometry) {
+                window.alert("Autocomplete's returned place contains no geometry");
+                return;
+              }
+
+              // If the place has a geometry, then present it on a map.
+              if (place.geometry.viewport) {
+                map.fitBounds(place.geometry.viewport);
+                  
+                
+              } else {
+                map.setCenter(place.geometry.location);
+                map.setZoom(17);  // Why 17? Because it looks good.
+              }
+                
+                map_location_latitude = place.geometry.location.lat();
+                map_location_longitude = place.geometry.location.lng();  
+                  $("#lat").val(map_location_latitude);
+                  $("#lng").val(map_location_longitude);
+              marker.setIcon(/** @type {google.maps.Icon} */({
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(35, 35)
+              }));
+              marker.setPosition(place.geometry.location);
+              marker.setVisible(true);
+
+              var address = '';
+              if (place.address_components) {
+                address = [
+                  (place.address_components[0] && place.address_components[0].short_name || ''),
+                  (place.address_components[1] && place.address_components[1].short_name || ''),
+                  (place.address_components[2] && place.address_components[2].short_name || '')
+                ].join(' ');
+              }
+
+              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+              infowindow.open(map, marker);
+            });
+
+            // Sets a listener on a radio button to change the filter type on Places
+            // Autocomplete.
+            function setupClickListener(id, types) {
+              var radioButton = document.getElementById(id);
+              radioButton.addEventListener('click', function() {
+                autocomplete.setTypes(types);
+              });
+            }
+
+            setupClickListener('changetype-all', []);
+            setupClickListener('changetype-address', ['address']);
+            setupClickListener('changetype-establishment', ['establishment']);
+            setupClickListener('changetype-geocode', ['geocode']);
+          }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZbyZsecGxY5a2UE72jdtODQyE2foTlyk&libraries=places&callback=initMap"
+            async defer></script>        
+            <br>
+            <div class="clearfix"></div>
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Address</b></p></div>
+            <div class="col-md-5"><input name="address" type="text" id="address" class="form-control"></div>       
+            <div class="clearfix"></div>
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Latitude</b></p></div>
+            <div class="col-md-5"><input name="lat" type="text" id="lat" class="form-control"></div>
+            <div class="clearfix"></div>
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Longitude</b></p></div>
+            <div class="col-md-5"><input name="lng" type="text" id="lng" class="form-control"></div>
+            <div class="clearfix"></div>
+                    <!--Map ends-->
+            <div class="clearfix"></div>
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Contact</b></p></div>
+            <div class="col-md-5"><input name="contact" type="text" id="contact" class="form-control"></div>
+            <div class="clearfix"></div>
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Email</b></p></div>
+            <div class="col-md-5"><input name="email" type="text" id="email" class="form-control"></div>
+            <div class="clearfix"></div>
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>City</b></p></div>
+            <div class="col-md-5"><select name="city" id="city" class="form-control">
+                    <option value="Lucknow">Lucknow</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Mysore">Mysore</option>
+                    <option value="New Delhi">New Delhi</option>
+            </select></div>
+            <div class="clearfix"></div>
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Country</b></p></div>
+            <div class="col-md-5"><select name="country" id="country" class="form-control">
+                    <option value="India" selected="true">India</option>
+            </select>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Pin</b></p></div>
+            <div class="col-md-5"><input name="pin" type="text" id="pin" class="form-control mb5">
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Web Link</b></p></div>
+            <div class="col-md-5"><input name="web_link" type="text" id="web_link" class="form-control mb5">
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Mobility Facilities for students</b></p></div>
+            <div class="col-md-5"><input name="mobility" type="text" id="mobility" class="form-control mb5">
+            </div>
+            <div class="clearfix"></div>
+                   <div class="row"> 
+                            <!-- Religous Preferences -->
+                            <div class="col-md-3 widget-box  widget-bg-color post-author-box lp-border-radius-5">
+							<div class="user-info">
+				            <div class="user-text">
+                                    <p class="mt0" style="font-size:18px;"><b>Religious preference</b></p>
+									<div class="widget-content">
+								    <ul class="user-abailable-table list-style-none">
+									<li>
+										<span class="timing-days">
+										
+								           <input type="radio" name="religous_preference" multiple="false" value="1">
+											<span>Govt Neutral</span>
+										</span>	
+									</li>
+									<li>
+										<span class="timing-days">
+											<input  type="radio" name="religous_preference" multiple="false" value="2">
+											<span>Hindu trust</span>
+										</span>
+									</li>
+                                    	<li>
+										<span class="timing-days">
+												<input type="radio" name="religous_preference" multiple="false" value="3">
+											<span>Muslim trust/ Mosque school</span>
+										</span>
+										
+									</li>
+                                    <li>
+										<span class="timing-days">
+												<input type="radio" name="religous_preference" multiple="false" value="4">
+											<span>Sikh Gurdyara school</span>
+										</span>
+										
+									</li>
+                                     <li>
+										<span class="timing-days">
+										
+											<input id="religous_preference" type="radio" name="religous_preference" multiple="false" value="5">
+											<span>Christian Missionary school</span>
+										</span>
+										
+									</li>
+								</ul>
+							</div>
+				            </div>	
+							</div>
+						</div>
+                       
+                        <div class="col-md-3 widget-box  widget-bg-color post-author-box lp-border-radius-5">
+                        
+							<div class="user-info">
+								
+								<div class="user-text">
+							
+                                    <p class="mt0" style="font-size:18px;"><b>Admission method</b></p>
+									
+									<div class="widget-content">
+								<ul class="user-abailable-table list-style-none">
+									<li>
+										<span class="timing-days">
+										
+											<input id="admission_method" type="radio" name="admission_method" value="1" >
+											<span>Interview</span>
+										</span>
+										
+									</li>
+									<li>
+										<span class="timing-days">
+										
+										<input id="admission_method" type="radio" name="admission_method" value="2" >
+											<span> Written test+ interview</span>
+										</span>
+										
+									</li>
+                                    	<li>
+										<span class="timing-days">
+										
+											<input id="admission_method" type="radio" name="admission_method" value="3" >
+											<span>Percent criteria</span>
+										</span>
+										
+									</li>
+                                    <li>
+										<span class="timing-days">
+										
+											<input id="admission_method" type="radio" name="admission_method" value="4" >
+											<span>Govt Procedure</span>
+										</span>
+										
+									</li>
+                                     <li>
+										<span class="timing-days">
+										
+										<input id="admission_method" type="radio" name="admission_method" value="5">
+											<span>School prerogative</span>
+										</span>
+										
+									</li>
+								</ul>
+							</div>
+				            </div>		
+							</div>
+						</div>
+                        
+                        <div class="col-md-3 widget-box  widget-bg-color post-author-box lp-border-radius-5">
+                        
+							<div class="user-info">
+								
+								<div class="user-text">
+								
+									   <p class="mt0" style="font-size:18px;"><b>Medium of teaching</b></p>
+									<div class="widget-content">
+								<ul class="user-abailable-table list-style-none">
+									<li>
+										<span class="timing-days">
+										
+											<input id="medium_of_teaching" type="radio" name="medium_of_teaching" value="1" >
+											<span>English</span>
+										</span>
+										
+									</li>
+									<li>
+										<span class="timing-days">
+										
+												<input id="medium_of_teaching" type="radio" name="medium_of_teaching" value="1" >
+											<span> Hindi</span>
+										</span>
+										
+									</li>
+                                    	<li>
+										<span class="timing-days">
+										
+												<input id="medium_of_teaching" type="radio" name="medium_of_teaching" value="1" >
+											<span>Kannada</span>
+										</span>
+										
+									</li>
+                                    <li>
+										<span class="timing-days">
+										
+											<input id="medium_of_teaching" type="radio" name="medium_of_teaching" value="1" >
+											<span>Others</span>
+										</span>
+										
+									</li>
+								</ul>
+							</div>
+				            </div>		
+							</div>
+						</div>
+                       
+                       
+                </div> <!-- Row-->
+                    
+                <div class="row">
+                    
+                        <div class="col-md-3  widget-box  widget-bg-color post-author-box lp-border-radius-5">
+                        
+							<div class="user-info">
+								
+								<div class="user-text">		
+									<p class="mt0" style="font-size:18px;"><b>Board</b></p>
+									<div class="widget-content">
+								<ul class="user-abailable-table list-style-none">
+									<li>
+										<span class="timing-days">
+										
+											<input id="board" type="radio" name="board" value="1">
+											<span>CBSE</span>
+										</span>
+										
+									</li>
+									<li>
+										<span class="timing-days">
+										
+											<input id="board" type="radio" name="board" value="2" >
+											<span> ICSE</span>
+										</span>
+										
+									</li>
+                                    	<li>
+										<span class="timing-days">
+										
+											<input id="board" type="radio" name="board" value="3">
+											<span>State board</span>
+										</span>
+										
+									</li>
+                                    
+								</ul>
+							</div>
+							</div>		
+							</div>
+						</div>
+                    
+                        <div class="col-md-3  widget-box  widget-bg-color post-author-box lp-border-radius-5" >
+                        
+							<div class="user-info">
+								
+								<div class="user-text">
+								<p class="mt0" style="font-size:18px;"><b>School size	</b></p>
+									
+									<div class="widget-content">
+								<ul class="user-abailable-table list-style-none">
+									<li>
+										<span class="timing-days">
+										
+											<input id="school_size" type="radio" name="school_size" value="1" >
+											<span>3000+</span>
+										</span>
+										
+									</li>
+									<li>
+										<span class="timing-days">
+										
+											<input id="school_size" type="radio" name="school_size" value="2" >
+											<span>2000+</span>
+										</span>
+										
+									</li>
+                                    	<li>
+										<span class="timing-days">
+										
+											<input id="school_size" type="radio" name="school_size" value="3" >
+											<span>1000+</span>
+										</span>
+										
+									</li>
+                                    <li>
+										<span class="timing-days">
+										
+											<input id="school_size" type="radio" name="school_size" value="4" >
+											<span>500+</span>
+										</span>
+										
+									</li>
+                                    <li>
+										<span class="timing-days">
+										
+											<input id="school_size" type="radio" name="school_size" value="5" >
+											<span> 500 and below</span>
+										</span>
+										
+									</li>
+								</ul>
+							</div>
+							</div>		
+							</div>
+						</div>
+                    
+                        <div class="col-md-3  widget-box  widget-bg-color post-author-box lp-border-radius-5">
+                        
+							<div class="user-info">
+								
+								<div class="user-text">
+									
+										<p class="mt0" style="font-size:18px;"><b>Courses	</b></p>
+									<div class="widget-content">
+								<ul class="user-abailable-table list-style-none">
+									<li>
+										<span class="timing-days">
+										
+											<input id="courses" type="radio" name="courses" value="1">
+											<span>Pre­Nursery</span>
+										</span>
+										
+									</li>
+									<li>
+										<span class="timing-days">
+										
+											<input id="courses" type="radio" name="courses" value="2">
+											<span>Kindergarten</span>
+										</span>
+										
+									</li>
+                                    	<li>
+										<span class="timing-days">
+										
+											<input id="courses" type="radio" name="courses" value="3" >
+											<span>Primary</span>
+										</span>
+										
+									</li>
+                                    <li>
+										<span class="timing-days">
+										
+											<input id="courses" type="radio" name="courses" value="4" >
+											<span>Upper primary</span>
+										</span>
+										
+									</li>
+                                    <li>
+										<span class="timing-days">
+										
+											<input id="courses" type="radio" name="courses" value="5" >
+											<span>PUC/12th</span>
+										</span>
+										
+									</li>
+                                    <li>
+										<span class="timing-days">
+										
+											<input id="courses" type="radio" name="courses" value="6" >
+											<span>Special school for the handicap</span>
+										</span>
+										
+									</li>
+								</ul>
+							    </div><!-- ../social-icons-->
+								</div>	
+							</div>
+						</div>
+                    
+                </div> <!--row ends -->
+                <div class="row">
+                       <div class="col-md-3  widget-box  widget-bg-color post-author-box lp-border-radius-5">
+                        
+							<div class="user-info">
+								
+								<div class="user-text">
+									
+									<p class="mt0" style="font-size:18px;"><b>Session Timings</b></p>
+									
+									<div class="widget-content">
+								<ul class="user-abailable-table list-style-none">
+									<li>
+										<span class="timing-days">
+										
+											<input id="session_timings" type="radio" name="session_timings" value="1" >
+											<span>Full day(9am ­ 4pm)</span>
+										</span>
+										
+									</li>
+									<li>
+										<span class="timing-days">
+										
+											<input id="session_timings" type="radio" name="session_timings" value="2" >
+											<span>Half day(7am – 12 pm)</span>
+										</span>
+										
+									</li>
+                                    	<li>
+										<span class="timing-days">
+										
+											<input id="session_timings" type="radio" name="session_timings" value="3" >
+											<span>Evening school(1 pm – 5 pm)</span>
+										</span>
+										
+									</li>
+								</ul>
+							</div><!-- ../social-icons-->
+								</div>
+									
+							</div>
+						</div>
+						<div class="col-md-3  widget-box  widget-bg-color post-author-box lp-border-radius-5">
+                        
+							<div class="user-info">
+								
+								<div class="user-text">
+						
+									<p class="mt0" style="font-size:18px;"><b>Category</b></p>
+									
+									<div class="widget-content">
+								<ul class="user-abailable-table list-style-none">
+									<li>
+										<span class="timing-days">
+										
+											<input id="category" type="radio" name="category" value="1" >
+											<span>Government</span>
+										</span>
+										
+									</li>
+									<li>
+										<span class="timing-days">
+										
+											<input id="category" type="radio" name="category" value="2" >
+											<span>Private</span>
+										</span>
+										
+									</li>
+                                    	<li>
+										<span class="timing-days">
+										
+											<input id="category" type="radio" name="category" value="3" >
+											<span>Semi Government</span>
+										</span>
+										
+									</li>
+								</ul>
+							</div><!-- ../social-icons-->
+								</div>
+									
+							</div>
+						</div>
+                </div>
+              <div class="clearfix"></div>  
+            
+                <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Write about Admission Procedure </b></p></div>
+            <div class="col-md-5"><textarea name="admission_description" rows="2" cols="20" id="admission_description" class="form-control" style="height:100px;"></textarea></div>
+            
+            <div class="clearfix"></div>
+               <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Write a Brief Introduction on the school</b></p></div>
+            <div class="col-md-5"><textarea name="small_description" rows="2" cols="20" id="small_description" class="form-control" style="height:100px;"></textarea></div>
+            <!-- End of the school admin creation form -->
+            <div class="clearfix"></div>
+            <div class="col-md-3">
+            
+            </div>
+            <div class="col-md-5"><input type="submit" name="save_button" value="Submit" id="save_button" class="lp-search-btn" style="float:right;padding:8px 15px;"></div>
+        
+            </div>
+                </div>			
+				</div>
+        
+			</div>
+            
+		</section></div>
+
+	
+
+        <footer class="text-center">
+		<div class="footer-upper-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="footer-menu">
+							<li><a href="http://microsoftmsdn.com/schoolguru/index.html">Home</a></li>
+							<li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#">Blog</a></li>
+							<li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#">Contact</a></li>
+							<li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#">Join Us</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div><!-- ../footer-upper-bar -->
+		<div class="footer-bottom-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="footer-about-company">
+							<li>Copyright © 2016 Schoolguru</li>
+							<li>schoolguru@example.com</li>
+							<li>Tel: +91 1234567891</li>
+						</ul>
+						<p class="credit-links"> Designed &amp; Developed by<a href="http://www.nextwebi.com/" target="_blank"> Nextwebi</a></p><a href="http://www.nextwebi.com/" target="_blank">
+						</a><ul class="social-icons footer-social-icons"><a href="http://www.nextwebi.com/" target="_blank">
+							</a><li><a href="http://www.nextwebi.com/" target="_blank"></a><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#">
+								<img class="icon icons8-Facebook" src="./ParentProfile_files/facebook.png" alt="facebook"></a></li>
+							<li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#">
+								<img class="icon icons8-Google-Plus" src="./ParentProfile_files/google-plus.png" alt="google-plus"></a></li>
+							<li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#">
+								<img class="icon icons8-LinkedIn" src="./ParentProfile_files/linkidin.png" alt="linkedin"></a></li>
+							
+							<li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#">
+								<img class="icon icons8-Tumblr" src="./ParentProfile_files/twitter.png" alt="twitter"></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<a href="#" class="add-listing-mobile lp-search-btn">Add listing</a>
+        </div>
+        
+     
+        	<!-- Jquery Library -->
+                 <script src="js/jquery-2.2.3.js"></script>  
+                 <script src="js/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+
+    
+    </form>
+    
+
+    	
+    <script>
+        $(document).ready(function() {
+
+            // process the form
+            $('#save_button').click(function(event) {
+
+                // get the form data
+                // there are many ways to get this data using jQuery (you can use the class or id also)
+                var formData = {
+                      'school_name'              : $('input[name=school_name]').val(),
+                      'principal_name'           : $('input[name=principal_name]').val(),
+                      'address'                  : $('input[name=address]').val(),
+                      'contact'                  : $('input[name=contact]').val(),
+                      'city'                     : $('#city').val(),      
+                      'country'                  : $('#country').val(),
+                      'email'                    : $('input[name=email]').val(),
+                      'pin'                      : $('input[name=pin]').val(),
+                      'latitude'                 : $('input[name=lat]').val(),
+                      'longitude'                : $('input[name=lng]').val(),
+                      'web_link'                 : $('input[name=web_link]').val(),
+                    
+                      'category'                 : $('input[name=category]:checked').val(),
+                      'session_timings'          : $('input[name=session_timings]:checked').val(),
+                      'courses'                  : $('input[name=courses]:checked').val(),
+                      'school_size'              : $('input[name=school_size]:checked').val(),
+                      'board'                    : $('input[name=board]:checked').val(),
+                      'religous_preference'      : $('input[name=religous_preference]:checked').val(),
+                      'admission_method'          : $('input[name=admission_method]:checked').val(),
+                      'medium_of_teaching'       : $('input[name=medium_of_teaching]:checked').val(),
+                    
+                     'mobility'                 : $('input[name=mobility]').val(),
+                      'small_description'        : $('#small_description').val(),
+                      'admission_description'    : $('#admission_description').val()
+                };
+
+              alert(JSON.stringify(formData,null,2));
+                
+                // process the formf
+                $.ajax({
+                    type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                    url         : '../api/api_school_data/admin_form.php', // the url where we want to POST
+                    data        : formData, // our data object
+                    dataType    : 'json', // what type of data do we expect back from the server
+                                encode          : true
+                })
+                    // using the done promise callback
+                    .done(function(data) {
+
+                        // log data to the console so we can see
+                        console.log(data); 
+
+                        // here we will handle errors and validation messages
+                    });
+
+                // stop the form from submitting the normal way and refreshing the page
+                event.preventDefault();
+            });
+
+        });
+    
+    $("#address").keyup(function(){
+            $("#pac-input").val($(this).val());
+    });
+        
+    $("#pac-input").keyup(function(){
+            $("#address").val($(this).val());
+    });
+        
+        
+   
+    
+ 
+    </script>
+    
+    <!-- Google map -->
+  <script>  
+
+
+    </script>
+   
+    
+    <!-- Google map ends-->
+
+</body></html>
