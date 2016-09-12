@@ -25,7 +25,7 @@ class School_main_table {
     public $web_link ="";
     
     public $country ="";
-    public $pin ="",
+    public $pin ="";
     
    }
 

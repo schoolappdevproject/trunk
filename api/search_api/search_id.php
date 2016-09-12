@@ -50,6 +50,7 @@ if (isset($_GET['school_id'])){
     echo json_encode($sdata);
 }
 
+
         
 
 ?>
