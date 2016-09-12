@@ -701,6 +701,71 @@ commented due to error
                 mapTypeId: 'roadmap',
                 mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
               });
+            
+            var school_name = "";
+            var school_address = "";
+            
+            // var school_info = schoolLocation +"#" + schoolName;
+            //createCookie('school_info',school_info,7);  pic the cookie and run the search
+            cookieString = readCookie('school_info');
+           
+                if(cookieString != null)
+                {
+                     console.log(cookieString);
+                     var ca = document.cookie.split('#');                    //ca[0]  location   ca[1] name
+                    console.log("length" +ca.length);
+                    if(ca.lenght == 2) //both school name and location are there
+                        {
+                            console.log("ca name [1]" + ca[1]);
+                            console.log("ca address [0]" + ca[0]);
+                             school_name = ca[1];
+                             school_address = ca[0];
+                        }
+                    else // on location is there
+                        {
+                             school_name = "";
+                             school_address = ca[0];
+                        }
+                    
+                    
+                    var $div = $('#comments-posts');
+                    $div.contents().remove();
+
+
+                     if(school_address.trim() && !school_name.trim()) // if school address is avaialable and school name is not available 
+                     {  
+                        if(window.google)
+                        {
+                             console.log("Search on address "+school_address);
+                             var geocoder = new google.maps.Geocoder();
+                             geocoder.geocode({address: school_address}, function(results, status) {
+                               if (status == google.maps.GeocoderStatus.OK) {
+                                searchLocationsNear(results[0].geometry.location);
+                               } else {
+                                 alert(address + ' not found');
+                               }
+                             });
+                        }
+
+                     }
+                     else if(school_address.trim() && school_name.trim())
+                        {
+                            if(window.google)
+                                {
+                                    console.log("Search on loaction "+ school_name);
+                                    searchNameInMarkers(school_name,school_address);
+                                }
+                        }
+                   else if(!school_address.trim() && school_name.trim())
+                       {
+                           if(window.google)
+                               {
+                                    console.log("Search on Exact "+ school_name);
+                                   searchExactSchoolName(school_name);
+                               }
+                       }
+                    
+                  }
         }
         
     var input = /** @type {!HTMLInputElement} */(
@@ -713,14 +778,14 @@ commented due to error
    function autocomplete(input)
    {
                 var autocomplete = new google.maps.places.Autocomplete(input);
-            autocomplete.bindTo('bounds', map);
+                autocomplete.bindTo('bounds', map);
     
-    infoWindow = new google.maps.InfoWindow();
+               infoWindow = new google.maps.InfoWindow();
     
-    var marker = new google.maps.Marker({
-              map: map,
-              anchorPoint: new google.maps.Point(0, -29)
-    });
+                var marker = new google.maps.Marker({
+                          map: map,
+                          anchorPoint: new google.maps.Point(0, -29)
+                });
         
      autocomplete.addListener('place_changed', function() {
               infoWindow.close();

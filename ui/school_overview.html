@@ -100,7 +100,8 @@ p span i
     
      function searchExactSchoolID(school_id)
         {
-         
+            
+              console.log("searchExact Search "+school_id);
               $.ajax({
                     type: "GET", 
                     url: "../api/search_api/search_id.php", 
@@ -119,7 +120,7 @@ p span i
                              var latlng = new google.maps.LatLng(
                                   parseFloat(response[i].latitude),
                                   parseFloat(response[i].longitude));
-                            var session_timings 	       =   response[i].session_timing;
+                            var session_timmings 	       =   response[i].session_timmings;
                             var city 				       =   response[i].city;
                             var category 			       =   response[i].category;  
                             var school_type 		       =   response[i].school_type; 
@@ -137,25 +138,25 @@ p span i
                             var country                    =   response[i].country;
                             var pin                        =   response[i].pin;
                                                          
-                            $("#dtl_principal").html(principal_name);
-                            $("#dtl_address").html(address);
+                            $("#dtl_principal")         .html(principal_name);
+                            $("#dtl_address")           .html(address);
                             
-                            $("#dtl_session_timing").html(getSessionTimingString(session_timings));
-                            $("#dtl_category").html(getCategoryString(category));
+                            $("#dtl_session_timing")    .html(getSessionTimingString        (parseInt(session_timmings)));
+                            $("#dtl_category")          .html(getCategoryString             (parseInt(category)));
                          //   $("#dtl_adm_method").html(getAdmissionMethodString());
-                            $("#dtl_courses").html(getCourseString(courses));
-                            $("#dtl_school_size").html(getSchoolSizeString(school_size));
-                            $("#dtl_board").html(getSchoolBoardString(board));
-                            $("#dtl_medium_of_teaching").html(getMediumOfTeachingString(medium_of_teaching));
-                            $("#dtl_relpref").html(getReligousPreferencesString(religous_preference));
+                            $("#dtl_courses")           .html(getCourseString               (parseInt(courses)));
+                            $("#dtl_school_size")       .html(getSchoolSizeString           (parseInt(school_size)));
+                            $("#dtl_board")             .html(getSchoolBoardString          (parseInt(board)));
+                            $("#dtl_medium_of_teaching").html(getMediumOfTeachingString     (parseInt(medium_of_teaching)));
+                            $("#dtl_relpref")           .html(getReligousPreferencesString  (parseInt(religous_preference)));
                             
-                            $("#dtl_phone").html(contact);
-                            $("#dtl_weblink").html(weblink);
-                            $("#dtl_email").html(email);
-                            $("#dtl_city").html(city);
-                            $('#dtl_adm_desc').html(admission_description);
-                            $('#dtl_school_name').html(name);
-                            $('#dtl_sml_desc').html(small_description);
+                            $("#dtl_phone")             .html(contact);
+                            $("#dtl_weblink")           .html(weblink);
+                            $("#dtl_email")             .html(email);
+                            $("#dtl_city")              .html(city);
+                            $('#dtl_adm_desc')          .html(admission_description);
+                            $('#dtl_school_name')       .html(name);
+                            $('#dtl_sml_desc')          .html(small_description);
                            
                             
                             

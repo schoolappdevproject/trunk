@@ -3,10 +3,11 @@
 function getSessionTimingString(session_timing)
 {
     var ret;
+    console.log(session_timing);
     switch(session_timing)
         {
             case 1:
-                ret = "Full day(9am ­ 4pm)";
+                ret = "Full day(9am - 4pm)";
                 break;
             case 2:
                 ret = "Half day(7am – 12 pm)";
@@ -15,6 +16,7 @@ function getSessionTimingString(session_timing)
                 ret = "Evening school(1 pm – 5 pm)";
                 break;
         }
+    console.log("Session Timing"+ ret);
     return ret;
 }
 
