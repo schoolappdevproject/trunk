@@ -17,9 +17,6 @@
 	
 	<!-- CSS -->
 	<link href="search/bootstrap.css" type="text/css" rel="stylesheet"><link href="search/colors.css" type="text/css" rel="stylesheet"><link href="search/font.css" type="text/css" rel="stylesheet"><link href="search/jquery.filer.css" type="text/css" rel="stylesheet"><link href="search/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet"><link href="search/component.css" type="text/css" rel="stylesheet"><link href="search/styles.min.css" type="text/css" rel="stylesheet"><link href="search/font-awesome.min.css" type="text/css" rel="stylesheet"><link type="text/css" rel="stylesheet" href="search/jquery.mmenu.all.css"><link href="search/mapbox.css" rel="stylesheet"><link href="search/chosen.css" rel="stylesheet"><link href="search/MarkerCluster.css" rel="stylesheet"><link href="search/MarkerCluster.Default.css" rel="stylesheet"><link href="search/main.css" type="text/css" rel="stylesheet">
-
-<link href="ui-jquery/jquery-ui.css" type="text/css" rel="stylesheet">
-
     <style>
     .user-text h3
     {
@@ -28,11 +25,6 @@
     .page-container {
     padding-bottom: 10px;
 }
-        
-  .ui-autocomplete-loading {
-    background: white url("images/ui-anim_basic_16x16.gif") right center no-repeat;
-  }   
-        
     </style>
     
     <!--
@@ -41,8 +33,7 @@ commented due to error
 <script type="text/javascript" charset="UTF-8" src="search/util.js"></script>
 <script type="text/javascript" charset="UTF-8" src="search/stats.js"></script>
     -->
-<script type="text/javascript" charset="UTF-8" src="js/cookie.js"></script>
-
+    
     </head>
 <body onload="load()"><nav class="attireMainNav"><button class="toggleBtn iconMenu" type="button">Toggle navigation</button><ul></ul></nav>
     <form method="post" action="#" id="form1">
@@ -262,13 +253,13 @@ commented due to error
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon lp-border"><img src="search/map-icon1.png"></div>
-	                             <input id="school_location_search" name="searchInput" type="text" class="form-control lp-border input-width-299 border-right-radius" placeholder="Enter Location" onkeypress="return runScript(event)">							
+	                             <input id="school_location_search" name="searchInput" type="text" class="form-control lp-border input-width-299 border-right-radius" placeholder="Enter Location" onkeypress="return runScript(event)">								
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon lp-border"><i class="fa fa-search"></i></div>
-                                <input id="school_name_search_txt" name="ctl22" type="text" class="form-control lp-border input-width-299 border-right-radius" placeholder="School Name" onKeypress="return runScript(event)">
+                                <input id="school_name_search_txt" name="ctl22" type="text" class="form-control lp-border input-width-299 border-right-radius" placeholder="School Name" onKeypress>
 							</div>
 						</div>
 						<div class="form-group">
@@ -292,20 +283,26 @@ commented due to error
 		
 		
 		<div class="container single-inner-container single_listing" style="padding-top:0px;" data-title="The Dorchester grill" data-reviews="4" data-number="+007-123-4567-89" data-email="jhonruss@example.com" data-website="www.example.com" data-price="$200" data-pricetext="Text about your price" data-description="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi archeum" data-userimage="images/user-thumb-94x94.png" data-username="Jhon Russel" data-fb="www.facebook.com" data-gplus="www.plus.google.com" data-linkedin="www.linkedin.com" data-instagram="www.instagram.com" data-twitter="www.twitter.com" data-lattitue="40.6700" data-longitute="-73.9400">
-	<div class="row">
+			<div class="row">
             <div class="col-md-4 ">
 					<div class="sidebar-post">
-					<div class="ui-widget">
-                    
-					<div id="accordion" class="ui-accordion ui-widget ui-helper-reset" role="tablist">
-					<h3 class="ui-accordion-header ui-corner-top ui-state-default ui-accordion-header-active ui-state-active ui-accordion-icons" role="tab" id="ui-id-1" aria-controls="ui-id-2" aria-selected="true" aria-expanded="true" tabindex="0"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>Session Timings</h3>
-					<div class="ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content ui-accordion-content-active" id="ui-id-2" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="false" style="display: none; width:100%;">
+						<div class="widget-box  widget-bg-color post-author-box lp-border-radius-5">
+                        
+							<div class="user-info">
+								
+								<div class="user-text">
+									<h3>Session Timings</h3>
+								
+									
+									<div class="widget-content">
 								<ul class="user-abailable-table list-style-none">
 									<li>
 										<span class="timing-days">
+										
 											<input id="school_timing" type="checkbox" name="school_timing" value="1" onclick="filter('school_timing')">
 											<span>Full day(9am ­ 4pm)</span>
 										</span>
+										
 									</li>
 									<li>
 										<span class="timing-days">
@@ -324,11 +321,20 @@ commented due to error
 										
 									</li>
 								</ul>
+							</div><!-- ../social-icons-->
+								</div>
+									
+							</div>
+						</div>
+						<div class="widget-box  widget-bg-color post-author-box lp-border-radius-5">
+                        
+							<div class="user-info">
 								
-						</div> <!-- end div -->
-					<h3 class="ui-accordion-header ui-corner-top ui-state-default ui-accordion-header-active ui-state-active ui-accordion-icons" role="tab" id="ui-id-3" aria-controls="ui-id-4" aria-selected="true" aria-expanded="false" tabindex="-1"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>Category</h3>
-						
-							<div class="ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content" id="ui-id-4" aria-labelledby="ui-id-3" role="tabpanel" aria-hidden="true" style="display: none; width: 100%;">
+								<div class="user-text">
+									<h3>Category</h3>
+								
+									
+									<div class="widget-content">
 								<ul class="user-abailable-table list-style-none">
 									<li>
 										<span class="timing-days">
@@ -355,9 +361,20 @@ commented due to error
 										
 									</li>
 								</ul>
-						</div>  <!-- end div -->
-						<h3 class="ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons" role="tab" id="ui-id-5" aria-controls="ui-id-6" aria-selected="false" aria-expanded="false" tabindex="-1"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Courses</h3>
-						<div class="ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content" id="ui-id-6" aria-labelledby="ui-id-5" role="tabpanel" aria-hidden="true" style="display: none; width: 100%;">
+							</div><!-- ../social-icons-->
+								</div>
+									
+							</div>
+						</div>
+						<div class="widget-box  widget-bg-color post-author-box lp-border-radius-5">
+                        
+							<div class="user-info">
+								
+								<div class="user-text">
+									<h3>Courses</h3>
+								
+									
+									<div class="widget-content">
 								<ul class="user-abailable-table list-style-none">
 									<li>
 										<span class="timing-days">
@@ -408,10 +425,20 @@ commented due to error
 										
 									</li>
 								</ul>
-						</div> <!-- end div -->
-						<h3 class="ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons" role="tab" id="ui-id-7" aria-controls="ui-id-8" aria-selected="false" aria-expanded="false" tabindex="-1"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>School Size</h3>
-						<div class="ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content" id="ui-id-8" aria-labelledby="ui-id-7" role="tabpanel" aria-hidden="true" style="display: none; width: 100%;">
-	
+							</div><!-- ../social-icons-->
+								</div>
+									
+							</div>
+						</div>
+						<div class="widget-box  widget-bg-color post-author-box lp-border-radius-5" >
+                        
+							<div class="user-info">
+								
+								<div class="user-text">
+									<h3>School size	</h3>
+								
+									
+									<div class="widget-content">
 								<ul class="user-abailable-table list-style-none">
 									<li>
 										<span class="timing-days">
@@ -454,11 +481,23 @@ commented due to error
 										
 									</li>
 								</ul>
-					</div>			
-					<h3 class="ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons" role="tab" id="ui-id-9" aria-controls="ui-id-10" aria-selected="false" aria-expanded="false" tabindex="-1"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Board</h3>
-						<div class="ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content" id="ui-id-10" aria-labelledby="ui-id-9" role="tabpanel" aria-hidden="true" style="display: none; width: 100%;">
-	
-							<ul class="user-abailable-table list-style-none">
+							</div>
+								</div>
+									
+							</div>
+						</div>
+						
+						
+                        <div class="widget-box  widget-bg-color post-author-box lp-border-radius-5">
+                        
+							<div class="user-info">
+								
+								<div class="user-text">
+									<h3>Board	</h3>
+								
+									
+									<div class="widget-content">
+								<ul class="user-abailable-table list-style-none">
 									<li>
 										<span class="timing-days">
 										
@@ -485,9 +524,20 @@ commented due to error
 									</li>
                                     
 								</ul>
-						</div> <!-- end div -->
-						<h3 class="ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons" role="tab" id="ui-id-11" aria-controls="ui-id-12" aria-selected="false" aria-expanded="false" tabindex="-1"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Medium Of Teaching</h3>
-						<div class="ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content" id="ui-id-12" aria-labelledby="ui-id-11" role="tabpanel" aria-hidden="true" style="display: none; width: 100%;">
+							</div>
+								</div>
+									
+							</div>
+						</div>
+                        <div class="widget-box  widget-bg-color post-author-box lp-border-radius-5">
+                        
+							<div class="user-info">
+								
+								<div class="user-text">
+									<h3>Medium of teaching</h3>
+								
+									
+									<div class="widget-content">
 								<ul class="user-abailable-table list-style-none">
 									<li>
 										<span class="timing-days">
@@ -522,9 +572,20 @@ commented due to error
 										
 									</li>
 								</ul>
-						</div> <!-- end div -->
-						<h3 class="ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons" role="tab" id="ui-id-13" aria-controls="ui-id-14" aria-selected="false" aria-expanded="false" tabindex="-1"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Admission Method</h3>
-						<div class="ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content" id="ui-id-14" aria-labelledby="ui-id-13" role="tabpanel" aria-hidden="true" style="display: none; width: 100%;">
+							</div>
+								</div>
+									
+							</div>
+						</div>
+                        <div class="widget-box  widget-bg-color post-author-box lp-border-radius-5">
+                        
+							<div class="user-info">
+								
+								<div class="user-text">
+									<h3>Admission method</h3>
+								
+									
+									<div class="widget-content">
 								<ul class="user-abailable-table list-style-none">
 									<li>
 										<span class="timing-days">
@@ -567,9 +628,20 @@ commented due to error
 										
 									</li>
 								</ul>
-						</div> <!-- end div -->
-						<h3 class="ui-accordion-header ui-corner-top ui-accordion-header-collapsed ui-corner-all ui-state-default ui-accordion-icons" role="tab" id="ui-id-15" aria-controls="ui-id-16" aria-selected="false" aria-expanded="false" tabindex="-1"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Religous Preferences</h3>
-						<div class="ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content" id="ui-id-16" aria-labelledby="ui-id-15" role="tabpanel" aria-hidden="true" style="display: none; width: 100%;">
+							</div>
+								</div>
+									
+							</div>
+						</div>
+                        <div class="widget-box  widget-bg-color post-author-box lp-border-radius-5">
+                        
+							<div class="user-info">
+								
+								<div class="user-text">
+									<h3>Religious preference</h3>
+								
+									
+									<div class="widget-content">
 								<ul class="user-abailable-table list-style-none">
 									<li>
 										<span class="timing-days">
@@ -612,12 +684,12 @@ commented due to error
 										
 									</li>
 								</ul>
-					</div> <!-- end div -->
-
-				</div> <!-- end sidebar div -->
-                    
-				</div> <!-- col end-->
-				</div>
+							</div>
+								</div>
+									
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="col-md-8">
                     <div><select id="locationSelect" style="width:100%;visibility:hidden"></select></div>
@@ -682,7 +754,7 @@ commented due to error
         
         
 <!-- Google Map Scripts-->
- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATQd6PfNXTkOI9cHvIo0eDPZAGKi9jSmI&libraries=places"
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATQd6PfNXTkOI9cHvIo0eDPZAGKi9jSmI"
             type="text/javascript"></script>
     <script type="text/javascript">
     //<![CDATA[
@@ -691,282 +763,36 @@ commented due to error
     var markerNodes = [];
     var infoWindow;
     var locationSelect;
-    var cache = {};
-        
+
     function load() {
-        if(window.google){
-              map = new google.maps.Map(document.getElementById("google_school_map"), {
-                center: new google.maps.LatLng(40, -100),
-                zoom: 4,
-                mapTypeId: 'roadmap',
-                mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
-              });
-        }
-        
-    var input = /** @type {!HTMLInputElement} */(
-                document.getElementById('school_location_search'));
-    autocompleteForSchoolName();
-        
-    if(window.google)
-        autocomplete(input);
-  
-   function autocomplete(input)
-   {
-                var autocomplete = new google.maps.places.Autocomplete(input);
-            autocomplete.bindTo('bounds', map);
-    
-    infoWindow = new google.maps.InfoWindow();
-    
-    var marker = new google.maps.Marker({
-              map: map,
-              anchorPoint: new google.maps.Point(0, -29)
-    });
-        
-     autocomplete.addListener('place_changed', function() {
-              infoWindow.close();
-              marker.setVisible(false);
-              var place = autocomplete.getPlace();
-              if (!place.geometry) {
-                window.alert("Autocomplete's returned place contains no geometry");
-                return;
-              }
+      map = new google.maps.Map(document.getElementById("google_school_map"), {
+        center: new google.maps.LatLng(40, -100),
+        zoom: 4,
+        mapTypeId: 'roadmap',
+        mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
+      });
+      infoWindow = new google.maps.InfoWindow();
 
-              // If the place has a geometry, then present it on a map.
-              if (place.geometry.viewport) {
-                map.fitBounds(place.geometry.viewport);
-                  
-                
-              } else {
-                map.setCenter(place.geometry.location);
-                map.setZoom(17);  // Why 17? Because it looks good.
-              }
-                
-                map_location_latitude = place.geometry.location.lat();
-                map_location_longitude = place.geometry.location.lng();  
-                  $("#lat").val(map_location_latitude);
-                  $("#lng").val(map_location_longitude);
-              marker.setIcon(/** @type {google.maps.Icon} */({
-                url: place.icon,
-                size: new google.maps.Size(71, 71),
-                origin: new google.maps.Point(0, 0),
-                anchor: new google.maps.Point(17, 34),
-                scaledSize: new google.maps.Size(35, 35)
-              }));
-              marker.setPosition(place.geometry.location);
-              marker.setVisible(true);
-
-              var address = '';
-              if (place.address_components) {
-                address = [
-                  (place.address_components[0] && place.address_components[0].short_name || ''),
-                  (place.address_components[1] && place.address_components[1].short_name || ''),
-                  (place.address_components[2] && place.address_components[2].short_name || '')
-                ].join(' ');
-              }
-
-              infoWindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-              infoWindow.open(map, marker);
-            });
-
-   }   
    }
 
-    function autocompleteForSchoolName()
-    {
-            $( "#school_name_search_txt" ).autocomplete({
-              minLength: 2,
-              source: function( request, response ) {
-                var term = request.term;
-                if ( term in cache ) {
-                  response( cache[ term ] );
-                  return;
-                }
-
-                $.getJSON( "../api/search_api/search_school_name.php", request, function( data, status, xhr ) {
-                  cache[ term ] = data;  
-                  response(data);
-                });
-              }
-            });
-
-    }
 
    function searchLocations() {
    
-
-        var $div = $('#comments-posts');
-        $div.contents().remove();
-
-         var school_name = document.getElementById("school_name_search_txt").value;
-         var school_address = document.getElementById("school_location_search").value;
-      
-         if(school_address.trim() && !school_name.trim()) // if school address is avaialable and school name is not available 
-         {  
-            if(window.google)
-            {
-                 console.log("Search on address "+school_address);
-                 var geocoder = new google.maps.Geocoder();
-                 geocoder.geocode({address: school_address}, function(results, status) {
-                   if (status == google.maps.GeocoderStatus.OK) {
-                    searchLocationsNear(results[0].geometry.location);
-                   } else {
-                     alert(address + ' not found');
-                   }
-                 });
-            }
-
-         }
-         else if(school_address.trim() && school_name.trim())
-            {
-                if(window.google)
-                    {
-                        console.log("Search on loaction "+ school_name);
-                        searchNameInMarkers(school_name,school_address);
-                    }
-            }
-       else if(!school_address.trim() && school_name.trim())
-           {
-               if(window.google)
-                   {
-                       searchExactSchoolName(school_name);
-                   }
-           }
-       
+     //var description_sections = document.getElementById("comments-posts");
+	var $div = $('#comments-posts');
+	$div.contents().remove();
+	 
+     var address = document.getElementById("school_location_search").value;
+       //alert(address);
+     var geocoder = new google.maps.Geocoder();
+     geocoder.geocode({address: address}, function(results, status) {
+       if (status == google.maps.GeocoderStatus.OK) {
+        searchLocationsNear(results[0].geometry.location);
+       } else {
+         alert(address + ' not found');
+       }
+     });
    }
-    
-    function searchExactSchoolName(school_name)
-        {
-         
-            console.log("exact search");
-              $.ajax({
-                    type: "GET", 
-                    url: "../api/search_api/search_school.php", 
-                    data: {"school_name" :school_name},
-                    success: function(response)
-                    {
-                        console.log(response);
-                        var bounds = new google.maps.LatLngBounds();
-                        for (var i in response) 
-                        {
-                             var school_id  = 	response[i].school_id;
-                             var name 		= 	response[i].school_name;
-                             var address 	=   response[i].address;
-                             var distance   =   5;
-                             var latlng = new google.maps.LatLng(
-                                  parseFloat(response[i].latitude),
-                                  parseFloat(response[i].longitude));
-                            var session_timings 	=   response[i].session_timing;
-                            var city 				=   response[i].city;
-                            var category 			=   response[i].category;
-                            var school_type 		=   response[i].school_type;
-                            var courses 			=   response[i].courses;
-                            var school_size 		=   response[i].school_size;
-                            var board 				=   response[i].board;
-                            var medium_of_teaching  =   response[i].medium_of_teaching;
-                            var religous_preference	=   response[i].religous_preference;
-                            var small_description 	=   response[i].small_description;
-
-                            
-                           populateData(school_id,name, distance,  i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,
-                                        small_description);
-                           createMarker(latlng, name, address);
-                           bounds.extend(latlng);
-                           google.maps.event.trigger(markers[i], 'click');   
-                            
-                        }
-                        map.fitBounds(bounds);
-                  
-                    },
-                    dataType: "json"//set to JSON    
-                })    
-
-            
-            
-        }
-     
-     
-     //search school names when address is given   
-    function searchNameInMarkers(school_name,school_address)
-    {
-             
-             if(markerNodes.length >0)
-             {
-                   var bounds = new google.maps.LatLngBounds();
-                   for (var i = 0; i < markerNodes.length; i++)
-                   {
-                     var school_id  = 	markerNodes[i].getAttribute("school_id");
-                     var name 		= 	markerNodes[i].getAttribute("name");
-                     var address 	=   markerNodes[i].getAttribute("address");
-                     var distance   =   parseFloat(markerNodes[i].getAttribute("distance"));
-                     var latlng = new google.maps.LatLng(
-                          parseFloat(markerNodes[i].getAttribute("lat")),
-                          parseFloat(markerNodes[i].getAttribute("lng")));
-                    var session_timings 	=   markerNodes[i].getAttribute("session_timing");
-                    var city 				=   markerNodes[i].getAttribute("city");
-                    var category 			=   markerNodes[i].getAttribute("category");
-                    var school_type 		=   markerNodes[i].getAttribute("school_type");
-                    var courses 			=   markerNodes[i].getAttribute("courses");
-                    var school_size 		=   markerNodes[i].getAttribute("school_size");
-                    var board 				=   markerNodes[i].getAttribute("board");
-                    var medium_of_teaching  =   markerNodes[i].getAttribute("medium_of_teaching");
-                    var religous_preference	=   markerNodes[i].getAttribute("religous_preference");
-                    var small_description 	=   markerNodes[i].getAttribute("small_description");
-                    
-                    console.log("Name "+ name + " school name for search "+ school_name);
-                    if(school_name.trim())
-                    {
-                        if(name.includes(school_name))
-                        {
-                           populateData(school_id,name, distance,  i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,
-                                        small_description);
-                           createMarker(latlng, name, address);
-                           bounds.extend(latlng);
-                           google.maps.event.trigger(markers[i], 'click');   
-                        }
-
-                    }
-                 }
-                 map.fitBounds(bounds);
-                 
-             }
-            else
-                {
-                    
-                     var geocoder = new google.maps.Geocoder();
-                     geocoder.geocode({address: school_address}, function(results, status) {
-                       if (status == google.maps.GeocoderStatus.OK) {
-                 
-                           
-                              $.ajax({
-                                    type: "GET", 
-                                    url: "../api/map_api/phpsqlsearch_genxml.php", 
-                                    data: {"lat" :results[0].geometry.location.lat(),
-                                            "lng" :results[0].geometry.location.lng(),
-                                            "radius": 5},
-
-                                    success: function(response)
-                                    {
-                                       var xml = response;
-                                       markerNodes = xml.documentElement.getElementsByTagName("marker"); 
-                                        if(markerNodes.length > 0)
-                                        {
-                                                 
-                                                    searchNameInMarkers(school_name,school_address);         
-                                        }
-                                    },
-                                    dataType: "xml"//set to XML  
-                                })
-
-                           
-                       } else {
-                         alert(address + ' not found');
-                       }
-                     });
-                    
-                    
-                    
-                }
-    }
 
    function clearLocations() {
      infoWindow.close();
@@ -974,78 +800,55 @@ commented due to error
        markers[i].setMap(null);
      }
      markers.length = 0;
+
+  /*   locationSelect.innerHTML = "";
+     var option = document.createElement("option");
+     option.value = "none";
+     option.innerHTML = "See all results:";
+     locationSelect.appendChild(option);
+	 */
    }
 
 
    function searchLocationsNear(center) {
      clearLocations();
      
-   
+    //alert(center.lat());
        
      var radius = 5;   //5KM
      var searchUrl = '../api/map_api/phpsqlsearch_genxml.php?lat=' + center.lat() + '&lng=' + center.lng() + '&radius=' + radius;
-	 
-       
+	   //alert(searchUrl);
      downloadUrl(searchUrl, function(data) {
-     
-           var xml = parseXml(data);
-           
-         
-           markerNodes = xml.documentElement.getElementsByTagName("marker");
-           var bounds = new google.maps.LatLngBounds();
-     
-           for (var i = 0; i < markerNodes.length; i++) {
-            
-             var school_id  =  	markerNodes[i].getAttribute("school_id");
-             var name 		= 	markerNodes[i].getAttribute("name");
-             var address 	=   markerNodes[i].getAttribute("address");
-             var distance   =   parseFloat(markerNodes[i].getAttribute("distance"));
-             var latlng = new google.maps.LatLng(
-                  parseFloat(markerNodes[i].getAttribute("lat")),
-                  parseFloat(markerNodes[i].getAttribute("lng")));
-            var session_timings 	=   markerNodes[i].getAttribute("session_timing");
-            var city 				=   markerNodes[i].getAttribute("city");
-            var category 			=   markerNodes[i].getAttribute("category");
-            var school_type 		=   markerNodes[i].getAttribute("school_type");
-            var courses 			=   markerNodes[i].getAttribute("courses");
-            var school_size 		=   markerNodes[i].getAttribute("school_size");
-            var board 				=   markerNodes[i].getAttribute("board");
-            var medium_of_teaching  =   markerNodes[i].getAttribute("medium_of_teaching");
-            var religous_preference	=   markerNodes[i].getAttribute("religous_preference");
-            var small_description 	=   markerNodes[i].getAttribute("small_description");
-
-            var schoolNameforSearch = document.getElementById("school_name_search_txt").value;
-            if(schoolNameforSearch.trim())
-            {
-        
-                var found = false;
-                var nameParts = schoolNameforSearch.split(" ");
-            
-                if(name.includes(nameParts[0]))
-                {
-                  found = true;
-                }
-            
-                if(found)
-                {
-                    populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
-                    createMarker(latlng, name, address);
-                    bounds.extend(latlng);
-                    google.maps.event.trigger(markers[i], 'click');   
-                }
-
-            }else{
-                
-                 populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
-                 createMarker(latlng, name, address);
-                 bounds.extend(latlng);
-               //  alert(markers[i]);
-                 google.maps.event.trigger(markers[i], 'click');       
-            }
-         
+         //alert(data);
+       
+       var xml = parseXml(data);
+       markerNodes = xml.documentElement.getElementsByTagName("marker");
+       var bounds = new google.maps.LatLngBounds();
+       for (var i = 0; i < markerNodes.length; i++) {
+         var name 		= 	markerNodes[i].getAttribute("name");
+         var address 	=   markerNodes[i].getAttribute("address");
+         var distance   =   parseFloat(markerNodes[i].getAttribute("distance"));
+         var latlng = new google.maps.LatLng(
+              parseFloat(markerNodes[i].getAttribute("lat")),
+              parseFloat(markerNodes[i].getAttribute("lng")));
+		var session_timings 	=   markerNodes[i].getAttribute("session_timing");
+		var city 				=   markerNodes[i].getAttribute("city");
+		var category 			=   markerNodes[i].getAttribute("category");
+		var school_type 		=   markerNodes[i].getAttribute("school_type");
+		var courses 			=   markerNodes[i].getAttribute("courses");
+		var school_size 		=   markerNodes[i].getAttribute("school_size");
+		var board 				=   markerNodes[i].getAttribute("board");
+		var medium_of_teaching  =   markerNodes[i].getAttribute("medium_of_teaching");
+		var religous_preference	=   markerNodes[i].getAttribute("religous_preference");
+		var small_description 	=   markerNodes[i].getAttribute("small_description");
+		
+		 
+         populateData(name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
+         createMarker(latlng, name, address);
+         bounds.extend(latlng);
+		 google.maps.event.trigger(markers[i], 'click');
 		   
        }
-     
        map.fitBounds(bounds);
 
       });
@@ -1063,16 +866,8 @@ commented due to error
       });
       markers.push(marker);
     }
-        
-    function showDescription(school_id)
-    {
-        createCookie('school_id',school_id,7);
-        console.log(school_id)    ;
-        window.location.href = "school_overview.html";
-        return true;
-    }
 
-    function populateData(school_id,name, distance, num ,address,session_timings,
+    function populateData(name, distance, num ,address,session_timings,
 						   city,category,school_type,courses,
 						   school_size,board,medium_of_teaching,religous_preference,small_description) {
 
@@ -1097,8 +892,7 @@ commented due to error
 									"<div class='comments-meta-box'>"+
 										"<div class='row'>"+
 											"<div class='col-md-10 col-xs-9'>"+
-												 "<h4 class='mt0'><a href='#' onclick='return showDescription("+school_id+");'>" +name+
-"</a></h4>"+
+												 "<h4 class='mt0'>"+ name +"</h4>"+
 											
 											"<div class='comments-date'>"+
 												
@@ -1191,7 +985,6 @@ commented due to error
 	var populated = 0;
         
        for (var i = 0; i < markerNodes.length; i++) {
-             var school_id  = 	markerNodes[i].getAttribute("school_id");
              var name 		= 	markerNodes[i].getAttribute("name");
              var address 	=   markerNodes[i].getAttribute("address");
              var distance   =   parseFloat(markerNodes[i].getAttribute("distance"));
@@ -1216,7 +1009,7 @@ commented due to error
 		if(-1 != $.inArray(session_timings, values))
 		{
 		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
+            populateData(name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
 		}
            }
 	   else  if(checkBoxName.localeCompare("category")== 0)
@@ -1224,7 +1017,7 @@ commented due to error
 		if(-1 != $.inArray(category, values))
 		{
 		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
+            populateData(name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
 		}
            }
 	   else  if(checkBoxName.localeCompare("courses")== 0)
@@ -1232,7 +1025,7 @@ commented due to error
 		if(-1 != $.inArray(courses, values))
 		{
 		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
+            populateData(name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
 		}
            }
 	   else  if(checkBoxName.localeCompare("school_size")== 0)
@@ -1240,7 +1033,7 @@ commented due to error
 		if(-1 != $.inArray(session_size, values))
 		{
 		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
+            populateData(name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
 		}
            }
 	   else  if(checkBoxName.localeCompare("board")== 0)
@@ -1248,7 +1041,7 @@ commented due to error
 		if(-1 != $.inArray(board, values))
 		{
 		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
+            populateData(name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
 		}
            }
 	   else  if(checkBoxName.localeCompare("medium_of_teaching")== 0)
@@ -1256,7 +1049,7 @@ commented due to error
 		if(-1 != $.inArray(medium_of_teaching, values))
 		{
 		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
+            populateData(name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
 		}
            }
 	   else  if(checkBoxName.localeCompare("medium_of_teaching")== 0)
@@ -1264,7 +1057,7 @@ commented due to error
 		if(-1 != $.inArray(medium_of_teaching, values))
 		{
 		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
+            populateData(name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
 		}
            }
 	  else  if(checkBoxName.localeCompare("religous_preferences")== 0)
@@ -1272,7 +1065,7 @@ commented due to error
 		if(-1 != $.inArray(religous_preferences, values))
 		{
 		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
+            populateData(name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
 		}
            }
 	
@@ -1308,6 +1101,7 @@ function runScript(e) {
 		<script type="text/javascript" src="search/leaflet.markercluster.js"></script>
 		<script type="text/javascript" src="search/build.min.js"></script>
 		<script type="text/javascript" src="search/chosen.jquery.js"></script>
+		<script type="text/javascript" src="search/jquery-ui.js"></script>
 		<script type="text/javascript" src="search/slick.min.js"></script>
 		<script type="text/javascript" src="search/jquery.mmenu.min.all.js"></script>
 		<script type="text/javascript" src="search/jquery.magnific-popup.min.js"></script>
@@ -1316,20 +1110,7 @@ function runScript(e) {
 		<script type="text/javascript" src="search/classie.js"></script> <!-- Popup -->
 		<script type="text/javascript" src="search/modalEffects.js"></script> <!-- Popup -->
 		<script type="text/javascript" src="search/main.js"></script>
-    		<script type="text/javascript" src="ui-jquery/jquery-ui.js"></script>
-   <script>
-
-    $( "#accordion" ).accordion({
-      heightStyle: "fill"
-     
-    });
-       
-       
-      
-    
-
-  </script>
-       
+        
    
     </form>
 

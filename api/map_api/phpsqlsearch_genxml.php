@@ -51,7 +51,7 @@ if (!$db_selected) {
   die ("Can\'t use db : " . mysql_error());
 }
                  
-$query = "SELECT address, school_name, latitude, longitude ,city, session_timmings,category,school_type,courses,school_size,board, medium_of_teaching, mobility, small_description,religous_preference FROM tbl_school_main_table";
+$query = "SELECT school_id,address, school_name, latitude, longitude ,city, session_timmings,category,school_type,courses,school_size,board, medium_of_teaching, mobility, small_description,religous_preference FROM tbl_school_main_table";
 
 $result = mysql_query($query);
 if (!$result) {
@@ -68,6 +68,7 @@ while ($row = @mysql_fetch_assoc($result)){
   {  
     $node = $dom->createElement("marker");
     $newnode = $parnode->appendChild($node);
+    $newnode->setAttribute("school_id", $row['school_id']);
     $newnode->setAttribute("name", $row['school_name']);
     $newnode->setAttribute("address", $row['address']);
     $newnode->setAttribute("lat", $row['latitude']);
