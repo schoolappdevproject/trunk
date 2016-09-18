@@ -681,7 +681,9 @@ a.lp-primary-btn {
     height: 44px;
     box-shadow: none;
     border: 1px solid #e3e3e3;
-    font-size: 16px
+    font-size: 16px;
+    width: 100%;
+        
 }
 .form-control:focus {
     border: 1px solid #C1C1C1
@@ -1331,7 +1333,7 @@ input.default {
     border-bottom-right-radius: 5px;
       border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    padding: 11px 30px 11px 45px;
+    padding: 11px 11px 11px 11px;   
 }
 .lp-search-btn {
     padding: 11px 30px 11px 45px;
@@ -3995,7 +3997,8 @@ footer {
         overflow: scroll
     }
     .login-form-popup {
-        min-height: 60vh
+        min-height: 60vh;
+            z-index: 83993;
     }
     .search-row .form-inline .form-group {
         width: 48%
@@ -4450,7 +4453,9 @@ footer {
         margin-left: 0
     }
     .md-modal {
-        overflow: scroll
+        overflow: scroll;
+        z-index: 9999
+            
     }
     .login-form-popup {
         min-height: 730px;

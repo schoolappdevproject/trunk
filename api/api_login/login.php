@@ -1,6 +1,8 @@
 <?php
-include_once 'connection.php';
+
+include_once '../common/connection.php';
 require("../trace/MyLogPHP-1.2.1.class.php");
+
 $method = $_SERVER['REQUEST_METHOD'];
 $log = new MyLogPHP();
 if ($method == 'POST') {
@@ -17,7 +19,7 @@ if ($method == 'POST') {
     $result = [];
 
     $validate_user = $database->get("tbl_users",[
-      "password"
+      "password","email"
     ],[
       "OR" => [
         "username" => $username,
@@ -28,11 +30,15 @@ if ($method == 'POST') {
     if($validate_user) {
       if($validate_user['password'] == $password) {
         $result['success'] = "login successfull";
+        $result['code']    = "1";
+        $result['email']   = $validate_user['email'];
       } else {
         $result['error'] = "Wrong password";
+        $result['code']    = "0";
       }
     } else {
       $result['error'] = "Wrong username or, email";
+      $result['code']    = "0";
     }
     $log->info($result);
     echo json_encode($result);

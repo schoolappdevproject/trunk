@@ -1,0 +1,813 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0055)http://microsoftmsdn.com/schoolguru/parent-profile.aspx -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="keywords" content="HTML5 Template"><meta name="description" content="Listingpro - Template HTML5"><meta name="author">
+	
+	<!-- Title -->
+	<title>
+	School Guru
+</title>
+	
+	<!-- Mobile Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+    <meta charset="utf-8">
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="http://microsoftmsdn.com/schoolguru/images/favicon.png" type="image/x-icon">
+    <link href="js/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet" type="text/css">
+
+
+	<!-- CSS -->
+	<link href="./ParentProfile_files/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="./ParentProfile_files/colors.css" type="text/css" rel="stylesheet">
+    <link href="./ParentProfile_files/font.css" type="text/css" rel="stylesheet">
+    <!--<link href="./ParentProfile_files/jquery.filer.css" type="text/css" rel="stylesheet"> -->
+    <link href="./ParentProfile_files/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet">
+    <link href="./ParentProfile_files/component.css" type="text/css" rel="stylesheet">
+    <link href="./ParentProfile_files/styles.min.css" type="text/css" rel="stylesheet">
+    <link href="./ParentProfile_files/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="./ParentProfile_files/jquery.mmenu.all.css">
+    <link href="./ParentProfile_files/mapbox.css" rel="stylesheet">
+    <link href="./ParentProfile_files/chosen.css" rel="stylesheet">
+    <link href="./ParentProfile_files/MarkerCluster.css" rel="stylesheet">
+    <link href="./ParentProfile_files/MarkerCluster.Default.css" rel="stylesheet">
+    <link href="./ParentProfile_files/main.css" type="text/css" rel="stylesheet">
+    <link href="./css/common.css" type="text/css" rel="stylesheet">
+    <style>
+    .user-text h3
+    {
+        margin-bottom:15px !important;
+    }
+    .page-container {
+    padding-bottom: 10px;
+}
+    </style>
+
+    
+<style>
+.form-control
+{
+    margin-bottom:15px;
+}
+.page-container-second {
+    padding-top: 30px;
+    padding-bottom: 60px
+}
+    
+    
+/* google map style */
+    
+    #map {
+        height: 300px;
+        width: 100%;
+      }
+      .controls {
+        margin-top: 10px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 300px;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      .pac-container {
+        font-family: Roboto;
+      }
+
+      #type-selector {
+        color: #fff;
+        background-color: #4d90fe;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #type-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+ 
+    
+    
+    
+/* Google map style*/
+</style>
+    
+    
+
+<!--  causing error
+<script type="text/javascript" charset="UTF-8" src="./ParentProfile_files/common.js">
+</script><script type="text/javascript" charset="UTF-8" src="./ParentProfile_files/util.js">
+</script><script type="text/javascript" charset="UTF-8" src="./ParentProfile_files/stats.js"></script>
+-->
+</head>
+<body onload="load()"><nav class="attireMainNav"><button class="toggleBtn iconMenu" type="button">Toggle navigation</button><ul></ul></nav>
+    <form method="post" action="#" id="form_id" onSubmit="return false">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE3OTk3MTgxMjRkZLg8PEAkusi4ZlcfuiGeVjsTLHojDXeRK0hOngGazPTa">
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="E4B3AF92">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdABg05+iJmPSsi8MrEp3rhXKcGesOOO7wi3Uzz+yy2Y0Kc7t0vKVmDtQYb7KLGs2qWD2fVFyO0cCPrpER53fgJQ2ef9ouzpSgh9JAYfaBgOBF1jbdtU+KanXQVlOfZzrpxsmCX8Lp7Gxx4o3+jPo9Eis3pQXh6ctc7d6Z8yTyIGLWqxQdbSkcOCjNLf/0uiwACmyROqJZ6VjZHAo4OubqQY60iQePsqwZBn0oj+rRyBHv15FzIkL/tSG/ylS5PBFydkoI1Ma7p+kCUrkeJGFDdBfuYE8qXcdAPFZsUblRg19QXlOXfF45eaOsi7KcgHjb4Ve9/ShFCA2bFWTnLYRgfETDOpiXbgSGI0DV3V9q7MvblRUcvf22VuxozB5Cft1ZVGUJjb7kHC9l5BGZOsRb1M53PIx6lV8ytF4pkUEFKchQKYpso3c0BNdidhpUx9B3c1INeSKFy2zxLVV4+zExdQxF5BPdHG87XtyblNclsuAS8Iw7t+aOQlJ+rpluCTaRNadLD3xijzncSADYhcTX/GmxTtKqu+65iXcAoaut6kDoIA==">
+</div>
+    <div>
+    <div id="page">
+    <header class="">
+		<div class="lp-topbar">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-sm-8 text-left">
+						<ul class="lp-topbar-menu">
+							<li>
+								<a href="http://microsoftmsdn.com/schoolguru/index.html">Home</a>
+							</li>
+							<li>
+								<a href="http://microsoftmsdn.com/schoolguru/about.html">About</a>
+							</li>
+							<li>
+								<a href="http://microsoftmsdn.com/schoolguru/contact.html">Contact</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-4 col-sm-4 text-right">
+						<div class="lp-join-now">
+							<span>
+								<!-- Contacts icon by Icons8 -->
+								<img class="icon icons8-Contacts" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADNElEQVRoge2ZLWhbURTHn3iig8IiIiomIgqrqJiomJgIrCKiomKig4iKioiKioiJiEJExURFRGEbRERMVERkENhE5BgTGUxEVERkUBERURFR8Zu45+5durzk3feRm7H8IRB455z3u9/3nOd5a6317wjYAcrAOdAEroAqcAhsuOabK8AHKsBX5qsP7LrmnSlgE+gasCMZhRpwDJwCDeBGnk+Bt8COa/Y/AjaAn0YDDgA/xNYH3j8YoUaY/VIlPQvwHdiKYO8De0AdGItvcxms86AKwL38rOe9bAoTacyzLBijglQE4jpBjHOJ8TFNNluItkAcJ4ixKzGGKaJZQ/QEopgwDgApYcUC0NtpIWEc5w3R227shQrkVqEhn4ThdYIYTyXGrzTZbCH04fYmQYznEqOfJpstRFUg3qUQ4zJNNluIA4H4nCDGtcQop8lmC1ESiElM/7zcCgD20+azAdE33lpMfx+4kBjttPlsQAYCETu/AIoSo5cmmy1E4vmNylcgwX0tsVDpLMAQqMbwr4mv88XuAx0BuYnhr6/wXVwnV8Aj4IcAvbDweyk+37LksxKqUgJQt/Cpi89VlmxWMnaeCZCLYJ8zplVxCYjRRZCbdObNd1lXOiFzt+WGieC6ohuTn2GTMxoBsOeCda5Qta2pATkGTlAFioL8HxnPR66ZQ2WcCQPCpbNKdzn6IhFcAPOow7ItozBGnRUVYHulG0JQDZkusNvSdqxSydTzPA9VOdTTaWGCBLSMKeh+wcsoNI0pBXARwa9m2N9LjOVWGlHnwCuCO5aGaROUT4/m+O8bdq0HndAFjsjyGwqq6n5GUHgGdTpfAttiUzeeNVBnS15+JbHVqolPAVUInxjPxqhS6sJbgm0jysCt8aIB6pvH5gzbU+COcE2Bs5COqhDUynRH/WUbpwE+6oONVh84jOC3I6PTkd4dy/86EbJJ1Ce6vvHe1qxOs2mIXgd3wEnsQPHfXzZGt0ecnIUgBR0ia8CFUAfoUFjsslDgCcHiK2XEaMOj04QpNgVzgg84X7LDs5MxzaMvfuCDtVPGQu2GAC0bJ3OrXTXdRm1EbmEo93ocd2TXWut/1W9KptrZf/2YyAAAAABJRU5ErkJggg==" alt="join-now">
+							</span>
+							<a class=" md-trigger" data-modal="modal-3">Join Now</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!-- ../topbar -->
+		
+	<div class="md-modal md-effect-3" id="modal-3">
+			<div class="login-form-popup lp-border-radius-8">
+				<div class="siginincontainer">
+					<h2 class="text-center" style="font-size:30px;">Sign in</h2>
+					<div class="form-horizontal margin-top-20" method="post">
+						<div class="form-group">
+						
+                            <input name="ctl00$txt_uname" type="text" id="txt_uname" placeholder="Username or Email Address *" class="form-control" style="height:36px;">
+							
+						</div>
+						<div class="form-group">
+							
+							<input name="ctl00$TextBox1" type="password" id="TextBox1" placeholder="Password *" class="form-control" style="height:36px;"> 
+						</div>
+						
+						
+						<div class="form-group">
+                        <input type="submit" name="ctl00$Button1" value="Sign in" id="Button1" class="lp-secondary-btn width-full btn-first-hover" style="padding:8px 30px;">
+						
+						</div>
+					</div>	
+					<div class="pop-form-bottom">
+						<div class="bottom-links">
+							<a class="signUpClick">Not a member? Sign up</a>
+							<a class="forgetPasswordClick pull-right">Forgot Password</a>
+						</div>
+						<p class="margin-top-15">Connect with your Social Network</p>
+						<ul class="social-login list-style-none">
+							<li><button id="logingoogle" class="google flaticon-googleplus"><i class="fa fa-google-plus"></i><span>Sign In</span></button></li>
+							<li><button id="loginfacebook" class="facebook flaticon-facebook"><i class="fa fa-facebook"></i><span>Sign In</span></button></li>
+							
+						</ul>
+					</div>
+				<a class="md-close"><i class="fa fa-close"></i></a>
+				</div>
+				<div class="siginupcontainer">
+					<h2 class="text-center" style="font-size:30px;">Sign Up</h2>
+					<div class="form-horizontal margin-top-30" method="post">
+						<div class="form-group">
+							
+							<input name="ctl00$TextBox2" type="text" id="TextBox2" placeholder="Username *" class="form-control" style="height:36px;">
+						</div>
+						<div class="form-group">
+						
+							<input name="ctl00$TextBox3" type="text" id="TextBox3" placeholder="Email Address *" class="form-control" style="height:36px;">
+						</div>
+						<div class="form-group">
+							
+							<input name="ctl00$TextBox4" type="password" id="TextBox4" placeholder="Password *" class="form-control" style="height:36px;"> 
+						</div>
+						<div class="form-group">
+							<input type="submit" name="ctl00$Button2" value="Sign in" id="Button2" class="lp-secondary-btn width-full btn-first-hover" style="padding:8px 30px;"> 
+						</div>
+					</div>	
+					<div class="pop-form-bottom">
+						<div class="bottom-links">
+							<a class="signInClick"> have an account? Sign in</a>
+							<a class="forgetPasswordClick pull-right">Forgot Password</a>
+						</div>
+						<p class="margin-top-15">Connect with your Social Network</p>
+						<ul class="social-login list-style-none">
+							<li><button id="Button3" class="google flaticon-googleplus"><i class="fa fa-google-plus"></i><span>Sign Up</span></button></li>
+							<li><button id="Button4" class="facebook flaticon-facebook"><i class="fa fa-facebook"></i><span>Sign Up</span></button></li>
+							
+						</ul>
+					</div>
+				<a class="md-close"><i class="fa fa-close"></i></a>
+				</div>
+				<div class="forgetpasswordcontainer">
+                <h2 class="text-center" style="font-size:30px;">Forgot Password?</h2>
+					<h1 class="text-center"></h1>
+					<div class="form-horizontal margin-top-30" method="post">
+						<div class="form-group">
+						<input name="ctl00$TextBox5" type="text" id="TextBox5" placeholder="Enter Your Email Address" class="form-control" style="height:36px;">
+						</div>
+						<div class="form-group">
+							<input type="submit" name="ctl00$Button5" value="Get New Password" id="Button5" class="lp-secondary-btn width-full btn-first-hover" style="padding:8px 30px;"> 
+						</div>
+					</div>	
+					<div class="pop-form-bottom">
+						<div class="bottom-links">
+							<a class="cancelClick">Cancel</a>
+						</div>
+					</div>
+				<a class="md-close"><i class="fa fa-close"></i></a>
+				</div>
+			</div>	
+		</div>
+		
+		<!-- Popup Open -->
+		<div class="md-modal md-effect-3" id="modal-2">
+			<div class="container">
+				<div class="md-content ">
+					<div class="row popup-inner-left-padding ">
+						<div class="col-md-6 lp-insert-data">
+						</div>
+						<div class="col-md-6">
+							<div id="quickmap" class="quickmap"></div>
+							<a class="md-close widget-map-click"><i class="fa fa-close"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Popup Close -->
+		<div class="md-overlay"></div> <!-- Overlay for Popup -->
+							
+		<div class="lp-menu-bar  lp-menu-bar-color">
+			<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-xs-6 lp-logo-container">
+							<div class="lp-logo">
+								<a href="http://microsoftmsdn.com/schoolguru/index.html">
+									<img src="./ParentProfile_files/logo.png" alt="">
+								</a>
+							</div>
+						</div>
+						<div class="col-xs-6 mobile-nav-icon">
+							<a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#menu" class="nav-icon">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</a>
+						</div>
+						<div class="col-md-8 col-xs-12 lp-menu-container">
+							<div class="pull-right lp-add-listing-btn">
+								<ul>
+									<li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#" style="line-height: 80px;"><i class="fa fa-plus"></i> Add Schools</a></li>
+								</ul>
+							</div>
+							<div class="lp-menu pull-right menu">
+								<ul>
+									<li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#" style="line-height: 80px;">Schools </a>
+										
+									</li>
+									<li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#" style="line-height: 80px;">Parents </a>
+										
+									</li>
+                                    <li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#" style="line-height: 80px;">Students </a>
+										
+									</li>
+								
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+		
+	</header>
+        
+<div class="page-heading listing-page archive-page ">
+			<div class="page-heading-inner-container text-center">
+                
+                <div class="row">
+                    
+                    <div class="col-md-10">
+                        <center>
+                        <h1>Complete Profile</h1>
+                        </center>
+                    </div>
+                    <div class="col-md-2">
+                        <h4 style="color:white;"><span id="loginEmailId"></span></h4>
+                    </div>
+                
+                </div>
+				
+				
+			</div>
+			<div class="page-header-overlay"></div>
+		</div>
+        <section class="aliceblue">
+		<div class="container page-container-second">
+	
+            <div class="row">
+				<div class="col-md-12  padding-40 blog-single-inner-container lp-border lp-border-radius-8">
+                <div class="row">
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Your Name </b></p></div>
+            <div class="col-md-5"><input name="school_name" type="text" id="dtl_name" class="form-control"></div>
+        
+            <div class="clearfix"></div>
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Address</b></p></div>
+            <div class="col-md-5"><input name="address" type="text" id="dtl_address" class="form-control"></div>       
+            <div class="clearfix"></div>
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Contact</b></p></div>
+            <div class="col-md-5"><input name="contact" type="text" id="dtl_contact" class="form-control"></div>
+            <div class="clearfix"></div>
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Email</b></p></div>
+            <div class="col-md-5"><input name="email" type="text" id="dtl_email" class="form-control"></div>
+            <div class="clearfix"></div>
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>City</b></p></div>
+            <div class="col-md-5"><input name="city" type="text" id="dtl_city" class="form-control"></div>
+            <div class="clearfix"></div>
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Country</b></p></div>
+            <div class="col-md-5"><select name="country" id="country" class="form-control">
+                    <option value="India" selected="true">India</option>
+            </select>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Are You Parent</b></p></div>
+            <div class="col-md-5"><select name="profile" id="dtl_role" class="form-control" onchange="onProfileChange()">
+                    <option value="parent" selected="true">Yes</option>
+                    <option value="student" selected="true">No</option>
+            </select>
+            </div>
+            </div>
+            
+            <div id="parentForm"> 
+                <div class="row">
+                    <div class="col-md-8">
+                    <hr>    
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="perChildDiv">
+
+                    </div>   <!-- per school div -->
+                </div>   
+                <div class="row">
+                <div class="col-md-1">
+                       <input type="button" name="addChile" value="Add Child" id="add_child" class="lp-search-btn" style="float:left;padding:8px 15px;"> 
+                    </div>
+                <div class="col-md-7"></div>
+                </div>
+              
+            </div>
+            
+           
+           <div id="studentForm"> 
+               
+                <div class="row">
+                <div class="col-md-8"><hr></div>
+                </div>
+                <div class="row">
+                     <div id="perSchoolDiv">
+
+                    </div>   <!-- per school div -->
+               </div>
+                <div class="row">
+                <div class="clearfix"></div>
+                    <div class="col-md-1">
+                           <input type="button" name="add_school" value="Add College" id="add_school_button" class="lp-search-btn" style="float:left;padding:8px 15px;">    
+                    </div>
+                </div>
+           </div>
+           
+           
+                    
+                    
+                    
+            <div class="row">
+            <!-- End of the school admin creation form -->
+            <div class="clearfix"></div>
+            <div class="col-md-3">
+            
+            </div>
+          
+            <div class="col-md-5">
+                   <div class="clearfix"></div>
+                
+                <input type="submit" name="save_button" value="Submit" id="save_button" class="lp-search-btn" style="float:right;padding:8px 15px;"></div>
+        
+            </div>
+                </div>			
+				</div>
+        
+			</div>
+            
+		</section></div>
+
+             <div id="school_input_form" hidden="true">
+                        <div class="row">
+                            <div class="col-md-8">
+                            
+                                <h3> Enter School Details </h3>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                         <div class="clearfix"></div>
+                                <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Select Your School</b></p></div>
+                                <div class="col-md-5"><select name="school_name" id="dtl_std_schoolname" class="form-control" onchange="ifOtherChosen()"> 
+                                </select>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="row">
+                        
+                            <div class="clearfix"></div>
+                            <div class="otherSchoolName">
+                                  <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Enter Name of School</b></p></div>
+                                    <div class="col-md-5"><input name="other_school_name" type="text" id="dtl_std_otherSchoolName" class="form-control"></div>
+                            </div>
+                        
+                        </div>
+                        
+                        <div class="row">
+                        
+                        
+                             <div class="clearfix"></div>
+                                      <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Enter Class</b></p></div>
+                                    <div class="col-md-5"><input name="class_name" type="text" id="dtl_std_classname" class="form-control"></div>
+                        
+                        </div>
+                        
+                        
+                    <div class="row">
+                        
+                         <div class="clearfix"></div>
+                            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Rate Your School</b></p></div>
+                            <div class="col-md-5">
+                            <!-- rating School -->
+                                            <table class="rating" style="font-size:14px;">   
+                                                <tr class="rat_head">
+                                                    <th> Category </th>
+                                                    <th> Bad </th>
+                                                    <th> Better</th>
+                                                    <th> Good</th>
+                                                    <th> Best</th>
+                                                    <th> Excellent</th>
+                                                </tr>
+                                                <tr class="rat">
+                                                     <td class="rat-topic">Studies </td>
+                                                      <td class="rat_row"><input type="radio" name="rating_studies" value="0"></td>
+                                                      <td class="rat_row"><input type="radio" name="rating_studies" value="1"> </td>
+                                                      <td class="rat_row"><input type="radio" name="rating_studies" value="2" checked> </td>
+                                                      <td class="rat_row"><input type="radio" name="rating_studies" value="3"></td>
+                                                      <td class="rat_row"><input type="radio" name="rating_studies" value="4"> </td>     
+                                                
+                                                </tr>
+                                                
+                                                <tr class="rat">
+                                                    <td class="rat-topic">Laboratories </td>
+                                                    <td class="rat_row"><input type="radio" name="rating_labs" value="0"></td>
+                                                    <td class="rat_row"><input type="radio" name="rating_labs" value="1"> </td>
+                                                    <td class="rat_row"><input type="radio" name="rating_labs" value="2" checked> </td>
+                                                    <td class="rat_row"><input type="radio" name="rating_labs" value="3"> </td>
+                                                    <td class="rat_row"><input type="radio" name="rating_labs" value="4"> </td>
+                                                </tr>
+                                                
+                                                <tr class="rat">
+                                                    <td class="rat-topic">Sports</td>
+                                                  <td class="rat_row"><input type="radio" name="rating_sports" value="0"> </td>
+                                                  <td class="rat_row"><input type="radio" name="rating_sports" value="1"> </td>
+                                                  <td class="rat_row"><input type="radio" name="rating_sports" value="2" checked> </td>
+                                                  <td class="rat_row"><input type="radio" name="rating_sports" value="3"> </td>
+                                                  <td class="rat_row"><input type="radio" name="rating_sports" value="4"> </td>
+                                                
+                                                </tr>
+                                                
+                                                <tr class="rat">
+                                                    <td class="rat-topic">Library</td>
+                                                  <td class="rat_row"><input type="radio" name="rating_library" value="0">  </td>
+                                                  <td class="rat_row"><input type="radio" name="rating_library" value="1">  </td>
+                                                  <td class="rat_row"><input type="radio" name="rating_library" value="2" checked>  </td>
+                                                  <td class="rat_row"><input type="radio" name="rating_library" value="3"> </td>
+                                                  <td class="rat_row"><input type="radio" name="rating_library" value="4"> </td>
+                                                
+                                                </tr>
+                                                
+                                                <tr class="rat">
+                                              <td class="rat-topic">Teachers & Administration</td>
+                                              <td class="rat_row"><input type="radio" name="rating_admin" value="0"> </td>
+                                              <td class="rat_row"><input type="radio" name="rating_admin" value="1"> </td>
+                                              <td class="rat_row"><input type="radio" name="rating_admin" value="2" checked>  </td>
+                                              <td class="rat_row"><input type="radio" name="rating_admin" value="3">  </td>
+                                               <td class="rat_row"><input type="radio" name="rating_admin" value="4">  </td>
+                                               </tr>
+                                            </table>                
+                                
+                               
+                          
+                             </div>
+                           
+                        
+                        </div>
+                        
+                        <div class="row">
+                          <div class="clearfix"></div>
+                        <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Write a Brief Introduction on the school</b></p></div>
+                        <div class="col-md-5"><textarea name="small_description" rows="2" cols="20" id="small_description" class="form-control" style="height:100px;">                
+                        </textarea></div>   
+                        
+                        
+                            <div class="clearfix"></div>
+                            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Write about Admission Procedure </b></p></div>
+                            <div class="col-md-5"><textarea name="admission_description" rows="2" cols="20" id="admission_description" class="form-control" style="height:100px;"></textarea></div>
+                        </div>
+                 
+                              
+                    </div>
+	
+
+        <footer class="text-center">
+		<div class="footer-upper-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="footer-menu">
+							<li><a href="http://microsoftmsdn.com/schoolguru/index.html">Home</a></li>
+							<li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#">Blog</a></li>
+							<li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#">Contact</a></li>
+							<li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#">Join Us</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div><!-- ../footer-upper-bar -->
+		<div class="footer-bottom-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="footer-about-company">
+							<li>Copyright © 2016 Schoolguru</li>
+							<li>schoolguru@example.com</li>
+							<li>Tel: +91 1234567891</li>
+						</ul>
+						<p class="credit-links"> Designed &amp; Developed by<a href="http://www.nextwebi.com/" target="_blank"> Nextwebi</a></p><a href="http://www.nextwebi.com/" target="_blank">
+						</a><ul class="social-icons footer-social-icons"><a href="http://www.nextwebi.com/" target="_blank">
+							</a><li><a href="http://www.nextwebi.com/" target="_blank"></a><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#">
+								<img class="icon icons8-Facebook" src="./ParentProfile_files/facebook.png" alt="facebook"></a></li>
+							<li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#">
+								<img class="icon icons8-Google-Plus" src="./ParentProfile_files/google-plus.png" alt="google-plus"></a></li>
+							<li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#">
+								<img class="icon icons8-LinkedIn" src="./ParentProfile_files/linkidin.png" alt="linkedin"></a></li>
+							
+							<li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#">
+								<img class="icon icons8-Tumblr" src="./ParentProfile_files/twitter.png" alt="twitter"></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<a href="#" class="add-listing-mobile lp-search-btn">Add listing</a>
+        </div>
+        
+     
+        	<!-- Jquery Library -->
+                 <script src="js/jquery-2.2.3.js"></script>  
+                 <script src="js/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+
+    
+    </form>
+    
+
+    	
+    <script>
+        $(document).ready(function() {
+
+            // process the form
+            $('#save_button').click(function(event) {
+
+                // get the form data
+                // there are many ways to get this data using jQuery (you can use the class or id also)
+                var formData = {
+                      'school_name'              : $('input[name=school_name]').val(),
+                      'principal_name'           : $('input[name=principal_name]').val(),
+                      'address'                  : $('input[name=address]').val(),
+                      'contact'                  : $('input[name=contact]').val(),
+                      'city'                     : $('#city').val(),      
+                      'country'                  : $('#country').val(),
+                      'email'                    : $('input[name=email]').val(),
+                      'pin'                      : $('input[name=pin]').val(),
+                      'latitude'                 : $('input[name=lat]').val(),
+                      'longitude'                : $('input[name=lng]').val(),
+                      'web_link'                 : $('input[name=web_link]').val(),
+                    
+                      'category'                 : $('input[name=category]:checked').val(),
+                      'session_timings'          : $('input[name=session_timings]:checked').val(),
+                      'courses'                  : $('input[name=courses]:checked').val(),
+                      'school_size'              : $('input[name=school_size]:checked').val(),
+                      'board'                    : $('input[name=board]:checked').val(),
+                      'religous_preference'      : $('input[name=religous_preference]:checked').val(),
+                      'admission_method'          : $('input[name=admission_method]:checked').val(),
+                      'medium_of_teaching'       : $('input[name=medium_of_teaching]:checked').val(),
+                    
+                     'mobility'                 : $('input[name=mobility]').val(),
+                      'small_description'        : $('#small_description').val(),
+                      'admission_description'    : $('#admission_description').val()
+                };
+
+              alert(JSON.stringify(formData,null,2));
+                
+                // process the formf
+                $.ajax({
+                    type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                    url         : '../api/api_school_data/admin_form.php', // the url where we want to POST
+                    data        : formData, // our data object
+                    dataType    : 'json', // what type of data do we expect back from the server
+                                encode          : true
+                })
+                    // using the done promise callback
+                    .done(function(data) {
+
+                        // log data to the console so we can see
+                        console.log(data); 
+
+                        // here we will handle errors and validation messages
+                    });
+
+                // stop the form from submitting the normal way and refreshing the page
+                event.preventDefault();
+            });
+
+        });
+    
+    $("#address").keyup(function(){
+            $("#pac-input").val($(this).val());
+    });
+        
+    $("#pac-input").keyup(function(){
+            $("#address").val($(this).val());
+    });
+        
+  
+
+    
+    
+ 
+    </script>
+  <script>
+    function load()
+        {
+         
+            if(typeof localStorage.getItem("sessionid") !== 'undefined')
+                {
+                    username = localStorage.getItem("username");
+                    email    = localStorage.getItem("email");        
+                    console.log(username);
+                    $('#dtl_email').val(email);
+                    $('#loginEmailId').text(email);
+                  
+                    $('#parentForm').hide();
+                    $('#studentForm').show();
+                  
+                  
+                    
+                    initialise();
+                }
+                else 
+                {
+                    alert("Please login again");
+                    window.location("main.html");
+                }
+            
+            
+                
+              
+        }    
+      
+      function initialise()
+      {
+          $('.otherSchoolName').hide();
+          //load data
+          //dtl_std_schoolname
+          //dtl_par_schoolname
+          loadSchoolNames();
+          
+          
+      }
+      function loadSchoolNames()
+      {
+             // process the formf
+       $.ajax({
+                    type: "POST", 
+                    url: "../api/search_api/gen_school_names.php", 
+                    //data: "",
+                    success: function(response)
+                    {
+                        
+                        for(itr in response)
+                        {       
+                            $('#dtl_std_schoolname').append($('<option>', {
+                                    value: response[itr].school_id,
+                                    text: response[itr].school_name
+                            }));
+                            
+                            $('#dtl_par_schoolname').append($('<option>', {
+                                    value: response[itr].school_id,
+                                    text: response[itr].school_name
+                            }));
+                        
+                        }
+                        
+                        $('#dtl_std_schoolname').append($('<option>', {
+                                    value: "-1",
+                                    text: "Other"
+                            }));
+                        
+                        $('#dtl_par_schoolname').append($('<option>', {
+                                    value: "-1",
+                                    text: "Other"
+                            }));
+                         
+                      
+                    },
+                    dataType: "json"//set to JSON    
+                });    
+      }
+      function onProfileChange()
+      {
+          
+          console.log("value change");
+         if($('#dtl_role').val() == "parent")   
+             {
+                 console.log("parent");
+                   $('#parentForm').show();
+                    $('#studentForm').hide();
+             }
+          else if($('#dtl_role').val() == "student")
+              {
+                  console.log("student");
+                    $('#parentForm').hide();
+                    $('#studentForm').show();
+                  
+              }
+      }
+      
+      function ifOtherChosen()
+      {
+           if($('#dtl_role').val() == "parent")  
+           {
+               if($('#dtl_par_schoolname').val() == "-1")
+                {
+                   $('.otherSchoolName').show();
+                }
+               else
+                   {
+                       $('.otherSchoolName').hide();
+                   }
+           }
+          else if($('#dtl_role').val() == "student")
+          {
+                 if($('#dtl_std_schoolname').val() == "-1")
+                {
+                   $('.otherSchoolName').show();
+                }
+              else
+                  {
+                      $('.otherSchoolName').hide();
+                  }
+          }
+      }
+      
+    
+      
+    </script>
+  
+
+</body></html>

@@ -65,7 +65,7 @@ commented due to error
 					<div class="col-md-8 col-sm-8 text-left">
 						<ul class="lp-topbar-menu">
 							<li>
-								<a href="http://microsoftmsdn.com/schoolguru/index.html">Home</a>
+								<a href="main.html">Home</a>
 							</li>
 							<li>
 								<a href="http://microsoftmsdn.com/schoolguru/about.html">About</a>
@@ -711,13 +711,15 @@ commented due to error
            
                 if(cookieString != null)
                 {
-                     console.log(cookieString);
-                     var ca = document.cookie.split('#');                    //ca[0]  location   ca[1] name
-                    console.log("length" +ca.length);
-                    if(ca.lenght == 2) //both school name and location are there
+                     console.log("cookie String"+cookieString);
+                     var ca = cookieString.split('#');                    //ca[0]  location   ca[1] name
+                    console.log("length  --" +ca.length);
+                    if(parseInt(ca.length) == 2) //both school name and location are there
                         {
-                            console.log("ca name [1]" + ca[1]);
+                           
                             console.log("ca address [0]" + ca[0]);
+                            console.log("ca name [1]" + ca[1]);
+                            
                              school_name = ca[1];
                              school_address = ca[0];
                         }
@@ -726,6 +728,7 @@ commented due to error
                              school_name = "";
                              school_address = ca[0];
                         }
+                   
                     
                     
                     var $div = $('#comments-posts');
@@ -764,7 +767,12 @@ commented due to error
                                    searchExactSchoolName(school_name);
                                }
                        }
+                    $('#school_location_search').val(school_address);
+                    $('#school_name_search_txt').val(school_name);
                     
+                    //clear the cache
+                    eraseCookie('school_info') ;
+ 
                   }
         }
         
@@ -1119,6 +1127,7 @@ commented due to error
     function createMarker(latlng, name, address) {
       var html = "<b>" + name + "</b> <br/>" + address;
       var marker = new google.maps.Marker({
+        map: map,
         map: map,
         position: latlng
       });
