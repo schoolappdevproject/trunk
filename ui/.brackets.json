@@ -1,0 +1,5 @@
+{
+    "jscodehints.detectedExclusions": [
+        "/var/www/html/dev_portal/trunk/ui/assets/fonts/jquery.filter-icons/stats.js"
+    ]
+}

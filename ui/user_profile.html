@@ -108,16 +108,14 @@
 /* Google map style*/
 </style>
     
+    <script type="text/javascript" charset="UTF-8" src="js/util.js"></script>
+    <script src="js/jquery-2.2.3.js"></script>  
+    <script src="js/jquery-ui-1.11.4.custom/jquery-ui.js"></script>   
+    <script src="js/angular.min.js"></script>   
     
-
-<!--  causing error
-<script type="text/javascript" charset="UTF-8" src="./ParentProfile_files/common.js">
-</script><script type="text/javascript" charset="UTF-8" src="./ParentProfile_files/util.js">
-</script><script type="text/javascript" charset="UTF-8" src="./ParentProfile_files/stats.js"></script>
--->
 </head>
 <body onload="load()"><nav class="attireMainNav"><button class="toggleBtn iconMenu" type="button">Toggle navigation</button><ul></ul></nav>
-    <form method="post" action="#" id="form_id" onSubmit="return false">
+<form method="post" action="#" id="form_id" onSubmit="return false">
 <div class="aspNetHidden">
 <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE3OTk3MTgxMjRkZLg8PEAkusi4ZlcfuiGeVjsTLHojDXeRK0hOngGazPTa">
 </div>
@@ -370,7 +368,8 @@
                 <div class="row">
                     <div class="col-md-8">
                     <hr>    
-                    </div>
+                   
+                </div>
                 </div>
                 <div class="row">
                     <div id="perChildDiv">
@@ -390,7 +389,12 @@
            <div id="studentForm"> 
                
                 <div class="row">
-                <div class="col-md-8"><hr></div>
+                <div class="col-md-8"><hr>
+                    <div id="added_school">
+                        
+                    </div>
+                    
+                    </div>
                 </div>
                 <div class="row">
                      <div id="perSchoolDiv">
@@ -428,7 +432,31 @@
 			</div>
             
 		</section></div>
-
+            
+            <div id="child_input_form" hidden="true">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h3> Enter Child Details </h3>
+                    </div>
+                </div>
+                <div class="row">     
+                    <div class="clearfix"></div>
+                    <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Name of Child</b></p></div>
+                    <div class="col-md-5"><input name="child_name" type="text" id="dtl_child_name" class="form-control"></div>
+                </div>
+                <div class="row">     
+                    <div class="clearfix"></div>
+                    <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Age of Child</b></p></div>
+                    <div class="col-md-5"><input name="child_age" type="text" id="dtl_child_age" class="form-control"></div>
+                </div>
+                
+                 <div class="row">     
+                      <div class="col-md-2"><input type="button" name="save_child" value="save" id="save_child" class="lp-search-btn" style="float:left;padding:8px 15px;"> </div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-2"><input type="button" name="cancel_child" value="cancel" id="cancel_child" class="lp-search-btn" style="float:right;padding:8px 15px;"> </div>
+                </div>
+            </div>
              <div id="school_input_form" hidden="true">
                         <div class="row">
                             <div class="col-md-8">
@@ -461,7 +489,28 @@
                         
                              <div class="clearfix"></div>
                                       <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Enter Class</b></p></div>
-                                    <div class="col-md-5"><input name="class_name" type="text" id="dtl_std_classname" class="form-control"></div>
+                                    <div class="col-md-5">
+                                  <select name="class_name" id="dtl_std_classname" class="form-control">
+
+                                        <option value="nursery">Nursery</option>    
+                                        <option value="LKg">LKg</option>    
+                                        <option value="UKg">UKg</option>    
+                                        <option value="1">1st</option>    
+                                        <option value="2">2nd</option>    
+                                        <option value="3">3rd</option>    
+                                        <option value="4">4th</option>    
+                                        <option value="5">5th</option>    
+                                        <option value="6">6th</option>    
+                                        <option value="7">7th</option>    
+                                        <option value="8">8th</option>    
+                                        <option value="9">9th</option>    
+                                        <option value="10">10th</option>    
+                                        <option value="11">11th</option>    
+                                        <option value="12">12th</option>    
+
+                                    </select>
+                            
+                            </div>
                         
                         </div>
                         
@@ -483,50 +532,50 @@
                                                 </tr>
                                                 <tr class="rat">
                                                      <td class="rat-topic">Studies </td>
-                                                      <td class="rat_row"><input type="radio" name="rating_studies" value="0"></td>
-                                                      <td class="rat_row"><input type="radio" name="rating_studies" value="1"> </td>
-                                                      <td class="rat_row"><input type="radio" name="rating_studies" value="2" checked> </td>
-                                                      <td class="rat_row"><input type="radio" name="rating_studies" value="3"></td>
-                                                      <td class="rat_row"><input type="radio" name="rating_studies" value="4"> </td>     
+                                                      <td class="rat_row"><input type="radio" id="rating_studies" name="rating_studies" value="0"></td>
+                                                      <td class="rat_row"><input type="radio" id="rating_studies" name="rating_studies" value="1"> </td>
+                                                      <td class="rat_row"><input type="radio" id="rating_studies" name="rating_studies" value="2" checked> </td>
+                                                      <td class="rat_row"><input type="radio" id="rating_studies" name="rating_studies" value="3"></td>
+                                                      <td class="rat_row"><input type="radio" id="rating_studies" name="rating_studies" value="4"> </td>     
                                                 
                                                 </tr>
                                                 
                                                 <tr class="rat">
                                                     <td class="rat-topic">Laboratories </td>
-                                                    <td class="rat_row"><input type="radio" name="rating_labs" value="0"></td>
-                                                    <td class="rat_row"><input type="radio" name="rating_labs" value="1"> </td>
-                                                    <td class="rat_row"><input type="radio" name="rating_labs" value="2" checked> </td>
-                                                    <td class="rat_row"><input type="radio" name="rating_labs" value="3"> </td>
-                                                    <td class="rat_row"><input type="radio" name="rating_labs" value="4"> </td>
+                                                    <td class="rat_row"><input type="radio" id="rating_labs" name="rating_labs" value="0"></td>
+                                                    <td class="rat_row"><input type="radio" id="rating_labs" name="rating_labs" value="1"> </td>
+                                                    <td class="rat_row"><input type="radio" id="rating_labs" name="rating_labs" value="2" checked> </td>
+                                                    <td class="rat_row"><input type="radio" id="rating_labs" name="rating_labs" value="3"> </td>
+                                                    <td class="rat_row"><input type="radio" id="rating_labs" name="rating_labs" value="4"> </td>
                                                 </tr>
                                                 
                                                 <tr class="rat">
                                                     <td class="rat-topic">Sports</td>
-                                                  <td class="rat_row"><input type="radio" name="rating_sports" value="0"> </td>
-                                                  <td class="rat_row"><input type="radio" name="rating_sports" value="1"> </td>
-                                                  <td class="rat_row"><input type="radio" name="rating_sports" value="2" checked> </td>
-                                                  <td class="rat_row"><input type="radio" name="rating_sports" value="3"> </td>
-                                                  <td class="rat_row"><input type="radio" name="rating_sports" value="4"> </td>
+                                                  <td class="rat_row"><input type="radio" id="rating_sports" name="rating_sports" value="0"> </td>
+                                                  <td class="rat_row"><input type="radio" id="rating_sports" name="rating_sports" value="1"> </td>
+                                                  <td class="rat_row"><input type="radio" id="rating_sports" name="rating_sports" value="2" checked> </td>
+                                                  <td class="rat_row"><input type="radio" id="rating_sports" name="rating_sports" value="3"> </td>
+                                                  <td class="rat_row"><input type="radio" id="rating_sports" name="rating_sports" value="4"> </td>
                                                 
                                                 </tr>
                                                 
                                                 <tr class="rat">
                                                     <td class="rat-topic">Library</td>
-                                                  <td class="rat_row"><input type="radio" name="rating_library" value="0">  </td>
-                                                  <td class="rat_row"><input type="radio" name="rating_library" value="1">  </td>
-                                                  <td class="rat_row"><input type="radio" name="rating_library" value="2" checked>  </td>
-                                                  <td class="rat_row"><input type="radio" name="rating_library" value="3"> </td>
-                                                  <td class="rat_row"><input type="radio" name="rating_library" value="4"> </td>
+                                                  <td class="rat_row"><input type="radio" id="rating_library"  name="rating_library" value="0">  </td>
+                                                  <td class="rat_row"><input type="radio" id="rating_library" name="rating_library" value="1">  </td>
+                                                  <td class="rat_row"><input type="radio" id="rating_library" name="rating_library" value="2" checked>  </td>
+                                                  <td class="rat_row"><input type="radio" id="rating_library" name="rating_library" value="3"> </td>
+                                                  <td class="rat_row"><input type="radio" id="rating_library" name="rating_library" value="4"> </td>
                                                 
                                                 </tr>
                                                 
                                                 <tr class="rat">
                                               <td class="rat-topic">Teachers & Administration</td>
-                                              <td class="rat_row"><input type="radio" name="rating_admin" value="0"> </td>
-                                              <td class="rat_row"><input type="radio" name="rating_admin" value="1"> </td>
-                                              <td class="rat_row"><input type="radio" name="rating_admin" value="2" checked>  </td>
-                                              <td class="rat_row"><input type="radio" name="rating_admin" value="3">  </td>
-                                               <td class="rat_row"><input type="radio" name="rating_admin" value="4">  </td>
+                                              <td class="rat_row"><input type="radio" id="rating_admin" name="rating_admin" value="0"> </td>
+                                              <td class="rat_row"><input type="radio" id="rating_admin" name="rating_admin" value="1"> </td>
+                                              <td class="rat_row"><input type="radio" id="rating_admin" name="rating_admin" value="2" checked>  </td>
+                                              <td class="rat_row"><input type="radio" id="rating_admin" name="rating_admin" value="3">  </td>
+                                               <td class="rat_row"><input type="radio" id="rating_admin" name="rating_admin" value="4">  </td>
                                                </tr>
                                             </table>                
                                 
@@ -539,17 +588,69 @@
                         
                         <div class="row">
                           <div class="clearfix"></div>
+                                <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Period of Study</b></p></div>
+                            <div class="col-md-5">
+                                Start
+                           
+                                <select name="school_name" id="dtl_start_class" class="form-control">
+                                    
+                                    <option value="nursery">Nursery</option>    
+                                    <option value="LKg">LKg</option>    
+                                    <option value="UKg">UKg</option>    
+                                    <option value="1">1st</option>    
+                                    <option value="2">2nd</option>    
+                                    <option value="3">3rd</option>    
+                                    <option value="4">4th</option>    
+                                    <option value="5">5th</option>    
+                                    <option value="6">6th</option>    
+                                    <option value="7">7th</option>    
+                                    <option value="8">8th</option>    
+                                    <option value="9">9th</option>    
+                                    <option value="10">10th</option>    
+                                    <option value="11">11th</option>    
+                                    <option value="12">12th</option>    
+                                    
+                                </select>
+                          
+                                End
+                          
+                          
+                            <select name="school_name" id="dtl_end_class" class="form-control">
+                                <option value="nursery">Nursery</option>    
+                                    <option value="LKg">LKg</option>    
+                                    <option value="UKg">UKg</option>    
+                                    <option value="1">1st</option>    
+                                    <option value="2">2nd</option>    
+                                    <option value="3">3rd</option>    
+                                    <option value="4">4th</option>    
+                                    <option value="5">5th</option>    
+                                    <option value="6">6th</option>    
+                                    <option value="7">7th</option>    
+                                    <option value="8">8th</option>    
+                                    <option value="9">9th</option>    
+                                    <option value="10">10th</option>    
+                                    <option value="11">11th</option>    
+                                    <option value="12">12th</option>    
+                                </select>
+                          
+                            </div>
+                            
+                          <div class="clearfix"></div>
                         <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Write a Brief Introduction on the school</b></p></div>
                         <div class="col-md-5"><textarea name="small_description" rows="2" cols="20" id="small_description" class="form-control" style="height:100px;">                
                         </textarea></div>   
                         
                         
-                            <div class="clearfix"></div>
+                        <div class="clearfix"></div>
                             <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Write about Admission Procedure </b></p></div>
                             <div class="col-md-5"><textarea name="admission_description" rows="2" cols="20" id="admission_description" class="form-control" style="height:100px;"></textarea></div>
                         </div>
-                 
-                              
+                        <div class="col-md-2"><input type="button" name="savebutton" value="save" id="save_college" class="lp-search-btn" style="float:left;padding:8px 15px;"> </div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-2"><input type="button" name="cancel" value="cancel" id="cancel_college" class="lp-search-btn" style="float:right;padding:8px 15px;"> </div>
+                        
+                    <div class="clearfix"></div>
                     </div>
 	
 
@@ -596,18 +697,50 @@
 	</footer>
 	<a href="#" class="add-listing-mobile lp-search-btn">Add listing</a>
         </div>
-        
-     
-        	<!-- Jquery Library -->
-                 <script src="js/jquery-2.2.3.js"></script>  
-                 <script src="js/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
 
     
     </form>
+  
     
-
-    	
+    
     <script>
+        
+      
+        var school_data_arr = [];
+        
+            var school_data_arr2 = [];
+        
+        var addState  = false;
+        var editState = false;
+        
+        var lastEditedIndex = -1;
+    
+        var user_info = {
+            name :"", 
+            address:"",
+            contact:"",
+            email:"",
+            city:"",
+            country:"",
+            isParent:false,
+                    
+        };
+        
+        var school_data = {
+                           id:"",
+                           name:"", 
+                           std:"",
+                           rate_study:0, 
+                           rate_lab:0,
+                           rate_sports:0,
+                           rate_lib:0,
+                           rate_teacher:0,
+                           period_start:"",
+                           period_end:"",
+                           brief_intro:"",
+                           admin_intro:""
+                          };
+        
         $(document).ready(function() {
 
             // process the form
@@ -675,15 +808,13 @@
             $("#address").val($(this).val());
     });
         
-  
 
-    
-    
- 
-    </script>
-  <script>
+      
+      
     function load()
         {
+            
+            
          
             if(typeof localStorage.getItem("sessionid") !== 'undefined')
                 {
@@ -695,7 +826,7 @@
                   
                     $('#parentForm').hide();
                     $('#studentForm').show();
-                  
+                  //  $('#school_info_div').hide();
                   
                     
                     initialise();
@@ -723,42 +854,42 @@
       }
       function loadSchoolNames()
       {
-             // process the formf
-       $.ajax({
-                    type: "POST", 
-                    url: "../api/search_api/gen_school_names.php", 
-                    //data: "",
-                    success: function(response)
-                    {
-                        
-                        for(itr in response)
-                        {       
+                 // process the formf
+           $.ajax({
+                        type: "POST", 
+                        url: "../api/search_api/gen_school_names.php", 
+                        //data: "",
+                        success: function(response)
+                        {
+
+                            for(itr in response)
+                            {       
+                                $('#dtl_std_schoolname').append($('<option>', {
+                                        value: response[itr].school_id,
+                                        text: response[itr].school_name
+                                }));
+
+                                $('#dtl_par_schoolname').append($('<option>', {
+                                        value: response[itr].school_id,
+                                        text: response[itr].school_name
+                                }));
+
+                            }
+
                             $('#dtl_std_schoolname').append($('<option>', {
-                                    value: response[itr].school_id,
-                                    text: response[itr].school_name
-                            }));
-                            
+                                        value: "-1",
+                                        text: "Other"
+                                }));
+
                             $('#dtl_par_schoolname').append($('<option>', {
-                                    value: response[itr].school_id,
-                                    text: response[itr].school_name
-                            }));
-                        
-                        }
-                        
-                        $('#dtl_std_schoolname').append($('<option>', {
-                                    value: "-1",
-                                    text: "Other"
-                            }));
-                        
-                        $('#dtl_par_schoolname').append($('<option>', {
-                                    value: "-1",
-                                    text: "Other"
-                            }));
-                         
-                      
-                    },
-                    dataType: "json"//set to JSON    
-                });    
+                                        value: "-1",
+                                        text: "Other"
+                                }));
+
+
+                        },
+                        dataType: "json"//set to JSON    
+                    });    
       }
       function onProfileChange()
       {
@@ -794,19 +925,260 @@
            }
           else if($('#dtl_role').val() == "student")
           {
-                 if($('#dtl_std_schoolname').val() == "-1")
-                {
+              if($('#dtl_std_schoolname').val() == "-1")
+              {
                    $('.otherSchoolName').show();
-                }
+              }
               else
-                  {
-                      $('.otherSchoolName').hide();
-                  }
+              {
+                  $('.otherSchoolName').hide();
+              }
           }
       }
       
-    
+      $('#add_school_button').click(function(){
+          
+          addState = true;
+          editState = false;
+          
+          $("#small_description").text("");
+          $("#admission_description").text("");
+          
+          $('#perSchoolDiv').append( $('#school_input_form') );  //adding the school form inside the per school div 
+          $('#school_input_form').show();
+          $('#add_school_button').hide();
+      });
       
+      $('#cancel_college').click(function(){
+          $('#dtl_std_classname').text("");
+          $('#small_description').text("");
+          $('#admission_description').text("");
+          $('#school_input_form').hide();
+          $('#add_school_button').show();
+      });
+      
+      
+      $('#save_college').click(function(){
+          
+          
+           user_info.name    = $("#dtl_name").val();
+          user_info.address = $("#dtl_address").val();
+          user_info.contact = $("#dtl_contact").val();
+          user_info.email   = $("#dtl_email").val();
+          user_info.city    = $("#dtl_city").val();
+          user_info.country = $("#country").val();
+
+          if($("#dtl_role").val() == "parent")
+          {
+              user_info.isParent= true;
+          }
+          else
+          {
+              user_info.isParent = false;
+          }
+          
+        if(addState == true && editState == false)
+        {
+            var school_data_i             = new Object();// important to create new object
+            // school_data_i                = school_data;
+             
+             school_data_i.id             = $("#dtl_std_schoolname").val();
+             school_data_i.name           = $("#dtl_std_schoolname option:selected").text();
+
+             if(school_data_i.name == "Other")
+             {
+                 school_data_i.name   =  $("#dtl_std_otherSchoolName").val();
+                 school_data_i.id  =9999;
+             }
+             school_data_i.std            = $("#dtl_std_classname option:selected").val();
+
+             school_data_i.rate_study     = $('input[name=rating_studies]:checked').val();
+             school_data_i.rate_lab       = $('input[name=rating_labs]:checked').val();
+             school_data_i.rate_lib       = $('input[name=rating_library]:checked').val();
+             school_data_i.rate_sports    = $('input[name=rating_sports]:checked').val();
+             school_data_i.rate_teacher   = $('input[name=rating_admin]:checked').val();
+
+             school_data_i.period_start   = $("#dtl_start_class").val();
+             school_data_i.period_end     = $("#dtl_start_class").val();
+             school_data_i.period_start   = $("#dtl_end_class").val();
+             school_data_i.brief_intro    = $("#small_description").val();
+             school_data_i.admin_intro    = $("#admission_description").val();
+
+             console.info(" school data "+school_data_i);
+             school_data_arr.push(school_data_i);
+           
+            
+            var description_sections = document.getElementById("added_school");
+
+            var newElement = document.createElement('div');
+            newElement.innerHTML = "<div class='row'>" + 
+                                    "<div class='col-md-6'>" +
+                                        "<p><a href='#' onclick='openSchool("+ school_data_i.id +")  ; return false; '> "+  school_data_i.name  +" </a></p>" +
+                                        "<p> Class  "+   $("#dtl_std_classname option:selected").text()  +"</p>"+
+                                    "</div>" +
+                                    "<div class='col-md-2'>"+
+                                        "<a href='#' onclick='editInfo("+ school_data_i.id +") ; return false;' > edit </a>" +
+                                        "<a href='#' onclick='cancelInfo("+ school_data_i.id +") ; return false;' > cancel </a>"+
+                                   "</div>"+
+                                   "</div> ";
+
+            newElement.setAttribute('id', 'school_id_'+school_data_i.id );  //set id
+            description_sections.appendChild(newElement);
+
+            console.log("school added");
+            console.log(school_data_arr);
+        }
+        else if (editState == true && addState == false)
+        {
+                console.log("Last Edited Index :"+lastEditedIndex);
+                
+                 oldId = school_data_arr[lastEditedIndex].id;
+                 school_data_arr[lastEditedIndex].id             = $("#dtl_std_schoolname").val();
+                 newId = school_data_arr[lastEditedIndex].id;
+                 school_data_arr[lastEditedIndex].name           = $("#dtl_std_schoolname option:selected").text();
+
+                 if(school_data_arr[lastEditedIndex].name == "Other")
+                 {
+                     school_data_arr[lastEditedIndex].name   =  $("#dtl_std_otherSchoolName").val();
+                     school_data_arr[lastEditedIndex].id  =9999;
+                 }
+                 school_data_arr[lastEditedIndex].std            = $("#dtl_std_classname option:selected").val();
+
+                 school_data_arr[lastEditedIndex].rate_study     = $('input[name=rating_studies]:checked').val();
+                 school_data_arr[lastEditedIndex].rate_lab       = $('input[name=rating_labs]:checked').val();
+                 school_data_arr[lastEditedIndex].rate_lib       = $('input[name=rating_library]:checked').val();
+                 school_data_arr[lastEditedIndex].rate_sports    = $('input[name=rating_sports]:checked').val();
+                 school_data_arr[lastEditedIndex].rate_teacher   = $('input[name=rating_admin]:checked').val();
+
+                 school_data_arr[lastEditedIndex].period_start   = $("#dtl_start_class").val();
+                 school_data_arr[lastEditedIndex].period_end     = $("#dtl_start_class").val();
+                 school_data_arr[lastEditedIndex].period_start   = $("#dtl_end_class").val();
+                 school_data_arr[lastEditedIndex].brief_intro    = $("#small_description").val();
+                 school_data_arr[lastEditedIndex].admin_intro    = $("#admission_description").val();
+            
+                var div = document.getElementById('school_id_'+oldId);
+                if (div) {
+                    
+                    console.log("got the div");
+                    div.innerHTML = "<div class='row'>" + 
+                                    "<div class='col-md-6'>" +
+                                        "<p><a href='#' onclick='openSchool("+  school_data_arr[lastEditedIndex].id     +")  ; return false; '> "+   school_data_arr[lastEditedIndex].name   +" </a></p>" +
+                                        "<p> Class  "+    school_data_arr[lastEditedIndex].std   +"</p>"+
+                                    "</div>" +
+                                    "<div class='col-md-2'>"+
+                                        "<a href='#' onclick='editInfo("+  school_data_arr[lastEditedIndex].id +") ; return false;' > edit </a>" +
+                                        "<a href='#' onclick='cancelInfo("+  school_data_arr[lastEditedIndex].id +") ; return false;' > cancel </a>"+
+                                   "</div>"+
+                                   "</div> ";
+                    if(newId == "-1")
+                        {
+                            div.setAttribute('id', 'school_id_9999');  //set id
+                        }
+                    else
+                        {
+                            div.setAttribute('id', 'school_id_'+newId );  //set id
+                        }
+                    
+                }
+            
+              console.log("school edited");
+            editState = false;
+            
+        }
+  
+          $('#small_description').val("");
+          $('#admission_description').val("");
+          $('#school_input_form').hide();
+          $('#add_school_button').show();
+          
+      });
+    
+        function openSchool(school_id)
+        {
+            console.log(school_id);
+        }
+        
+        function editInfo(school_id)
+        {
+            editState = true;
+            addState = false;
+            
+            _int = 0;
+            for(schools in school_data_arr)
+            {
+                if(parseInt(school_data_arr[schools].id) == school_id)
+                {
+                    break;
+                }
+                _int ++;
+            }
+            
+            console.log(school_id);  
+        
+            indx = _int;
+            lastEditedIndex = indx;
+            console.log("Last Edited Index :"+lastEditedIndex);
+            console.log(school_data_arr[indx]);
+            
+            if(school_data_arr[indx].id == "9999")
+            {
+                $("#dtl_std_schoolname").val("-1");
+            }
+            else 
+            {
+                $("#dtl_std_schoolname").val(school_data_arr[indx].id);
+            }
+
+              $("#dtl_std_classname").val( school_data_arr[indx].std );
+              $('input:radio[name="rating_studies"]').filter('[value='+ school_data_arr[indx].rate_study+']').attr('checked', true);
+              $('input:radio[name="rating_labs"]').filter('[value='+ school_data_arr[indx].rate_lab+']').attr('checked', true);
+              $('input:radio[name="rating_library"]').filter('[value='+ school_data_arr[indx].rate_lib+']').attr('checked', true);
+              $('input:radio[name="rating_sports"]').filter('[value='+ school_data_arr[indx].rate_sports+']').attr('checked', true);
+              $('input:radio[name="rating_admin"]').filter('[value='+ school_data_arr[indx].rate_teacher+']').attr('checked', true);
+
+            $("#dtl_start_class").val(school_data_arr[indx].period_start );
+            $("#dtl_start_class").val(   school_data_arr[indx].period_end   );
+            $("#dtl_end_class").val(  school_data_arr[indx].period_start );
+            $("#small_description").val(  school_data_arr[indx].brief_intro );
+            $("#admission_description").val( school_data_arr[indx].admin_intro );
+
+            $('#school_input_form').show();
+            $('#add_school_button').hide();
+            
+        }
+        
+        function cancelInfo(school_id)
+        {
+            console.log(school_id);
+            
+            _int = 0;
+            for(schools in school_data_arr)
+            {
+                if(parseInt(school_data_arr[schools].id) == school_id)
+                {
+                    school_data_arr.splice(_int,1);
+                    break;
+                }
+                _int ++;
+            }
+            
+            var div = document.getElementById('school_id_'+school_id);
+            if (div) {
+                div.parentNode.removeChild(div);
+            }
+        }
+        
+        $("#add_child").click(function(){
+            
+          $('#perChildDiv').append( $('#child_input_form') );  //adding the school form inside the per school div 
+          $('#perChildDiv').append( $('#studentForm') );  //adding the school form inside the per school div 
+            
+          $('#studentForm').show();
+          $('#child_input_form').show();
+           $("#add_child").hide();
+            
+        });
+        
     </script>
   
 
