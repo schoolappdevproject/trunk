@@ -368,9 +368,23 @@
                 <div class="row">
                     <div class="col-md-8">
                     <hr>    
-                   
+                     <div id="added_child">
+                             <!-- child Information would be shown here  would be shown here --->
+                    </div>
                 </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-8">    
+                     <div id="added_child_school">
+                        <!-- schools would be shown here --->
+                    </div>
+                </div>
+                </div>
+                <div class="row">
+                    <div id="child_form">
+
+                    </div>   <!-- child form -->
+                </div>   
                 <div class="row">
                     <div id="perChildDiv">
 
@@ -379,8 +393,12 @@
                 <div class="row">
                 <div class="col-md-1">
                        <input type="button" name="addChile" value="Add Child" id="add_child" class="lp-search-btn" style="float:left;padding:8px 15px;"> 
+                </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-1">
+                       <input type="button" name="savechilddata" value="Save" id="save_child" class="lp-search-btn" style="float:left;padding:8px 15px;"> 
+                    
                     </div>
-                <div class="col-md-7"></div>
                 </div>
               
             </div>
@@ -433,7 +451,7 @@
             
 		</section></div>
             
-            <div id="child_input_form" hidden="true">
+            <div id="child_input_form">
                 <div class="row">
                     <div class="col-md-8">
                         <h3> Enter Child Details </h3>
@@ -449,15 +467,15 @@
                     <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Age of Child</b></p></div>
                     <div class="col-md-5"><input name="child_age" type="text" id="dtl_child_age" class="form-control"></div>
                 </div>
-                
+                <!--
                  <div class="row">     
                       <div class="col-md-2"><input type="button" name="save_child" value="save" id="save_child" class="lp-search-btn" style="float:left;padding:8px 15px;"> </div>
                         <div class="col-md-2"></div>
                         <div class="col-md-2"></div>
                         <div class="col-md-2"><input type="button" name="cancel_child" value="cancel" id="cancel_child" class="lp-search-btn" style="float:right;padding:8px 15px;"> </div>
-                </div>
+                </div> -->
             </div>
-             <div id="school_input_form" hidden="true">
+             <div id="school_input_form" >
                         <div class="row">
                             <div class="col-md-8">
                             
@@ -706,9 +724,18 @@
     <script>
         
       
+        
         var school_data_arr = [];
         
-            var school_data_arr2 = [];
+        var child_data_arr = [];
+        
+        var div_locate = new Object();
+        var childDivLocate = new Object();
+        var div_map    = new Object();
+        var child_map = new Object();
+        var childIndex = 0;
+        
+        var addedIndex = 0;
         
         var addState  = false;
         var editState = false;
@@ -850,8 +877,24 @@
           //dtl_par_schoolname
           loadSchoolNames();
           
+          $('#child_input_form').hide();
+           studentProfileInitialise();
           
       }
+        
+      function studentProfileInitialise()
+        {
+          addState = true;
+          editState = false;
+          
+          $("#small_description").text("");
+          $("#admission_description").text("");
+          $("#studentForm").show();
+          $('#perSchoolDiv').append( $('#school_input_form') );  //adding the school form inside the per school div 
+          $('#perSchoolDiv').show();
+          $('#school_input_form').show();
+          $('#add_school_button').hide();
+        }
       function loadSchoolNames()
       {
                  // process the formf
@@ -898,14 +941,18 @@
          if($('#dtl_role').val() == "parent")   
              {
                  console.log("parent");
-                   $('#parentForm').show();
+                    $('#parentForm').show();
                     $('#studentForm').hide();
+                    parentProfileInitialise();
+                 
              }
           else if($('#dtl_role').val() == "student")
               {
+      
                   console.log("student");
                     $('#parentForm').hide();
                     $('#studentForm').show();
+                studentProfileInitialise();
                   
               }
       }
@@ -956,12 +1003,11 @@
           $('#school_input_form').hide();
           $('#add_school_button').show();
       });
-      
-      
-      $('#save_college').click(function(){
-          
-          
-           user_info.name    = $("#dtl_name").val();
+        
+    
+    function saveUserData()
+        {
+          user_info.name    = $("#dtl_name").val();
           user_info.address = $("#dtl_address").val();
           user_info.contact = $("#dtl_contact").val();
           user_info.email   = $("#dtl_email").val();
@@ -976,121 +1022,130 @@
           {
               user_info.isParent = false;
           }
-          
-        if(addState == true && editState == false)
-        {
-            var school_data_i             = new Object();// important to create new object
-            // school_data_i                = school_data;
-             
-             school_data_i.id             = $("#dtl_std_schoolname").val();
-             school_data_i.name           = $("#dtl_std_schoolname option:selected").text();
-
-             if(school_data_i.name == "Other")
-             {
-                 school_data_i.name   =  $("#dtl_std_otherSchoolName").val();
-                 school_data_i.id  =9999;
-             }
-             school_data_i.std            = $("#dtl_std_classname option:selected").val();
-
-             school_data_i.rate_study     = $('input[name=rating_studies]:checked').val();
-             school_data_i.rate_lab       = $('input[name=rating_labs]:checked').val();
-             school_data_i.rate_lib       = $('input[name=rating_library]:checked').val();
-             school_data_i.rate_sports    = $('input[name=rating_sports]:checked').val();
-             school_data_i.rate_teacher   = $('input[name=rating_admin]:checked').val();
-
-             school_data_i.period_start   = $("#dtl_start_class").val();
-             school_data_i.period_end     = $("#dtl_start_class").val();
-             school_data_i.period_start   = $("#dtl_end_class").val();
-             school_data_i.brief_intro    = $("#small_description").val();
-             school_data_i.admin_intro    = $("#admission_description").val();
-
-             console.info(" school data "+school_data_i);
-             school_data_arr.push(school_data_i);
-           
-            
-            var description_sections = document.getElementById("added_school");
-
-            var newElement = document.createElement('div');
-            newElement.innerHTML = "<div class='row'>" + 
-                                    "<div class='col-md-6'>" +
-                                        "<p><a href='#' onclick='openSchool("+ school_data_i.id +")  ; return false; '> "+  school_data_i.name  +" </a></p>" +
-                                        "<p> Class  "+   $("#dtl_std_classname option:selected").text()  +"</p>"+
-                                    "</div>" +
-                                    "<div class='col-md-2'>"+
-                                        "<a href='#' onclick='editInfo("+ school_data_i.id +") ; return false;' > edit </a>" +
-                                        "<a href='#' onclick='cancelInfo("+ school_data_i.id +") ; return false;' > cancel </a>"+
-                                   "</div>"+
-                                   "</div> ";
-
-            newElement.setAttribute('id', 'school_id_'+school_data_i.id );  //set id
-            description_sections.appendChild(newElement);
-
-            console.log("school added");
-            console.log(school_data_arr);
         }
-        else if (editState == true && addState == false)
+        
+        
+      function saveCollegeData(divToAdd)
         {
-                console.log("Last Edited Index :"+lastEditedIndex);
-                
-                 oldId = school_data_arr[lastEditedIndex].id;
-                 school_data_arr[lastEditedIndex].id             = $("#dtl_std_schoolname").val();
-                 newId = school_data_arr[lastEditedIndex].id;
-                 school_data_arr[lastEditedIndex].name           = $("#dtl_std_schoolname option:selected").text();
+                if(addState == true && editState == false)
+                {
+                    var school_data_i             = new Object();// important to create new object
+                    // school_data_i                = school_data;
 
-                 if(school_data_arr[lastEditedIndex].name == "Other")
-                 {
-                     school_data_arr[lastEditedIndex].name   =  $("#dtl_std_otherSchoolName").val();
-                     school_data_arr[lastEditedIndex].id  =9999;
-                 }
-                 school_data_arr[lastEditedIndex].std            = $("#dtl_std_classname option:selected").val();
+                     school_data_i.id             = $("#dtl_std_schoolname").val();
+                     school_data_i.name           = $("#dtl_std_schoolname option:selected").text();
 
-                 school_data_arr[lastEditedIndex].rate_study     = $('input[name=rating_studies]:checked').val();
-                 school_data_arr[lastEditedIndex].rate_lab       = $('input[name=rating_labs]:checked').val();
-                 school_data_arr[lastEditedIndex].rate_lib       = $('input[name=rating_library]:checked').val();
-                 school_data_arr[lastEditedIndex].rate_sports    = $('input[name=rating_sports]:checked').val();
-                 school_data_arr[lastEditedIndex].rate_teacher   = $('input[name=rating_admin]:checked').val();
+                     if(school_data_i.name == "Other")
+                     {
+                         school_data_i.name   =  $("#dtl_std_otherSchoolName").val();
+                         school_data_i.id  =9999;
+                     }
 
-                 school_data_arr[lastEditedIndex].period_start   = $("#dtl_start_class").val();
-                 school_data_arr[lastEditedIndex].period_end     = $("#dtl_start_class").val();
-                 school_data_arr[lastEditedIndex].period_start   = $("#dtl_end_class").val();
-                 school_data_arr[lastEditedIndex].brief_intro    = $("#small_description").val();
-                 school_data_arr[lastEditedIndex].admin_intro    = $("#admission_description").val();
-            
-                var div = document.getElementById('school_id_'+oldId);
-                if (div) {
-                    
-                    console.log("got the div");
-                    div.innerHTML = "<div class='row'>" + 
-                                    "<div class='col-md-6'>" +
-                                        "<p><a href='#' onclick='openSchool("+  school_data_arr[lastEditedIndex].id     +")  ; return false; '> "+   school_data_arr[lastEditedIndex].name   +" </a></p>" +
-                                        "<p> Class  "+    school_data_arr[lastEditedIndex].std   +"</p>"+
-                                    "</div>" +
-                                    "<div class='col-md-2'>"+
-                                        "<a href='#' onclick='editInfo("+  school_data_arr[lastEditedIndex].id +") ; return false;' > edit </a>" +
-                                        "<a href='#' onclick='cancelInfo("+  school_data_arr[lastEditedIndex].id +") ; return false;' > cancel </a>"+
-                                   "</div>"+
-                                   "</div> ";
-                    if(newId == "-1")
-                        {
-                            div.setAttribute('id', 'school_id_9999');  //set id
-                        }
-                    else
-                        {
-                            div.setAttribute('id', 'school_id_'+newId );  //set id
-                        }
-                    
+                     school_data_i.std            = $("#dtl_std_classname option:selected").val();
+
+                     school_data_i.rate_study     = $('input[name=rating_studies]:checked').val();
+                     school_data_i.rate_lab       = $('input[name=rating_labs]:checked').val();
+                     school_data_i.rate_lib       = $('input[name=rating_library]:checked').val();
+                     school_data_i.rate_sports    = $('input[name=rating_sports]:checked').val();
+                     school_data_i.rate_teacher   = $('input[name=rating_admin]:checked').val();
+
+                     school_data_i.period_start   = $("#dtl_start_class").val();
+                     school_data_i.period_end     = $("#dtl_start_class").val();
+                     school_data_i.period_start   = $("#dtl_end_class").val();
+                     school_data_i.brief_intro    = $("#small_description").val();
+                     school_data_i.admin_intro    = $("#admission_description").val();
+
+                     console.info(" school data "+school_data_i);
+                     school_data_arr.push(school_data_i);
+
+
+                    var description_sections = document.getElementById(divToAdd);
+
+                    var newElement = document.createElement('div');
+                    newElement.innerHTML = "<div class='row'>" + 
+                                            "<div class='col-md-6'>" +
+                                                "<p><a href='#' onclick='openSchool("+ addedIndex +")  ; return false; '> "+  school_data_i.name  +" </a></p>" +
+                                                "<p> Class  "+   $("#dtl_std_classname option:selected").text()  +"</p>"+
+                                            "</div>" +
+                                            "<div class='col-md-2'>"+
+                                                "<a href='#' onclick='editInfo("+ addedIndex +") ; return false;' > edit </a>" +
+                                                "<a href='#' onclick='cancelInfo("+ addedIndex +") ; return false;' > cancel </a>"+
+                                           "</div>"+
+                                           "</div> ";
+
+                    newElement.setAttribute('id', 'school_id_'+addedIndex );  //set id
+                    description_sections.appendChild(newElement);
+
+                    div_locate[addedIndex] = 'school_id_'+addedIndex;
+                    div_map[addedIndex]    = addedIndex;
+
+                    console.log("school added");
+                    console.log(school_data_arr);
+
+                    addedIndex ++;
                 }
-            
-              console.log("school edited");
-            editState = false;
-            
+                else if (editState == true && addState == false)
+                {
+                        console.log("Last Edited Index :"+lastEditedIndex);
+
+                         school_data_arr[lastEditedIndex].id             = $("#dtl_std_schoolname").val();
+
+                         school_data_arr[lastEditedIndex].name           = $("#dtl_std_schoolname option:selected").text();
+
+                         if(school_data_arr[lastEditedIndex].name == "Other")
+                         {
+                             school_data_arr[lastEditedIndex].name   =  $("#dtl_std_otherSchoolName").val();
+                             school_data_arr[lastEditedIndex].id  =9999;
+                         }
+                         school_data_arr[lastEditedIndex].std            = $("#dtl_std_classname option:selected").val();
+
+                         school_data_arr[lastEditedIndex].rate_study     = $('input[name=rating_studies]:checked').val();
+                         school_data_arr[lastEditedIndex].rate_lab       = $('input[name=rating_labs]:checked').val();
+                         school_data_arr[lastEditedIndex].rate_lib       = $('input[name=rating_library]:checked').val();
+                         school_data_arr[lastEditedIndex].rate_sports    = $('input[name=rating_sports]:checked').val();
+                         school_data_arr[lastEditedIndex].rate_teacher   = $('input[name=rating_admin]:checked').val();
+
+                         school_data_arr[lastEditedIndex].period_start   = $("#dtl_start_class").val();
+                         school_data_arr[lastEditedIndex].period_end     = $("#dtl_start_class").val();
+                         school_data_arr[lastEditedIndex].period_start   = $("#dtl_end_class").val();
+                         school_data_arr[lastEditedIndex].brief_intro    = $("#small_description").val();
+                         school_data_arr[lastEditedIndex].admin_intro    = $("#admission_description").val();
+
+
+                        var div = document.getElementById(div_locate[lastEditedIndex]);
+                        if (div) {
+
+                            console.log("got the div");
+                            div.innerHTML = "<div class='row'>" + 
+                                            "<div class='col-md-6'>" +
+                                                "<p><a href='#' onclick='openSchool("+  lastEditedIndex     +")  ; return false; '> "+   school_data_arr[lastEditedIndex].name   +" </a></p>" +
+                                                "<p> Class  "+    school_data_arr[lastEditedIndex].std   +"</p>"+
+                                            "</div>" +
+                                            "<div class='col-md-2'>"+
+                                                "<a href='#' onclick='editInfo("+ lastEditedIndex +") ; return false;' > edit </a>" +
+                                                "<a href='#' onclick='cancelInfo("+  lastEditedIndex +") ; return false;' > cancel </a>"+
+                                           "</div>"+
+                                           "</div> ";
+
+
+                        }
+
+                      console.log("school edited");
+                    editState = false;
+
+                }
+
+                  $('#small_description').val("");
+                  $('#admission_description').val("");
+                  $('#school_input_form').hide();
+                  $('#add_school_button').show();
         }
-  
-          $('#small_description').val("");
-          $('#admission_description').val("");
-          $('#school_input_form').hide();
-          $('#add_school_button').show();
+      
+        
+        
+      $('#save_college').click(function(){
           
+            saveCollegeData("added_school");
       });
     
         function openSchool(school_id)
@@ -1103,19 +1158,8 @@
             editState = true;
             addState = false;
             
-            _int = 0;
-            for(schools in school_data_arr)
-            {
-                if(parseInt(school_data_arr[schools].id) == school_id)
-                {
-                    break;
-                }
-                _int ++;
-            }
-            
             console.log(school_id);  
-        
-            indx = _int;
+            indx = div_map[school_id];
             lastEditedIndex = indx;
             console.log("Last Edited Index :"+lastEditedIndex);
             console.log(school_data_arr[indx]);
@@ -1149,35 +1193,205 @@
         
         function cancelInfo(school_id)
         {
-            console.log(school_id);
+            console.log("deletion at:"+school_id);
             
-            _int = 0;
-            for(schools in school_data_arr)
+            var div = document.getElementById(div_locate[school_id]);
+            if (div)
             {
-                if(parseInt(school_data_arr[schools].id) == school_id)
-                {
-                    school_data_arr.splice(_int,1);
-                    break;
-                }
-                _int ++;
-            }
-            
-            var div = document.getElementById('school_id_'+school_id);
-            if (div) {
                 div.parentNode.removeChild(div);
             }
+            
+            school_data_arr.splice(div_map[school_id],1);
+            
+            delete div_locate[school_id];
+            
+            for(i in div_map)
+                {
+                    if(i <= school_id)
+                        continue;
+                    
+                    div_map[i] = div_map[i] -1;
+                }
+            
+            delete div_map[school_id];
+            
+            addedIndex --;
+        }
+        
+        function parentProfileInitialise()
+        {
+            
+              $('#child_form').show();
+              $('#child_form').append( $('#child_input_form') );  //adding the school form inside the per school div 
+          
+              $('#child_input_form').show();
+              
+
+              //clear child name and age
+              $("#dtl_child_name").val("");
+              $("#dtl_child_age").val("");
+            
+              addState = true;
+              editState = false;
+          
+             $("#small_description").text("");
+             $("#admission_description").text("");
+          
+             $('#perChildDiv').append( $('#school_input_form'));  //adding the school form inside the per school div 
+             $("#perChildDiv").show();
+             $('#school_input_form').show();
+             $('#add_school_button').hide();
+            $('#save_college').hide();
+            $('#cancel_college').hide();
+            
+            $('#add_child').hide();
+         
+            
+            $('#save_child').show();
+             
+            school_data_arr.splice(0,school_data_arr.length);
+            addedIndex = 0;
         }
         
         $("#add_child").click(function(){
-            
-          $('#perChildDiv').append( $('#child_input_form') );  //adding the school form inside the per school div 
-          $('#perChildDiv').append( $('#studentForm') );  //adding the school form inside the per school div 
-            
-          $('#studentForm').show();
-          $('#child_input_form').show();
-           $("#add_child").hide();
-            
+       
+                parentProfileInitialise();     
         });
+        
+        function cancelChild()
+        {
+            $('#studentForm').hide();
+            $('#child_input_form').hide();
+            $("#perChildDiv").hide();
+            $("#dtl_child_name").val("");
+            $("#dtl_child_age").val("");
+            $("#add_child").show();
+            school_data_arr.splice(0,school_data_arr.length);
+        }
+        
+        
+          $('#save_child').click(function (){
+              
+                saveCollegeData("added_child_school"); //save the schools 
+                saveChild();                           //save the child data
+              
+                //child form should hide 
+                 $('#child_form').hide();
+                $('#save_child').hide();
+          });
+
+        
+        function saveChild()
+        {
+               //saving the data
+            var child_data = new Object();
+            child_data.name = $("#dtl_child_name").val();
+            
+            child_data.id   = childIndex;
+            
+            child_data.age  = $("#dtl_child_age").val();
+            
+            child_data.school_data_arr = [];
+            
+            for(school_data_i in school_data_arr)
+            {
+                var school_d= new Object();
+
+                school_d.id             = school_data_arr[school_data_i].id;
+                school_d.name           = school_data_arr[school_data_i].name;
+                school_d.std            = school_data_arr[school_data_i].std;
+                school_d.rate_study     = school_data_arr[school_data_i].rate_study;
+                school_d.rate_lab       = school_data_arr[school_data_i].rate_lab;
+                school_d.rate_sports    = school_data_arr[school_data_i].rate_sports;
+                school_d.rate_lib       = school_data_arr[school_data_i].rate_lib;
+                school_d.rate_teacher   = school_data_arr[school_data_i].rate_teacher;
+                school_d.period_start   = school_data_arr[school_data_i].period_start;
+                school_d.period_end     = school_data_arr[school_data_i].period_end;
+                school_d.brief_intro    = school_data_arr[school_data_i].brief_intro;
+                school_d.admin_intro    = school_data_arr[school_data_i].admin_intro;
+                child_data.school_data_arr.push(school_d);
+            }
+            
+            child_map[child_data.id] = childIndex
+            
+            child_data_arr.push(child_data)
+            
+            childDivLocate[child_data.id] = 'child_data_'+child_data.id;
+            
+            console.log(child_data_arr);
+            
+            var child_sections = document.getElementById("added_child");
+            
+            var newChildDiv = document.createElement('div');
+            
+            newChildDiv.innerHTML = "<div class='row'>" + 
+                                    "<div class='col-md-6'>" +
+                                        "<p><a href='#' onclick='openChild("+ child_data.id +")  ; return false; '> "+  child_data.name  +" </a></p>" +
+                                        "<p> Age  "+   child_data.age  +"</p>"+
+                                    "</div>" +
+                                    "<div class='col-md-2'>"+
+                                        "<a href='#' onclick='editChild("+ child_data.id +") ; return false;' > edit </a>" +
+                                        "<a href='#' onclick='cancelChild("+ child_data.id +") ; return false;' > cancel </a>"+
+                                   "</div>"+
+                                   "</div>";
+            
+            newChildDiv.setAttribute('id',  childDivLocate[child_data.id] );  //set id   
+            child_sections.appendChild(newChildDiv);
+            
+            $("#add_child").show();
+            childIndex++;
+        }
+        
+        function editChild(child_id)
+        {
+            $("#perChildDiv").show();
+            childIndex  = child_map[child_id];
+            
+            $("#dtl_child_name").val(child_data_arr[childIndex].name);
+            $("#dtl_child_age").val(child_data_arr[childIndex].age);
+            
+            console.log("Getting ID to clean "+childDivLocate[child_data_arr[childIndex].id]);
+            var childDiv = document.getElementById(childDivLocate[child_data_arr[childIndex].id]);
+            
+            var schoolElement = document.createElement('div');
+            
+            child_data_var = child_data_arr[childIndex];
+            
+            for(itr in  child_data_var.school_data_arr)
+            {
+                    var child_school_index = child_data_var.id +" "+child_data_var.school_data_arr[itr].id;
+                    div_locate[child_school_index] = 'school_id_'+child_school_index;
+                
+                    var perSchoolDiv = document.createElement('div');
+                     perSchoolDiv.innerHTML = "<div class='row'>" + 
+                                    "<div class='col-md-2'></div>"+
+                                    "<div class='col-md-4'>" +
+                                        "<p><a href='#' onclick='openSchool("+ child_data_var.school_data_arr[itr].id +")  ; return false; '> "+  child_data_var.school_data_arr[itr].name  +" </a></p>" +
+                                        "<p> Class  "+   child_data_var.school_data_arr[itr].std  +"</p>"+
+                                    "</div>" +
+                                    "<div class='col-md-2'>"+
+                                        "<a href='#' onclick='editPerChildSchoolInfo("+ child_school_index +") ; return false;' > edit </a>" +
+                                        "<a href='#' onclick='cancelPerChildSchoolInfo("+ child_school_index +") ; return false;' > cancel </a>"+
+                                   "</div>"+
+                                   "</div> ";
+                    perSchoolDiv.setAttribute('id',  div_locate[child_school_index] );  //set id
+                    schoolElement.appendChild(perSchoolDiv);
+            }
+            
+            schoolElement.setAttribute('id', 'child_school_data_'+child_data_var.id );  //set id
+            
+            if (childDiv)
+            {
+                childDiv.innerHTML("");
+            }
+            
+            
+            childDiv.appendChild(schoolElement);
+            
+        }
+        
+        
+        
         
     </script>
   
