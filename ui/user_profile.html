@@ -393,10 +393,13 @@
                 <div class="row">
                 <div class="col-md-1">
                        <input type="button" name="addChile" value="Add Child" id="add_child" class="lp-search-btn" style="float:left;padding:8px 15px;"> 
+                      
                 </div>
                 <div class="col-md-6"></div>
                 <div class="col-md-1">
-                       <input type="button" name="savechilddata" value="Save" id="save_child" class="lp-search-btn" style="float:left;padding:8px 15px;"> 
+                    <input type="button" name="addcollege" value="Add College" id="add_college_for_child" class="lp-search-btn" style="float:left;padding:8px 15px;"> 
+                    
+                    <!--   <input type="button" name="savechilddata" value="Save" id="save_child" class="lp-search-btn" style="float:left;padding:8px 15px;"> -->
                     
                     </div>
                 </div>
@@ -723,7 +726,7 @@
     
     <script>
         
-      
+        
         
         var school_data_arr = [];
         
@@ -739,6 +742,10 @@
         
         var addState  = false;
         var editState = false;
+        
+        var presentChildCommand = ""; //edithe add_child add_college
+        var lastChildCommand  = "";
+        
         
         var lastEditedIndex = -1;
     
@@ -1024,7 +1031,7 @@
           }
         }
         
-        
+    
       function saveCollegeData(divToAdd)
         {
                 if(addState == true && editState == false)
@@ -1134,18 +1141,22 @@
                     editState = false;
 
                 }
-
-                  $('#small_description').val("");
+                
+          /*       $('#small_description').val("");
                   $('#admission_description').val("");
                   $('#school_input_form').hide();
-                  $('#add_school_button').show();
+                  $('#add_school_button').show(); */
+                 
         }
       
         
         
       $('#save_college').click(function(){
-          
-            saveCollegeData("added_school");
+          saveCollegeData("added_school");
+          $('#small_description').val("");
+          $('#admission_description').val("");
+          $('#school_input_form').hide();
+          $('#add_school_button').show(); 
       });
     
         function openSchool(school_id)
@@ -1173,12 +1184,12 @@
                 $("#dtl_std_schoolname").val(school_data_arr[indx].id);
             }
 
-              $("#dtl_std_classname").val( school_data_arr[indx].std );
-              $('input:radio[name="rating_studies"]').filter('[value='+ school_data_arr[indx].rate_study+']').attr('checked', true);
-              $('input:radio[name="rating_labs"]').filter('[value='+ school_data_arr[indx].rate_lab+']').attr('checked', true);
-              $('input:radio[name="rating_library"]').filter('[value='+ school_data_arr[indx].rate_lib+']').attr('checked', true);
-              $('input:radio[name="rating_sports"]').filter('[value='+ school_data_arr[indx].rate_sports+']').attr('checked', true);
-              $('input:radio[name="rating_admin"]').filter('[value='+ school_data_arr[indx].rate_teacher+']').attr('checked', true);
+            $("#dtl_std_classname").val( school_data_arr[indx].std );
+            $('input:radio[name="rating_studies"]').filter('[value='+ school_data_arr[indx].rate_study+']').attr('checked', true);
+            $('input:radio[name="rating_labs"]').filter('[value='+ school_data_arr[indx].rate_lab+']').attr('checked', true);
+            $('input:radio[name="rating_library"]').filter('[value='+ school_data_arr[indx].rate_lib+']').attr('checked', true);
+            $('input:radio[name="rating_sports"]').filter('[value='+ school_data_arr[indx].rate_sports+']').attr('checked', true);
+            $('input:radio[name="rating_admin"]').filter('[value='+ school_data_arr[indx].rate_teacher+']').attr('checked', true);
 
             $("#dtl_start_class").val(school_data_arr[indx].period_start );
             $("#dtl_start_class").val(   school_data_arr[indx].period_end   );
@@ -1240,23 +1251,174 @@
              $('#perChildDiv').append( $('#school_input_form'));  //adding the school form inside the per school div 
              $("#perChildDiv").show();
              $('#school_input_form').show();
-             $('#add_school_button').hide();
-            $('#save_college').hide();
-            $('#cancel_college').hide();
+             $('#save_college').hide();
+             $('#cancel_college').hide();
+             $('#add_child').show();
             
-            $('#add_child').hide();
-         
+             $('#add_college_for_child').show();
             
-            $('#save_child').show();
+          //   $('#save_child').show();
              
-            school_data_arr.splice(0,school_data_arr.length);
-            addedIndex = 0;
+             school_data_arr.splice(0,school_data_arr.length);
+             addedIndex = 0;
         }
         
         $("#add_child").click(function(){
-       
-                parentProfileInitialise();     
+               
+            presentChildCommand = "add_child";
+            save_child_data();
+            //parentProfileInitialise();
         });
+        
+         $('#add_college_for_child').click(function (){
+            
+             presentChildCommand = "add_college";
+               save_child_data();
+            /*  addState = true;
+              editState = false;
+
+              saveOnlyCollege();
+              $("#small_description").text("");
+              $("#admission_description").text("");
+                
+              $('#perChildDiv').append( $('#school_input_form') );  //adding the school form inside the per school div 
+              $('#school_input_form').show();
+              $('#add_college_for_child').show();*/
+             // $('#save_child').show();
+        });
+        
+        function  save_child_data()
+        {
+            //no past command and present command is add child 
+            if(lastChildCommand == "" && presentChildCommand == "add_child")
+                {
+                    console.log("first add child");
+                      saveCollegeData("added_child_school"); //save the schools 
+                      saveChild();                           //save the child data
+                    //total form should get clean
+                
+                    resetChild();resetCollege();
+                    
+                    lastChildCommand ="add_child";
+                    
+                }
+            else if(lastChildCommand == "" && presentChildCommand == "add_college")
+                {
+                    console.log("first add colege");
+                    //child name is not yet saved
+                    saveCollegeData("added_child_school"); //save the schools 
+                      saveChild();                           //save the child data
+                    
+                    //hide child form 
+                    $("#child_form").hide();
+                    resetCollege();
+                    lastChildCommand ="add_college";
+                    
+                }
+            else if(lastChildCommand == "add_college" && presentChildCommand =="add_child")
+                {
+                    
+                    console.log("add college ---> add child");
+                    //clen the school array
+                    if(school_data_arr.length > 0)
+                        school_data_arr.splice(0,school_data_arr.length);
+                    
+                    //only both forms should come up
+                    $("#child_form").show();
+                    $("#perChildDiv").show();
+                    $("#school_input_form").show();
+                    resetChild();
+                    resetCollege();
+                    lastChildCommand ="add_child";
+                    
+                }
+            else if (lastChildCommand =="add_college" && presentChildCommand =="add_college")
+                {
+                    console.log("add college ---> add college");
+                       saveCollegeData("added_child_school"); //save the schools 
+                    
+                      for(school_data_i in school_data_arr)
+                    {
+                        var school_d= new Object();
+
+                        school_d.id             = school_data_arr[school_data_i].id;
+                        school_d.name           = school_data_arr[school_data_i].name;
+                        school_d.std            = school_data_arr[school_data_i].std;
+                        school_d.rate_study     = school_data_arr[school_data_i].rate_study;
+                        school_d.rate_lab       = school_data_arr[school_data_i].rate_lab;
+                        school_d.rate_sports    = school_data_arr[school_data_i].rate_sports;
+                        school_d.rate_lib       = school_data_arr[school_data_i].rate_lib;
+                        school_d.rate_teacher   = school_data_arr[school_data_i].rate_teacher;
+                        school_d.period_start   = school_data_arr[school_data_i].period_start;
+                        school_d.period_end     = school_data_arr[school_data_i].period_end;
+                        school_d.brief_intro    = school_data_arr[school_data_i].brief_intro;
+                        school_d.admin_intro    = school_data_arr[school_data_i].admin_intro;
+                        child_data_arr[childIndex-1].school_data_arr.push(school_d);
+                    }
+                    school_data_arr.splice(0,school_data_arr.length);
+                    resetCollege();
+                    lastChildCommand ="add_college";
+                }
+            else if(lastChildCommand =="add_child" && presentChildCommand =="add_child")
+                {
+                            console.log("add child ---> add child");
+                    //clen the school array
+                    if(school_data_arr.length > 0)
+                        school_data_arr.splice(0,school_data_arr.length);
+                    saveCollegeData("added_child_school"); //save the schools 
+                      saveChild();                           //save the child data
+                    resetChild();resetCollege();
+                    lastChildCommand ="add_child";
+                    
+                }
+            else if(lastChildCommand == "add_child" && presentChildCommand =="add_college")
+                {
+                       saveCollegeData("added_child_school"); //save the schools 
+                    
+                      for(school_data_i in school_data_arr)
+                    {
+                        var school_d= new Object();
+
+                        school_d.id             = school_data_arr[school_data_i].id;
+                        school_d.name           = school_data_arr[school_data_i].name;
+                        school_d.std            = school_data_arr[school_data_i].std;
+                        school_d.rate_study     = school_data_arr[school_data_i].rate_study;
+                        school_d.rate_lab       = school_data_arr[school_data_i].rate_lab;
+                        school_d.rate_sports    = school_data_arr[school_data_i].rate_sports;
+                        school_d.rate_lib       = school_data_arr[school_data_i].rate_lib;
+                        school_d.rate_teacher   = school_data_arr[school_data_i].rate_teacher;
+                        school_d.period_start   = school_data_arr[school_data_i].period_start;
+                        school_d.period_end     = school_data_arr[school_data_i].period_end;
+                        school_d.brief_intro    = school_data_arr[school_data_i].brief_intro;
+                        school_d.admin_intro    = school_data_arr[school_data_i].admin_intro;
+                        child_data_arr[childIndex-1].school_data_arr.push(school_d);
+                    }
+                    school_data_arr.splice(0,school_data_arr.length);
+                    $("#child_form").hide();
+                    resetCollege();
+                    lastChildCommand ="add_college";
+                }
+            
+        }
+        
+        function resetChild()
+        {
+                $("#dtl_child_name").val("");
+                $("#dtl_child_age").val("");
+        }
+        
+        function resetCollege()
+        {
+            $("#dtl_std_schoolname").val($("#dtl_std_schoolname option:first").val()); //first option;
+            $("#dtl_std_classname").val($("#dtl_std_classname option:first").val()); //first option;
+            $("#dtl_start_class").val($("#dtl_start_class option:first").val()); //first option;
+            $("#dtl_end_class").val($("#dtl_end_class option:first").val()); //first option;
+            $("#dtl_end_class").val($("#dtl_end_class option:first").val()); //first option;
+            $("#small_description").val("");
+            $("#admission_description").val("");
+            
+        }
+        
         
         function cancelChild()
         {
@@ -1269,18 +1431,7 @@
             school_data_arr.splice(0,school_data_arr.length);
         }
         
-        
-          $('#save_child').click(function (){
-              
-                saveCollegeData("added_child_school"); //save the schools 
-                saveChild();                           //save the child data
-              
-                //child form should hide 
-                 $('#child_form').hide();
-                $('#save_child').hide();
-          });
-
-        
+    
         function saveChild()
         {
                //saving the data
@@ -1338,8 +1489,10 @@
             newChildDiv.setAttribute('id',  childDivLocate[child_data.id] );  //set id   
             child_sections.appendChild(newChildDiv);
             
-            $("#add_child").show();
+            isChildDataSaved = true;
             childIndex++;
+            
+            school_data_arr.splice(0,school_data_arr.length);
         }
         
         function editChild(child_id)
