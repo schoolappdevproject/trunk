@@ -475,6 +475,7 @@ CREATE TABLE `tbl_student_table` (
   `current_std` int(11) NOT NULL,
   `period_start` int(11) NOT NULL,
   `period_end` int(11) NOT NULL,
+  `school_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`student_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -485,7 +486,7 @@ CREATE TABLE `tbl_student_table` (
 
 LOCK TABLES `tbl_student_table` WRITE;
 /*!40000 ALTER TABLE `tbl_student_table` DISABLE KEYS */;
-INSERT INTO `tbl_student_table` VALUES (13,12,12,0);
+INSERT INTO `tbl_student_table` VALUES (13,12,12,0,NULL);
 /*!40000 ALTER TABLE `tbl_student_table` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -521,7 +522,7 @@ CREATE TABLE `tbl_users` (
 
 LOCK TABLES `tbl_users` WRITE;
 /*!40000 ALTER TABLE `tbl_users` DISABLE KEYS */;
-INSERT INTO `tbl_users` VALUES (1,'abhijit','71201','banglore','student','gta4roy@gmail.com','','','',NULL,NULL,NULL),(2,'admin','2f760ec7f5de7c4ccce99c26880bc1c0','banglore','student','admin@gmail.com','','','',NULL,NULL,NULL),(3,'abhijitjkk','9f34f66b65b94cf83d0b3c282da85f84','','','abhijitr@gmail.com','','','',NULL,NULL,NULL),(4,'Sujoy','decdd040d9b69a1b2f9366e13f9ee7e4','','','raos.gaurav91@gmail.com','','','',NULL,NULL,NULL),(5,'test','098f6bcd4621d373cade4e832627b4f6','','','test@gmail.com','','','',NULL,NULL,NULL),(6,'mavin','d10906c3dac1172d4f60bd41f224ae75','','','mavin@gmail.com','','','',NULL,NULL,NULL),(7,'mavin1','768c39bef08f5572d94e6ac594ff6798','','','mavin1@gmail.com','','','',NULL,NULL,NULL),(8,'mavin2','eb6110a34833fe26480c10e473061fd8','','','mavin3@gmail.com','','','',NULL,NULL,NULL),(9,'mavin4','503561e7a98cecc3d05586551febea51','','','mavin4@gmail.com','','','',NULL,NULL,NULL),(10,'mavin5','1342d7b99990333e208942dbaea8b945','','','mavin5@gmail.com','','','',NULL,NULL,NULL),(11,'mavin6','1c9d96cfccc91e46e8c678eafce6ac5f','','','mavin6@gmail.com','','','',NULL,NULL,NULL),(12,'mavin7','768c39bef08f5572d94e6ac594ff6798','','','mavin7@gmail.com','','','',0,NULL,NULL),(13,'mavin10','bbcd3908154b270b2a064870880d9090','mavin10@gmail..com','account','mavin10@gmail..com','34343434','Sameer singh road','prof_pic/mavin10.png',1,'false','India'),(14,'mavin11','d7fe8eb07bde5682ea9e3ef93cab19a3','','','mavin11','','','',0,NULL,NULL);
+INSERT INTO `tbl_users` VALUES (1,'abhijit','71201','banglore','student','gta4roy@gmail.com','','','',NULL,NULL,NULL),(2,'admin','2f760ec7f5de7c4ccce99c26880bc1c0','banglore','student','admin@gmail.com','','','',NULL,NULL,NULL),(3,'abhijitjkk','9f34f66b65b94cf83d0b3c282da85f84','','','abhijitr@gmail.com','','','',NULL,NULL,NULL),(4,'Sujoy','decdd040d9b69a1b2f9366e13f9ee7e4','','','raos.gaurav91@gmail.com','','','',NULL,NULL,NULL),(5,'test','098f6bcd4621d373cade4e832627b4f6','','','test@gmail.com','','','',NULL,NULL,NULL),(6,'mavin','d10906c3dac1172d4f60bd41f224ae75','','','mavin@gmail.com','','','',NULL,NULL,NULL),(7,'mavin1','768c39bef08f5572d94e6ac594ff6798','','','mavin1@gmail.com','','','',NULL,NULL,NULL),(8,'mavin2','eb6110a34833fe26480c10e473061fd8','','','mavin3@gmail.com','','','',NULL,NULL,NULL),(9,'mavin4','503561e7a98cecc3d05586551febea51','','','mavin4@gmail.com','','','',NULL,NULL,NULL),(10,'mavin5','1342d7b99990333e208942dbaea8b945','','','mavin5@gmail.com','','','',NULL,NULL,NULL),(11,'mavin6','1c9d96cfccc91e46e8c678eafce6ac5f','','','mavin6@gmail.com','','','',NULL,NULL,NULL),(12,'mavin7','768c39bef08f5572d94e6ac594ff6798','','','mavin7@gmail.com','','','',0,NULL,NULL),(13,'mavin10','bbcd3908154b270b2a064870880d9090','mavin10@gmail..com','account','mavin10@gmail..com','34343434','Sameer singh road','prof_pic/mavin10.png',1,'false','India'),(14,'mavin11','d7fe8eb07bde5682ea9e3ef93cab19a3','','account','','','','prof_pic/mavin11.png',1,'false','');
 /*!40000 ALTER TABLE `tbl_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -559,4 +560,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-10-01 22:39:23
+-- Dump completed on 2016-10-02  0:29:54

@@ -38,6 +38,7 @@ if ($method == 'POST') {
   $brief_intro    = $_POST['brief_intro'];
   $admin_intro    = $_POST['admin_intro'];
   $username       = $_POST['username'];
+  $child_id     = $_POST['child_id'];
 
 try{
     
@@ -54,7 +55,7 @@ try{
     $ret = $database->get("tbl_student_table",[
         "student_id"
     ],[
-        "student_id" => $user_id
+        "student_id" => $child_id
     ]);
     
     if($ret['student_id'] == $user_id)
@@ -67,13 +68,13 @@ try{
                 'period_end'    => $period_end,
                 'school_id'     => $id
             ],[
-                "student_id" => $user_id
+                "student_id" => $child_id
             ]);
     }
     else 
     {
         $ret = $database->insert('tbl_student_table', [
-        'student_id'    => $user_id,
+        'student_id'    => $child_id,
         'current_std'   => $std,
         'period_start'  => $period_start,
         'period_end'    => $period_end,
@@ -88,10 +89,10 @@ try{
         "child_id"
     ],[
         'id_school'    => $id,
-        "child_id" => $user_id
+        "child_id" => $child_id
     ]);
      
-    if($ret['child_id'] == $user_id)
+    if($ret['child_id'] == $child_id)
     {
         
         $ret = $database->update("tbl_ratings_table",[
@@ -99,7 +100,7 @@ try{
         ],[
             'rating_type'  => "teacher",
             'id_school'    => $id,
-            "child_id" => $user_id
+            "child_id" => $child_id
         ]);
         
         
@@ -109,7 +110,7 @@ try{
             ],[
                 'rating_type'  => "study",
                 'id_school'    => $id,
-                "child_id" => $user_id
+                "child_id" => $child_id
             ]);
         
         
@@ -118,7 +119,7 @@ try{
             ],[
                 'rating_type'  => "lib",
                'id_school'    => $id,
-                "child_id" => $user_id
+                "child_id" => $child_id
             ]);
         
         
@@ -128,7 +129,7 @@ try{
             ],[
                 'rating_type'  => "sport",
                 'id_school'    => $id,
-                "child_id" => $user_id
+                "child_id" => $child_id
             ]);
         
     }
@@ -139,7 +140,7 @@ try{
         'id_school'    => $id,
         'rating_type'  => "study",
         'user_id'      => $user_id,
-        'child_id'     => $user_id,
+        'child_id'     => $child_id,
         'rating_points'=>$rate_study
       ]);
     
@@ -147,7 +148,7 @@ try{
         'id_school'    => $id,
         'rating_type'  => "lib",
         'user_id'      => $user_id,
-        'child_id'     => $user_id,
+        'child_id'     => $child_id,
         'rating_points'=>$rate_lib
       ]);
     
@@ -156,7 +157,7 @@ try{
         'id_school'    => $id,
         'rating_type'  => "sport",
         'user_id'      => $user_id,
-        'child_id'     => $user_id,
+        'child_id'     => $child_id,
         'rating_points'=>$rate_sports
       ]);
     
@@ -164,7 +165,7 @@ try{
         'id_school'    => $id,
         'rating_type'  => "teacher",
         'user_id'      => $user_id,
-        'child_id'     => $user_id,
+        'child_id'     => $child_id,
         'rating_points'=>$rate_teacher
       ]);
 
