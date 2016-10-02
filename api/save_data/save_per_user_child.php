@@ -38,15 +38,20 @@ if ($method == 'POST') {
   $brief_intro    = $_POST['brief_intro'];
   $admin_intro    = $_POST['admin_intro'];
   $username       = $_POST['username'];
-  $child_id     = $_POST['child_id'];
+  $child_id     =   $_POST['child_id'];
 
 try{
+    
     
     $validate_user = $database->get("tbl_users",[
       "user_id"
     ],[
         "username" => $username
     ]);
+    
+    if(!$validate_user){
+    $log->info(var_dump($database->error()));
+      }
     
     $user_id = $validate_user['user_id'];
     
@@ -57,6 +62,10 @@ try{
     ],[
         "student_id" => $child_id
     ]);
+    
+    if(!$ret){
+      $log->info(var_dump($database->error()));
+      }
     
     if($ret['student_id'] == $user_id)
     {
@@ -70,6 +79,10 @@ try{
             ],[
                 "student_id" => $child_id
             ]);
+        
+        if(!$ret){
+     $log->info(var_dump($database->error()));
+      }
     }
     else 
     {
@@ -79,7 +92,11 @@ try{
         'period_start'  => $period_start,
         'period_end'    => $period_end,
         'school_id'     => $id
-      ]);
+        ]);
+        
+        if(!$ret){
+       $log->info(var_dump($database->error()));
+      }
        
     }
     
@@ -91,6 +108,10 @@ try{
         'id_school'    => $id,
         "child_id" => $child_id
     ]);
+    
+    if(!$ret){
+       $log->info(var_dump($database->error()));
+     }
      
     if($ret['child_id'] == $child_id)
     {
@@ -102,7 +123,9 @@ try{
             'id_school'    => $id,
             "child_id" => $child_id
         ]);
-        
+        if(!$ret){
+       $log->info(var_dump($database->error()));
+      }
         
         
         $ret = $database->update("tbl_ratings_table",[
@@ -112,7 +135,9 @@ try{
                 'id_school'    => $id,
                 "child_id" => $child_id
             ]);
-        
+        if(!$ret){
+        $log->info(var_dump($database->error()));
+      }
         
         $ret = $database->update("tbl_ratings_table",[
                 'rating_points'=>$rate_lib
@@ -122,6 +147,9 @@ try{
                 "child_id" => $child_id
             ]);
         
+        if(!$ret){
+        $log->info(var_dump($database->error()));
+      }
         
         $ret = $database->update("tbl_ratings_table",[
                 'rating_points'=>$rate_sports
@@ -131,7 +159,9 @@ try{
                 'id_school'    => $id,
                 "child_id" => $child_id
             ]);
-        
+        if(!$ret){
+       $log->info(var_dump($database->error()));
+        }
     }
     else 
     {
@@ -143,6 +173,10 @@ try{
         'child_id'     => $child_id,
         'rating_points'=>$rate_study
       ]);
+        
+        if(!$ret){
+     $log->info(var_dump($database->error()));
+      }
     
     $ret = $database->insert('tbl_ratings_table', [
         'id_school'    => $id,
@@ -151,7 +185,9 @@ try{
         'child_id'     => $child_id,
         'rating_points'=>$rate_lib
       ]);
-    
+    if(!$ret){
+       $log->info(var_dump($database->error()));
+      }
     
      $ret = $database->insert('tbl_ratings_table', [
         'id_school'    => $id,
@@ -160,6 +196,10 @@ try{
         'child_id'     => $child_id,
         'rating_points'=>$rate_sports
       ]);
+        
+        if(!$ret){
+        $log->info(var_dump($database->error()));
+      }
     
      $ret = $database->insert('tbl_ratings_table', [
         'id_school'    => $id,
@@ -168,10 +208,42 @@ try{
         'child_id'     => $child_id,
         'rating_points'=>$rate_teacher
       ]);
+        
+        if(!$ret){
+        $log->info(var_dump($database->error()));
+      }
 
     }
     
- 
+    
+     //add review comment 
+    //brief review
+    
+      $ret = $database->insert('tbl_review_data', [
+        'id_school'         => $id,
+        'id_user_data'      => $user_id,
+        'tbl_review_title'  => "Brief Introduction",
+        'tbl_review_text'   => $brief_intro
+      ]);
+    
+    if(!$ret){
+        $log->info(var_dump($database->error()));
+      }
+    
+    //admsion review
+    
+      $ret = $database->insert('tbl_review_data', [
+        'id_school'         => $id,
+        'id_user_data'      => $user_id,
+        'tbl_review_title'  => "Admission Introduction",
+        'tbl_review_text'   => $admin_intro
+      ]);
+    
+      if(!$ret){
+        $log->info(var_dump($database->error()));
+      }
+
+
 }
 catch(Exception $e){
     $log->info($e->getMessage());

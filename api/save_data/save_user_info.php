@@ -15,28 +15,28 @@ if ($method == 'POST') {
     
 
 try{
-  $school_id = $database->update('tbl_users', [
-    'city'     => $city,
-    'role'     => "account",
-    'address'  => $address,
-    'city'     => $city,
-    'email'   => $email,
-    'country'  => $country,
-    'mobile'  => $contact,
-    'isParent' => $isParent,
-    'isProfileUpdated' =>1 
-  ],[
-	"username[=]" => $user_name 
-   ]);
+      $school_id = $database->update('tbl_users', [
+        'city'     => $city,
+        'role'     => "account",
+        'address'  => $address,
+        'city'     => $city,
+        'email'   => $email,
+        'country'  => $country,
+        'mobile'  => $contact,
+        'isParent' => $isParent,
+        'isProfileUpdated' =>1 
+      ],[
+        "username[=]" => $user_name 
+       ]);
 
+      if ($school_id)
+      {   
+        $result['success'] = "profile Updated";
+      } else {
+        $result['error'] = "Some thing wrong happend";
+        $log->info(var_dump($database->error()));
+      }
 
-  if ($school_id) {
-    $result['success'] = "profile Updated";
-  } else {
-    $result['error'] = "Some thing wrong happend";
-	var_dump($database->error());
-  }
- 
 }
 catch(Exception $e){
     $log->info($e->getMessage());

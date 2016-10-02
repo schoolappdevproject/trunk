@@ -47,6 +47,10 @@ try{
         "username" => $username
     ]);
     
+    if(!$validate_user){
+            $log->info(var_dump($database->error()));
+    }
+    
     $user_id = $validate_user['user_id'];
     
     //check whether entry already there
@@ -56,6 +60,11 @@ try{
     ],[
         "student_id" => $user_id
     ]);
+    
+    if(!$ret){
+            $log->info(var_dump($database->error()));
+         }
+    
     
     if($ret['student_id'] == $user_id)
     {
@@ -69,6 +78,9 @@ try{
             ],[
                 "student_id" => $user_id
             ]);
+         if(!$ret){
+           $log->info(var_dump($database->error()));
+         }
     }
     else 
     {
@@ -79,6 +91,10 @@ try{
         'period_end'    => $period_end,
         'school_id'     => $id
       ]);
+        
+         if(!$ret){
+           $log->info(var_dump($database->error()));
+         }
        
     }
     
@@ -90,6 +106,10 @@ try{
         'id_school'    => $id,
         "child_id" => $user_id
     ]);
+    
+     if(!$ret){
+           $log->info(var_dump($database->error()));
+         }
      
     if($ret['child_id'] == $user_id)
     {
@@ -102,6 +122,9 @@ try{
             "child_id" => $user_id
         ]);
         
+         if(!$ret){
+             $log->info(var_dump($database->error()));
+         }
         
         
         $ret = $database->update("tbl_ratings_table",[
@@ -121,6 +144,9 @@ try{
                 "child_id" => $user_id
             ]);
         
+         if(!$ret){
+             $log->info($database->error());
+         }
         
         $ret = $database->update("tbl_ratings_table",[
                 'rating_points'=>$rate_sports
@@ -130,6 +156,10 @@ try{
                 'id_school'    => $id,
                 "child_id" => $user_id
             ]);
+        
+         if(!$ret){
+             $log->info($database->error());
+         }
         
     }
     else 
@@ -142,6 +172,10 @@ try{
         'child_id'     => $user_id,
         'rating_points'=>$rate_study
       ]);
+        
+         if(!$ret){
+             $log->info($database->error());
+         }
     
     $ret = $database->insert('tbl_ratings_table', [
         'id_school'    => $id,
@@ -150,6 +184,10 @@ try{
         'child_id'     => $user_id,
         'rating_points'=>$rate_lib
       ]);
+        
+         if(!$ret){
+             $log->info($database->error());
+         }
     
     
      $ret = $database->insert('tbl_ratings_table', [
@@ -159,6 +197,11 @@ try{
         'child_id'     => $user_id,
         'rating_points'=>$rate_sports
       ]);
+        
+        
+         if(!$ret){
+             $log->info(var_dump($database->error()));
+         }
     
      $ret = $database->insert('tbl_ratings_table', [
         'id_school'    => $id,
@@ -167,8 +210,40 @@ try{
         'child_id'     => $user_id,
         'rating_points'=>$rate_teacher
       ]);
+        
+        
+         if(!$ret){
+             $log->info($database->error());
+         }
 
     }
+    
+    //add review comment 
+    //brief review
+    
+      $ret = $database->insert('tbl_review_data', [
+        'id_school'         => $id,
+        'id_user_data'      => $user_id,
+        'tbl_review_title'  => "Brief Introduction",
+        'tbl_review_text'   => $brief_intro
+      ]);
+    
+     if(!$ret){
+             $log->info($database->error());
+         }
+    
+    //admsion review
+    
+      $ret = $database->insert('tbl_review_data', [
+        'id_school'         => $id,
+        'id_user_data'      => $user_id,
+        'tbl_review_title'  => "Admission Introduction",
+        'tbl_review_text'   => $admin_intro
+      ]);
+    
+     if(!$ret){
+             $log->info($database->error());
+         }
     
  
 }
