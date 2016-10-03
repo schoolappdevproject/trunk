@@ -12,19 +12,18 @@ if ($method == 'POST') {
                             user_name      : user_name,
                          };
     */
-    
+  
+  
   $child_name  = $_POST['child_name'];
   $child_age   = $_POST['child_age'];
   $user_name   = $_POST['user_name'];
-  
-    
 
 try{
     
     $validate_user = $database->get("tbl_users",[
       "user_id"
     ],[
-        "username" => $user_name
+        "username[=]" => $user_name
     ]);
     
      if(!$validate_user){
@@ -32,35 +31,51 @@ try{
       }
     
     $user_id = $validate_user['user_id'];
+ 
     
-    
-    
-  $ret = $database->get('tbl_child_table', [
-        "child_id" , 
-        "child_name"
-  ],[
-	   "user_id[=]" => $user_id ,
-       "child_name[=]" => $child_name
-   ]);
-    
-     if(!$ret){
-      $log->info(var_dump($database->error()));
-      }
+//OK
 
-    if($ret['child_name'] == $child_name)
+    /*
+   $ret = $database->select('tbl_child_table', [
+        
+              "child_name",
+               "child_id"
+                
+          ],[
+        "AND" => [
+              "user_id[=]" => $user_id ,
+              "child_name[=]" => $child_name
+                ]
+              
+           ]);
+    
+ if(!$ret){
+  $log->info(var_dump($database->error()));
+
+  }
+  */
+    //OK
+    
+    if(false)
     {
         //its already in database
         //update command
         $log->info("Child data already there ");
         $ret = $database->update('tbl_child_table', [
         
-              'child_name'   => $child_name,
-                'child_age'  => $child_age
+              "child_name"   => $child_name,
+                "age"  => $child_age
                 
           ],[
-            "user_id[=]" => $user_id ,
-              "child_name[=]" => $child_name
+            
+            "AND" => [
+              "user_id[=]" => $user_id ,
+              "child_name[=]" => $child_name  
+            ]
+              
            ]);
+        
+        
         
         if(!$ret){
           $log->info(var_dump($database->error()));
@@ -73,41 +88,27 @@ try{
     
         $log->info("Child data does not exit ");
         $ret = $database->insert('tbl_child_table', [
-            'user_id'   => $user_id,
-            'child_name'=> $child_name,
-            'age'       => $child_age
+            "user_id"   => $user_id,
+            "child_name"=> $child_name,
+            "age"       => $child_age
           ]);
         
+          
        if(!$ret){
            $log->info(var_dump($database->error()));
          }
         $log->info("inserting child data  child name ". $child_name." Child age ".$child_age);
-    
+     
     }
-    
-    /*
-     $ret = $database->select('tbl_child_table', [
-              "child_id"
-          ],[
-            "user_id[=]" => $user_id ,
-              "child_name[=]" => $child_name
-           ]);
-    */
-    
-    //$ret = $database->query("SELECT child_id FROM tbl_child_table ORDER BY child_id DESC LIMIT 1")->fetchAll();
+
+
+    $ret = $database->query("SELECT child_id FROM tbl_child_table ORDER BY child_id DESC LIMIT 1")->fetchAll();
             
-    /*if(!$ret){
+    if(!$ret){
         $log->info(var_dump($database->error()));
-     }*/
-    //$result['child_id']    = $ret[0]['child_id'];
-    
-    $result['child_id']    = '23';
-    
-    $log->info("child id : --"+  $result['child_id'] );
-    
+     }
+    $result['child_id']    = $ret[0]['child_id'];
     echo json_encode($result);
-  
- 
 }
 catch(Exception $e){
     $log->info($e->getMessage());

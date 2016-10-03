@@ -826,7 +826,7 @@
                       'address'           : user_info.address,
                       'contact'           : user_info.contact,
                       'email'             : user_info.email,
-                      'city'              : user_info.email,      
+                      'city'              : user_info.city,      
                       'isParent'          : user_info.isParent,
                       'country'           : user_info.country,
                       'user_name'         : user_info.username
@@ -909,13 +909,18 @@
                             encode          : true
                         })
                             // using the done promise callback
-                            .done(function(data) {
+                        .done(function(data) {
 
-                                // log data to the console so we can see
-                                console.log(data); 
+                            // log data to the console so we can see
+                            console.log(data); 
 
-                                // here we will handle errors and validation messages
-                            });
+                            // here we will handle errors and validation messages
+                        }).fail(function( xhr, status, errorThrown ) {
+                                alert( "Sorry, there was a problem!" );
+                                console.log( "Error: " + errorThrown );
+                                console.log( "Status: " + status );
+                                console.dir( xhr );
+                        });
                       
                     }
         }
@@ -999,6 +1004,11 @@
                                                 console.log(data); 
 
                                                 // here we will handle errors and validation messages
+                                            }).fail(function( xhr, status, errorThrown ) {
+                                                    alert( "Sorry, there was a problem!" );
+                                                    console.log( "Error: " + errorThrown );
+                                                    console.log( "Status: " + status );
+                                                    console.dir( xhr );
                                             });
 
                                     }

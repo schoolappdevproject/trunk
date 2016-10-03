@@ -105,8 +105,11 @@ try{
     $ret = $database->get("tbl_ratings_table",[
         "child_id"
     ],[
-        'id_school'    => $id,
-        "child_id" => $child_id
+        "AND" => [
+            "id_school[=]"    => $id,
+            "child_id[=]"     => $child_id    
+        ]
+        
     ]);
     
     if(!$ret){
@@ -119,9 +122,13 @@ try{
         $ret = $database->update("tbl_ratings_table",[
             'rating_points'=>$rate_teacher
         ],[
-            'rating_type'  => "teacher",
-            'id_school'    => $id,
-            "child_id" => $child_id
+            "AND" => [
+            'rating_type[=]'  => "teacher",
+            'id_school[=]'    => $id,
+            "child_id[=]"     => $child_id    
+                
+            ]
+            
         ]);
         if(!$ret){
        $log->info(var_dump($database->error()));
@@ -131,9 +138,13 @@ try{
         $ret = $database->update("tbl_ratings_table",[
                'rating_points'=>$rate_study
             ],[
-                'rating_type'  => "study",
-                'id_school'    => $id,
-                "child_id" => $child_id
+            
+                "AND" => [
+                'rating_type[=]'  => "study",
+                'id_school[=]'    => $id,
+                "child_id[=]"     => $child_id    
+                ]
+                
             ]);
         if(!$ret){
         $log->info(var_dump($database->error()));
@@ -142,9 +153,13 @@ try{
         $ret = $database->update("tbl_ratings_table",[
                 'rating_points'=>$rate_lib
             ],[
-                'rating_type'  => "lib",
-               'id_school'    => $id,
-                "child_id" => $child_id
+            
+            "AND" => [
+                "rating_type[=]"  => "lib",
+                "id_school[=]"    => $id,
+                "child_id[=]"     => $child_id    
+            ]
+            
             ]);
         
         if(!$ret){
@@ -155,9 +170,12 @@ try{
                 'rating_points'=>$rate_sports
                 
             ],[
-                'rating_type'  => "sport",
-                'id_school'    => $id,
-                "child_id" => $child_id
+                "AND" => [
+                    "rating_type[=]"  => "sport",
+                    "id_school[=]"    => $id,
+                    "child_id[=]" => $child_id    
+                ]
+                
             ]);
         if(!$ret){
        $log->info(var_dump($database->error()));
