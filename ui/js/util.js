@@ -176,3 +176,126 @@ function getReligousPreferencesString(rel)
         }
     return ret;
 }
+
+function registration_util()
+{
+     var username = document.getElementById("dtl_username").value;
+        var email    = document.getElementById("dtl_email").value;
+        var password = document.getElementById("dtl_password").value;
+        console.log("register");
+         $.ajax({
+                    type: "POST", 
+                    url: "../api/api_login/registration.php", 
+                    data: {"username" :username,
+                          "email"     :email,
+                          "password"  :password},
+                    success: function(response)
+                    {
+                        console.log(response);   
+                          var resultCode  ;
+                        
+                          resultCode  = 	response.code;
+                         
+                         console.log(resultCode);
+                        if(resultCode == "1")
+                            {
+                                
+                                $(".siginupcontainer").hide();
+                                $(".forgetpasswordcontainer").hide();
+                                $(".siginincontainer").hide();
+                                $(".login-form-popup").hide();
+                                $('.md-modal').removeClass('md-show');
+                                //save username and email in local storage and start a new sesssion with sesssion id 
+                                // session id would be username and time of login 
+
+
+                                if (typeof(Storage) !== "undefined") {
+                                    // Code for localStorage/sessionStorage.
+                                    var d = new Date();
+                                    var t = d.getTime();
+                                    localStorage.setItem("username", username);
+                                    localStorage.setItem("email", email);
+                                    localStorage.setItem("sessionid", username+t);
+                                     
+                                    window.location.href = "user_profile.html";
+                                } else {
+                                    console.log("Local storage not allowed ");
+                                }
+                            }
+                        else
+                            {
+                                alert("There is some issue in Resistration");
+                            }
+                        
+                    },
+                    dataType: "json"//set to JSON    
+                });    
+}
+
+
+ 
+
+function login_success()
+ {
+     if(typeof localStorage.getItem("sessionid") !== 'undefined')
+    {
+        username = localStorage.getItem("username");
+        email    = localStorage.getItem("email");        
+
+        $("#login_div").hide();
+        $("#account_div").show();
+        $("#user_email").html(email);
+
+    }
+ }
+
+function login_util(username,password)
+{
+      // Get some values from elements on the page:
+     
+     var   url = "../api/api_login/login.php";
+
+      // Send the data using post
+      var posting = $.post( url, { username: username , password: password} );
+        
+     //  Put the results in a div
+      posting.done(function( data ) {
+          
+       console.log(data);
+       var dataObj = JSON.parse(data);
+          
+       if(dataObj.code == "1")   //success
+           {
+                        $(".siginupcontainer").hide();
+                        $(".forgetpasswordcontainer").hide();
+                        $(".siginincontainer").hide();
+                        $(".login-form-popup").hide();
+                        $('.md-modal').removeClass('md-show');
+                        //save username and email in local storage and start a new sesssion with sesssion id 
+                        // session id would be username and time of login 
+
+
+                        if (typeof(Storage) !== "undefined") {
+                            // Code for localStorage/sessionStorage.
+                            var d = new Date();
+                            var t = d.getTime();
+                            localStorage.setItem("username", username);
+                            localStorage.setItem("email", dataObj.email);
+                            localStorage.setItem("sessionid", username+t);
+                           
+                            //if profile is not updated 
+                            login_success()
+                            
+                        } else {
+                            console.log("Local storage not allowed ");
+                        }
+           }
+          else if(dataObj.code == "0") //failed
+              {
+                  console.log("Login failed ");
+                  alert("Login Failed "+ dataObj.error);
+              }
+          
+      });
+}
+     

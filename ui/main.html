@@ -86,7 +86,8 @@
 								
 								<img class="icon icons8-Contacts" src="main/user-icon.png" alt="join-now">
 							</span>
-							<a class=" md-trigger" data-modal="modal-3" id="a_login">Login </a>
+							<div id="login_div"><a class=" md-trigger" data-modal="modal-3" id="a_login">Login </a></div>
+                            <div id="account_div"><a class=" md-trigger" id="a_account"><span id="user_email"></span></a></div>    
 						</div>
 					</div>
 				</div>
@@ -622,61 +623,34 @@
 		<script type="text/javascript" src="main/modalEffects.js"></script>  
 		<script type="text/javascript" src="main/main.js"></script>
         <script type="text/javascript" charset="UTF-8" src="js/cookie.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="js/util.js"></script>
+    
  <script>
+     
+     
+
+     
+     
+     
+     
+     
+     
     // Attach a submit handler to the form
     $( "#login_form" ).submit(function( event ) {
-
       // Stop form from submitting normally
-      event.preventDefault();
-
-      // Get some values from elements on the page:
-      var $form = $( this ),
-        username = $form.find( "input[id='username']" ).val(),
-        password = $form.find( "input[id='password']" ).val(),
-        url = "../api/api_login/login.php";
-
-      // Send the data using post
-      var posting = $.post( url, { username: username , password: password} );
-        
-     //  Put the results in a div
-      posting.done(function( data ) {
-          
-       console.log(data);
-       var dataObj = JSON.parse(data);
-          
-       if(dataObj.code == "1")   //success
-           {
-                        $(".siginupcontainer").hide();
-                        $(".forgetpasswordcontainer").hide();
-                        $(".siginincontainer").hide();
-                        $(".login-form-popup").hide();
-                        $('.md-modal').removeClass('md-show');
-                        //save username and email in local storage and start a new sesssion with sesssion id 
-                        // session id would be username and time of login 
-
-
-                        if (typeof(Storage) !== "undefined") {
-                            // Code for localStorage/sessionStorage.
-                            var d = new Date();
-                            var t = d.getTime();
-                            localStorage.setItem("username", username);
-                            localStorage.setItem("email", dataObj.email);
-                            localStorage.setItem("sessionid", username+t);
-                           
-                            //if profile is not updated 
-                            window.location.href = "user_profile.html";
-                        } else {
-                            console.log("Local storage not allowed ");
-                        }
-           }
-          else if(dataObj.code == "0") //failed
-              {
-                  console.log("Login failed ");
-                  alert("Login Failed "+ dataObj.error);
-              }
-          
-      });
+        event.preventDefault();
+        var $form = $( this );
+        var username = $form.find( "input[id='username']" ).val();
+        var password = $form.find( "input[id='password']" ).val();
+             
+        login_util(username,password); //util.js
     });
+     
+     
+     function register()
+     { 
+        registration_util();
+     }
      
      function popUpMessage(message)
      {
@@ -704,17 +678,14 @@
      }
      
      
-       var cache = {};
-    
+   var cache = {};
+  
   //loading autocomplete function  
         function load()
         {
-            /*
-            <input id="school_location_search" type="text" placeholder="Enter Location" name="keywords" class="lp-search-input lp-home-search-input">					
-									
-            <input id="school_name_search_txt" type="text" placeholder="Enter School Name" name="keywords" class="lp-search-input lp-home-search-input">
             
-            */
+            $("#account_div").hide();    
+            $("#login_div").show();
             
             var schoolLocation = /** @type {!HTMLInputElement} */(
                 document.getElementById('school_location_search'));
@@ -773,61 +744,7 @@
         }
      }
     
-     function register()
-     { 
-        var username = document.getElementById("dtl_username").value;
-        var email    = document.getElementById("dtl_email").value;
-        var password = document.getElementById("dtl_password").value;
-        console.log("register");
-         $.ajax({
-                    type: "POST", 
-                    url: "../api/api_login/registration.php", 
-                    data: {"username" :username,
-                          "email"     :email,
-                          "password"  :password},
-                    success: function(response)
-                    {
-                        console.log(response);   
-                          var resultCode  ;
-                        
-                          resultCode  = 	response.code;
-                         
-                         console.log(resultCode);
-                        if(resultCode == "1")
-                            {
-                                
-                                $(".siginupcontainer").hide();
-                                $(".forgetpasswordcontainer").hide();
-                                $(".siginincontainer").hide();
-                                $(".login-form-popup").hide();
-                                $('.md-modal').removeClass('md-show');
-                                //save username and email in local storage and start a new sesssion with sesssion id 
-                                // session id would be username and time of login 
-
-
-                                if (typeof(Storage) !== "undefined") {
-                                    // Code for localStorage/sessionStorage.
-                                    var d = new Date();
-                                    var t = d.getTime();
-                                    localStorage.setItem("username", username);
-                                    localStorage.setItem("email", email);
-                                    localStorage.setItem("sessionid", username+t);
-                                     
-                                    window.location.href = "user_profile.html";
-                                } else {
-                                    console.log("Local storage not allowed ");
-                                }
-                            }
-                        else
-                            {
-                                alert("There is some issue in Resistration");
-                            }
-                        
-                    },
-                    dataType: "json"//set to JSON    
-                });    
-            
-     }
+   
             
         // Calling Login Form
         $("#a_login").click(function () {
