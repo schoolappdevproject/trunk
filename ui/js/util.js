@@ -279,9 +279,11 @@ function login_util(username,password)
                             // Code for localStorage/sessionStorage.
                             var d = new Date();
                             var t = d.getTime();
-                            localStorage.setItem("username", username);
+                            localStorage.setItem("username", dataObj.username);
                             localStorage.setItem("email", dataObj.email);
                             localStorage.setItem("sessionid", username+t);
+                            localStorage.setItem("user_id", dataObj.user_id);
+                            
                            
                             //if profile is not updated 
                             login_success()

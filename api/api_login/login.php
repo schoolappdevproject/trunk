@@ -19,7 +19,7 @@ if ($method == 'POST') {
     $result = [];
 
     $validate_user = $database->get("tbl_users",[
-      "password","email"
+      "password","email","username","user_id"
     ],[
       "OR" => [
         "username" => $username,
@@ -32,6 +32,9 @@ if ($method == 'POST') {
         $result['success'] = "login successfull";
         $result['code']    = "1";
         $result['email']   = $validate_user['email'];
+        $result['username'] = $validate_user['username'];
+        $result['user_id'] = $validate_user['user_id'];
+          
       } else {
         $result['error'] = "Wrong password";
         $result['code']    = "0";

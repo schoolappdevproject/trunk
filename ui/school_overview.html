@@ -16,8 +16,11 @@
 	<script type="text/javascript" src="./school_overview_files/jquery-lib.js"></script>
 		
 	<!-- CSS -->
-	<link href="./school_overview_files/bootstrap.css" type="text/css" rel="stylesheet">
+
+ 
+    <link href="css/bootstrap-3.3.7/dist/css/bootstrap.css" type="text/css" rel="stylesheet">
     <link href="./school_overview_files/colors.css" type="text/css" rel="stylesheet">
+    <link href="css/bootstrap-3.3.7/dist/fonts/glyphicons-halflings-regular.ttf" type="text/css" rel="stylesheet">
     <!--<link href="./school_overview_files/font.css" type="text/css" rel="stylesheet">-->
    <!-- <link href="./school_overview_files/jquery.filer.css" type="text/css" rel="stylesheet"> -->
     <link href="./school_overview_files/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet">
@@ -30,6 +33,7 @@
     <link href="./school_overview_files/MarkerCluster.css" rel="stylesheet">
     <link href="./school_overview_files/MarkerCluster.Default.css" rel="stylesheet">
     <link href="./school_overview_files/main.css" type="text/css" rel="stylesheet">
+    <link href="css/common.css" type="text/css" rel="stylesheet">
     <style>
     .user-text h3
     {
@@ -105,6 +109,8 @@ p span i
 </head> 
     
 <script>
+    
+   
         
       // Attach a submit handler to the form
     $("#login_form").submit(function( event ) {
@@ -122,32 +128,7 @@ p span i
         registration_util();
      }
     
-    function load()
-    {
-        
-        if(typeof localStorage.getItem("sessionid") !== 'undefined')
-        {
-            username = localStorage.getItem("username");
-            email    = localStorage.getItem("email");        
-
-            $("#login_div").hide();
-            $("#account_div").show();
-            $("#user_email").html(email);
-
-        }
-        else
-        {
-            $("#account_div").hide();    
-            $("#login_div").show();
-        }
-        
-       // var x = readCookie('school_id');
-        var x = "1";
-        if (x) { 
-            //call php and get data of school
-            searchExactSchoolID(x);
-        }
-    }
+ 
     
      function searchExactSchoolID(school_id)
         {
@@ -224,6 +205,17 @@ p span i
     </script>
 <body onload="load()"><nav class="attireMainNav"><button class="toggleBtn iconMenu" type="button">Toggle navigation</button><ul></ul></nav>
     <form method="post" action="" id="form1">
+        
+         <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+        
+        
 <div class="aspNetHidden">
 <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTY1NDU2MTA1MmRk9iX5YMAe++FKKzr54wKuzrEKz54sktsOKNCNES0qsbc=">
 </div>
@@ -578,42 +570,88 @@ p span i
 
       
       <!-- Description Ends -->
+    <!-- review Bloack -->
+     <div class="col-sm-12">
+         
+        <div class="review_block">
+        <div class="row">
+            <div class="col-sm-12">   
+            <h4> Write a Review </h4> 
+            </div>
+            <div class="clearfix"></div>
+         </div> 
+        <div id ="init_review_form">
+        <div class="row">
+                 <div class="col-sm-9">
+                    <input type="text" id="dtl_review_initiate_txt" placeholder="Add review for the school" onclick="initiateReviewForm(); return false;" class="form-control" />
 
+                    </div>
+                    <div class="col-sm-3">
 
-    <div class="col-sm-12">
-        <div class="col-sm-12">
-        <h4>Admission Description</h4>
-                    <span id="dtl_adm_desc" class="dtl_value"></span>
+                     <input type="button" id="btn_initiate_review" value="Publish Review" class="lp-search-btn" style="float:left;padding:8px 15px;"/>
+                    </div>
+        </div>
+        </div>
+        <div id="full_review_form">
+            <div class="row">
+            <div class="col-sm-12">
+            <div class="col-sm-3"> 
+      
+                <div class="image_block">    
+                    <img class="img-circle" src="images/default_avatar_male.jpg" style="height: 100px; width: 40%;"/>
+                </div>
+                
+            </div>
+            <div class="col-sm-9">
+                
+                    <div class="row">
+                      <input type="text" id="dtl_review_title" placeholder="Add Title" class="inner_txt" />  
+                    </div> 
+                    <div class="row">
+                        <textarea name="review_txt" id="dtl_review_txt" placeholder="Enter Text ..." class="inner_txtarea"></textarea>
+                    </div> 
+                    <div class="row">
+                        <h5>Add Image</h5>
+                         <input id="review_image-upload" type="file" accept="image/*" hidden="true" value="add image" class="lp-search-btn" style="float:left;padding:8px 15px;"/>
+                    </div> 
+                    <div class="row">
+                        <div id ="review_pic_block"></div>
+                    </div>
+                <div class="row">
+                    <br>
+                <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
+                        
+                </div>
+                <div class="row">
+                    <br>
+                     <input type="button" id="btn_publish_review" value="Publish Review" onclick="saveReview(); return false;" class="lp-search-btn" style="float:left;padding:8px 15px;"/>
+                
+                </div>
+                </div>
+            </div>
+            </div>
+            <div id="row">
+                <div class="col-sm-11"></div>
+                <div class="col-sm-1"><a href="#" onclick="clearReview() ; return false;" >cancel</a></div>
+            </div>
+        </div>
+            
+              
         </div>
     </div>
+      
+    <!-- review Bloack ends -->
+      
+    <!-- admission details -->
+    <!-- admission details -->
+
     <div class="col-sm-12">
         <div class="col-sm-8">
   <h4>Reviews</h4>
- <div class="comments-box">
-								<div class="comments-thumb">
-									<img alt="comments-thumb-1" src="./school_overview_files/comments-thumb-1.png">
-								</div>
-								<div class="comments-content">
-									<div class="comments-meta-box">
-										<div class="comments-author text-left">
-											<div class="comments-name">
-												Name
-											</div>
-											<div class="comments-date">
-												<span style="font-size:12px;">( Nov 20, 2015 )</span>
-												
-											</div>
-										</div>
-										
-									</div>
-									<div class="comments-description">
-										<p>
-											Etiam pellentesque aliquet tellus. Phasellus congue lacus eget neque.
-Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
-										</p>
-									</div>
-								</div>
-							</div>
+            <div id="review_display">
+                
+                <div id ="child">
+           
                             <div class="comments-box">
 								<div class="comments-thumb">
 									<img alt="comments-thumb-1" src="./school_overview_files/comments-thumb-1.png">
@@ -632,13 +670,37 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
 										
 									</div>
 									<div class="comments-description">
-										<p>
+                                        <span id="review_title">
+                                        <p> Sports Olympiad in School</p>
+                                        </span>
+                                        
+                                        <span id="review_text">
+                                        <p>
 											Etiam pellentesque aliquet tellus. Phasellus congue lacus eget neque.
 Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
 										</p>
-									</div>
+                                        </span>
+                                        <br>
+                                        <div id="pictorial_series">
+                                        
+                                        
+                                        </div>		
+                                          <br>
+                                       <span class="pull-right">
+                                            <i id="like2" class="glyphicon glyphicon-thumbs-up"></i> <div id="like2-bs3"></div>
+                                            <i id="dislike2" class="glyphicon glyphicon-thumbs-down"></i> <div id="dislike2-bs3"></div>
+                                        </span>
+									</div>  <!-- comment Description -->
 								</div>
 							</div>
+               
+                    
+          
+                   
+                  
+            
+                  </div>
+        </div>
 
     </div>
     </div>
@@ -855,7 +917,318 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien...</p>
 		<script type="text/javascript" src="./school_overview_files/modalEffects.js"></script> <!-- Popup -->
 	<script type="text/javascript" src="./school_overview_files/main.js"></script>
 
-    
+    <script>
+          
+            var reviewPicArray = [];
+        
+            var dtl_username ;
+            var dtl_email;
+            var dtl_user_id;
+            var session_id;
+            
+           function load()
+            {
+                
+                  $("#init_review_form").show();
+                  $("#full_review_form").hide();
+                
+                 $('i.glyphicon-thumbs-up, i.glyphicon-thumbs-down').click(function(){    
+                    var $this = $(this),
+                    c = $this.data('count');    
+                    if (!c) c = 0;
+                    c++;
+                    $this.data('count',c);
+                    $('#'+this.id+'-bs3').html(c);
+                });      
+                $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+                    event.preventDefault();
+                    $(this).ekkoLightbox();
+                });          
+                
+            
+
+                if(typeof localStorage.getItem("sessionid") !== 'undefined')
+                {
+                    dtl_username = localStorage.getItem("username");
+                    dtl_email    = localStorage.getItem("email");        
+                    dtl_user_id    = localStorage.getItem("user_id");   
+                    session_id    = localStorage.getItem("session_id");        
+
+                    $("#login_div").hide();
+                    $("#account_div").show();
+                    $("#user_email").html(dtl_email);
+
+                }
+                else
+                {
+                    $("#account_div").hide();    
+                    $("#login_div").show();
+                }
+
+                var x = readCookie('school_id');
+               
+                if (x) { 
+                    
+                    if(schoolBelongsToStudent(dtl_username,x))
+                        {
+                             $("#init_review_form").show();
+                            $("#full_review_form").hide();
+                            $('#review_block').show();
+                        }
+                    else
+                        {
+                            $('#review_block').hide();
+                            
+                        }
+                    
+                    //call php and get data of school
+                    searchExactSchoolID(x);
+                }
+                
+                
+                var readURL = function(input) {
+                if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            
+                            $('#review-pic').attr('src', e.target.result);
+                            
+                            var review_pic = new Object();
+                            review_pic.picPath = e.target.result;
+                            review_pic.picData =e.target.result.split(",", 2)[1];
+                            
+                            reviewPicArray.push(review_pic);
+                            
+                            $('#review_pic_block').append("<img id='theImg' src='"+ e.target.result +"' width='200px' height='150px' />");
+                        }
+
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+
+                $("#review_image-upload").on('change', function(){
+                        readURL(this);
+                    });
+                
+            }
+        
+        function schoolBelongsToStudent(username,school_id)
+        {
+                    var formData = {
+                                id_school     : school_id,
+                                user_id     : dtl_user_id,   
+                         };
+            
+                        console.log(formData);
+                        
+                          // process the formf
+                        $.ajax({
+                            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                            url         : '../api/validate/validate_school.php', // the url where we want to POST
+                            data        : formData, // our data object
+                            dataType    : 'json', // what type of data do we expect back from the server
+                            encode          : true
+                        })
+                            // using the done promise callback
+                        .done(function(data) {
+
+                             if(data['code'] == "1")
+                                {
+                                    return true;        
+                                }
+                            else 
+                                {
+                                    return false;
+                                }
+                            console.log(data); 
+
+                            // here we will handle errors and validation messages
+                        }).fail(function( xhr, status, errorThrown ) {
+                                alert( "Sorry, there was a problem!" );
+                                console.log( "Error: " + errorThrown );
+                                console.log( "Status: " + status );
+                                console.dir( xhr );
+                        });
+        }
+        
+        function saveReview()
+        {
+            
+           
+            
+            var formData = {
+
+                        id_school     : readCookie('school_id'),
+                        user_id     :   dtl_user_id,
+                        title         : $("#dtl_review_title").val(),
+                        review_text   : $("#dtl_review_txt").val()
+
+                 };
+
+                console.log(formData);
+
+                  // process the formf
+                $.ajax({
+                    type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                    url         : '../api/save_data/save_review_comments.php', // the url where we want to POST
+                    data        : formData, // our data object
+                    dataType    : 'json', // what type of data do we expect back from the server
+                    encode          : true
+                })
+                    // using the done promise callback
+                .done(function(data) {    
+                    review_id = data['review_id'];
+                    console.log("Review ID" + review_id); 
+                    reviewSuccess(review_id);
+               
+                    showInUI(formData.title,formData.review_text);
+
+                    // here we will handle errors and validation messages
+                }).fail(function( xhr, status, errorThrown ) {
+                        alert( "Sorry, there was a problem!" );
+                        console.log( "Error: " + errorThrown );
+                        console.log( "Status: " + status );
+                        console.dir( xhr );
+                });
+              
+          
+            clearReview();
+            
+        }
+        
+        function   reviewSuccess(review_id)
+        {
+            //save the images if there 
+            
+            
+            
+            /*
+              var review_pic = new Object();
+                            review_pic.picPath = e.target.result;
+                            review_pic.picData =e.target.result.split(",", 2)[1];
+            */
+            
+            var _inc = 1;
+              for(pic in reviewPicArray)
+                    {
+                        
+                        var formData = {
+                      
+                                picName           : "pic_"+review_id+"_"+_inc,
+                                picData           : reviewPicArray[pic].picData,
+                                review_id         : review_id,
+                                type              :"jpg"
+                         };
+                        
+                        
+                        
+                          // process the formf
+                        $.ajax({
+                            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                            url         : '../api/image_upload/attach_pic.php', // the url where we want to POST
+                            data        : formData, // our data object
+                            dataType    : 'json', // what type of data do we expect back from the server
+                            encode          : true
+                        })
+                            // using the done promise callback
+                        .done(function(data) {
+
+                            // log data to the console so we can see
+                            console.log(data['code']); 
+                          
+
+                            // here we will handle errors and validation messages
+                        }).fail(function( xhr, status, errorThrown ) {
+                                alert( "Sorry, there was a problem!" );
+                                console.log( "Error: " + errorThrown );
+                                console.log( "Status: " + status );
+                                console.dir( xhr );
+                        });
+                        
+                    _inc ++;
+                      
+                    }
+            
+            
+        }
+        
+        function showInUI(title,review_text)
+        {
+            
+            //user name   dtl_username
+            //todays date
+            
+            
+            //
+            console.log(title,review_text);
+            var d = new Date();
+            var strDate = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
+        
+           var newElement = document.createElement('div');
+            newElement.innerHTML  = "<div class='comments-box'>" +
+                                    "<div class='comments-thumb'>"+
+                                        "<img alt='comments-thumb-1' src='./school_overview_files/comments-thumb-1.png'>"+
+                                    "</div>"+
+                                    "<div class='comments-content'>"+
+                                        "<div class='comments-meta-box'>"+
+                                            "<div class='comments-author text-left'>"+
+                                                "<div class='comments-name'>"+
+                                                    dtl_username+
+                                                "</div>"+
+                                                "<div class='comments-date'>"+
+                                                    "<span style='font-size:12px;'>"+strDate+"</span>"+
+                                                "</div>"+
+                                            "</div>"+
+
+                                        "</div>"+
+                                        "<div class='comments-description'>"+
+                                            "<span id='sp_review_title'><p><h4>"+
+                                           title+
+                                            "</h4></p>"+
+                                            "</span>"+
+                                            "<span id='sp_review_text'>"+
+                                            "<p>"+
+                                                review_text+
+                                            "</p>"+
+                                            "</span>"+
+                                            "<br>"+
+                                            "<div id='pictorial_series'>"+
+                                            "</div>"+
+                                            "<br>"+
+                                           "<span class='pull-right'>"+
+                                                "<i id='like2' class='glyphicon glyphicon-thumbs-up'></i> <div id='like2-bs3'></div>"+
+                                                "<i id='dislike2' class='glyphicon glyphicon-thumbs-down'></i> <div id='dislike2-bs3'></div>"+
+                                            "</span>"+
+                                            "</div>"+
+                                    "</div>"+
+                                "</div>";
+
+            var description_sections = document.getElementById("review_display");    
+            description_sections.appendChild(newElement);
+        }
+        
+        
+        function  initiateReviewForm()
+        {
+            $("#init_review_form").hide();
+            $("#full_review_form").show();
+        }
+        
+        function clearReview()
+        {
+            $("#init_review_form").show();
+            $("#full_review_form").hide();
+            
+            $("#dtl_review_txt").val("");
+            $("#dtl_review_title").val("");
+            $("#review_pic_block").html("");
+            
+            reviewPicArray.splice(0,reviewPicArray.length);
+            
+        }
+        
+        </script>
     </div>
     </form>
 

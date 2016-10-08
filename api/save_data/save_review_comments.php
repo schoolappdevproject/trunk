@@ -6,60 +6,52 @@ $log = new MyLogPHP();
 
 if ($method == 'POST') {
     
-  $id_school      = $_POST['school_id'];
-
+    /*
+       var formData = {
+                      
+                                id_school     : readCookie('school_id'),
+                                user_id     :   dtl_user_id,
+                                title         : $("#dtl_review_title").val(),
+                                review_text   : $("#dtl_review_txt").val()
+                                
+                         };
+    */
+    
+    
+  $id_school      = $_POST['id_school'];
   $user_id        = $_POST['user_id'];
   $title          = $_POST['title'];
-  $review_text    = $_POST['text_review'];
-  $review_attach  = $_POST['id_review_atach'];
+  $review_text    = $_POST['review_text'];
     
-  //attachment 
     
-  $file_name = $_POST['att_file_name'];
-  $type      = $_POST['type'];
-  $data      = $_POST['data'];
+    //find $user_id
 
-try
-{
-    
-    
-    $filepath = 'attachement_pic/'.$file_name.'.'.$type;    
-    $log->info(file_put_contents($filepath, base64_decode($data)));
-
-    //database save 
-     $ret = $database->insert('tbl_review_attachment', [
-        'attachment_path'     => $filepath,
-         'attachment_type'    => $type
-    ]);
-    
-    if ($ret) {
-       $log->info("Profile Pictorial uploaded succesfully at path ".$filepath);       
-    } else {
-       $log->info("Profile Pictorial uploaded failed at path ".$filepath);       
-    }
-    
-} 
-catch(Exception $ex)
-{
-       $log->info(" Error : ".$ex->getMessage());
-}
-  
 try{
-      $school_id = $database->insert('tbl_review_data', [
+    
+
+      $ret = $database->insert('tbl_review_data', [
         'id_school'              => $id_school,
         'id_user_data'           => $user_id,
         'tbl_review_title'       => $title,
         'tbl_review_text'        => $review_text
-        'id_review_attachment'   => $review_attach 
       ]);
 
-      if ($school_id)
+      if ($ret)
       {   
-        $result['success'] = "review Updated";
+        $result['success'] = "review saved";
+          $log->info("review saved");
       } else {
         $result['error'] = "Some thing wrong happend";
         $log->info(var_dump($database->error()));
-      }
+     }
+    
+    
+    $log->info("Review added in database for user $user_id school id  $id_school");
+    
+    $ret = $database->query("select id_review_data from tbl_review_data where id_user_data=$user_id order by id_review_data desc limit 1")->fetchAll();
+    
+    $result['review_id'] = $ret[0][0];    
+    echo json_encode($result);
 
 }
 catch(Exception $e){
