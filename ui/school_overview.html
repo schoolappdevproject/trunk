@@ -685,11 +685,14 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
                                         
                                         
                                         </div>		
-                                          <br>
-                                       <span class="pull-right">
-                                            <i id="like2" class="glyphicon glyphicon-thumbs-up"></i> <div id="like2-bs3"></div>
-                                            <i id="dislike2" class="glyphicon glyphicon-thumbs-down"></i> <div id="dislike2-bs3"></div>
-                                        </span>
+                                     
+                                      <div class="col-sm-1">
+                                          <i id="like2" onclick="alert(1)" class="glyphicon glyphicon-thumbs-up"></i> <div id="like2-bs3"></div>
+                                        </div>
+                                        <div class="col-sm-1">
+                                          <i id="dislike2" onclick="alert(1)" class="glyphicon glyphicon-thumbs-down"></i> <div id="dislike2-bs3"></div>
+                                        </div>
+                                      
 									</div>  <!-- comment Description -->
 								</div>
 							</div>
@@ -939,6 +942,7 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien...</p>
                     c++;
                     $this.data('count',c);
                     $('#'+this.id+'-bs3').html(c);
+                    
                 });      
                 $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
                     event.preventDefault();
@@ -1045,18 +1049,17 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien...</p>
 
                             // here we will handle errors and validation messages
                         }).fail(function( xhr, status, errorThrown ) {
-                                alert( "Sorry, there was a problem!" );
+                                console.log( "Query Failed" );
                                 console.log( "Error: " + errorThrown );
                                 console.log( "Status: " + status );
                                 console.dir( xhr );
+                                return false;
                         });
         }
         
         function saveReview()
         {
-            
-           
-            
+
             var formData = {
 
                         id_school     : readCookie('school_id'),
@@ -1082,8 +1085,8 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien...</p>
                     console.log("Review ID" + review_id); 
                     reviewSuccess(review_id);
                
-                    showInUI(formData.title,formData.review_text);
-
+                    showInUI(review_id,formData.title,formData.review_text);
+                    clearReview();
                     // here we will handle errors and validation messages
                 }).fail(function( xhr, status, errorThrown ) {
                         alert( "Sorry, there was a problem!" );
@@ -1093,7 +1096,7 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien...</p>
                 });
               
           
-            clearReview();
+           
             
         }
         
@@ -1153,14 +1156,9 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien...</p>
             
         }
         
-        function showInUI(title,review_text)
+        function showInUI(review_id,title,review_text)
         {
             
-            //user name   dtl_username
-            //todays date
-            
-            
-            //
             console.log(title,review_text);
             var d = new Date();
             var strDate = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
@@ -1193,19 +1191,43 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien...</p>
                                             "</p>"+
                                             "</span>"+
                                             "<br>"+
-                                            "<div id='pictorial_series'>"+
+                                            "<div id='pictorial_series_"+review_id+"'>"+
                                             "</div>"+
                                             "<br>"+
-                                           "<span class='pull-right'>"+
-                                                "<i id='like2' class='glyphicon glyphicon-thumbs-up'></i> <div id='like2-bs3'></div>"+
-                                                "<i id='dislike2' class='glyphicon glyphicon-thumbs-down'></i> <div id='dislike2-bs3'></div>"+
-                                            "</span>"+
+                                                                                
+                                                "<div class='col-sm-1'>" +
+                            "<i id='like"+review_id+"' onclick='reviewLiked("+review_id+")' class='glyphicon glyphicon-thumbs-up'></i> <div id='like"+review_id+"-bs3'></div>"+
+                                                "</div>"+
+                                                "<div class='col-sm-1'>"+
+                    "<i id='dislike"+review_id+"'  onclick='reviewDisliked("+review_id+")' class='glyphicon glyphicon-thumbs-down'></i> <div id='dislike"+review_id+"-bs3'></div>"+
+                                                "</div>"+
                                             "</div>"+
-                                    "</div>"+
+                                    "</div>"
                                 "</div>";
 
             var description_sections = document.getElementById("review_display");    
             description_sections.appendChild(newElement);
+        
+            
+              //populate through Pictorial Series and add in the pictorial thumbnail
+            
+            var pictorial_sections = document.getElementById("pictorial_series_"+review_id); 
+            var _inc = 0;
+            console.log("Number of Pictorial" + reviewPicArray.length);
+             for(pic in reviewPicArray)
+                 { 
+                     var newPictorial = document.createElement('img');
+                     var imgID = 'pictorial_'+review_id +'_'+_inc;
+                     newPictorial.setAttribute('id', imgID );  //set id
+                     newPictorial.setAttribute('src', reviewPicArray[pic].picPath );  //set id
+                     newPictorial.setAttribute('width', "100px" );  //set width
+                     newPictorial.setAttribute('height', "80px" );  //set height
+                     
+                    console.log("pic added");
+                     pictorial_sections.appendChild(newPictorial);
+                     _inc ++;
+                 }
+            
         }
         
         
@@ -1226,6 +1248,16 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien...</p>
             
             reviewPicArray.splice(0,reviewPicArray.length);
             
+        }
+        
+        function reviewLiked(review_id)
+        {
+            alert("Review Liked "+ review_id);
+        }
+        
+        function reviewDisliked(review_id)
+        {
+            alert("Review Disliked "+ review_id);
         }
         
         </script>

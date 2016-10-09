@@ -33,7 +33,8 @@ try{
         'id_school'              => $id_school,
         'id_user_data'           => $user_id,
         'tbl_review_title'       => $title,
-        'tbl_review_text'        => $review_text
+        'tbl_review_text'        => $review_text,
+        'review_date'            => date("Y-m-d")
       ]);
 
       if ($ret)
