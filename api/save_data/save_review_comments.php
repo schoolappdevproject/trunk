@@ -28,6 +28,8 @@ if ($method == 'POST') {
 
 try{
     
+     
+    
 
       $ret = $database->insert('tbl_review_data', [
         'id_school'              => $id_school,
@@ -45,13 +47,22 @@ try{
         $result['error'] = "Some thing wrong happend";
         $log->info(var_dump($database->error()));
      }
-    
-    
+
     $log->info("Review added in database for user $user_id school id  $id_school");
     
     $ret = $database->query("select id_review_data from tbl_review_data where id_user_data=$user_id order by id_review_data desc limit 1")->fetchAll();
     
     $result['review_id'] = $ret[0][0];    
+    
+    $review_id = $ret[0][0]; 
+    
+    
+   $ret = $database->insert('tbl_review_action', [
+        'id_review_data'    => $review_id,
+        'id_user'           => $user_id,
+        'action'       => 'N'
+      ]); 
+    
     echo json_encode($result);
 
 }

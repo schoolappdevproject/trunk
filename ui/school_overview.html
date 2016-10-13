@@ -1014,9 +1014,164 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien...</p>
                 $("#review_image-upload").on('change', function(){
                         readURL(this);
                     });
+               
                 
+                loadSchoolReviews();
             }
         
+        
+        function loadSchoolReviews()
+        {
+            
+                        var formData = {
+                                school_id     : readCookie('school_id')
+                         };
+            
+                        console.log(formData);
+                        
+                          // process the formf
+                        $.ajax({
+                            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                            url         : '../api/load_data/load_review.php', // the url where we want to POST
+                            data        : formData, // our data object
+                            dataType    : 'json', // what type of data do we expect back from the server
+                            encode          : true
+                        })
+                            // using the done promise callback
+                        .done(function(data) {
+
+                            showReviewRecords(data);
+
+                            // here we will handle errors and validation messages
+                        }).fail(function( xhr, status, errorThrown ) {
+                                console.log( "Query Failed" );
+                                console.log( "Error: " + errorThrown );
+                                console.log( "Status: " + status );
+                                console.dir( xhr );
+                                return false;
+                        });
+            
+        }
+        function showReviewRecords(data)
+        {
+            
+            //review_date,
+            //tbl_review_title
+            //tbl_review_data
+            //tbl_review_text
+            //tbl_users.username
+            //id_review_data
+            for(review_i in data)
+                {
+                 
+                    
+                              var newElement = document.createElement('div');
+            newElement.innerHTML  = "<div class='comments-box'>" +
+                                    "<div class='comments-thumb'>"+
+                                        "<img alt='comments-thumb-1' src='./school_overview_files/comments-thumb-1.png'>"+
+                                    "</div>"+
+                                    "<div class='comments-content'>"+
+                                        "<div class='comments-meta-box'>"+
+                                            "<div class='comments-author text-left'>"+
+                                                "<div class='comments-name'>"+
+                                                    data[review_i].username+
+                                                "</div>"+
+                                                "<div class='comments-date'>"+
+                                                    "<span style='font-size:12px;'>"+data[review_i].review_date+"</span>"+
+                                                "</div>"+
+                                            "</div>"+
+
+                                        "</div>"+
+                                        "<div class='comments-description'>"+
+                                            "<span id='sp_review_title'><p><h4>"+
+                                           data[review_i].tbl_review_title+
+                                            "</h4></p>"+
+                                            "</span>"+
+                                            "<span id='sp_review_text'>"+
+                                            "<p>"+
+                                               data[review_i].tbl_review_text+
+                                            "</p>"+
+                                            "</span>"+
+                                            "<br>"+
+                                            "<div id='pictorial_series_"+data[review_i].id_review_data+"'>"+
+                                            "</div>"+
+                                            "<br>"+
+                                                                                
+                                                "<div class='col-sm-1'>" +
+                            "<i id='like"+data[review_i].id_review_data+"' onclick='reviewLiked("+data[review_i].id_review_data+")' class='glyphicon glyphicon-thumbs-up'></i> <div id='like"+data[review_i].id_review_data+"-bs3'></div>"+
+                                                "</div>"+
+                                                "<div class='col-sm-1'>"+
+                    "<i id='dislike"+data[review_i].id_review_data+"'  onclick='reviewDisliked("+data[review_i].id_review_data+")' class='glyphicon glyphicon-thumbs-down'></i> <div id='dislike"+data[review_i].id_review_data+"-bs3'></div>"+
+                                                "</div>"+
+                                            "</div>"+
+                                    "</div>"
+                                "</div>";
+
+                        var description_sections = document.getElementById("review_display");    
+                        description_sections.appendChild(newElement);
+
+                    
+                        loadImages(data[review_i].id_review_data);
+                    
+                      
+
+                }
+        }
+        
+        function loadImages(review_id_i)
+        {
+                var formData = {
+                                review_id     : review_id_i
+                         };
+            
+                        console.log(formData);
+                        
+                          // process the formf
+                        $.ajax({
+                            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                            url         : '../api/load_data/load_images.php', // the url where we want to POST
+                            data        : formData, // our data object
+                            dataType    : 'json', // what type of data do we expect back from the server
+                            encode          : true
+                        })
+                            // using the done promise callback
+                        .done(function(data) {
+
+                            showImages(data,review_id_i);
+
+                            // here we will handle errors and validation messages
+                        }).fail(function( xhr, status, errorThrown ) {
+                                console.log( "Query Failed" );
+                                console.log( "Error: " + errorThrown );
+                                console.log( "Status: " + status );
+                                console.dir( xhr );
+                                return false;
+                        }); 
+        }
+        
+        function showImages(picArray,review_id)
+        {
+             //populate through Pictorial Series and add in the pictorial thumbnail
+            
+            var pictorial_sections = document.getElementById("pictorial_series_"+review_id); 
+            var _inc = 0;
+            console.log("Number of Pictorial" + picArray.length);
+             for(pic in picArray)
+                 { 
+                     
+                     /// attachment_path,attachment_data 
+                     var newPictorial = document.createElement('img');
+                     var imgID = 'pictorial_'+review_id +'_'+_inc;
+                     newPictorial.setAttribute('id', imgID );  //set id
+                     newPictorial.setAttribute('src', picArray[pic].attachment_data );  //set id
+                     newPictorial.setAttribute('width', "100px" );  //set width
+                     newPictorial.setAttribute('height', "80px" );  //set height
+
+                    console.log("pic added");
+                     pictorial_sections.appendChild(newPictorial);
+                     _inc ++;
+                 }
+        }
         function schoolBelongsToStudent(username,school_id)
         {
                     var formData = {
@@ -1061,43 +1216,38 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien...</p>
         {
 
             var formData = {
+                id_school     : readCookie('school_id'),
+                user_id       : dtl_user_id,
+                title         : $("#dtl_review_title").val(),
+                review_text   : $("#dtl_review_txt").val()
+             };
 
-                        id_school     : readCookie('school_id'),
-                        user_id     :   dtl_user_id,
-                        title         : $("#dtl_review_title").val(),
-                        review_text   : $("#dtl_review_txt").val()
+            console.log(formData);
 
-                 };
+              // process the formf
+            $.ajax({
+                type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url         : '../api/save_data/save_review_comments.php', // the url where we want to POST
+                data        : formData, // our data object
+                dataType    : 'json', // what type of data do we expect back from the server
+                encode          : true
+            })
+                // using the done promise callback
+            .done(function(data) {    
+                review_id = data['review_id'];
+                console.log("Review ID" + review_id); 
+                reviewSuccess(review_id);
 
-                console.log(formData);
+                showInUI(review_id,formData.title,formData.review_text);
+                clearReview();
+                // here we will handle errors and validation messages
+            }).fail(function( xhr, status, errorThrown ) {
+                    alert( "Sorry, there was a problem!" );
+                    console.log( "Error: " + errorThrown );
+                    console.log( "Status: " + status );
+                    console.dir( xhr );
+            });
 
-                  // process the formf
-                $.ajax({
-                    type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                    url         : '../api/save_data/save_review_comments.php', // the url where we want to POST
-                    data        : formData, // our data object
-                    dataType    : 'json', // what type of data do we expect back from the server
-                    encode          : true
-                })
-                    // using the done promise callback
-                .done(function(data) {    
-                    review_id = data['review_id'];
-                    console.log("Review ID" + review_id); 
-                    reviewSuccess(review_id);
-               
-                    showInUI(review_id,formData.title,formData.review_text);
-                    clearReview();
-                    // here we will handle errors and validation messages
-                }).fail(function( xhr, status, errorThrown ) {
-                        alert( "Sorry, there was a problem!" );
-                        console.log( "Error: " + errorThrown );
-                        console.log( "Status: " + status );
-                        console.dir( xhr );
-                });
-              
-          
-           
-            
         }
         
         function   reviewSuccess(review_id)
@@ -1250,14 +1400,55 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien...</p>
             
         }
         
-        function reviewLiked(review_id)
+        function reviewLiked(review_id_i)
         {
-            alert("Review Liked "+ review_id);
+            console.log("Review Liked "+ review_id_i);    
+            saveUserAction(review_id_i,'L');
+            
         }
         
-        function reviewDisliked(review_id)
+        function saveUserAction(review_id_i,action)
         {
-            alert("Review Disliked "+ review_id);
+              // $review_id      = $_POST['review_id'];
+            //$user_id        = $_POST['user_id'];
+                var formData = {
+                      
+                                review_id         : review_id_i,
+                                user_id           : dtl_user_id,
+                                user_action       : action
+                         };
+
+                          // process the formf
+                        $.ajax({
+                            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                            url         : '../api/save_data/save_review_action.php', // the url where we want to POST
+                            data        : formData, // our data object
+                            dataType    : 'json', // what type of data do we expect back from the server
+                            encode          : true
+                        })
+                            // using the done promise callback
+                        .done(function(data) {
+
+                            // log data to the console so we can see
+                            console.log(data); 
+                            $("#like"+review_id_i+"-bs3").text(data['total_liked']);
+                            $("#dislike"+review_id_i+"-bs3").text(data['total_disliked']);
+
+                            // here we will handle errors and validation messages
+                        }).fail(function( xhr, status, errorThrown ) {
+                                alert( "Sorry, there was a problem!" );
+                                console.log( "Error: " + errorThrown );
+                                console.log( "Status: " + status );
+                                console.dir( xhr );
+                        });
+            
+        }
+        
+        function reviewDisliked(review_id_i)
+        {
+            console.log("Review Disliked "+ review_id_i);
+            saveUserAction(review_id_i,'D');
+            
         }
         
         </script>
