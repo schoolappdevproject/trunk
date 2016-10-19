@@ -20,23 +20,21 @@ try{
             ],[
                 "AND" => [
                     'id_review_data[=]'  => $review_id,
-                    'id_user[=]'    => $user_id
-                ]
+                    'id_user[=]'         => $user_id
+                         ]
             ]);
-    if(!$ret){
-        $log->info(var_dump($database->error()));
-    }
-    
-    
+   
     $ret = $database->query("select count(*) from tbl_review_action where id_review_data = $review_id and action = 'L'")->fetchAll();
     
     $result = [];
-    
-    $result['total_liked'] = $ret[0][0];
+
+    $result['total_liked'] = intval($ret[0][0]);
     
     $ret = $database->query("select count(*) from tbl_review_action where id_review_data = $review_id and action = 'D'")->fetchAll();
     
-    $result['total_disliked'] = $ret[0][0];
+    $result['total_disliked'] = intval($ret[0][0]);
+    
+    $log->info(json_encode($result));
            
     echo json_encode($result);
 
