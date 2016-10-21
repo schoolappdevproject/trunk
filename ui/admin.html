@@ -319,7 +319,15 @@
                 <div class="row">
             <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Name of the School</b></p></div>
             <div class="col-md-5"><input name="school_name" type="text" id="school_name" class="form-control"></div>
-            
+            <div class="clearfix"></div>        
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Select a Profile Pic</b></p></div>
+            <div class="col-md-5">
+                
+            <img id="profile-pic" src="images/default_avatar_male.jpg" width="200px" height="150px" /> <br>
+       
+            <input id="file-upload" type="file" accept="image/*" hidden="true" value="Upload Profile Image" class="lp-search-btn" style="float:left;padding:8px 15px;"/>
+                    
+            </div>
             <div class="clearfix"></div>
             <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Principal</b></p></div>
             <div class="col-md-5"><input name="principal_name" type="text" id="principal_name" class="form-control mb5"></div>
@@ -962,7 +970,33 @@
 
     	
     <script>
+          var profilePicData ;
+        var profilePicPath ;
+        
+        
+       
+        
         $(document).ready(function() {
+            
+            
+             var readURL = function(input) {
+            if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#profile-pic').attr('src', e.target.result);
+                        profilePicPath = e.target.result
+                        profilePicData    =e.target.result.split(",", 2)[1];
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+
+            $("#file-upload").on('change', function(){
+                readURL(this);
+            });
 
             // process the form
             $('#save_button').click(function(event) {
@@ -988,15 +1022,16 @@
                       'school_size'              : $('input[name=school_size]:checked').val(),
                       'board'                    : $('input[name=board]:checked').val(),
                       'religous_preference'      : $('input[name=religous_preference]:checked').val(),
-                      'admission_method'          : $('input[name=admission_method]:checked').val(),
+                      'admission_method'         : $('input[name=admission_method]:checked').val(),
                       'medium_of_teaching'       : $('input[name=medium_of_teaching]:checked').val(),
                     
-                     'mobility'                 : $('input[name=mobility]').val(),
+                      'mobility'                 : $('input[name=mobility]').val(),
                       'small_description'        : $('#small_description').val(),
-                      'admission_description'    : $('#admission_description').val()
+                      'admission_description'    : $('#admission_description').val(),
+                      'profile_pic'              : profilePicPath
                 };
 
-              alert(JSON.stringify(formData,null,2));
+            
                 
                 // process the formf
                 $.ajax({
@@ -1017,7 +1052,20 @@
 
                 // stop the form from submitting the normal way and refreshing the page
                 event.preventDefault();
-            });
+             }).fail(function( xhr, status, errorThrown ) {
+                        console.log( "Query Failed" );
+                        console.log( "Error: " + errorThrown );
+                        console.log( "Status: " + status );
+                        console.dir( xhr );
+                        return false;
+            }); 
+        
+            
+            
+            
+        
+        
+            
 
         });
     

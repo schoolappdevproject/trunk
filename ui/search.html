@@ -981,10 +981,10 @@ commented due to error
                             var medium_of_teaching  =   response[i].medium_of_teaching;
                             var religous_preference	=   response[i].religous_preference;
                             var small_description 	=   response[i].small_description;
-
+                            var profile_pic         =   response[i].profile_pic_data;
                             
                            populateData(school_id,name, distance,  i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,
-                                        small_description);
+                                        small_description,profile_pic);
                            createMarker(latlng, name, address);
                            bounds.extend(latlng);
                            google.maps.event.trigger(markers[i], 'click');   
@@ -1027,6 +1027,7 @@ commented due to error
                     var medium_of_teaching  =   markerNodes[i].getAttribute("medium_of_teaching");
                     var religous_preference	=   markerNodes[i].getAttribute("religous_preference");
                     var small_description 	=   markerNodes[i].getAttribute("small_description");
+                    var profile_pic_data    =   markerNodes[i].getAttribute("profile_pic_data");
                     
                     console.log("Name "+ name + " school name for search "+ school_name);
                     if(school_name.trim())
@@ -1034,7 +1035,7 @@ commented due to error
                         if(name.includes(school_name))
                         {
                            populateData(school_id,name, distance,  i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,
-                                        small_description);
+                                        small_description,profile_pic_data);
                            createMarker(latlng, name, address);
                            bounds.extend(latlng);
                            google.maps.event.trigger(markers[i], 'click');   
@@ -1129,6 +1130,7 @@ commented due to error
             var medium_of_teaching  =   markerNodes[i].getAttribute("medium_of_teaching");
             var religous_preference	=   markerNodes[i].getAttribute("religous_preference");
             var small_description 	=   markerNodes[i].getAttribute("small_description");
+            var profile_pic_data    =   markerNodes[i].getAttribute("profile_pic_data");
 
             var schoolNameforSearch = document.getElementById("school_name_search_txt").value;
             if(schoolNameforSearch.trim())
@@ -1144,7 +1146,7 @@ commented due to error
             
                 if(found)
                 {
-                    populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
+                    populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data);
                     createMarker(latlng, name, address);
                     bounds.extend(latlng);
                     google.maps.event.trigger(markers[i], 'click');   
@@ -1152,7 +1154,7 @@ commented due to error
 
             }else{
                 
-                 populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
+                 populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data);
                  createMarker(latlng, name, address);
                  bounds.extend(latlng);
                //  alert(markers[i]);
@@ -1191,7 +1193,7 @@ commented due to error
 
     function populateData(school_id,name, distance, num ,address,session_timings,
 						   city,category,school_type,courses,
-						   school_size,board,medium_of_teaching,religous_preference,small_description) {
+						   school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data) {
 
         //api needed to fetch the image now show the default image 
 		var school_timming      = document.getElementById("school_timing").value;
@@ -1205,10 +1207,11 @@ commented due to error
         
         var description_sections = document.getElementById("comments-posts");
         
+       // alert(profile_pic_data);
         var newElement = document.createElement('div');
         newElement.innerHTML = " <div class='comments-box ptb0 mb20' style='background-color:#fff;'> " +
 								"<div class='comments-thumb w25'> "+
-									"<img src='search/school-logo1.jpg' class='img-responsive' alt='comments-thumb-2'>"  +
+									"<img src='"+profile_pic_data+"' class='img-responsive' alt='comments-thumb-2'>"  +
 								"</div>"+
 								"<div class='comments-content w70'>"+
 									"<div class='comments-meta-box'>"+
@@ -1325,7 +1328,7 @@ commented due to error
             var medium_of_teaching  =   markerNodes[i].getAttribute("medium_of_teaching");
             var religous_preference	=   markerNodes[i].getAttribute("religous_preference");
             var small_description 	=   markerNodes[i].getAttribute("small_description");
-
+            var profile_pic_data    =   markerNodes[i].getAttribute("profile_pic_data");
 	  
 
 	   if(checkBoxName.localeCompare("school_timing")== 0)
@@ -1333,7 +1336,7 @@ commented due to error
 		if(-1 != $.inArray(session_timings, values))
 		{
 		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
+            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data);
 		}
            }
 	   else  if(checkBoxName.localeCompare("category")== 0)
@@ -1341,7 +1344,7 @@ commented due to error
 		if(-1 != $.inArray(category, values))
 		{
 		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
+            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data);
 		}
            }
 	   else  if(checkBoxName.localeCompare("courses")== 0)
@@ -1349,7 +1352,7 @@ commented due to error
 		if(-1 != $.inArray(courses, values))
 		{
 		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
+            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data);
 		}
            }
 	   else  if(checkBoxName.localeCompare("school_size")== 0)
@@ -1357,7 +1360,7 @@ commented due to error
 		if(-1 != $.inArray(session_size, values))
 		{
 		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
+            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data);
 		}
            }
 	   else  if(checkBoxName.localeCompare("board")== 0)
@@ -1365,7 +1368,7 @@ commented due to error
 		if(-1 != $.inArray(board, values))
 		{
 		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
+            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data);
 		}
            }
 	   else  if(checkBoxName.localeCompare("medium_of_teaching")== 0)
@@ -1373,7 +1376,7 @@ commented due to error
 		if(-1 != $.inArray(medium_of_teaching, values))
 		{
 		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
+            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data);
 		}
            }
 	   else  if(checkBoxName.localeCompare("medium_of_teaching")== 0)
@@ -1381,7 +1384,7 @@ commented due to error
 		if(-1 != $.inArray(medium_of_teaching, values))
 		{
 		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
+            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data);
 		}
            }
 	  else  if(checkBoxName.localeCompare("religous_preferences")== 0)
@@ -1389,7 +1392,7 @@ commented due to error
 		if(-1 != $.inArray(religous_preferences, values))
 		{
 		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description);
+            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data);
 		}
            }
 	

@@ -41,7 +41,7 @@
     }
     .page-container {
     padding-bottom: 10px;
-}
+    }
     </style>
       <script>
           $(function () {
@@ -106,6 +106,59 @@ p span i
 <script type="text/javascript" charset="UTF-8" src="./school_overview_files/util.js"></script>
 <script type="text/javascript" charset="UTF-8" src="./school_overview_files/stats.js"></script>
 <script type="text/javascript" src="./school_overview_files/jquery-migrate-1.3.0.min.js"></script>
+  
+    <script>
+       var reviewPicArray = [];
+        var dtl_username ;
+        var dtl_email;
+        var dtl_user_id;
+        var session_id;
+        var profile_pic_data ;
+        
+         function loadProfileImage(user_id_i)
+        {
+            // $user_id    = trim($_POST['user_id']);
+                var formData = {
+                        user_id     : user_id_i
+                 };
+
+                console.log(formData);
+
+                  // process the formf
+                $.ajax({
+                    type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                    url         : '../api/load_data/load_prof_pic.php', // the url where we want to POST
+                    data        : formData, // our data object
+                    dataType    : 'json', // what type of data do we expect back from the server
+                    encode          : true
+                })
+                    // using the done promise callback
+                .done(function(data) {  
+                    profile_pic_data =  data['image'];
+                    document.getElementById("profile_pic_img").src = data['image'];
+                    // here we will handle errors and validation messages
+                }).fail(function( xhr, status, errorThrown ) {
+                        console.log( "Query Failed" );
+                        console.log( "Error: " + errorThrown );
+                        console.log( "Status: " + status );
+                        console.dir( xhr );
+                        return false;
+                }); 
+        }
+        
+        if(typeof localStorage.getItem("sessionid") !== 'undefined')
+                {
+                    dtl_username = localStorage.getItem("username");
+                    dtl_email    = localStorage.getItem("email");        
+                    dtl_user_id  = localStorage.getItem("user_id");   
+                    session_id   = localStorage.getItem("session_id");        
+                    loadProfileImage(dtl_user_id);     
+                    console.log("Fetching Profile pic .......");
+                   
+                }
+        
+    </script>
+    
 </head> 
     
 <script>
@@ -234,13 +287,13 @@ p span i
 					<div class="col-md-8 col-sm-8 text-left">
 						<ul class="lp-topbar-menu">
 							<li>
-								<a href="http://microsoftmsdn.com/schoolguru/index.html">Home</a>
+								<a href="#">Home</a>
 							</li>
 							<li>
-								<a href="http://microsoftmsdn.com/schoolguru/about.html">About</a>
+								<a href="#">About</a>
 							</li>
 							<li>
-								<a href="http://microsoftmsdn.com/schoolguru/contact.html">Contact</a>
+								<a href="#">Contact</a>
 							</li>
 						</ul>
 					</div>
@@ -922,12 +975,7 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien...</p>
 
     <script>
           
-            var reviewPicArray = [];
-            var dtl_username ;
-            var dtl_email;
-            var dtl_user_id;
-            var session_id;
-            var profile_pic_data ;
+         
             
            function load()
             {
@@ -951,17 +999,9 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien...</p>
                 
                 if(typeof localStorage.getItem("sessionid") !== 'undefined')
                 {
-                    dtl_username = localStorage.getItem("username");
-                    dtl_email    = localStorage.getItem("email");        
-                    dtl_user_id  = localStorage.getItem("user_id");   
-                    session_id   = localStorage.getItem("session_id");        
-
                     $("#login_div").hide();
                     $("#account_div").show();
-                    $("#user_email").html(dtl_email);
-                    
-                    console.log("Fetching Profile pic .......");
-                    loadProfileImage(dtl_user_id);
+                    $("#user_email").html(dtl_email);   
                 }
                 else
                 {
@@ -1107,36 +1147,7 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien...</p>
         }
         
         
-        function loadProfileImage(user_id_i)
-        {
-            // $user_id    = trim($_POST['user_id']);
-                var formData = {
-                        user_id     : user_id_i
-                 };
-
-                console.log(formData);
-
-                  // process the formf
-                $.ajax({
-                    type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                    url         : '../api/load_data/load_prof_pic.php', // the url where we want to POST
-                    data        : formData, // our data object
-                    dataType    : 'json', // what type of data do we expect back from the server
-                    encode          : true
-                })
-                    // using the done promise callback
-                .done(function(data) {  
-                    profile_pic_data =  data['image'];
-                    document.getElementById("profile_pic_img").src = data['image'];
-                    // here we will handle errors and validation messages
-                }).fail(function( xhr, status, errorThrown ) {
-                        console.log( "Query Failed" );
-                        console.log( "Error: " + errorThrown );
-                        console.log( "Status: " + status );
-                        console.dir( xhr );
-                        return false;
-                }); 
-        }
+       
         
         
         

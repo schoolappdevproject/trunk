@@ -26,7 +26,7 @@ class School_main_table {
     
     public $country ="";
     public $pin ="";
-    
+    public $profile_pic_data ="";
    }
 
 
@@ -54,7 +54,7 @@ class School_main_table {
             $school_data->mobility = $result[$i][13];
             $school_data->small_description = $result[$i][14];
             $school_data->religous_preference = $result[$i][15];
-
+            $school_data->profile_pic_data =  $result[$i][16];
             array_push($sdata,$school_data);
         }
         return $sdata;

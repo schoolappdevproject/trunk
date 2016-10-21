@@ -27,6 +27,7 @@ if ($method == 'POST') {
   //$large_description = $_POST['large_description'];
   $religous_preference = $_POST['religous_preference'];
   $admission_method      = $_POST['admission_method'];
+  $profile_pic_data      =base64_decode($_POST['profile_pic']);
     
     
 
@@ -59,7 +60,8 @@ try{
     'small_description' => $small_description,
     //'large_description' => $large_description,
     'average_rating_score' => $average_rating_score,
-    'religous_preference' => $religous_preference
+    'religous_preference' => $religous_preference,
+    'profile_pic_data'  => $profile_pic_data
   ]);
 
 
