@@ -11,7 +11,7 @@ $log = new MyLogPHP();
 if (isset($_GET['school_id'])){
     
     $log->info("Term :".$_GET['school_id']);
-    $query = "SELECT school_id, principal_name, contact,email,admission_description,average_rating_score,web_link,country,pin, address, school_name, latitude, longitude ,city, session_timmings,category,school_type,courses,school_size,board, medium_of_teaching, mobility, small_description,religous_preference FROM tbl_school_main_table where school_id ='".$_GET['school_id']."'";
+    $query = "SELECT school_id, principal_name, contact,email,admission_description,average_rating_score,web_link,country,pin, address, school_name, latitude, longitude ,city, session_timmings,category,school_type,courses,school_size,board, medium_of_teaching, mobility, small_description,religous_preference,profile_pic_data FROM tbl_school_main_table where school_id ='".$_GET['school_id']."'";
     $log->info($query);    
     $result = $database->query($query)->fetchAll();
     $sdata = array();
@@ -43,7 +43,7 @@ if (isset($_GET['school_id'])){
         $school_data->mobility               = $result[$i][21];
         $school_data->small_description      = $result[$i][22];
         $school_data->religous_preference    = $result[$i][23];
-
+        $school_data->profile_pic_data       = base64_decode($result[$i][24]);
         array_push($sdata,$school_data);
     }
     $log->info(json_encode($sdata));    

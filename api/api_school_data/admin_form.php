@@ -27,7 +27,7 @@ if ($method == 'POST') {
   //$large_description = $_POST['large_description'];
   $religous_preference = $_POST['religous_preference'];
   $admission_method      = $_POST['admission_method'];
-  $profile_pic_data      =base64_decode($_POST['profile_pic']);
+  $profile_pic_data      =base64_encode($_POST['profile_pic']);
     
     
 

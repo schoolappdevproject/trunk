@@ -85,7 +85,7 @@ while ($row = @mysql_fetch_assoc($result)){
     $newnode->setAttribute("mobility", $row['mobility']);
     $newnode->setAttribute("religous_preference", $row['religous_preference']);
     $newnode->setAttribute("small_description", $row['small_description']);
-    $newnode->setAttribute("profile_pic_data", base64_encode($row['profile_pic_data']));
+    $newnode->setAttribute("profile_pic_data", base64_decode($row['profile_pic_data']));
   }
 }
 

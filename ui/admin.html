@@ -1046,20 +1046,15 @@
 
                         // log data to the console so we can see
                         console.log(data); 
-
+                        alert("Data Saved");
                         // here we will handle errors and validation messages
-                    });
-
-                // stop the form from submitting the normal way and refreshing the page
-                event.preventDefault();
-             }).fail(function( xhr, status, errorThrown ) {
+                    }).fail(function( xhr, status, errorThrown ) {
                         console.log( "Query Failed" );
                         console.log( "Error: " + errorThrown );
                         console.log( "Status: " + status );
                         console.dir( xhr );
                         return false;
-            }); 
-        
+                }); 
             
             
             

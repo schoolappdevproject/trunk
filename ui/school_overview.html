@@ -136,6 +136,8 @@ p span i
                 .done(function(data) {  
                     profile_pic_data =  data['image'];
                     document.getElementById("profile_pic_img").src = data['image'];
+                    document.getElementById("fees_block_profile_image").src = data['image'];
+                    
                     // here we will handle errors and validation messages
                 }).fail(function( xhr, status, errorThrown ) {
                         console.log( "Query Failed" );
@@ -222,6 +224,7 @@ p span i
                             var weblink                    =   response[i].web_link;                           
                             var country                    =   response[i].country;
                             var pin                        =   response[i].pin;
+                            var profile_pic_data           =   response[i].profile_pic_data;
                                                          
                             $("#dtl_principal")         .html(principal_name);
                             $("#dtl_address")           .html(address);
@@ -243,7 +246,7 @@ p span i
                             $('#dtl_school_name')       .html(name);
                             $('#dtl_sml_desc')          .html(small_description);
                            
-                            
+                            $("#school_profile_pic_data").attr("src",profile_pic_data);
                             
                         }
                         
@@ -479,7 +482,7 @@ p span i
 				<div class="col-md-12  padding-40 blog-single-inner-container lp-border lp-border-radius-8">
                 <div class="row">
             <div class="col-md-3"><a href="http://microsoftmsdn.com/schoolguru/school-overview.aspx#">
-						<img src="./school_overview_files/school-logo3.jpg" class="img-responsive">
+						<img id="school_profile_pic_data" src="" class="img-responsive">
 					</a></div>
             <div class="col-md-9"><h4 class="mt0"><span id="dtl_school_name"></span></h4>
 
@@ -625,7 +628,7 @@ p span i
       <!-- Description Ends -->
     <!-- review Bloack -->
      <div class="col-sm-12">
-         
+         <div class="col-sm-8">
         <div class="review_block">
         <div class="row">
             <div class="col-sm-12">   
@@ -635,27 +638,29 @@ p span i
          </div> 
         <div id ="init_review_form">
         <div class="row">
-                 <div class="col-sm-9">
+             <div class="col-sm-12">
+                 <div class="col-sm-8">
                     <input type="text" id="dtl_review_initiate_txt" placeholder="Add review for the school" onclick="initiateReviewForm(); return false;" class="form-control" />
 
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
 
                      <input type="button" id="btn_initiate_review" value="Publish Review" class="lp-search-btn" style="float:left;padding:8px 15px;"/>
                     </div>
+            </div>
         </div>
         </div>
         <div id="full_review_form">
             <div class="row">
             <div class="col-sm-12">
-            <div class="col-sm-3"> 
+            <div class="col-sm-4"> 
       
                 <div class="image_block">    
-                    <img class="img-circle" id="profile_pic_img" src="" style="height: 100px; width: 40%;"/>
+                    <img class="img-circle" id="profile_pic_img" src="" style="height: 180px; width: 80%;"/>
                 </div>
                 
             </div>
-            <div class="col-sm-9">
+            <div class="col-sm-8">
                 
                     <div class="row">
                       <input type="text" id="dtl_review_title" placeholder="Add Title" class="inner_txt" />  
@@ -670,16 +675,16 @@ p span i
                     <div class="row">
                         <div id ="review_pic_block"></div>
                     </div>
-                <div class="row">
-                    <br>
-                <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
-                        
-                </div>
-                <div class="row">
-                    <br>
-                     <input type="button" id="btn_publish_review" value="Publish Review" onclick="saveReview(); return false;" class="lp-search-btn" style="float:left;padding:8px 15px;"/>
-                
-                </div>
+                    <div class="row">
+                        <br>
+                    <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
+
+                    </div>
+                    <div class="row">
+                        <br>
+                         <input type="button" id="btn_publish_review" value="Publish Review" onclick="saveReview(); return false;" class="lp-search-btn" style="float:left;padding:8px 15px;"/>
+
+                    </div>
                 </div>
             </div>
             </div>
@@ -691,6 +696,9 @@ p span i
             
               
         </div>
+             </div>
+         <div class="col-sm-4">
+         </div>
     </div>
       
     <!-- review Bloack ends -->
@@ -699,8 +707,8 @@ p span i
     <!-- admission details -->
 
     <div class="col-sm-12">
-        <div class="col-sm-8">
-  <h4>Reviews</h4>
+        <div class="col-sm-11">
+            <h4>Reviews</h4>
             <div id="review_display">
                 
                 <div id ="child">
@@ -758,63 +766,94 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
                   </div>
         </div>
 
-    </div>
+        </div>
     </div>
     </div>
   </div>
   <div id="tabs-2" aria-labelledby="ui-id-2" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-hidden="true" style="display: none;">
     
     <div class="row">
-  
-    
-    
-
-    <div class="col-sm-12">
+        <div class="col-sm-12">
         <div class="col-md-6">
         <h4>Fees</h4>
-  </div>
-  <div class="col-md-2">
-        <div class="lp-search-btn" style="padding:1px 20px;background:#74CEE4;text-align:center;"><h4 style="color:#fff;">Add Fees</h4></div>
-  </div>
+            <!-- Fees Tabs -->
+        </div>
+        <div class="col-md-2">
+            <input type="button" id="btn_initiate_fees" value="Add Fees Detail" class="lp-search-btn" style="float:left;padding:8px 15px;"/>
+        </div>
  
-    </div> <div class="clearfix"></div> <br>
+        </div> <div class="clearfix"></div> <br>
 
-  <div>  <div class="col-sm-8">
-    <div style="background:#fff;float:left;margin-left:15px;padding:10px 0px;margin-bottom:15px;">
-     <div class="col-md-8"><p><b>Autor</b> :Ajay, Bangalore</p></div>
-  <div class="col-md-4"><div class="comments-date">
-												
-												<div class="post-reviews ml0">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-o"></i>
-													<i class="fa fa-star-o"></i>
-												</div>
-											</div></div>
-                                            <div class="col-md-12"><p>My kid has joined in this school.They taken lot' of donation..Etiam pellentesque aliquet tellus. Phasellus congue lacus eget neque.
-Phasellus ornare, ante vitae  consectetuer consequat, purus sapien...</p>
- <p><span> <i aria-hidden="true" class="fa fa-thumbs-o-up"></i>20 Likes</span><span> <i aria-hidden="true" class="fa fa-thumbs-o-down"></i>20 Dislikes</span><span> <i aria-hidden="true" class="fa fa-comments"></i>60 Comments</span></p>
-</div></div>
-<div style="background:#fff;float:left;margin-left:15px;padding:10px 0px;">
-     <div class="col-md-8"><p><b>Autor</b> :Ajay, Bangalore</p></div>
-  <div class="col-md-4"><div class="comments-date">
-												
-												<div class="post-reviews ml0">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-o"></i>
-													<i class="fa fa-star-o"></i>
-												</div>
-											</div></div>
-                                            <div class="col-md-12"><p>My kid has joined in this school.They taken lot' of donation..Etiam pellentesque aliquet tellus. Phasellus congue lacus eget neque.
-Phasellus ornare, ante vitae  consectetuer consequat, purus sapien...</p>
- <p><span> <i aria-hidden="true" class="fa fa-thumbs-o-up"></i>20 Likes</span><span> <i aria-hidden="true" class="fa fa-thumbs-o-down"></i>20 Dislikes</span><span> <i aria-hidden="true" class="fa fa-comments"></i>60 Comments</span></p>
-</div></div>
+        <div> 
+      <div class="col-sm-8">
+         <div id="full_fees_form">
+            <div class="row">
+            <div class="col-sm-12">
+            <div class="col-sm-4"> 
+      
+                <div class="image_block">    
+                    <img class="img-circle" id="fees_block_profile_image" src="" style="height: 180px; width: 80%;"/>
+                </div>
+                
+            </div>
+            <div class="col-sm-8">
+                
+                    <div class="row">
+                      <input type="text" id="dtl_Fees_title" placeholder="Add Title Text" class="inner_txt" />  
+                    </div> 
+                    <div class="row">
+                        <div class="col-sm-6">
+                        Class
+                        </div>
+                        <div class="col-sm-2" style="text-align:right;">
+                        <select id="dtl_Fees_class">  
+                            <option value="Nur">Nursury</option>
+                            <option value="class1">1st </option>
+                            <option value="class2">2nd </option>
+                            <option value="class3">3rd </option>
+                            <option value="class4">4th </option>
+                            <option value="class5">5th </option>
+                            <option value="class6">6th </option>
+                            <option value="class7">7th </option>
+                            <option value="class8">8th </option>
+                            <option value="class9">9th </option>
+                            <option value="class10">10th </option>
+                            <option value="class10">11th </option>
+                            <option value="class10">12th </option>
+                        </select>
+                        </div>
+                    </div> 
+                    <div class="row">
+                        <textarea name="review_txt" id="dtl_fees_txt" placeholder="Enter Fees Details  ..." class="inner_txtarea"></textarea>
+                    </div> 
+                    <div class="row">
+                        <h5>Attach File</h5>
+                         <input id="review_image-upload" type="file" accept="image/*" hidden="true" value="add image" class="lp-search-btn" style="float:left;padding:8px 15px;"/>
+                    </div> 
+                    <div class="row">
+                        <div id ="review_pic_block"></div>
+                    </div>
+                    <div class="row">
+                        <br>
+                    <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
+
+                    </div>
+                    <div class="row">
+                        <br>
+                         <input type="button" id="btn_publish_review" value="Publish Fees" onclick="saveReview(); return false;" class="lp-search-btn" style="float:left;padding:8px 15px;"/>
+
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div id="row">
+                <div class="col-sm-11"></div>
+                <div class="col-sm-1"><a href="#" onclick="clearReview() ; return false;" >cancel</a></div>
+            </div>
+        </div>
 
 
-    </div>  
+      </div>  
   
  
   </div>
