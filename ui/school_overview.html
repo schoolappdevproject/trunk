@@ -109,6 +109,7 @@ p span i
   
     <script>
        var reviewPicArray = [];
+        var fees_file_attach_data;
         var dtl_username ;
         var dtl_email;
         var dtl_user_id;
@@ -166,6 +167,18 @@ p span i
 <script>
     
    
+   
+   function checkFeesFileAttach(sender) {
+    var validExts = new Array(".xlsx", ".xls", ".csv",".doc",".jpg");
+    var fileExt = sender.value;
+    fileExt = fileExt.substring(fileExt.lastIndexOf('.'));
+    if (validExts.indexOf(fileExt) < 0) {
+      alert("Invalid file selected, valid files are of " +
+               validExts.toString() + " types.");
+      return false;
+    }
+    else return true;
+}   
         
       // Attach a submit handler to the form
     $("#login_form").submit(function( event ) {
@@ -792,18 +805,15 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
             <div class="col-sm-4"> 
       
                 <div class="image_block">    
-                    <img class="img-circle" id="fees_block_profile_image" src="" style="height: 180px; width: 80%;"/>
+                    <img class="img-circle" id="fees_block_profile_image" src="" style="height: 150px; width: 80%;"/>
                 </div>
                 
             </div>
             <div class="col-sm-8">
-                
+ 
                     <div class="row">
-                      <input type="text" id="dtl_Fees_title" placeholder="Add Title Text" class="inner_txt" />  
-                    </div> 
-                    <div class="row">
-                        <div class="col-sm-6">
-                        Class
+                        <div class="col-sm-6" style="text-align:center;margin-top:20px; margin-left:20px">
+                        <b>Class</b>
                         </div>
                         <div class="col-sm-2" style="text-align:right;">
                         <select id="dtl_Fees_class">  
@@ -828,10 +838,10 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
                     </div> 
                     <div class="row">
                         <h5>Attach File</h5>
-                         <input id="review_image-upload" type="file" accept="image/*" hidden="true" value="add image" class="lp-search-btn" style="float:left;padding:8px 15px;"/>
+                         <input id="fees_file_upload" type="file" hidden="true" value="Upload File" class="lp-search-btn" style="float:left;padding:8px 15px;"/>
                     </div> 
                     <div class="row">
-                        <div id ="review_pic_block"></div>
+                        <img id="fees_thumbnail_pic" height="100px" width="80px" />
                     </div>
                     <div class="row">
                         <br>
@@ -1066,7 +1076,7 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
                     searchExactSchoolID(x);
                 }
                 
-                
+                //review image upload
                 var readURL = function(input) {
                 if (input.files && input.files[0]) {
                         var reader = new FileReader();
@@ -1092,6 +1102,33 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
                    readURL(this);
                 });
                
+                //fees file upload
+                $("#fees_thumbnail_pic").hide();
+                
+                 var readFileURL = function(input) {
+                if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            
+                            $('#fees_thumbnail_pic').attr('src', 'images\\file_icon.png');
+                            $("#fees_thumbnail_pic").show();
+                            
+                            var fees_attach = new Object();
+                            fees_attach.fileData = e.target.result;
+                            fees_file_attach_data = fees_attach;
+                        }
+
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+
+                $("#fees_file_upload").on('change', function(){
+                    if(checkFeesFileAttach(this))
+                        {
+                            readFileURL(this);
+                        }
+                });
                 
                 loadSchoolReviews();
             }
