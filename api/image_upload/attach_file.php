@@ -22,8 +22,16 @@ $type     = $_POST['type'];
 
 try
 {
-    $filepath = 'file_upload/'.$file_name.'.'.$type;    
+    $filepath = 'file_upload/'.$file_name.$type;   
+
+    if($type == '.xls') 
+	{
+    $log->info(file_put_contents($filepath, $data));
+	}
+	else
+	{
     $log->info(file_put_contents($filepath, base64_decode($data)));
+	}
     
     
     //database save 
