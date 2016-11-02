@@ -788,11 +788,10 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
     <div class="row">
         <div class="col-sm-12">
         <div class="col-md-6">
-        <h4>Fees</h4>
             <!-- Fees Tabs -->
-        </div>
+        </div> 
         <div class="col-md-2">
-            <input type="button" id="btn_initiate_fees" value="Add Fees Detail" class="lp-search-btn" style="float:left;padding:8px 15px;"/>
+            <input type="button" id="btn_initiate_fees" value="Add Fees Detail" class="lp-search-btn" onclick="feesFormInit()" style="float:left;padding:8px 15px;"/>
         </div>
  
         </div> <div class="clearfix"></div> <br>
@@ -818,18 +817,18 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
                         <div class="col-sm-2" style="text-align:right;">
                         <select id="dtl_Fees_class">  
                             <option value="Nur">Nursury</option>
-                            <option value="class1">1st </option>
-                            <option value="class2">2nd </option>
-                            <option value="class3">3rd </option>
-                            <option value="class4">4th </option>
-                            <option value="class5">5th </option>
-                            <option value="class6">6th </option>
-                            <option value="class7">7th </option>
-                            <option value="class8">8th </option>
-                            <option value="class9">9th </option>
-                            <option value="class10">10th </option>
-                            <option value="class10">11th </option>
-                            <option value="class10">12th </option>
+                            <option value="1">1st </option>
+                            <option value="2">2nd </option>
+                            <option value="3">3rd </option>
+                            <option value="4">4th </option>
+                            <option value="5">5th </option>
+                            <option value="6">6th </option>
+                            <option value="7">7th </option>
+                            <option value="8">8th </option>
+                            <option value="9">9th </option>
+                            <option value="10">10th </option>
+                            <option value="11">11th </option>
+                            <option value="12">12th </option>
                         </select>
                         </div>
                     </div> 
@@ -850,7 +849,7 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
                     </div>
                     <div class="row">
                         <br>
-                         <input type="button" id="btn_publish_review" value="Publish Fees" onclick="saveReview(); return false;" class="lp-search-btn" style="float:left;padding:8px 15px;"/>
+                         <input type="button" id="btn_publish_review" value="Publish Fees" onclick="saveFeesUpdate(); return false;" class="lp-search-btn" style="float:left;padding:8px 15px;"/>
 
                     </div>
                 </div>
@@ -858,15 +857,33 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
             </div>
             <div id="row">
                 <div class="col-sm-11"></div>
-                <div class="col-sm-1"><a href="#" onclick="clearReview() ; return false;" >cancel</a></div>
+                <div class="col-sm-1"><a href="#" onclick="clearFeesUpdate() ; return false;" >cancel</a></div>
             </div>
         </div>
+	<!-- Fees Display  -->
+	 </div>
+             </div>
+         <div class="col-sm-4">
+         </div>
+    </div>
 
 
+<div class="col-sm-12">
+        <div class="col-sm-11">
+            <h4>Fees Details</h4>
+            <div id="fees_display">
+                
+             
+       	     </div>
+
+        </div>
+ </div>
       </div>  
   
  
   </div>
+
+
     </div>
     
     </div>
@@ -1030,6 +1047,7 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
             {
                  $("#init_review_form").show();
                  $("#full_review_form").hide();
+                 $("#full_fees_form").hide();
                 
                  $('i.glyphicon-thumbs-up, i.glyphicon-thumbs-down').click(function(){    
                     var $this = $(this),
@@ -1118,6 +1136,9 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
                             fees_attach.fileData = e.target.result;
                             fees_file_attach_data = fees_attach;
                         }
+
+			fees_file_attach_data.ext = 
+    						 input.files[0].substring(input.files[0].lastIndexOf('.'));
 
                         reader.readAsDataURL(input.files[0]);
                     }
@@ -1354,7 +1375,82 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
             });
 
         }
-        
+         function saveFeesUpdate()
+        {
+
+            var formData = {
+                id_school     : readCookie('school_id'),
+                user_id       : dtl_user_id,
+                standard      : $("#dtl_Fees_class").val(),
+                fees_text     : $("#dtl_fees_txt").val()
+             };
+
+            console.log(formData);
+
+              // process the formf
+            $.ajax({
+                type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url         : '../api/save_data/save_fees_data.php', // the url where we want to POST
+                data        : formData, // our data object
+                dataType    : 'json', // what type of data do we expect back from the server
+                encode          : true
+            })
+                // using the done promise callback
+            .done(function(data) {    
+                fees_id = data['fees_id'];
+                console.log("Fees ID" + fees_id); 
+		if(fees_file_attach_data) //if file is uploaded
+	                feesSuccess(fees_id);
+
+                showFeesInUI(fees_id,formData.standard,formData.fees_text);
+                clearFeesUpdate();
+                // here we will handle errors and validation messages
+            }).fail(function( xhr, status, errorThrown ) {
+                    alert( "Sorry, there was a problem!" );
+                    console.log( "Error: " + errorThrown );
+                    console.log( "Status: " + status );
+                    console.dir( xhr );
+            });
+
+        }
+         function   feesSuccess(fees_id)
+        {
+                        
+
+                var formData = {
+
+                        fileName         : "file_"+fees_id,
+                        fileData         :  fees_file_attach_data.fileData,
+                        fees_id          : fees_id,
+			type             : fees_file_attach_data.ext 
+                 };
+
+                  // process the formf
+                $.ajax({
+                    type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                    url         : '../api/image_upload/attach_file.php', // the url where we want to POST
+                    data        : formData, // our data object
+                    dataType    : 'json', // what type of data do we expect back from the server
+                    encode          : true
+                })
+                    // using the done promise callback
+                .done(function(data) {
+
+                    // log data to the console so we can see
+                    console.log(data['code']);             
+
+                    // here we will handle errors and validation messages
+                }).fail(function( xhr, status, errorThrown ) {
+                        alert( "Sorry, there was a problem!" );
+                        console.log( "Error: " + errorThrown );
+                        console.log( "Status: " + status );
+                        console.dir( xhr );
+                });
+
+            
+            
+        }
+ 
         function   reviewSuccess(review_id)
         {
             //save the images if there             
@@ -1402,6 +1498,73 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
 
             }
             
+            
+        }
+        function showFeesInUI(fees_id,standard,fees_text)
+        {
+            
+            console.log(standard,fees_text);
+            var d = new Date();
+            var strDate = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
+        
+           var newElement = document.createElement('div');
+            newElement.innerHTML  = "<div class='comments-box'>" +
+                                    "<div class='comments-thumb'>"+
+                                        "<img class='img-circle' alt='comments-thumb-1' src='"+profile_pic_data+"' width='50' height='100'> "+
+                                    "</div>"+
+                                    "<div class='comments-content'>"+
+                                        "<div class='comments-meta-box'>"+
+                                            "<div class='comments-author text-left'>"+
+                                                "<div class='comments-name'>"+
+                                                    dtl_username+
+                                                "</div>"+
+                                                "<div class='comments-date'>"+
+                                                    "<span style='font-size:12px;'>"+strDate+"</span>"+
+                                                "</div>"+
+                                            "</div>"+
+
+                                        "</div>"+
+                                        "<div class='comments-description'>"+
+                                            "<span id='sp_fees_title'><p><h4>Fees Details"+
+                                           standard+
+                                            "</h4></p>"+
+                                            "</span>"+
+                                            "<span id='sp_fees_text'>"+
+                                            "<p>"+
+                                                fees_text+
+                                            "</p>"+
+                                            "</span>"+
+                                            "<br>"+
+                                            "<div id='file_series_"+fees_id+"'>"+
+                                            "</div>"+
+                                            "<br>"+
+                                                                                
+                                                "<div class='col-sm-1'>" +
+                            "<i id='like"+fees_id+"' onclick='feesLiked("+fees_id+")' class='glyphicon glyphicon-thumbs-up'  style='color:blue'></i> <div id='like"+fees_id+"-bs3'></div>"+
+                                                "</div>"+
+                                                "<div class='col-sm-1'>"+
+                    "<i id='dislike"+fees_id+"'  onclick='feesDisliked("+fees_id+")' class='glyphicon glyphicon-thumbs-down'></i> <div id='dislike"+fees_id+"-bs3'></div>"+
+                                                "</div>"+
+                                            "</div>"+
+                                    "</div>"
+                                "</div>";
+
+            
+            $("#fees_display").prepend(newElement.innerHTML);
+             
+            //populate through Pictorial Series and add in the file thumbnail
+           /* 
+            var pictorial_sections = document.getElementById("file_series_"+fees_id); 
+            var newPictorial = document.createElement('img');
+            var imgID = 'pictorial_'+review_id +'_'+_inc;
+            newPictorial.setAttribute('id', imgID );  //set id
+            newPictorial.setAttribute('src', reviewPicArray[pic].picPath );  //set id
+            newPictorial.setAttribute('width', "300px" );  //set width
+            newPictorial.setAttribute('height', "180px" );  //set height
+
+            console.log("pic added");
+            pictorial_sections.appendChild(newPictorial);
+	*/
             
         }
         
@@ -1454,8 +1617,6 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
                                     "</div>"
                                 "</div>";
 
-            //var description_sections = document.getElementById("review_display");    
-            //description_sections.appendChild(newElement);
             
             $("#review_display").prepend(newElement.innerHTML);
              
@@ -1479,7 +1640,12 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
              }
             
         }
-        
+ 	function feesFormInit()
+	{
+		$("#full_fees_form").show();
+		
+	    $("#btn_initiate_fees").hide();
+	}       
         
         function  initiateReviewForm()
         {
@@ -1499,7 +1665,13 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
             reviewPicArray.splice(0,reviewPicArray.length);
             
         }
-        
+         function clearFeesUpdate()
+        {
+            $("#full_fees_form").hide();
+            $("#dtl_fees_txt").val("");
+	    $("#btn_initiate_fees").show();
+        }
+     
         function reviewLiked(review_id_i)
         {
             console.log("Review Liked "+ review_id_i);    

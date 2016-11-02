@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.49, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.53, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: school_db_test
 -- ------------------------------------------------------
--- Server version	5.5.49-0ubuntu0.14.04.1
+-- Server version	5.5.53-0ubuntu0.14.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -241,6 +241,60 @@ CREATE TABLE `tbl_dislike_table` (
 LOCK TABLES `tbl_dislike_table` WRITE;
 /*!40000 ALTER TABLE `tbl_dislike_table` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_dislike_table` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_fees_attachment`
+--
+
+DROP TABLE IF EXISTS `tbl_fees_attachment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_fees_attachment` (
+  `id_fees_attachment` int(11) NOT NULL AUTO_INCREMENT,
+  `attach_path` varchar(256) NOT NULL,
+  `attach_type` varchar(4) NOT NULL,
+  `attach_data` blob,
+  `id_fees` int(11) NOT NULL,
+  PRIMARY KEY (`id_fees_attachment`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_fees_attachment`
+--
+
+LOCK TABLES `tbl_fees_attachment` WRITE;
+/*!40000 ALTER TABLE `tbl_fees_attachment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_fees_attachment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_fees_data`
+--
+
+DROP TABLE IF EXISTS `tbl_fees_data`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_fees_data` (
+  `id_fees_data` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `school_id` int(11) NOT NULL,
+  `standard` int(11) DEFAULT NULL,
+  `fees_txt` varchar(5000) DEFAULT NULL,
+  `review_date` varchar(12) DEFAULT NULL,
+  PRIMARY KEY (`id_fees_data`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_fees_data`
+--
+
+LOCK TABLES `tbl_fees_data` WRITE;
+/*!40000 ALTER TABLE `tbl_fees_data` DISABLE KEYS */;
+INSERT INTO `tbl_fees_data` VALUES (1,20,1,1,NULL,'2016-11-01'),(2,21,1,9,NULL,'2016-11-01'),(3,21,1,7,'School fees is particular very High 4500 Rs per month','2016-11-01'),(4,21,1,9,'Fees is better than other schools. latest fees is 5000Rs ','2016-11-01'),(5,21,1,10,'asjdh,ashdahskdhkashdkasjh','2016-11-01'),(6,21,1,10,'jc,hjzhksjhakdhaksjhdkas','2016-11-01'),(7,21,1,10,'lef,dmf,j,fjaksjldjlaskjdlkasj','2016-11-01'),(8,21,1,9,'sdfhsdkfhsdkfhksdjfh','2016-11-01');
+/*!40000 ALTER TABLE `tbl_fees_data` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -616,4 +670,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-10-21 20:40:08
+-- Dump completed on 2016-11-02 16:08:04
