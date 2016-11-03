@@ -20,10 +20,25 @@ if ($method == 'POST') {
     }
     else
     {
+        /*
+        select tbl_fees_data.id_fees_data,          
+        tbl_fees_data.review_date,
+        tbl_fees_data.standard,
+        tbl_fees_data.fees_txt,
+        tbl_users.username 
+            
+            from tbl_fees_data,tbl_users where tbl_fees_data.user_id = tbl_users.user_id and tbl_fees_data.school_id = 1
+        */
         
       //$result = [];
       //validating the user_id
-      $qry = "select tbl_review_data.id_review_data, tbl_review_data.review_date,tbl_review_data.tbl_review_title,tbl_review_data.tbl_review_text,".                        "tbl_users.username from tbl_review_data,tbl_users where tbl_review_data.id_user_data = tbl_users.user_id and tbl_review_data.id_school = $school_id";
+      $qry = "select tbl_fees_data.id_fees_data, "
+        "tbl_fees_data.review_date,".
+        "tbl_fees_data.standard,".
+        "tbl_fees_data.fees_txt,".
+        "tbl_users.username,".
+        "tbl_users.user_id ".
+        "from tbl_fees_data,tbl_users where tbl_fees_data.user_id = tbl_users.user_id and tbl_fees_data.school_id  = $school_id";
        
       $result = $database->query($qry)->fetchAll();
       echo json_encode($result);
