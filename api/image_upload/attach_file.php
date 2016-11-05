@@ -24,15 +24,7 @@ try
 {
     $filepath = 'file_upload/'.$file_name.$type;   
 
-    if($type == '.xls') 
-	{
-    $log->info(file_put_contents($filepath, $data));
-	}
-	else
-	{
-    $log->info(file_put_contents($filepath, base64_decode($data)));
-	}
-    
+    file_put_contents($filepath, $data);
     
     //database save 
      $ret = $database->insert('tbl_fees_attachment', [

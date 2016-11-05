@@ -32,7 +32,7 @@ if ($method == 'POST') {
         
       //$result = [];
       //validating the user_id
-      $qry = "select tbl_fees_data.id_fees_data, "
+      $qry = "select tbl_fees_data.id_fees_data, ".
         "tbl_fees_data.review_date,".
         "tbl_fees_data.standard,".
         "tbl_fees_data.fees_txt,".
