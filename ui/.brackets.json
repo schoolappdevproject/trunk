@@ -6,6 +6,7 @@
         "/var/www/html/dev_portal/trunk/ui/assets/fonts/jquery.filter-icons/util.js",
         "/var/www/html/dev_portal/trunk/ui/assets/fonts/jquery.filter-icons/common.js",
         "/var/www/html/dev_portal/trunk/ui/assets/fonts/jquery.filter-icons/build.min.js",
-        "/var/www/html/dev_portal/trunk/ui/assets/fonts/jquery.filter-icons/slick.min.js"
+        "/var/www/html/dev_portal/trunk/ui/assets/fonts/jquery.filter-icons/slick.min.js",
+        "/var/www/html/dev_portal/trunk/ui/school_overview_files/stats.js"
     ]
 }

@@ -1,0 +1,355 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="keywords" content="HTML5 Template">
+        <meta name="description" content="Listingpro - Template HTML5">
+        <meta name="author">
+	<!-- Title -->
+	<title>
+	School Guru
+    </title>
+	
+	<!-- Mobile Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap-3.3.7/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="css/bootstrap-3.3.7/dist/fonts/glyphicons-halflings-regular.ttf" type="text/css" rel="stylesheet">
+    <link href="css/common.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="ui-jquery/jquery.js"></script>
+    <script type="text/javascript" src="ui-jquery/jquery-ui.js"></script>
+    <script type="text/javascript" src="./school_overview_files/jquery-lib.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="js/cookie.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="js/util.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="js/angular.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="css/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="node_modules/jquery-bar-rating/dist/themes/fontawesome-stars.css">
+    <script src="node_modules/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
+        
+        <style>
+        .floatClear {
+                clear: both;
+            }
+        </style>
+        <script type="text/javascript">
+        
+            function getRating(rating)
+            {
+                 var rated;
+                switch(rating)
+                    {
+                        case "1":
+                            rated = "Bad";
+                            break;
+                        case "2":
+                            rated = "Better";
+                            break;
+                        case "3":
+                            rated = "Good";
+                            break;
+                        case "4":
+                            rated = "Best";
+                            break;
+                        case "5":
+                            rated = "Excellent";
+                            break;
+
+                    }
+                return rated;
+            }
+            
+            
+        $(function() {
+            $('.star-rating').barrating({
+                theme: 'fontawesome-stars'
+            });
+            
+            $('#sports-rating').change(function(){ 
+                var rated = getRating($('select[name=sports_selector]').val());
+                $("#sports_rating_desc").html("Rating : "+rated);
+            });
+            
+             $('#study-rating').change(function(){ 
+                var rated = getRating($('select[name=study_selector]').val());
+                $("#study_rating_desc").html("Rating : "+rated);
+            });
+            
+             $('#lab-rating').change(function(){ 
+                var rated = getRating($('select[name=lab_selector]').val());
+                $("#lab_rating_desc").html("Rating : "+rated);
+            });
+            
+            $('#lib-rating').change(function(){ 
+                var rated = getRating($('select[name=lib_selector]').val());
+                $("#lib_rating_desc").html("Rating : "+rated);
+            });
+            
+              $('#teacher-rating').change(function(){ 
+                var rated = getRating($('select[name=teacher_selector]').val());
+                $("#teacher_rating_desc").html("Rating : "+rated);
+            });
+        });
+            
+            
+        </script>
+        
+   </head>
+    
+    <body onload="load()">
+        
+ <div class="container">
+  
+<div class="row">
+    <div class="col-sm-3 col-md-6" style="">
+        <h3> Rate Your School on Studies</h3>
+        <select class="star-rating" id="study-rating" name="study_selector">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+     <h4 class="rate_desc" id="study_rating_desc">
+        
+     </h4>
+    </div>
+    <div class="col-sm-9 col-md-6" style="">
+        <textarea name="rating_study_desc" rows="3" cols="20" id="rating_study_desc" class="form-control" placeholder="Tell something" style="height:100px;">
+        
+        </textarea>
+    </div>
+  </div>
+     
+        <div class="floatClear"><hr></div>
+  <div class="row">
+    <div class="col-sm-3 col-md-6" style="">
+        <h3> Rate Your School on Science Laboratories</h3>
+        <select class="star-rating" id="lab-rating" name="lab_selector">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+     <h4 class="rate_desc" id="lab_rating_desc">
+        
+     </h4>
+    </div>
+    <div class="col-sm-9 col-md-6" style="">
+        <textarea name="rating_lab_desc" rows="3" cols="20" id="rating_lab_desc" class="form-control" placeholder="Tell something" style="height:100px;">
+        
+        </textarea>
+    </div>
+  </div>
+      <div class="floatClear"><hr></div>  
+   <div class="row">
+    <div class="col-sm-3 col-md-6" style="">
+        <h3> Rate Your School on Sports</h3>
+        <select class="star-rating" id="sports-rating" name="sports_selector">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+     <h4 class="rate_desc" id="sports_rating_desc">
+        
+     </h4>
+    </div>
+    <div class="col-sm-9 col-md-6" style="">
+        <textarea name="rating_sport_desc" rows="3" cols="20" id="rating_sport_desc" class="form-control" placeholder="Tell something" style="height:100px;">
+        
+        </textarea>
+    </div>
+  </div>
+        <div class="floatClear"><hr></div>
+      <div class="row">
+    <div class="col-sm-3 col-md-6" style="">
+        <h3> Rate Your School on Library and Reading Facilities</h3>
+        <select class="star-rating" id="lib-rating" name="lib_selector">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+     <h4 class="rate_desc" id="lib_rating_desc">
+        
+     </h4>
+    </div>
+    <div class="col-sm-9 col-md-6" style="">
+        <textarea name="rating_lib_desc" rows="3" cols="20" id="rating_lib_desc" class="form-control" placeholder="Tell something" style="height:100px;">
+        
+        </textarea>
+    </div>
+  </div>
+        <div class="floatClear"><hr></div>
+   <div class="row">
+    <div class="col-sm-3 col-md-6" style="">
+        <h3> Rate Your School on Teachers and Administration</h3>
+        <select class="star-rating" id="teacher-rating" name="teacher_selector">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+     <h4 class="rate_desc" id="teacher_rating_desc">
+        
+     </h4>
+    </div>
+    <div class="col-sm-9 col-md-6" style="">
+        <textarea name="rating_teacher_desc" rows="3" cols="20" id="rating_teacher_desc" class="form-control" placeholder="Tell something" style="height:100px;">
+        </textarea>
+    </div>
+  </div>
+     <div class="row">
+     <h3>
+         <a href="#" onclick="saveRating()">Click to Save Rating</a>
+     </h3>
+     </div>
+     
+     <div class="row">
+         
+    <hr>
+    <h2> All Ratings </h2>
+     <div id="all_ratings">
+       
+     </div>
+         
+     </div>
+     
+   </div>  
+       
+    </body>
+    
+    <script>
+        
+        function load()
+        {
+                var school_id = readCookie('school_id');
+                var formData = {
+                    id_school           : school_id
+                 };
+
+                console.log(formData);
+
+                  // process the formf
+                $.ajax({
+                    type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                    url         : '../api/load_data/load_school_rating.php', // the url where we want to POST
+                    data        : formData, // our data object
+                    dataType    : 'json', // what type of data do we expect back from the server
+                    encode          : true
+                })
+                    // using the done promise callback
+                .done(function(data) {
+                        
+                        for(i in data)
+                            {
+                                  var newElement = document.createElement('div');
+                                  newElement.innerHTML  ="<select class='star-rating'>"+
+                        ((data[i].rating_points == "1") ? "<option value='1' selected>1</option>" :"<option value='1'>1</option>")+
+                        ((data[i].rating_points == "2") ? "<option value='2' selected>2</option>" :"<option value='2'>2</option>")+
+                        ((data[i].rating_points == "3") ? "<option value='3' selected>3</option>" :"<option value='3'>3</option>")+
+                        ((data[i].rating_points == "4") ? "<option value='4' selected>4</option>" :"<option value='4'>4</option>")+
+                        ((data[i].rating_points == "5") ? "<option value='5' selected>5</option>" :"<option value='5'>5</option>")+
+                                                            "</select>"+
+                                                            "<h4>Rating on "+data[i].rating_type+"</h4>"+        
+                                                             "<br>"+                     
+                                                            "<h4>By "+data[i].username+" on "+data[i].rating_date+"</h4>"+
+                                                             "<h4>"+ data[i].rating_desc +"</h4>"+
+                                                             "<hr>";
+                                
+                                                             
+
+                                    var description_sections = document.getElementById("all_ratings");    
+                                    description_sections.appendChild(newElement);   
+                                     
+                            }
+                        
+
+                    // here we will handle errors and validation messages
+                }).fail(function( xhr, status, errorThrown ) {
+                        console.log( "Query Failed" );
+                        console.log( "Error: " + errorThrown );
+                        console.log( "Status: " + status );
+                        console.dir( xhr );
+                        return false;
+                });
+
+        }
+       
+        function saveRating()
+        {
+            var school_id = readCookie('school_id');
+            var user_id;
+            
+            
+          if(typeof localStorage.getItem("sessionid") !== 'undefined')
+            {         
+                user_id  = localStorage.getItem("user_id");   
+            }
+            
+          
+            
+            /*
+             $id_school      = $_POST['id_school'];
+              $user_id        = $_POST['user_id'];
+              $sports_rating  = $_POST['sports_rating'];
+              $sports_rating_desc  = $_POST['sports_rating_desc'];
+              $study_rating   = $_POST['study_rating'];
+              $study_rating_desc   = $_POST['study_rating_desc'];
+              $lab_rating     = $_POST['lab_rating'];
+              $lab_rating_desc     = $_POST['lab_rating_desc'];
+              $lib_rating     = $_POST['lib_rating'];
+              $lib_rating_desc     = $_POST['lib_rating_desc'];
+              $adm_rating     = $_POST['adm_rating'];
+              $adm_rating_desc     = $_POST['adm_rating_desc'];
+            */
+            
+                        var formData = {
+                            id_school           : school_id,
+                            user_id             : user_id,
+                            sports_rating       : $('select[name=sports_selector]').val(),
+                            sports_rating_desc  : $("#rating_sport_desc").val(),
+                            lab_rating          : $('select[name=lab_selector]').val(),
+                            lab_rating_desc     : $("#rating_lab_desc").val(),
+                            lib_rating          : $('select[name=lib_selector]').val(),
+                            lib_rating_desc     : $("#rating_lib_desc").val(),
+                            adm_rating          : $('select[name=teacher_selector]').val(),
+                            adm_rating_desc     : $("#rating_teacher_desc").val(),
+                            study_rating        : $('select[name=study_selector]').val(),
+                            study_rating_desc   : $("#rating_study_desc").val()
+                            
+                         };
+            
+                        console.log(formData);
+                        
+                          // process the formf
+                        $.ajax({
+                            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                            url         : '../api/save_data/save_school_rating.php', // the url where we want to POST
+                            data        : formData, // our data object
+                            dataType    : 'json', // what type of data do we expect back from the server
+                            encode          : true
+                        })
+                            // using the done promise callback
+                        .done(function(data) {
+
+                                console.log(" Saved ");
+
+                            // here we will handle errors and validation messages
+                        }).fail(function( xhr, status, errorThrown ) {
+                                console.log( "Query Failed" );
+                                console.log( "Error: " + errorThrown );
+                                console.log( "Status: " + status );
+                                console.dir( xhr );
+                                return false;
+                        });
+            
+        }
+        
+    </script>
+    
+    </html>
+    

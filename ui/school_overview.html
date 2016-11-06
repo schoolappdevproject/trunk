@@ -117,6 +117,7 @@ p span i
         var session_id;
         var profile_pic_data ;
         var school_latlng;
+        var map;
         
          function loadProfileImage(user_id_i)
         {
@@ -242,21 +243,19 @@ p span i
                             var pin                        =   response[i].pin;
                             var profile_pic_data           =   response[i].profile_pic_data;
                             
-                            
-    
-                           if(window.google){
-                                var  map = new google.maps.Map(document.getElementById("schoolmap"), {
-                                    center: new google.maps.LatLng(
-                                                    parseFloat(response[i].latitude),
-                                                    parseFloat(response[i].longitude)),
-                                    zoom: 4,
+                            console.log("Latitude Longitude:"+latlng);        
+                    
+                            if(window.google){
+                                    map = new google.maps.Map(document.getElementById("schoolmap"), {
+                                    center: {lat: -34.397, lng: 150.644},
+                                    zoom: 8,
                                     mapTypeId: 'roadmap',
                                     mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
                                   });
-                           }
-    
-                            
-                                                         
+                               console.log("printmap");
+                               console.log(map);
+                            }
+                                
                             $("#dtl_principal")         .html(principal_name);
                             $("#dtl_address")           .html(address);
                             
@@ -917,60 +916,15 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
   <!-- Rating Tab -->
   <div id="tabs-4" style="padding: 20px; display: none;" aria-labelledby="ui-id-4" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-hidden="true">
    <div class="row">
-  <div class="">
-        <div class="col-md-6">
-        <h4>Review Title</h4>
-        
-  </div>
-  <div class="col-md-3">
-        <div class="lp-search-btn" style="padding:1px 0px;background:#74CEE4;text-align:center;"><h4 style="color:#fff;">Add Review</h4></div>
-  </div>
- 
-    </div> <div class="clearfix"></div> <br>
-    
-    <div class="col-md-9" style="background:#fff;margin-bottom:20px;padding:10px 0px;">
-    <div class="col-md-8"><p><b>Autor</b> :Ajay, Bangalore <span style="font-size:14px;padding-left:6px;">( Nov 20, 2015 )</span></p></div>
-  <div class="col-md-4"><div class="comments-date">
-												
-												<div class="post-reviews ml0">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-o"></i>
-													<i class="fa fa-star-o"></i>
-												</div>
-											</div></div>
-    <div class="">
-        <div class="col-sm-12">
-  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusa ntium dolore mque laud antium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi natus error sit olore mque laud anti arc hitecto beatae vitae dicta sunt explicabo mque laud anti arc hitecto beatae vitae dicta sunt explicabo mque laud anti arc hitecto beatae vitae dicta sunt explicabo. </p>
-  
-    <p><span> <i aria-hidden="true" class="fa fa-thumbs-o-up"></i>20 Likes</span><span> <i aria-hidden="true" class="fa fa-thumbs-o-down"></i>20 Dislikes</span><span> <i aria-hidden="true" class="fa fa-comments"></i>60 Comments</span></p>
-    </div>
-    </div></div>
 
-    <div class="col-md-9" style="background:#fff;margin-bottom:20px;padding:10px 0px;">
-    <div class="col-md-8"><p><b>Autor</b> :Ajay, Bangalore <span style="font-size:14px;padding-left:6px;">( Nov 20, 2015 )</span></p></div>
-  <div class="col-md-4"><div class="comments-date">
-												
-												<div class="post-reviews ml0">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-o"></i>
-													<i class="fa fa-star-o"></i>
-												</div>
-											</div></div>
-    <div class="">
-        <div class="col-sm-12">
-  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusa ntium dolore mque laud antium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi natus error sit olore mque laud anti arc hitecto beatae vitae dicta sunt explicabo mque laud anti arc hitecto beatae vitae dicta sunt explicabo mque laud anti arc hitecto beatae vitae dicta sunt explicabo. </p>
-  
-    <p><span> <i aria-hidden="true" class="fa fa-thumbs-o-up"></i>20 Likes</span><span> <i aria-hidden="true" class="fa fa-thumbs-o-down"></i>20 Dislikes</span><span> <i aria-hidden="true" class="fa fa-comments"></i>60 Comments</span></p>
-    </div>
-    </div></div>
-    
-    </div>
+        <div class="col-md-12">
+        <h4>School Ratings </h4>
+            <!--  School_ratings --> 
+        <iframe src="rating.html" width="97%" height="2024px" style="margin-left:15px;" frameborder="0" allowfullscreen=""></iframe>
+        </div>
+   
   </div>
-                        
+   </div>                     
   <!-- gallery tab -->
   <div id="tabs-5" style="padding: 20px; display: none;" aria-labelledby="ui-id-5" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-hidden="true">
    <div class="row">
@@ -991,9 +945,9 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
    <div class="col-md-3"><img src="./school_overview_files/india-school.jpg"></div>
    </div>
   </div>
-</div>
+
 					
-					
+	</div>				
 				</div>
 
 			</div>
