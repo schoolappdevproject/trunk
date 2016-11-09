@@ -1,0 +1,273 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+   <script type="text/javascript" src="../../ui/js/jquery-2.2.3.js"></script>
+  
+  <!--for the gallery-->
+   <link rel="stylesheet" type="text/css" href="css/jquery.ad-gallery.css">
+  <script type="text/javascript" src="scripts/jquery.ad-gallery.js?rand=995"></script>
+  
+  <!--for the uploadify-->
+  <link href="css/default.css" rel="stylesheet" type="text/css" />
+  <link href="css/uploadify.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="scripts/swfobject.js"></script>
+  <script type="text/javascript" src="scripts/jquery.uploadify.v2.1.0.min.js"></script>
+  <script type="text/javascript" charset="UTF-8" src="../../ui/js/cookie.js"></script>
+  <script type="text/javascript">
+      var school_id;
+      
+  $(function() {
+	var galleries,effect = null;
+    load();
+	start();
+    function load()
+      {
+          school_id = readCookie('school_id');
+      }
+	function start(){
+		var url = '../../api/image_upload/ajax.php?school_id='+school_id;
+		
+		$(".ad-thumb-list").load(url,{},function (responseText, textStatus, XMLHttpRequest) {
+					//ad-gallery: 
+					/*
+					$('img.image1').data('ad-desc', 'Whoa! This description is set through elm.data("ad-desc") instead of using the longdesc attribute.<br>And it contains <strong>H</strong>ow <strong>T</strong>o <strong>M</strong>eet <strong>L</strong>adies... <em>What?</em> That aint what HTML stands for? Man...');
+					$('img.image1').data('ad-title', 'Title through $.data');
+					$('img.image4').data('ad-desc', 'This image is wider than the wrapper, so it has been scaled down');
+					$('img.image5').data('ad-desc', 'This image is higher than the wrapper, so it has been scaled down');
+					*/
+					galleries = $('.ad-gallery').adGallery();
+					(effect!=null)?galleries[0].settings.effect = effect:"";
+					
+					$('#switch-effect').change(
+					  function() {
+						effect = $(this).val();
+						galleries[0].settings.effect = $(this).val();
+						return false;
+					  }
+					);
+					$('#toggle-slideshow').click(
+					  function() {
+						galleries[0].slideshow.toggle();
+						return false;
+					  }
+					);
+					$('#last-uploaded').click(
+					  function() {
+						galleries[0].lastImage();
+						return false;
+					  }
+					);
+		}
+		);
+	}
+      
+       
+	//uploadify:
+	/*$("#uploadify").uploadify({
+		'uploader'       : 'scripts/uploadify.swf',
+		'script'         : 'scripts/uploadify.php',
+		'cancelImg'      : 'css/cancel.png',
+		'folder'         : 'images',
+		'queueID'        : 'fileQueue',
+		'auto'           : true,
+		'multi'          : true,
+		'queueSizeLimit' : 5,
+		'fileDesc'		 : 'jpg, gif',
+		'fileExt'		 : '*.jpg;*.gif',
+		'sizeLimit'      : '512000',//max size bytes - 500kb
+		'checkScript'    : 'scripts/check.php', //if we take this out, it will never replace files, otherwise asks if we want to replace
+        'onComplete'     : function(event, queueID, fileObj, response, data) {
+                            console.log("PHP Script Response :"+response);
+                            console.log(fileObj);
+                            
+                            return false;
+            },
+		'onAllComplete'  : function() {
+								$('#switch-effect').unbind('change');
+								$('#toggle-slideshow').unbind('click');
+								galleries[0].slideshow.stop();
+								start();
+							}
+	});*/
+  
+  });    
+  </script>
+
+  <style type="text/css">
+  * {
+    font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, Arial, sans-serif;
+    color: #333;
+    line-height: 140%;
+  }
+  select, input, textarea {
+    font-size: 1em;
+  }
+  body {
+    font-size: 70%;
+    width: 1100px;
+  }
+  h2 {
+    margin-top: 1.2em;
+    margin-bottom: 0;
+    padding: 0;
+    border-bottom: 1px dotted #dedede;
+  }
+  h3 {
+    margin-top: 1.2em;
+    margin-bottom: 0;
+    padding: 0;
+  }
+  .example {
+    border: 1px solid #CCC;
+    background: #f2f2f2;
+    padding: 10px;
+  }
+  ul {
+    list-style-image:url(list-style.gif);
+  }
+  pre {
+    font-family: "Lucida Console", "Courier New", Verdana;
+    border: 1px solid #CCC;
+    background: #f2f2f2;
+    padding: 10px;
+  }
+  code {
+    font-family: "Lucida Console", "Courier New", Verdana;
+    margin: 0;
+    padding: 0;
+  }
+
+  #gallery {
+    padding: 30px;
+    background: #e1eef5;
+  }
+  /*
+  .ad-gallery {
+	  width: 790px;
+	}
+  .ad-gallery .ad-image-wrapper {
+	  height: 390px;
+  }
+  */
+  </style>
+  <title>AD-Gallery + Uploadify + classe.upload</title>
+</head>
+<body>
+  <div id="container" style="float:left;">
+    
+    <div id="gallery" class="ad-gallery">
+      <div class="ad-image-wrapper">
+      </div>
+      <div class="ad-controls">
+      </div>
+      <div class="ad-nav">
+        <div class="ad-thumbs">
+          <ul class="ad-thumb-list">
+            
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    Effect: <select id="switch-effect">
+      <option value="slide-hori">Slide horizontal</option>
+      <option value="slide-vert">Slide vertical</option>
+      <option value="resize">Shrink/grow</option>
+      <option value="fade">Fade</option>
+      <option value="">None</option>
+    </select> |
+    <a href="#" id="toggle-slideshow" style="outline:none;">Toggle slideshow</a> | 
+	<a href="#"id="last-uploaded" style="outline:none;">last Uploads</a>|
+  
+    <!--<a href="javascript:jQuery('#uploadify').uploadifyClearQueue()">Cancel All Uploads</a>| -->
+        <input type="file" name="uploadify" id="uploadify" onchange="fileUpload(this)" />
+     <!--<div id="fileQueue" style="height:60px"></div>-->
+    
+  </div>
+  
+  <!--uploadify-->
+  <div style="float:left;">
+  </div>	
+  <script>
+    
+      function saveImage(image_data,school_id,ext)
+      {
+             console.log('image file to save '+ school_id+' '+ext);
+         
+                var formData = {
+                    school_id           : school_id,
+                    data                : image_data,
+                    ext                 : ext
+                 };
+
+                console.log(formData);
+
+                  // process the formf
+                $.ajax({
+                    type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                    url         : '../../api/image_upload/picturegallery_upload.php', // the url where we want to POST
+                    data        : formData, // our data object
+                    dataType    : 'json', // what type of data do we expect back from the server
+                    encode          : true
+                })
+                    // using the done promise callback
+                .done(function(data) {
+                        if(data['code'] == '0')
+                        {
+                                console.log('Image uploaded successfully '+school_id);
+                        }
+                        else 
+                        {
+                                console.log('Image upload failed '+school_id);
+                        }
+                      
+                    // here we will handle errors and validation messages
+                }).fail(function( xhr, status, errorThrown ) {
+                        console.log( "Query Failed" );
+                        console.log( "Error: " + errorThrown );
+                        console.log( "Status: " + status );
+                        console.dir( xhr );
+                        return false;
+                });
+
+      }
+      
+    var readFileURL = function(input) {
+        if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                  
+                    var ext = input.value.split('.').pop();
+                    saveImage(e.target.result,school_id,ext);
+                     
+                }
+                reader.readAsDataURL(input.files[0]);
+        
+            }
+        }
+
+    function fileUpload(pic)          
+    {
+        if(checkFeesFileAttach(pic))
+            {
+                readFileURL(pic);
+            }
+    }
+		
+    function checkFeesFileAttach(sender) {
+        var validExts = new Array(".png", ".gif",".jpg",".jpeg");
+        var fileExt = sender.value;
+        fileExt = fileExt.substring(fileExt.lastIndexOf('.'));
+        if (validExts.indexOf(fileExt) < 0) {
+          alert("Invalid file selected, valid files are of " +
+                   validExts.toString() + " types.");
+          return false;
+            }
+            else return true;
+    }
+    
+    </script>
+    
+</body>
+</html>
