@@ -129,7 +129,31 @@ function getMediumOfTeachingString(medium)
     return ret;
 }
 
+ function getRating(rating)
+{
+     var rated;
+    switch(rating)
+        {
+            case "1":
+                rated = "Bad";
+                break;
+            case "2":
+                rated = "Better";
+                break;
+            case "3":
+                rated = "Good";
+                break;
+            case "4":
+                rated = "Best";
+                break;
+            case "5":
+                rated = "Excellent";
+                break;
 
+        }
+    return rated;
+}
+            
 
 function getAdmissionMethodString(adm_method)
 {

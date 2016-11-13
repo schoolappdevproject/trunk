@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)http://microsoftmsdn.com/schoolguru/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.gm-style{font-family:Roboto,Arial,sans-serif;font-size:11px;font-weight:400;text-decoration:none}.gm-style img{max-width:none}</style>
+
+
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	
+	<title>Schoolguru</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="shortcut icon" href="http://microsoftmsdn.com/schoolguru/images/favicon.png" type="image/x-icon">
+	
+	<link href="main/bootstrap.css" type="text/css" rel="stylesheet">
+	<link href="main/colors.css" type="text/css" rel="stylesheet">
+	<link href="main/font.css" type="text/css" rel="stylesheet">
+	<link href="main/jquery.filer.css" type="text/css" rel="stylesheet">
+	<link href="main/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet">
+	<link href="main/magnific-popup.css" type="text/css" rel="stylesheet">
+	<link href="main/component.css" type="text/css" rel="stylesheet">
+	<link href="main/styles.min.css" type="text/css" rel="stylesheet">
+	<link href="main/font-awesome.min.css" type="text/css" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="main/jquery.mmenu.all.css">
+	<link href="main/mapbox.css" rel="stylesheet">
+	<link href="main/chosen.css" rel="stylesheet">
+	<link href="main/MarkerCluster.css" rel="stylesheet">
+	<link href="main/MarkerCluster.Default.css" rel="stylesheet">
+	<link href="main/main.css" type="text/css" rel="stylesheet">
+    <link href="css/common.css" type="text/css" rel="stylesheet">
+    
+<!-- Google Map Scripts-->
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATQd6PfNXTkOI9cHvIo0eDPZAGKi9jSmI&libraries=places"
+            type="text/javascript"></script>
+    
+    <!--
+    <script type="text/javascript" charset="UTF-8" src="main/common.js">
+        
+    </script><script type="text/javascript" charset="UTF-8" src="main/util.js">
+    </script><script type="text/javascript" charset="UTF-8" src="main/stats.js">
+    </script><script type="text/javascript" charset="UTF-8" src="main/map.js">
+    </script><script type="text/javascript" charset="UTF-8" src="main/marker.js">
+    </script><script type="text/javascript" charset="UTF-8" src="main/onion.js">
+
+
+    </script>
+-->
+    
+    
+    
+    </head>
+<body onload="load()" data-userimg="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAEGUlEQVRoge1ZLWwcRxQ+cMCVItXAIKDgQKQaGBQYtFLBm4mBgYFBQSoZGBgYGAQYFBhYOhAQYBBgqa204G7fWGdg4EqWUrCwqgpcqYoiy975xnKlAIMDAQYGWzAzd6vmfnb39rxX1Z+07L2n7828N+9na7VHPOK/A2IsEusNCuN9qRBIhUMK9S4x1inAXNX8RoKiqE5tbAuF3wQjGfGd09HVUtV8B4I6754IxlmfrLlxt7BHITYp1DtSmTdCmUsncyeVeU2Mxaq590AB5gSbv7wD1I7XKIrqA2WjqC7Z/JS+IanMm2HyDwqpzGvnxB/UwdNx8hRFdVLxslSmKdjcWmcQPATX4aQUGoLNvWBzXyTuibEoGF3BSCjEV9PgmI1IG9suPI4L2wjjfcFIJEOVyS0XJOPEneZmURt0dLXk8gUlUssHwYgEI6EWaEI7iWAkJdEqQMA9p6TQmMhO5Y64Z3eSRKUA8zPgiP7FJer3hW209JeCkQhl/i6TWy744kaMH4raoDa+9q1LmdzykQj1riuGPxa1IZXZdbd6UCa3XKCj6zVH4m1hG6yPBSN5ztcbZXLLSQKrLiy6xfQvFmxngITCeKVsfpnhO14K9V4RfdtE4pW71ZOy+WWGYLwXjGSS+YJaIHerUZncckEqc2xfLV04vinE5qT92sQg1hu+T6JQ7+bWD/WeYGDSw5gYFEV1qcypK2iXefV9Cy8YZ5UPV990bj4TjD/tqcbfZtUT6vq5c+L3afLLBakQuDhvZtcxTTcdHk6TWy6kXp4uBZgfK28bxW4ZI0Dp8LOJVOZ0VLy72nFS+ZM7DNSO11KbkVPii4VPZALMp5xISMXLVXAdCbfbukvttm6J9RYpNEihQay3BJub9O6ras5D4WuCr/gDv/6SrroZfRx6DSBfLBDrDRtG5sbtr86ojW1qXT2baUdS25C7kXIdPPVyM7UyrdVqNVLxsg+nLAOSZNPyITgTCU9HV0u2GNqQco68Gqtneyyf9PdSIXjwTaP9faC/6/VYnozNB7s+DfFiqH4Yr3g5ezP9QxCMMwrxYqr/UCjAHDFe+sWzr+SScUCtq2e1Wr/t6G3Z2/GaTfyLBWKsSsZBr4a4YYwUGm4R3hXppzuM97N0CfmcsO36h5QD7ynUO9R59+QT2VDvCDYfhz6/NslfDjyoNrb7vyhcyzNANr8DUVSXCocpw+fEWB/vOBalMk0bfuZWsLmVypxKZZpZpklirAvGeT/vTGvQoWVGPw/MR2K9VdhQQdhI6N1uVGhm8SOoYMDnQBVwBRQur/JNodS+/KLXZjNWp8QxO5/+mHCXa2Huf+AINr9Oj14++DDPlfxCmZ9zK00ZMjQ7bknRyqz0r6d21r4PmZxI/6+Y1W+lE39e9GYf8Yj/K/4BSKKZsGt5SOsAAAAASUVORK5CYII=" data-userlink=""><div id="menu" class="mm-menu mm-offcanvas mm-hasnavbar-top-3" style="display: block;"><div class="mm-navbar mm-navbar-top mm-navbar-top-1 mm-navbar-size-3"><a href="http://microsoftmsdn.com/schoolguru/about.html" class="iconsmall iconsmalltext"><i class="fa fa-info"></i></a><a href="" class="userimage"><img class="icon icons8-Contacts" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAEGUlEQVRoge1ZLWwcRxQ+cMCVItXAIKDgQKQaGBQYtFLBm4mBgYFBQSoZGBgYGAQYFBhYOhAQYBBgqa204G7fWGdg4EqWUrCwqgpcqYoiy975xnKlAIMDAQYGWzAzd6vmfnb39rxX1Z+07L2n7828N+9na7VHPOK/A2IsEusNCuN9qRBIhUMK9S4x1inAXNX8RoKiqE5tbAuF3wQjGfGd09HVUtV8B4I6754IxlmfrLlxt7BHITYp1DtSmTdCmUsncyeVeU2Mxaq590AB5gSbv7wD1I7XKIrqA2WjqC7Z/JS+IanMm2HyDwqpzGvnxB/UwdNx8hRFdVLxslSmKdjcWmcQPATX4aQUGoLNvWBzXyTuibEoGF3BSCjEV9PgmI1IG9suPI4L2wjjfcFIJEOVyS0XJOPEneZmURt0dLXk8gUlUssHwYgEI6EWaEI7iWAkJdEqQMA9p6TQmMhO5Y64Z3eSRKUA8zPgiP7FJer3hW209JeCkQhl/i6TWy744kaMH4raoDa+9q1LmdzykQj1riuGPxa1IZXZdbd6UCa3XKCj6zVH4m1hG6yPBSN5ztcbZXLLSQKrLiy6xfQvFmxngITCeKVsfpnhO14K9V4RfdtE4pW71ZOy+WWGYLwXjGSS+YJaIHerUZncckEqc2xfLV04vinE5qT92sQg1hu+T6JQ7+bWD/WeYGDSw5gYFEV1qcypK2iXefV9Cy8YZ5UPV990bj4TjD/tqcbfZtUT6vq5c+L3afLLBakQuDhvZtcxTTcdHk6TWy6kXp4uBZgfK28bxW4ZI0Dp8LOJVOZ0VLy72nFS+ZM7DNSO11KbkVPii4VPZALMp5xISMXLVXAdCbfbukvttm6J9RYpNEihQay3BJub9O6ras5D4WuCr/gDv/6SrroZfRx6DSBfLBDrDRtG5sbtr86ojW1qXT2baUdS25C7kXIdPPVyM7UyrdVqNVLxsg+nLAOSZNPyITgTCU9HV0u2GNqQco68Gqtneyyf9PdSIXjwTaP9faC/6/VYnozNB7s+DfFiqH4Yr3g5ezP9QxCMMwrxYqr/UCjAHDFe+sWzr+SScUCtq2e1Wr/t6G3Z2/GaTfyLBWKsSsZBr4a4YYwUGm4R3hXppzuM97N0CfmcsO36h5QD7ynUO9R59+QT2VDvCDYfhz6/NslfDjyoNrb7vyhcyzNANr8DUVSXCocpw+fEWB/vOBalMk0bfuZWsLmVypxKZZpZpklirAvGeT/vTGvQoWVGPw/MR2K9VdhQQdhI6N1uVGhm8SOoYMDnQBVwBRQur/JNodS+/KLXZjNWp8QxO5/+mHCXa2Huf+AINr9Oj14++DDPlfxCmZ9zK00ZMjQ7bknRyqz0r6d21r4PmZxI/6+Y1W+lE39e9GYf8Yj/K/4BSKKZsGt5SOsAAAAASUVORK5CYII=" alt="user"></a><a href="http://microsoftmsdn.com/schoolguru/contact.html" class="iconsmall"><img class="icon icons8-Message" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADjElEQVRoge1YPWgUQRROkcIiRZCAERQVUlwhKGIghT/vTQotLCxSCFpYREkhGEQhhUVAwZAg6bQ88HbehGtSWKSwuMIihYVIiCHmdt5IikMiWJygKBKLnd3bS/budu+SrB77wVYz++77dud977vt6cmQIUOGDGkAibe74eo+IWmfjHbRvUKAOJc2qaQA4lxUj1TA4ZG0ycUFKPc8ElcaNXsZFz7fTZtkKwgy40D6U2SzC8X50DGbTJtsIwDxJJL5jcTbglhFNjsQTwXCiOfTJh0GlEq9gni+9uDNk56eJq4Fjh5D4h+eGFOAUqk3PfqWU3G1TxAvelzNb5B8219rar8g+QYSv7drhAv6zIGztxCFjXModdFy+QDS3Ayvt5wj1trYrq9BoTx0cPQth0J5CInXLAeOGhGxBiIUeRDJvEvDnuvt1byDIg9G7Ys92aG42ieUeW0LVoH4+v7Rt7/puNeQTNWaziIUV/sa7U0UUYDWB5DMrBXzFUk/2nv6PjHzAIm/2N+aBVofaL6/jawFUj8M2d/c3lCvQRA/C2aZ1A/j3NN2aBSKJwITUPxCSH2ifeoeLr0yp1CZF35TC8UTce/tKP0CuReQzJZ9/W8hz/3J6dtanqG8tbW2gNwLSe7vOMZbV/GzzhooPpm4BnEOldkIjpNyzyet0dkbKZSHkMzKjsBZSUKk/q36l1lJOq/aFhK2RiSzAsS5WniLZ89A+lYo+C16w9efV6YKjntt34RAqdQL0p0OhUoV9nehzFyQhYinojKaV0M/DiXul/4+yPOhugQu3ek4OS/ZHMlzPxIv1UJbtDWC1Pf8J43Ea+DoMaD1AaD1Ae9NBvltG4inImuQHg/VWGplJPEnu+SzoYasQIGhqWjiqxj65xZxfWt1/MDhkaCGMhuwUD7dkRB7lqt2ZiyDs3GsGYHgvjz3g3SnUfGy19BmCxUvC2XmGmWmXTWKPIjEpVrv6VuJhYySPiIkz6Din4LMHyT9/JIqH49DYC9xsWCOIulZJP6Fin8KyTOjpI+E9zQUctlxh1EZ6U9ZkHz/oAXshO29suVElx132F+LFOINObMZiGhjQO0XQPLZIBqR2fS57RJS7xbmTavUmQa8FB5yT9Lju4TYxe+C9NN/UYSPK8XNwyD1k9pQ3vk5iPgjSv7nv2n5EErfAeKPEUerSz6Zpk2qXXSvkP/96h4hGTJkyJAhDfwFrL5XNwpoE2kAAAAASUVORK5CYII=" alt="contactus"></a></div><div class="mm-panels"><div class="mm-panel mm-opened mm-current" id="mm-1"><ul class="mm-listview">
+									<li><a href="search.html">Schools </a></li>
+										
+									<li><a href="user_profile.html">Parents </a></li>
+                                    <li><a href="user_profile.html">Students </a></li>
+									
+									
+									
+								</ul></div></div></div><nav class="attireMainNav"><button class="toggleBtn iconMenu" type="button">Toggle navigation</button><ul></ul></nav>
+<div id="mm-0" class="mm-page mm-slideout"><div id="page">
+	
+	<header class="lp-header-bg">
+		<div class="lp-header-overlay"></div> 
+		<div class="lp-topbar">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-sm-8 text-left">
+						<ul class="lp-topbar-menu">
+							<li>
+								<a href="http://microsoftmsdn.com/schoolguru/index.html">Home</a>
+							</li>
+							<li>
+								<a href="">About</a>
+							</li>
+							<li>
+								<a href="">Contact</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-4 col-sm-4 text-right">
+						<div class="lp-join-now">
+							<span>
+								
+								<img class="icon icons8-Contacts" src="main/user-icon.png" alt="join-now">
+							</span>
+							<div id="login_div"><a class=" md-trigger" data-modal="modal-3" id="a_login">Login </a></div>
+                            <div id="account_div"><a class=" md-trigger" id="a_account"><span id="user_email"></span></a></div>    
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="md-modal md-effect-3" id="modal-3">
+			<div class="login-form-popup lp-border-radius-8">
+				<div class="siginincontainer">
+					<h1 class="text-center">Sign in</h1>
+					<form action="/" class="form-horizontal margin-top-30" id="login_form" method="post">
+						<div class="form-group">
+							<label for="username">Username or Email Address *</label>
+							<input type="text" class="form-control" id="username">
+						</div>
+						<div class="form-group">
+							<label for="password">Password *</label>
+							<input type="password" class="form-control" id="password">
+						</div>
+						<div class="form-group">
+							<div class="checkbox pad-bottom-10">
+								<input id="check1" type="checkbox" name="price-on-call" value="price-on-call">
+								<label for="check1">Keep me signed in</label>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<input type="submit" value="Sign in" class="lp-secondary-btn width-full btn-first-hover"> 
+						</div>
+					</form>	
+					<div class="pop-form-bottom">
+						<div class="bottom-links">
+							<a class="signUpClick" id="a_signup">Not a member? Sign up</a>
+							<a class="forgetPasswordClick pull-right">Forgot Password</a>
+						</div>
+						<p class="margin-top-15">Connect with your Social Network</p>
+						<ul class="social-login list-style-none">
+							<li><button id="logingoogle" class="google flaticon-googleplus"><i class="fa fa-google-plus"></i><span>Google</span></button></li>
+							<li><button id="loginfacebook" class="facebook flaticon-facebook"><i class="fa fa-facebook"></i><span>Facebook</span></button></li>
+							
+						</ul>
+					</div>
+                    <div class="pop-form-bottom">
+						<div class="bottom-links">
+							<a class="cancelClick">Cancel</a>
+						</div>
+					</div>
+				<a class="md-close"><i class="fa fa-close"></i></a>
+				</div>
+                <!--Sign UP COntainer -->
+				<div class="siginupcontainer">
+					<h1 class="text-center">Sign Up</h1>
+					<form class="form-horizontal margin-top-30" method="post">
+						<div class="form-group">
+							<label for="dtl_username">Username *</label>
+							<input type="text" class="form-control" id="dtl_username">
+						</div>
+						<div class="form-group">
+							<label for="dtl_email">Email Address *</label>
+							<input type="email" class="form-control" id="dtl_email">
+						</div>
+						<div class="form-group">
+							<label for="dtl_password">Password *</label>
+                            <input type="password" class="form-control" id="dtl_password">
+						</div>
+						<div class="form-group">
+							<input type="button" value="Register" class="lp-secondary-btn width-full btn-first-hover" onclick="register()"> 
+						</div>
+					</form>	
+					<div class="pop-form-bottom">
+						<div class="bottom-links">
+							<a class="signInClick" id="a_again_login">Already have an account? Sign in</a>
+							<a class="forgetPasswordClick pull-right">Forgot Password</a>
+						</div>
+						<p class="margin-top-15">Connect with your Social Network</p>
+						<ul class="social-login list-style-none">
+							<li><button id="logingoogle2" class="google flaticon-googleplus"><i class="fa fa-google-plus"></i><span>Google</span></button></li>
+							<li><button id="loginfacebook2" class="facebook flaticon-facebook"><i class="fa fa-facebook"></i><span>Facebook</span></button></li>
+							
+						</ul>
+					</div>
+                    <div class="pop-form-bottom">
+						<div class="bottom-links">
+							<a class="cancelClick">Cancel</a>
+						</div>
+					</div>
+				<a class="md-close"><i class="fa fa-close"></i></a>
+				</div>
+				<div class="forgetpasswordcontainer">
+					<h1 class="text-center">Forgotten Password</h1>
+					<form class="form-horizontal margin-top-30" method="post">
+						<div class="form-group">
+							<label for="password">Email Address *</label>
+							<input type="email" class="form-control" id="email2">
+						</div>
+						<div class="form-group">
+							<input type="submit" value="Get New Password" class="lp-secondary-btn width-full btn-first-hover"> 
+						</div>
+					</form>	
+					<div class="pop-form-bottom">
+						<div class="bottom-links">
+							<a class="cancelClick">Cancel</a>
+						</div>
+					</div>
+				<a class="md-close"><i class="fa fa-close"></i></a>
+				</div>
+			</div>	
+		</div>
+        
+     
+		<!-- ../Login Popup -->
+		
+		<!-- Popup Open -->
+		<div class="md-modal md-effect-3" id="modal-2">
+			<div class="container">
+				<div class="md-content ">
+					<div class="row popup-inner-left-padding ">
+						<div class="col-md-6 lp-insert-data"><div class="popup-post-left-upper lp-border-bottom">								<h1><a href="http://microsoftmsdn.com/schoolguru/undefined">undefined</a></h1>								<ul class="post-stat">									   								</ul><!-- ../post-stat -->														</div>							<div class="popup-post-left-bottom">																<div class="user-info">																										</div><!-- ../user-info -->							</div><!-- ../popup-post-left-bottom --></div>
+						<div class="col-md-6">
+							<div id="quickmap" class="quickmap" style="position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);"><div class="gm-style" style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;) 8 8, default;"><div style="position: absolute; left: 0px; top: 0px; z-index: 1; width: 100%; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);"><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"></div></div></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: -1;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"></div></div></div><div style="position: absolute; z-index: 0; transform: translateZ(0px);"><div style="overflow: hidden;"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 2; width: 100%; height: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 3; width: 100%; height: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 4; width: 100%; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);"><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div></div></div></div></div>
+							<a class="md-close widget-map-click"><i class="fa fa-close"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="md-overlay"></div> 
+		<div class="lp-menu-bar">
+			<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-xs-6 lp-logo-container">
+							<div class="lp-logo">
+								<a href="http://microsoftmsdn.com/schoolguru/index.html">
+									<img src="main/logo.png" alt="">
+								</a>
+							</div>
+						</div>
+						<div class="col-xs-6 mobile-nav-icon">
+							<a href="http://microsoftmsdn.com/schoolguru/#menu" class="nav-icon">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</a>
+						</div>
+						
+							
+						
+						<div class="col-md-8 col-xs-12 lp-menu-container">
+							<div class="pull-right lp-add-listing-btn">
+								<ul>
+									<li><a href="admin.html" style="line-height: 80px;"><i class="fa fa-plus"></i> Add Schools</a></li>
+								</ul>
+							</div>
+							<div class="lp-menu pull-right menu">
+								<ul>
+									<li><a href="search.html" style="line-height: 80px;">Schools </a></li>
+										
+									<li><a href="user_profile.html" style="line-height: 80px;">Parents </a></li>
+                                    <li><a href="user_profile.html" style="line-height: 80px;">Students </a></li>
+									
+									
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div><!-- ../menu-bar -->
+		<div class="lp-home-banner-contianer">
+			<div class="lp-home-banner-contianer-inner">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 text-center">
+							<p class="lp-banner-browse-txt">Welcome to Schoolguru</p>
+							<h1>Discover your School</h1>
+						</div>
+						<div class="col-md-8 col-xs-12 col-md-offset-2 col-sm-offset-0">
+							<div class="lp-search-bar" style="opacity: 1;">
+							
+									<div class="lp-search-bar-left">
+                                        
+										<input id="school_location_search" type="text" placeholder="Enter Location" name="keywords" class="lp-search-input lp-home-search-input" onkeypress="return runScript(event)">					
+									
+								        <input id="school_name_search_txt" type="text" placeholder="Enter School Name" name="keywords" class="lp-search-input lp-home-search-input" onkeypress="return runScript(event)">
+                                        
+									</div>
+									<div class="lp-search-bar-right">
+                                        		
+										<input type="button" value="Search" style="background:#74CEE4;" class="lp-search-btn" onclick="startSearch()">
+										<i class="icons8-search lp-search-icon"></i>
+									</div>
+									<div class="clearfix"></div> 
+												
+							
+							</div>
+							<div class="text-center lp-search-description">
+								<p>Hav’nt any idea, let’s explore best Schools <br>
+								 you are interested in
+								</p>
+								<img src="main/banner-arrow.png" alt="banner-arrow" class="banner-arrow">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<section>
+		<div class="lp-section-row">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="lp-home-categoires margin-top-subtract-55 padding-left-0">
+							
+							
+							
+							<li>
+								<a href="http://microsoftmsdn.com/schoolguru/#" class="lp-border-radius-5 bg-yellow">	
+									<span>
+										
+										<img class="icon icons8-Cat-Footprint" src="main/icon.png" alt="pets"><br>
+									Rate your Scholl
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="http://microsoftmsdn.com/schoolguru/#" class="lp-border-radius-5" style="background-color:#EC774B;">	
+									<span>
+									
+
+<img class="icon icons8-Cat-Footprint" src="main/icon.png" alt="pets"><br>
+										Find a School
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="http://microsoftmsdn.com/schoolguru/#" class="lp-border-radius-5" style="background:#6FC191;">	
+									<span>
+									
+<img class="icon icons8-Cat-Footprint" src="main/icon.png" alt="pets"><br>
+										List your School
+									</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="lp-section-row ">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="lp-section-title-container text-center ">
+							<h1>Explore Best Schools</h1>
+							<div class="lp-sub-title">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </div>
+						</div>
+						<div class="lp-section-content-container">
+							<div class="row">
+								<div class="col-md-6 col-sm-6  col-xs-12">
+									<div class="city-girds lp-border-radius-8">
+										<div class="city-thumb">
+											<img src="main/india-school.jpg" alt="london">
+										</div>
+										<div class="city-title text-center">
+											<h3 class="lp-h3">
+												<a href="http://microsoftmsdn.com/schoolguru/#">India</a>
+											</h3>
+											
+										</div>
+										<a href="http://microsoftmsdn.com/schoolguru/#" class="overlay-link"></a>
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<div class="city-girds lp-border-radius-8">
+										<div class="city-thumb">
+											<img src="main/topschool-teaching2.jpg" alt="newcastle">
+										</div>
+										<div class="city-title text-center">
+											<h3 class="lp-h3">
+												<a href="http://microsoftmsdn.com/schoolguru/#">Top School teaching</a>
+											</h3>
+											<!--<label class="lp-listing-quantity">28 Listings</label>-->
+										</div>
+										<a href="http://microsoftmsdn.com/schoolguru/#" class="overlay-link"></a>
+									</div>
+								</div>
+								<div class="col-md-3 col-sm-3 col-xs-12">
+									<div class="city-girds lp-border-radius-8">
+										<div class="city-thumb">
+											<img src="main/sports-school1.jpg" alt="manchester">
+										</div>
+										<div class="city-title text-center">
+											<h3 class="lp-h3">
+												<a href="http://microsoftmsdn.com/schoolguru/#">Top Sports Schools</a>
+											</h3>
+											<!--<label class="lp-listing-quantity">08 Listings</label>-->
+										</div>
+										<a href="http://microsoftmsdn.com/schoolguru/#" class="overlay-link"></a>
+									</div>
+								</div>
+								<div class="col-md-3 col-sm-3 col-xs-12">
+									<div class="city-girds lp-border-radius-8">
+										<div class="city-thumb">
+											<img src="main/schools-nearby1.jpg" alt="glasgow">
+										</div>
+										<div class="city-title text-center">
+											<h3 class="lp-h3">
+												<a href="http://microsoftmsdn.com/schoolguru/#">Schools Nearby</a>
+											</h3>
+											<!--<label class="lp-listing-quantity">68 Listings</label>-->
+										</div>
+										<a href="http://microsoftmsdn.com/schoolguru/#" class="overlay-link"></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			<div class="lp-section-row exculsive-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="lp-section-title-container text-center ">
+							<h1>Explore Best Schools</h1>
+							<div class="lp-sub-title">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </div>
+						</div><!-- ../section-title-->
+					</div>	
+				</div>	
+				<div class="lp-section-content-container lp-list-grid-section">
+					<div class="row">
+						<div class="col-md-4 col-sm-6 lp-grid-box-contianer lp-grid-box-contianer1" data-title="The Dorchester grill" data-reviews="4" data-number="+007-123-4567-89" data-email="jhonruss@example.com" data-website="www.example.com" data-price="$200" data-pricetext="Text about your price" data-description="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi archeum" data-userimage="images/user-thumb-94x94.png" data-username="Jhon Russel" data-userlisting="14" data-fb="www.facebook.com" data-gplus="www.plus.google.com" data-linkedin="www.linkedin.com" data-instagram="www.instagram.com" data-twitter="www.twitter.com" data-lattitue="40.6700" data-longitute="-73.9400" data-posturl="#" data-authorurl="#">
+							<div class="lp-grid-box lp-border lp-border-radius-8">
+								<div class="lp-grid-box-thumb-container">
+									<div class="lp-grid-box-thumb">
+										<img src="main/topschool-teaching1.jpg" class="img-responsive" alt="grid-1">
+									</div><!-- ../grid-box-thumb -->
+									<div class="lp-grid-box-quick">
+										<ul class="lp-post-quick-links">
+											<li>
+												<a class="icon-quick-eye md-trigger"><i class="fa fa-eye"></i></a>
+											</li>
+										</ul>
+									</div><!-- ../grid-box-quick-->
+								</div>
+								<div class="lp-grid-box-description ">
+									<h4 class="lp-h4">
+										<a href="http://microsoftmsdn.com/schoolguru/#">Top School teaching</a>
+									
+									</h4>
+									
+									
+								</div><!-- ../grid-box-description-->
+								
+							</div><!-- ../grid-box -->
+						</div>
+						
+						<div class="col-md-4 col-sm-6 lp-grid-box-contianer" data-title="3 Bed Detached House" data-reviews="5" data-number="+001-587-4567-89" data-email="russel@example.com" data-website="www.example.com" data-price="$50,000" data-pricetext="Text about your price" data-description="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi archeum" data-userimage="images/user-thumb-94x94.png" data-username="Jhon Russel" data-userlisting="14" data-fb="www.facebook.com" data-gplus="www.plus.google.com" data-linkedin="www.linkedin.com" data-instagram="www.instagram.com" data-twitter="www.twitter.com" data-lattitue="51.516576" data-longitute="-0.137508" data-posturl="#" data-authorurl="">
+							<div class="lp-grid-box lp-border lp-border-radius-8">
+								<div class="lp-grid-box-thumb-container">
+									<div class="lp-grid-box-thumb">
+										<img src="main/sports-school.jpg" alt="grid-3" class="img-responsive">
+									</div><!-- ../grid-box-thumb -->
+									<div class="lp-grid-box-quick">
+										<ul class="lp-post-quick-links">
+											<li>
+												<a class="icon-quick-eye md-trigger"><i class="fa fa-eye"></i></a>
+											</li>
+										</ul>
+									</div><!-- ../grid-box-quick-->
+								</div>
+								<div class="lp-grid-box-description ">
+									<h4 class="lp-h4">
+										<a href="http://microsoftmsdn.com/schoolguru/#">Top Sports Schools</a>
+											
+										
+									</h4>
+									
+									
+								</div><!-- ../grid-box-description-->
+								
+							</div><!-- ../grid-box -->
+						</div>
+						<div class="col-md-4 col-sm-6 lp-grid-box-contianer" data-title="Hotel Rammizine" data-reviews="5" data-number="+041-923-4367-89" data-email="jhonruss@example.com" data-website="www.example.com" data-price="$1500" data-pricetext="Text about your price" data-description="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi archeum" data-userimage="images/user-thumb-94x94.png" data-username="Jhon Russel" data-userlisting="14" data-fb="www.facebook.com" data-gplus="www.plus.google.com" data-linkedin="www.linkedin.com" data-instagram="www.instagram.com" data-twitter="www.twitter.com" data-lattitue="51.512306" data-longitute="-0.119221" data-posturl="" data-authorurl="">
+							<div class="lp-grid-box lp-border lp-border-radius-8">
+								<div class="lp-grid-box-thumb-container">
+									<div class="lp-grid-box-thumb">
+										<img src="main/schools-nearby.jpg" class="img-responsive" alt="grid-4">
+									</div>
+									<div class="lp-grid-box-quick">
+										<ul class="lp-post-quick-links">
+											<li>
+												<a class="icon-quick-eye md-trigger"><i class="fa fa-eye"></i></a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="lp-grid-box-description ">
+									<h4 class="lp-h4">
+										<a href="http://microsoftmsdn.com/schoolguru/#">Schools Nearby</a>
+											
+										
+									</h4>
+									
+									
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="lp-section-row aliceblue nearby-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="lp-section-title-container text-center ">
+							<h1>Download Our App </h1>
+							<div class="lp-sub-title">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </div>
+						</div>
+						<div class="lp-section-content-container">
+							<div class="row">
+								<div class="col-md-6 text-center">
+									
+									<div class="nearby-description">
+										<p>
+											Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusa ntium dolore mque<br> laud antium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi <br>
+											arc hitecto beatae vitae dicta sunt explicabo. 
+
+										</p>
+									</div>
+									<ul class="nearby-download">
+										<li>
+											<a href="http://microsoftmsdn.com/schoolguru/#">
+												<img src="main/apple-icon.png" alt="apple-icon">
+											</a>
+										</li>
+										<li>
+											<a href="http://microsoftmsdn.com/schoolguru/#">
+												<img src="main/google-play-icon.png" alt="google-play-icon">
+											</a>
+										</li>
+									</ul>
+								</div>
+                                <div class="col-md-6"><div class="nearby-banner">
+										<img src="main/nearby.png" alt="nearby">
+									</div></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	</section>
+
+	<footer class="text-center">
+		<div class="footer-upper-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="footer-menu">
+							<li><a href="http://microsoftmsdn.com/schoolguru/index.html">Home</a></li>
+							<li><a href="http://microsoftmsdn.com/schoolguru/#">Blog</a></li>
+							<li><a href="http://microsoftmsdn.com/schoolguru/#">Contact</a></li>
+							<li><a href="http://microsoftmsdn.com/schoolguru/#">Join Us</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div><!-- ../footer-upper-bar -->
+		<div class="footer-bottom-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="footer-about-company">
+							<li>Copyright © 2016 Schoolguru</li>
+							<li>schoolguru@example.com</li>
+							<li>Tel: +91 1234567891</li>
+						</ul>
+						<p class="credit-links"> Designed &amp; Developed by<a href="http://www.nextwebi.com/" target="_blank"> Abhijit Roy</a></p><a href="http://www.nextwebi.com/" target="_blank">
+						</a><ul class="social-icons footer-social-icons"><a href="http://www.nextwebi.com/" target="_blank">
+							</a><li><a href="http://www.nextwebi.com/" target="_blank"></a><a href="http://microsoftmsdn.com/schoolguru/#">
+								<img class="icon icons8-Facebook" src="main/facebook.png" alt="facebook"></a></li>
+							<li><a href="http://microsoftmsdn.com/schoolguru/#">
+								<img class="icon icons8-Google-Plus" src="main/google-plus.png" alt="google-plus"></a></li>
+							<li><a href="http://microsoftmsdn.com/schoolguru/#">
+								<img class="icon icons8-LinkedIn" src="main/linkidin.png" alt="linkedin"></a></li>
+							
+							<li><a href="http://microsoftmsdn.com/schoolguru/#">
+								<img class="icon icons8-Tumblr" src="main/twitter.png" alt="twitter"></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+    
+	<a href="http://microsoftmsdn.com/schoolguru/#" class="add-listing-mobile lp-search-btn">Add listing</a>
+</div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div></div>
+
+    
+    
+
+
+<!-- The Pop up messageModal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">x</span>
+    <span id="popmsg"></span>
+  </div>
+
+</div>
+
+		<script type="text/javascript" src="main/jquery-lib.js"></script>
+		<script type="text/javascript" src="main/jquery-migrate-1.3.0.min.js"></script>
+		<script type="text/javascript" src="main/mapbox.js"></script>
+		<script type="text/javascript" src="main/leaflet.markercluster.js"></script>
+		<!--<script type="text/javascript" src="main/js"></script> -->
+		<script type="text/javascript" src="main/build.min.js"></script> 
+		<script type="text/javascript" src="main/chosen.jquery.js"></script>
+		<script type="text/javascript" src="main/jquery-ui.js"></script>
+		<script type="text/javascript" src="main/slick.min.js"></script>
+		<script type="text/javascript" src="main/jquery.mmenu.min.all.js"></script>
+		<script type="text/javascript" src="main/jquery.magnific-popup.min.js"></script>
+		<script type="text/javascript" src="main/jquery.filer.min.js"></script>
+		<script type="text/javascript" src="main/bootstrap-rating.js"></script>
+		<script type="text/javascript" src="main/classie.js"></script> 
+		<script type="text/javascript" src="main/modalEffects.js"></script>  
+		<script type="text/javascript" src="main/main.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="js/cookie.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="js/util.js"></script>
+    
+ <script>
+     
+     
+
+     
+     
+     
+     
+     
+     
+    // Attach a submit handler to the form
+    $( "#login_form" ).submit(function( event ) {
+      // Stop form from submitting normally
+        event.preventDefault();
+        var $form = $( this );
+        var username = $form.find( "input[id='username']" ).val();
+        var password = $form.find( "input[id='password']" ).val();
+             
+        login_util(username,password); //util.js
+    });
+     
+     
+     function register()
+     { 
+        registration_util();
+     }
+     
+     function popUpMessage(message)
+     {
+         // Get the modal
+         var modal = document.getElementById('myModal');
+         
+         // Get the <span> element that closes the modal
+         var span = document.getElementsByClassName("close")[0];
+         
+         modal.style.display = "block";
+         
+         $("#popmsg").html(message);
+         
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+     }
+     
+     
+   var cache = {};
+  
+  //loading autocomplete function  
+        function load()
+        {
+            
+            $("#account_div").hide();    
+            $("#login_div").show();
+            
+            var schoolLocation = /** @type {!HTMLInputElement} */(
+                document.getElementById('school_location_search'));
+            
+            var autocompleteLocation = new google.maps.places.Autocomplete(schoolLocation);
+            autocompleteLocation.addListener('place_changed', function() {
+                   var place = autocompleteLocation.getPlace();
+                  if (!place.geometry) {
+                    window.alert("Autocomplete's returned place contains no geometry");
+                    return;
+                  }
+                
+                   var map_location_latitude = place.geometry.location.lat();
+                   var map_location_longitude = place.geometry.location.lng();  
+                   console.log(map_location_latitude);
+                   console.log(map_location_longitude);
+            });
+            
+            
+            $( "#school_name_search_txt" ).autocomplete({
+              minLength: 2,
+              source: function( request, response ) {
+                var term = request.term;
+                if ( term in cache ) {
+                  response( cache[ term ] );
+                  return;
+                }
+
+                $.getJSON( "../api/search_api/search_school_name.php", request, function( data, status, xhr ) {
+                  cache[ term ] = data;  
+                  response(data);
+                });
+              }
+            });
+        }
+        
+        function startSearch()
+        {
+                                 
+            var schoolLocation = document.getElementById("school_location_search").value;
+            var schoolName     = document.getElementById("school_name_search_txt").value;
+            
+        
+            var school_info = schoolLocation +"#" + schoolName;
+            createCookie('school_info',school_info,7);
+
+            window.location.href = "search.html";
+           
+        }
+    
+     function runScript(e) {
+         console.log(e.keyCode);
+        if (e.keyCode == 13) {
+        startSearch();  //Fire Search event on Enter Click
+            return true;
+        }
+     }
+    
+   
+            
+        // Calling Login Form
+        $("#a_login").click(function () {
+              $(".login-form-popup").show();
+            $(".siginupcontainer").hide();
+            $(".forgetpasswordcontainer").hide();
+            $(".siginincontainer").show();
+            return false;
+        });
+
+        // Calling Register Form
+        $("#a_signup").click(function () {
+            $(".siginupcontainer").show();
+            $(".forgetpasswordcontainer").hide();
+            $(".siginincontainer").hide();
+            return false;
+        });
+
+        //password
+        $("#a_again_login").click(function () {
+            $(".siginupcontainer").hide();
+            $(".forgetpasswordcontainer").hide();
+            $(".siginincontainer").show();
+            return false;
+        });
+
+        $(".forgetPasswordClick").click(function () {
+            $(".siginupcontainer").hide();
+            $(".forgetpasswordcontainer").show();
+            $(".siginincontainer").hide();
+            return false;
+        });
+     
+     $(".cancelClick").click(function () {
+            $(".siginupcontainer").hide();
+            $(".forgetpasswordcontainer").hide();
+            $(".siginincontainer").hide();
+         
+             $(".login-form-popup").hide();
+            $('.md-modal').removeClass('md-show');
+            return false;
+        });
+                
+                
+
+            
+        
+        </script>
+    
+
+<ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-autocomplete-input" id="ui-id-1" tabindex="0" autocomplete="off" style="display: none;"><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-2" tabindex="0" aria-hidden="true" aria-expanded="false" style="display: none;"></ul></ul><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><div id="mm-blocker" class="mm-slideout"></div><span style="position: absolute; left: -999px; top: -999px; visibility: hidden; font-size: 300px; width: auto; height: auto; margin: 0px; padding: 0px; font-family: Roboto, Arial, sans-serif;">BESbewy</span>
+    <div id="result"></div>
+    </body></html>

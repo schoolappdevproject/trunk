@@ -23,7 +23,7 @@ class School_main_table {
     public $admission_description ="";
     public $average_rating_score ="";
     public $web_link ="";
-    
+    public $admission_method = "";
     public $country ="";
     public $pin ="";
     public $profile_pic_data ="";

@@ -31,18 +31,21 @@ try
     
     $log->info("saving in the path $filepath");
 
-   if(false ==  file_put_contents($filepath, base64_encode($data)))  
+    $data = explode(',',$data);
+    
+   if(false ==  file_put_contents($filepath, base64_decode($data[1])))  
    {
 	$result['code'] = -1;
        $log->info("failed to save file ");
    }
    else
    {
-       $log->info("Successfully saved image ".$data);
+       $log->info("Successfully saved image $filepath");
 	$result['code'] = 0;
-   }      
-    
-   echo json_encode($result);
+   } 
+   
+
+  echo json_encode($result);
     
 } 
 catch(Exception $ex)

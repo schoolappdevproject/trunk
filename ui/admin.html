@@ -505,7 +505,7 @@
 										<span class="timing-days">
 										
 								           <input type="radio" name="religous_preference" multiple="false" value="1">
-											<span>Govt Neutral</span>
+											<span>Neutral</span>
 										</span>	
 									</li>
 									<li>
@@ -987,6 +987,7 @@
                 }
             }
 
+
             $("#file-upload").on('change', function(){
                 readURL(this);
             });
@@ -1039,6 +1040,7 @@
 
                         // log data to the console so we can see
                         console.log(data); 
+                        cleanUp();
                         alert("Data Saved");
                         // here we will handle errors and validation messages
                     }).fail(function( xhr, status, errorThrown ) {
@@ -1050,8 +1052,37 @@
                 }); 
 
         });
+    function cleanUp()
+            {
+                      $('input[name=school_name]').val('');
+                      $('input[name=principal_name]').val('');
+                      $('input[name=address]').val('');
+                      $('input[name=contact]').val('');
+                      $('#city').val('');     
+                      $('#country').val('');
+                      $('input[name=email]').val('');
+                      $('input[name=pin]').val('');
+                      $('input[name=lat]').val('');
+                      $('input[name=lng]').val('');
+                      $('input[name=web_link]').val('');
+                    
+                      $('input[name=category]:checked').val(false);
+                      $('input[name=session_timings]:checked').val(false);
+                      $('input[name=courses]:checked').val(false);
+                      $('input[name=school_size]:checked').val(false);
+                      $('input[name=board]:checked').val(false);
+                      $('input[name=religous_preference]:checked').val(false);
+                      $('input[name=admission_method]:checked').val(false);
+                      $('input[name=medium_of_teaching]:checked').val(false);
+                    
+                      $('input[name=mobility]').val('');
+                      $('#small_description').val('');
+                      $('#admission_description').val('');
+                      $("#file-upload").replaceWith($("#file-upload").val('').clone(true));    
+                      $('#profile-pic').attr('src', "images/default_avatar_male.jpg");
+            }
     
-    $("#address").keyup(function(){
+/*    $("#address").keyup(function(){
             $("#pac-input").val($(this).val());
     });
         
@@ -1059,6 +1090,7 @@
     $("#pac-input").keyup(function(){
             $("#address").val($(this).val());
     });
+    */
 });
  
     </script>
