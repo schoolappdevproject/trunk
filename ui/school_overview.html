@@ -699,6 +699,8 @@ p span i
       <!-- Description Ends -->
     <!-- review Bloack -->
      <div class="col-sm-12">
+          <div class="col-sm-2">
+         </div>
          <div class="col-sm-8">
         <div class="review_block">
         <div class="row">
@@ -727,7 +729,7 @@ p span i
             <div class="col-sm-4"> 
       
                 <div class="image_block">    
-                    <img class="img-circle" id="profile_pic_img" src="" style="height: 180px; width: 80%;"/>
+                    <img class="img-circle" id="profile_pic_img" src="" style="height: 180px; width:150px ;"/>
                 </div>
                 
             </div>
@@ -768,8 +770,9 @@ p span i
               
         </div>
              </div>
-         <div class="col-sm-4">
+         <div class="col-sm-2">
          </div>
+        
     </div>
       
     <!-- review Bloack ends -->
@@ -782,59 +785,7 @@ p span i
             <h4>Reviews</h4>
             <div id="review_display">
                 
-                <div id ="child">
-           
-                            <div class="comments-box">
-								<div class="comments-thumb">
-									<img alt="comments-thumb-1" src="./school_overview_files/comments-thumb-1.png">
-								</div>
-								<div class="comments-content">
-									<div class="comments-meta-box">
-										<div class="comments-author text-left">
-											<div class="comments-name">
-												Name
-											</div>
-											<div class="comments-date">
-												<span style="font-size:12px;">( Nov 20, 2015 )</span>
-												
-											</div>
-										</div>
-										
-									</div>
-									<div class="comments-description">
-                                        <span id="review_title">
-                                        <p> Sports Olympiad in School</p>
-                                        </span>
-                                        
-                                        <span id="review_text">
-                                        <p>
-											Etiam pellentesque aliquet tellus. Phasellus congue lacus eget neque.
-Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
-										</p>
-                                        </span>
-                                        <br>
-                                        <div id="pictorial_series">
-                                        
-                                        
-                                        </div>		
-                                     
-                                      <div class="col-sm-1">
-                                          <i id="like2" onclick="alert(1)" class="glyphicon glyphicon-thumbs-up"></i> <div id="like2-bs3"></div>
-                                        </div>
-                                        <div class="col-sm-1">
-                                          <i id="dislike2" onclick="alert(1)" class="glyphicon glyphicon-thumbs-down"></i> <div id="dislike2-bs3"></div>
-                                        </div>
-                                      
-									</div>  <!-- comment Description -->
-								</div>
-							</div>
-               
-                    
-          
-                   
-                  
-            
-                  </div>
+             
         </div>
 
         </div>
@@ -1100,17 +1051,9 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
                 var x = readCookie('school_id');
                
                 if (x) { 
-                    
-                    if(schoolBelongsToStudent(dtl_username,x))
-                    {
-                        $("#init_review_form").show();
-                        $("#full_review_form").hide();
-                        $('#review_block').show();
-                    }
-                    else
-                    {
-                        $('#review_block').hide();
-                    }
+                    $("#init_review_form").show();
+                    $("#full_review_form").hide();
+                    $('#review_block').show();
                     //call php and get data of school
                     searchExactSchoolID(x);
                 }
@@ -1309,7 +1252,7 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
                     var newElement = document.createElement('div');
             newElement.innerHTML  = "<div class='comments-box'>" +
                                     "<div class='comments-thumb'>"+
-                                        "<img class='img-circle' alt='comments-thumb-1' src='"+profile_pic_data+"' width='50' height='100'>"+
+                                        "<img class='img-circle' alt='comments-thumb-1' src='"+profile_pic_data+"' width='100px' height='150px'>"+
                                     "</div>"+
                                     "<div class='comments-content'>"+
                                         "<div class='comments-meta-box'>"+
@@ -1410,13 +1353,14 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
                      var imgID = 'pictorial_'+review_id +'_'+_inc;
                      newPictorial.setAttribute('id', imgID );  //set id
                      newPictorial.setAttribute('src', picArray[pic].attachment_data );  //set id
-                     newPictorial.setAttribute('width', "300px" );  //set width
-                     newPictorial.setAttribute('height', "180px" );  //set height
+                     newPictorial.setAttribute('width', "400px" );  //set width
+                     newPictorial.setAttribute('height', "280px" );  //set height
                      console.log("pic added");
                      pictorial_sections.appendChild(newPictorial);
                      _inc ++;
                  }
         }
+        /*
         function schoolBelongsToStudent(username,school_id)
         {
             var formData = {
@@ -1456,6 +1400,7 @@ Phasellus ornare, ante vitae  consectetuer consequat, purus sapien
                     return false;
             });
         }
+        */
         
         function saveReview()
         {
