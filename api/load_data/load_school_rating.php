@@ -22,6 +22,7 @@ if ($method == 'POST') {
     {
 
 	$qry = "select tbl_users.username,".
+            "tbl_ratings_table.id_rating,".
             "tbl_ratings_table.rating_type,".
             "tbl_ratings_table.rating_points,".
             "tbl_ratings_table.rating_desc,".
