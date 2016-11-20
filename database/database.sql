@@ -249,7 +249,7 @@ CREATE TABLE `tbl_fees_attachment` (
   `attach_data` blob,
   `id_fees` int(11) NOT NULL,
   PRIMARY KEY (`id_fees_attachment`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -258,7 +258,7 @@ CREATE TABLE `tbl_fees_attachment` (
 
 LOCK TABLES `tbl_fees_attachment` WRITE;
 /*!40000 ALTER TABLE `tbl_fees_attachment` DISABLE KEYS */;
-INSERT INTO `tbl_fees_attachment` VALUES (1,'file_upload/file_1.pdf','.pdf',NULL,1),(2,'file_upload/file_3.pdf','.pdf',NULL,3);
+INSERT INTO `tbl_fees_attachment` VALUES (1,'file_upload/file_1.pdf','.pdf',NULL,1),(2,'file_upload/file_3.pdf','.pdf',NULL,3),(3,'file_upload/file_4.pdf','.pdf',NULL,4);
 /*!40000 ALTER TABLE `tbl_fees_attachment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -278,7 +278,7 @@ CREATE TABLE `tbl_fees_data` (
   `review_date` varchar(12) DEFAULT NULL,
   `hasFile` char(1) DEFAULT NULL,
   PRIMARY KEY (`id_fees_data`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -287,7 +287,7 @@ CREATE TABLE `tbl_fees_data` (
 
 LOCK TABLES `tbl_fees_data` WRITE;
 /*!40000 ALTER TABLE `tbl_fees_data` DISABLE KEYS */;
-INSERT INTO `tbl_fees_data` VALUES (1,23,2,5,'fees ','2016-11-20',NULL),(2,23,2,7,'dafsdsa','2016-11-20',NULL),(3,23,2,0,'rkjkerkjrhr','2016-11-20',NULL);
+INSERT INTO `tbl_fees_data` VALUES (1,23,2,5,'fees ','2016-11-20',NULL),(2,23,2,7,'dafsdsa','2016-11-20',NULL),(3,23,2,0,'rkjkerkjrhr','2016-11-20',NULL),(4,23,2,0,'SAWDASAS','2016-11-20',NULL);
 /*!40000 ALTER TABLE `tbl_fees_data` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -419,7 +419,7 @@ CREATE TABLE `tbl_ratings_table` (
   PRIMARY KEY (`id_rating`),
   KEY `id_school` (`id_school`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -428,7 +428,7 @@ CREATE TABLE `tbl_ratings_table` (
 
 LOCK TABLES `tbl_ratings_table` WRITE;
 /*!40000 ALTER TABLE `tbl_ratings_table` DISABLE KEYS */;
-INSERT INTO `tbl_ratings_table` VALUES (1,2,'study',23,4,23,'in studies school is one of the best \n        ','2016-11-20'),(2,2,'lib',23,5,23,'weew      \n        ','2016-11-20'),(3,2,'sport',23,1,23,'great in  school labs  \n        ','2016-11-20'),(4,2,'lab',23,5,23,'excellent labs     \n        ','2016-11-20'),(5,2,'teacher',23,4,23,'  eeee      ','2016-11-20'),(6,2,'study',23,5,23,'        \n        ','2016-11-20'),(7,2,'lib',23,5,23,'        \n        ','2016-11-20'),(8,2,'sport',23,4,23,'        \n        ','2016-11-20'),(9,2,'lab',23,4,23,'        \n        ','2016-11-20'),(10,2,'teacher',23,4,23,'        ','2016-11-20');
+INSERT INTO `tbl_ratings_table` VALUES (1,2,'study',23,4,23,'in studies school is one of the best \n        ','2016-11-20'),(2,2,'lib',23,5,23,'weew      \n        ','2016-11-20'),(3,2,'sport',23,1,23,'great in  school labs  \n        ','2016-11-20'),(4,2,'lab',23,5,23,'excellent labs     \n        ','2016-11-20'),(5,2,'teacher',23,4,23,'  eeee      ','2016-11-20'),(6,2,'study',23,5,23,'        \n        ','2016-11-20'),(7,2,'lib',23,5,23,'        \n        ','2016-11-20'),(8,2,'sport',23,4,23,'        \n        ','2016-11-20'),(9,2,'lab',23,4,23,'        \n        ','2016-11-20'),(10,2,'teacher',23,4,23,'        ','2016-11-20'),(11,2,'study',23,4,23,'        \n        ','2016-11-20'),(12,2,'lib',23,1,23,'        SDSDSD\n        ','2016-11-20'),(13,2,'sport',23,4,23,'SDSD        \n        ','2016-11-20'),(14,2,'lab',23,4,23,'        \n        SD','2016-11-20'),(15,2,'teacher',23,3,23,'        SSDS','2016-11-20');
 /*!40000 ALTER TABLE `tbl_ratings_table` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -662,4 +662,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-20 17:54:37
+-- Dump completed on 2016-11-20 23:46:17

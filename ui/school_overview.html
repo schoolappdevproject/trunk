@@ -255,7 +255,7 @@ p span i
                     data: {"school_id" :school_id},
                     success: function(response)
                     {
-                       
+                      
                       
                         for (var i in response) 
                         {
@@ -294,14 +294,12 @@ p span i
                     
                             if(window.google){
                                     map = new google.maps.Map(document.getElementById("schoolmap"), {
-                                    center: latlng,
+                                    center: new google.maps.LatLng({lat : Math.round(latlng.latitude), lng: Math.round(latlng.longitude)}),
                                     zoom: 8,
                                     mapTypeId: 'roadmap',
                                     mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
                                   });
                                 
-                                
-                             
                             }
                                 
                             $("#dtl_principal")         .html(principal_name);
