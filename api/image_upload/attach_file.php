@@ -17,20 +17,28 @@ $log = new MyLogPHP();
 
 $file_name = $_POST['fileName'];
 $data      = $_POST['fileData'];
-$fees_id = $_POST['fees_id'];
-$type     = $_POST['type'];
+$fees_id   = $_POST['fees_id'];
+$type      = $_POST['type'];
 
 try
 {
-    $filepath = 'file_upload/'.$file_name.$type;   
+    $result = [];
+    $filepath = 'file_upload/'.$file_name.$type; 
 
-    file_put_contents($filepath, $data);
+    $data = explode(',',$data) ;
+
+    if(false ==  file_put_contents($filepath, base64_decode($data[1])))
+    {
+	$log->info("unable to save the file ");
+    }
+    else
+    {
+
     
     //database save 
      $ret = $database->insert('tbl_fees_attachment', [
         'attach_path'     => $filepath,
         'attach_type'     => $type,
-        'attach_data'     => $data,
         'id_fees'         => $fees_id   
     ]);
     
@@ -41,6 +49,8 @@ try
         $result['code'] =0;
        $log->info("attachment for fees revies  uploaded failed at path ".$filepath);       
     }
+
+   }
     
     echo json_encode($result);
     

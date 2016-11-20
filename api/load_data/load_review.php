@@ -25,13 +25,16 @@ if ($method == 'POST') {
 	"tbl_review_data.review_date,".
 	"tbl_review_data.tbl_review_title,".
 	"tbl_review_data.tbl_review_text,".
-	"tbl_users.username ".
-	"from tbl_review_data,tbl_users " .
+    "tbl_review_action.action,".
+	"tbl_users.username, ".
+    "tbl_users.pic ".
+	"from tbl_review_data,tbl_users,tbl_review_action  " .
 	"where tbl_review_data.id_user_data = tbl_users.user_id ".
+    "and tbl_review_data.id_user_data = tbl_review_action.id_user ".
+	"and tbl_review_data.id_review_data = tbl_review_action.id_review_data ".
 	"and tbl_review_data.id_school = $school_id";
- 
        
-      $result = $database->query($qry)->fetchAll();
+     $result = $database->query($qry)->fetchAll();   
       echo json_encode($result);
         
     }

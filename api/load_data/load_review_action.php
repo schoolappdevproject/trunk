@@ -11,7 +11,8 @@ $log = new MyLogPHP();
 if ($method == 'POST') {
 
     
-    $review_id    = trim($_POST['review_id']);
+      $review_id    = trim($_POST['review_id']);
+      $type         = trim($_POST['type']);
     
     if(empty($review_id))
     {
@@ -20,15 +21,12 @@ if ($method == 'POST') {
     }
     else
     {
-        
-      $qry = "select attachment_path from tbl_review_attachment where id_review = $review_id;";
-       
-      $result = $database->query($qry)->fetchAll();
-        
-//      $attach_path = 'attach_pic/'.$result['attachment_path'];
 
-  //    $ret['path'] = $attach_path;
-    
+      $qry = "select count(action) as count,action from tbl_review_action where id_review_data = $review_id group by action"; 
+       
+      $log->info($qry);
+      $result = $database->query($qry)->fetchAll();
+      $log->info($result[0]['count']);
       echo json_encode($result);
         
     }

@@ -7,7 +7,7 @@ $log = new MyLogPHP();
 if ($method == 'POST') {
     
 
-  $review_id      = $_POST['review_id'];
+  $fees_id     	  = $_POST['fees_id'];
   $user_id        = $_POST['user_id'];
   $action         = $_POST['user_action'];
   
@@ -15,11 +15,11 @@ if ($method == 'POST') {
 
 try{
      
-     $ret = $database->update("tbl_review_action",[
+     $ret = $database->update("tbl_fees_action",[
                 'action' => $action
             ],[
                 "AND" => [
-                    'id_review_data[=]'  => $review_id,
+                    'id_fees_data[=]'  => $fees_id,
                     'id_user[=]'         => $user_id
                          ]
             ]);
@@ -28,21 +28,21 @@ try{
     {
         //in case a fresh user is doing like or dislike 
         //insert new row 
-        $ret = $database->insert('tbl_review_action', [
-            'id_review_data'    => $review_id,
+        $ret = $database->insert('tbl_fees_action', [
+            'id_fees_data'      => $fees_id,
             'id_user'           => $user_id,
             'action'            => $action   
         ]);
-        $log->info("Unable to update review");
+        $log->info("Unable to update fees");
     }
    
-    $ret = $database->query("select count(*) from tbl_review_action where id_review_data = $review_id and action = 'L'")->fetchAll();
+    $ret = $database->query("select count(*) from tbl_fees_action where id_fees_data = $fees_id and action = 'L'")->fetchAll();
     
     $result = [];
 
     $result['total_liked'] = intval($ret[0][0]);
     
-    $ret = $database->query("select count(*) from tbl_review_action where id_review_data = $review_id and action = 'D'")->fetchAll();
+    $ret = $database->query("select count(*) from tbl_fees_action where id_fees_data = $fees_id and action = 'D'")->fetchAll();
     
     $result['total_disliked'] = intval($ret[0][0]);
     

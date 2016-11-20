@@ -64,12 +64,28 @@
 	<script type="text/javascript" src="./school_overview_files/jquery-lib.js"></script>
 		
 	<!-- CSS -->
-	<link href="./school_overview_files/bootstrap.css" type="text/css" rel="stylesheet"><link href="./school_overview_files/colors.css" type="text/css" rel="stylesheet"><link href="./school_overview_files/font.css" type="text/css" rel="stylesheet"><link href="./school_overview_files/jquery.filer.css" type="text/css" rel="stylesheet"><link href="./school_overview_files/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet"><link href="./school_overview_files/component.css" type="text/css" rel="stylesheet"><link href="./school_overview_files/styles.min.css" type="text/css" rel="stylesheet"><link href="./school_overview_files/font-awesome.min.css" type="text/css" rel="stylesheet"><link type="text/css" rel="stylesheet" href="./school_overview_files/jquery.mmenu.all.css"><link href="./school_overview_files/mapbox.css" rel="stylesheet"><link href="./school_overview_files/chosen.css" rel="stylesheet"><link href="./school_overview_files/MarkerCluster.css" rel="stylesheet"><link href="./school_overview_files/MarkerCluster.Default.css" rel="stylesheet"><link href="./school_overview_files/main.css" type="text/css" rel="stylesheet">
+    <link href="css/bootstrap-3.3.7/dist/css/bootstrap.css" type="text/css" rel="stylesheet">
+	
+    <link href="./school_overview_files/colors.css" type="text/css" rel="stylesheet">
+    <link href="./school_overview_files/font.css" type="text/css" rel="stylesheet">
+    <link href="./school_overview_files/jquery.filer.css" type="text/css" rel="stylesheet">
+    <link href="./school_overview_files/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet">
+    <link href="./school_overview_files/component.css" type="text/css" rel="stylesheet">
+    <link href="./school_overview_files/styles.min.css" type="text/css" rel="stylesheet">
+    <link href="./school_overview_files/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="./school_overview_files/jquery.mmenu.all.css">
+    <link href="./school_overview_files/mapbox.css" rel="stylesheet">
+    <link href="./school_overview_files/chosen.css" rel="stylesheet">
+    <link href="./school_overview_files/MarkerCluster.css" rel="stylesheet">
+    <link href="./school_overview_files/MarkerCluster.Default.css" rel="stylesheet">
+    <link href="./school_overview_files/main.css" type="text/css" rel="stylesheet">
     
-     <link href="css/bootstrap-3.3.7/dist/fonts/glyphicons-halflings-regular.ttf" type="text/css" rel="stylesheet">
-     <link href="css/common.css" type="text/css" rel="stylesheet">
+    <link href="css/bootstrap-3.3.7/dist/fonts/glyphicons-halflings-regular.ttf" type="text/css" rel="stylesheet">
+    <link href="css/common.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link rel="stylesheet" href="node_modules/jquery-bar-rating/dist/themes/fontawesome-stars.css">
+    
+
     <style>
     .user-text h3
     {
@@ -1005,11 +1021,11 @@ p span i
 		<script type="text/javascript" src="./school_overview_files/classie.js"></script> <!-- Popup -->
 		<script type="text/javascript" src="./school_overview_files/modalEffects.js"></script> <!-- Popup -->
 	    <script type="text/javascript" src="./school_overview_files/main.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="js/cookie.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="js/util.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="js/angular.min.js"></script>
-    <script src="node_modules/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
-
+        <script type="text/javascript" charset="UTF-8" src="js/cookie.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="js/util.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="js/angular.min.js"></script>
+        <script src="node_modules/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="css/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
     <script>
           
          
@@ -1177,143 +1193,9 @@ p span i
         
         function loadSchoolFees()
         {
-            
-                        var formData = {
-                                school_id     : readCookie('school_id')
-                         };
-            
-                        console.log(formData);
-                        
-                          // process the formf
-                        $.ajax({
-                            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                            url         : '../api/load_data/load_fees.php', // the url where we want to POST
-                            data        : formData, // our data object
-                            dataType    : 'json', // what type of data do we expect back from the server
-                            encode          : true
-                        })
-                            // using the done promise callback
-                        .done(function(data) {
 
-                            showFeesRecords(data);
-			    console.log("showing fees record ");
-
-                            // here we will handle errors and validation messages
-                        }).fail(function( xhr, status, errorThrown ) {
-                                console.log( "Query Failed" );
-                                console.log( "Error: " + errorThrown );
-                                console.log( "Status: " + status );
-                                console.dir( xhr );
-                                return false;
-                        });
-            
-        }
-        
-        
-        function loadSchoolReviews()
-        {
-            
-                        var formData = {
-                                school_id     : readCookie('school_id')
-                         };
-            
-                        console.log(formData);
-                        
-                          // process the formf
-                        $.ajax({
-                            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                            url         : '../api/load_data/load_review.php', // the url where we want to POST
-                            data        : formData, // our data object
-                            dataType    : 'json', // what type of data do we expect back from the server
-                            encode          : true
-                        })
-                            // using the done promise callback
-                        .done(function(data) {
-
-                            showReviewRecords(data);
-
-                            // here we will handle errors and validation messages
-                        }).fail(function( xhr, status, errorThrown ) {
-                                console.log( "Query Failed" );
-                                console.log( "Error: " + errorThrown );
-                                console.log( "Status: " + status );
-                                console.dir( xhr );
-                                return false;
-                        });
-            
-        }
-        function showReviewRecords(data)
-        {
-            
-            for(review_i in data)
-                {
-                 
-                    
-                    var newElement = document.createElement('div');
-            newElement.innerHTML  = "<div class='comments-box'>" +
-                                    "<div class='comments-thumb'>"+
-                                        "<img class='img-circle' alt='comments-thumb-1' src='"+profile_pic_data+"' width='100px' height='150px'>"+
-                                    "</div>"+
-                                    "<div class='comments-content'>"+
-                                        "<div class='comments-meta-box'>"+
-                                            "<div class='comments-author text-left'>"+
-                                                "<div class='comments-name'>"+
-                                                    data[review_i].username+
-                                                "</div>"+
-                                                "<div class='comments-date'>"+
-                                                    "<span style='font-size:12px;'>"+data[review_i].review_date+"</span>"+
-                                                "</div>"+
-                                            "</div>"+
-
-                                        "</div>"+
-                                        "<div class='comments-description'>"+
-                                            "<span id='sp_review_title'><p><h4>"+
-                                          "Class :  "+data[review_i].tbl_review_title+
-                                            "</h4></p>"+
-                                            "</span>"+
-                                            "<span id='sp_review_text'>"+
-                                            "<p>"+
-                                               data[review_i].tbl_review_text+
-                                            "</p>"+
-                                            "</span>"+
-                                            "<br>"+
-                                            "<div id='pictorial_series_"+data[review_i].id_review_data+"'>"+
-                                            "</div>"+
-                                            "<br>"+
-                                                                                
-                                                "<div class='col-sm-1'>" +
-                            "<i id='like"+data[review_i].id_review_data+"' onclick='reviewLiked("+data[review_i].id_review_data+")' class='glyphicon glyphicon-thumbs-up'></i> <div id='like"+data[review_i].id_review_data+"-bs3'></div>"+
-                                                "</div>"+
-                                                "<div class='col-sm-1'>"+
-                    "<i id='dislike"+data[review_i].id_review_data+"'  onclick='reviewDisliked("+data[review_i].id_review_data+")' class='glyphicon glyphicon-thumbs-down'></i> <div id='dislike"+data[review_i].id_review_data+"-bs3'></div>"+
-                                                "</div>"+
-                                            "</div>"+
-                                    "</div>"
-                                "</div>";
-
-                        var description_sections = document.getElementById("review_display");    
-                        description_sections.appendChild(newElement);                    
-                        loadImages(data[review_i].id_review_data);
-
-                }
-        }
-        
-        
-       function showFeesRecords(data)
-        {       
-           for(review_i in data)
-           { 
-                console.log(data[review_i])     ;
-                showFeesInUI(data[review_i].username,data[review_i].id_fees_data,data[review_i].standard,data[review_i].fees_txt,true,profile_pic_data);
-           }
-        }
-        
-        
-        
-        function loadImages(review_id_i)
-        {
                 var formData = {
-                        review_id     : review_id_i
+                        school_id     : readCookie('school_id')
                  };
 
                 console.log(formData);
@@ -1321,14 +1203,17 @@ p span i
                   // process the formf
                 $.ajax({
                     type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                    url         : '../api/load_data/load_images.php', // the url where we want to POST
+                    url         : '../api/load_data/load_fees.php', // the url where we want to POST
                     data        : formData, // our data object
                     dataType    : 'json', // what type of data do we expect back from the server
                     encode          : true
                 })
                     // using the done promise callback
                 .done(function(data) {
-                    showImages(data,review_id_i);
+
+                    showFeesRecords(data);
+        console.log("showing fees record ");
+
                     // here we will handle errors and validation messages
                 }).fail(function( xhr, status, errorThrown ) {
                         console.log( "Query Failed" );
@@ -1336,29 +1221,280 @@ p span i
                         console.log( "Status: " + status );
                         console.dir( xhr );
                         return false;
-                }); 
+                });
+            
+        }
+        
+        
+        function loadSchoolReviews()
+        {
+            
+            var formData = {
+                    school_id     : readCookie('school_id')
+             };
+
+            console.log(formData);
+
+              // process the formf
+            $.ajax({
+                type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url         : '../api/load_data/load_review.php', // the url where we want to POST
+                data        : formData, // our data object
+                dataType    : 'json', // what type of data do we expect back from the server
+                encode          : true
+            })
+                // using the done promise callback
+            .done(function(data) {
+
+                showReviewRecords(data);
+
+                // here we will handle errors and validation messages
+            }).fail(function( xhr, status, errorThrown ) {
+                    console.log( "Query Failed" );
+                    console.log( "Error: " + errorThrown );
+                    console.log( "Status: " + status );
+                    console.dir( xhr );
+                    return false;
+            });
+            
+        }
+        
+        
+        function processFeesData(username,fees_id,standard,fees_text,isAttach,pic_data,isProfilePicPath)
+        {
+           
+            var formData = {
+                    fees_id     : fees_id
+             };
+
+            console.log(formData);
+
+              // process the formf
+            $.ajax({
+                type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url         : '../api/load_data/load_fees_action.php', // the url where we want to POST
+                data        : formData, // our data object
+                dataType    : 'json', // what type of data do we expect back from the server
+                encode          : true
+            })
+                // using the done promise callback
+            .done(function(data) {
+                //data may be 0 to 3 size 
+                
+                var dislikeCount,likeCount;
+                
+                for (i_data in data)
+                    {
+                        if(data[i_data]['action'] == 'L')
+                            {
+                                likeCount = data[i_data]['count'];
+                            }
+                        else if(data[i_data]['action'] == 'D')
+                            {
+                                dislikeCount = data[i_data]['count'];
+                            }
+                    }
+                console.log("fees  --------------Dislike "+ dislikeCount);
+                console.log("fees ---------------likeCount "+ likeCount);
+                if(!dislikeCount)
+                    dislikeCount = 0;
+                if(!likeCount)
+                    likeCount = 0;
+                showFeesInUI(username,fees_id,standard,fees_text,isAttach,pic_data,isProfilePicPath,likeCount,dislikeCount);
+                
+
+                // here we will handle errors and validation messages
+            }).fail(function( xhr, status, errorThrown ) {
+                    console.log( "Query Failed" );
+                    console.log( "Error: " + errorThrown );
+                    console.log( "Status: " + status );
+                    console.dir( xhr );
+                    return false;
+            });
+            
+           
+        }
+        
+        
+        function processReviewData(review_data)
+        {
+           
+            var formData = {
+                    review_id     : review_data.id_review_data,
+                    type          : "D"
+             };
+
+            console.log(formData);
+
+              // process the formf
+            $.ajax({
+                type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url         : '../api/load_data/load_review_action.php', // the url where we want to POST
+                data        : formData, // our data object
+                dataType    : 'json', // what type of data do we expect back from the server
+                encode          : true
+            })
+                // using the done promise callback
+            .done(function(data) {
+                //data may be 0 to 3 size 
+                
+                var dislikeCount,likeCount;
+                
+                for (i_data in data)
+                    {
+                        if(data[i_data]['action'] == 'L')
+                            {
+                                likeCount = data[i_data]['count'];
+                            }
+                        else if(data[i_data]['action'] == 'D')
+                            {
+                                dislikeCount = data[i_data]['count'];
+                            }
+                    }
+                console.log("Dislike "+ dislikeCount);
+                console.log("likeCount "+ likeCount);
+                if(!dislikeCount)
+                    dislikeCount = 0;
+                if(!likeCount)
+                    likeCount = 0;
+                
+                showReviewInUI(review_data,likeCount,dislikeCount);
+
+                // here we will handle errors and validation messages
+            }).fail(function( xhr, status, errorThrown ) {
+                    console.log( "Query Failed" );
+                    console.log( "Error: " + errorThrown );
+                    console.log( "Status: " + status );
+                    console.dir( xhr );
+                    return false;
+            });
+            
+           
+        }
+        
+      
+        function showReviewRecords(data)
+        {
+            
+            for(review_i in data)
+                {
+                    processReviewData(data[review_i]);
+                }
+        }
+        
+      function showReviewInUI(data,likeCount,dislikeCount)
+        {
+                      console.log("-----later-----------Like count "+ likeCount);
+
+                    
+                    var newElement = document.createElement('div');
+            newElement.innerHTML  = "<div class='comments-box'>" +
+                                    "<div class='comments-thumb'>"+
+                                        "<img class='img-circle' alt='comments-thumb-1' src='../api/image_upload/"+data.pic+"' width='100px' height='150px'>"+
+                                    "</div>"+
+                                    "<div class='comments-content'>"+
+                                        "<div class='comments-meta-box'>"+
+                                            "<div class='comments-author text-left'>"+
+                                                "<div class='comments-name'>"+
+                                                    data.username+
+                                                "</div>"+
+                                                "<div class='comments-date'>"+
+                                                    "<span style='font-size:12px;'>"+data.review_date+"</span>"+
+                                                "</div>"+
+                                            "</div>"+
+
+                                        "</div>"+
+                                        "<div class='comments-description'>"+
+                                            "<span id='sp_review_title'><p><h4>"+
+                                            data.tbl_review_title+
+                                            "</h4></p>"+
+                                            "</span>"+
+                                            "<span id='sp_review_text'>"+
+                                            "<p>"+
+                                               data.tbl_review_text+
+                                            "</p>"+
+                                            "</span>"+
+                                            "<br>"+
+                                            "<div id='pictorial_series_"+data.id_review_data+"'>"+
+                                            "</div>"+
+                                            "<br>"+
+                                                                                
+                                                "<div class='col-sm-1'>" +
+                            "<i id='like"+data.id_review_data+"' onclick='reviewLiked("+data.id_review_data+")' class='glyphicon glyphicon-thumbs-up'></i> <div id='like"+data.id_review_data+"-bs3'>"+likeCount+"</div>"+
+                                                "</div>"+
+                                                "<div class='col-sm-1'>"+
+                    "<i id='dislike"+data.id_review_data+"'  onclick='reviewDisliked("+data.id_review_data+")' class='glyphicon glyphicon-thumbs-down'></i> <div id='dislike"+data.id_review_data+"-bs3'>"+dislikeCount+"</div>"+
+                                                "</div>"+
+                                            "</div>"+
+                                    "</div>"
+                                "</div>";
+
+                        var description_sections = document.getElementById("review_display");    
+                        description_sections.appendChild(newElement);                    
+                        loadImages(data.id_review_data);
+        }
+        
+        
+       function showFeesRecords(data)
+        {       
+           for(review_i in data)
+           { 
+    console.log(data[review_i]);
+    processFeesData(data[review_i].username,data[review_i].id_fees_data,data[review_i].standard,data[review_i].fees_txt,true,data[review_i].pic,true);
+           }
+        }
+        
+        
+        
+        function loadImages(review_id_i)
+        {
+            var formData = {
+                    review_id     : review_id_i
+             };
+
+            console.log(formData);
+
+              // process the formf
+            $.ajax({
+                type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url         : '../api/load_data/load_images.php', // the url where we want to POST
+                data        : formData, // our data object
+                dataType    : 'json', // what type of data do we expect back from the server
+                encode          : true
+            })
+                // using the done promise callback
+            .done(function(data) {
+                showImages(data,review_id_i);
+                // here we will handle errors and validation messages
+            }).fail(function( xhr, status, errorThrown ) {
+                    console.log( "Query Failed" );
+                    console.log( "Error: " + errorThrown );
+                    console.log( "Status: " + status );
+                    console.dir( xhr );
+                    return false;
+            }); 
         }
         
         function showImages(picArray,review_id)
         {
              //populate through Pictorial Series and add in the pictorial thumbnail
-            
-                var pictorial_sections = document.getElementById("pictorial_series_"+review_id); 
-                var _inc = 0;
-                console.log("Number of Pictorial" + picArray.length);
-                 for(pic in picArray)
-                 { 
-                     /// attachment_path,attachment_data 
-                     var newPictorial = document.createElement('img');
-                     var imgID = 'pictorial_'+review_id +'_'+_inc;
-                     newPictorial.setAttribute('id', imgID );  //set id
-                     newPictorial.setAttribute('src', picArray[pic].attachment_data );  //set id
-                     newPictorial.setAttribute('width', "400px" );  //set width
-                     newPictorial.setAttribute('height', "280px" );  //set height
-                     console.log("pic added");
-                     pictorial_sections.appendChild(newPictorial);
-                     _inc ++;
-                 }
+
+            var pictorial_sections = document.getElementById("pictorial_series_"+review_id); 
+            var _inc = 0;
+            console.log("Number of Pictorial" + picArray.length);
+             for(pic in picArray)
+             { 
+                 /// attachment_path,attachment_data 
+                 var newPictorial = document.createElement('img');
+                 var imgID = 'pictorial_'+review_id +'_'+_inc;
+                 newPictorial.setAttribute('id', imgID );  //set id
+                 newPictorial.setAttribute('src',"../api/image_upload/"+picArray[pic].attachment_path);  //set id
+                 newPictorial.setAttribute('width', "400px" );  //set width
+                 newPictorial.setAttribute('height', "280px" );  //set height
+                 console.log("pic added");
+                 pictorial_sections.appendChild(newPictorial);
+                 _inc ++;
+             }
         }
         /*
         function schoolBelongsToStudent(username,school_id)
@@ -1466,11 +1602,11 @@ p span i
                 if(fees_file_attach_data) //if file is uploaded
                 {
                     feesSuccess(fees_id);
-                    showFeesInUI(dtl_username,fees_id,formData.standard,formData.fees_text,true,profile_pic_data);
+                    processFeesData(dtl_username,fees_id,formData.standard,formData.fees_text,true,profile_pic_data,false);
                 }
                 else
                 {
-                   showFeesInUI(dtl_username,fees_id,formData.standard,formData.fees_text,false,profile_pic_data);
+                   processFeesData(dtl_username,fees_id,formData.standard,formData.fees_text,false,profile_pic_data,false);
                 }
                 clearFeesUpdate();
                 // here we will handle errors and validation messages
@@ -1590,7 +1726,7 @@ p span i
 			if(data[0])
 			{
                     // log data to the console so we can see
-                    drawAttachmentDiv(data[0]['attach_data'],divName,fees_id,data[0]['attach_type']);             
+                    drawAttachmentDiv(data[0]['attach_path'],divName,fees_id,data[0]['attach_type']);             
 			}
 
                     // here we will handle errors and validation messages
@@ -1606,24 +1742,24 @@ p span i
  function downloadURI(uri, name) {
       var link = document.createElement("a");
       link.download = name;
-      link.href = uri;
+      link.href = "../api/image_upload/" + uri;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       delete link;
     }
 
-	function drawAttachmentDiv(file_data,divName,fees_id,file_type)
+	function drawAttachmentDiv(file_path,divName,fees_id,file_type)
 	{
 
 	
-		if(file_data)
+		if(file_path)
 		{
 		   console.log("attachment drawn for fees id "+ fees_id);
 		   var fileName = "file_attach_"+fees_id+file_type;
            var newElement = document.createElement('a');  
 		   newElement.setAttribute('href',"#");
-           newElement.setAttribute('onclick',"downloadURI('"+file_data+"','"+fileName+"')");
+           newElement.setAttribute('onclick',"downloadURI('"+file_path+"','"+fileName+"')");
            newElement.innerHTML ="Click to Download attachment";
            
             var downloadButton = document.getElementById(divName);
@@ -1632,13 +1768,17 @@ p span i
         
 		}
 	}             
-        function showFeesInUI(username,fees_id,standard,fees_text,isAttach,pic_data)
+        function showFeesInUI(username,fees_id,standard,fees_text,isAttach,pic_data,isProfilePicPath,likeCount,dislikeCount)
         {
             
             console.log(standard,fees_text);
             var d = new Date();
             var strDate = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
 	    
+            if(true ==isProfilePicPath)
+                {
+                    pic_data = "../api/image_upload/"+pic_data;
+                }
         
            var newElement = document.createElement('div');
             newElement.innerHTML  = "<div class='comments-box'>" +
@@ -1673,10 +1813,10 @@ p span i
                                             "<br>"+
                                                                                 
                                                 "<div class='col-sm-1'>" +
-                            "<i id='like"+fees_id+"' onclick='feesLiked("+fees_id+")' class='glyphicon glyphicon-thumbs-up'  style='color:blue'></i> <div id='like"+fees_id+"-bs3'></div>"+
+                            "<i id='like"+fees_id+"' onclick='feesLiked("+fees_id+")' class='glyphicon glyphicon-thumbs-up'  style='color:blue'></i> <div id='like"+fees_id+"fees-bs3'>"+likeCount+"</div>"+
                                                 "</div>"+
                                                 "<div class='col-sm-1'>"+
-                    "<i id='dislike"+fees_id+"'  onclick='feesDisliked("+fees_id+")' class='glyphicon glyphicon-thumbs-down'></i> <div id='dislike"+fees_id+"-bs3'></div>"+
+                    "<i id='dislike"+fees_id+"'  onclick='feesDisliked("+fees_id+")' class='glyphicon glyphicon-thumbs-down'></i> <div id='dislike"+fees_id+"fees-bs3'>"+dislikeCount+"</div>"+
                                                 "</div>"+
                                             "</div>"+
                                     "</div>"
@@ -1812,6 +1952,8 @@ p span i
                     user_id           : dtl_user_id,
                     user_action       : action
              };
+            
+            console.log(formData);
 
               // process the formf
             $.ajax({
@@ -1839,10 +1981,64 @@ p span i
             
         }
         
+        function saveUserActionFees(fees_id,action)
+        {
+            
+            var formData = {
+
+                    fees_id           : fees_id,
+                    user_id           : dtl_user_id,
+                    user_action       : action
+             };
+            
+            console.log(formData);
+
+              // process the formf
+            $.ajax({
+                type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url         : '../api/save_data/save_fees_action.php', // the url where we want to POST
+                data        : formData, // our data object
+                dataType    : 'json', // what type of data do we expect back from the server
+                encode          : true
+            })
+                // using the done promise callback
+            .done(function(data) {
+                
+                // log data to the console so we can see
+                console.log(data); 
+                $("#like"+fees_id+"fees-bs3")       .text( data['total_liked']    );
+                $("#dislike"+fees_id+"fees-bs3")    .text( data['total_disliked'] );
+
+                // here we will handle errors and validation messages
+            }).fail(function( xhr, status, errorThrown ) {
+                    alert( "Sorry, there was a problem!" );
+                    console.log( "Error: " + errorThrown );
+                    console.log( "Status: " + status );
+                    console.dir( xhr );
+            });
+            
+        }
+        
+        
         function reviewDisliked(review_id_i)
         {
             console.log("Review Disliked "+ review_id_i);
             saveUserAction(review_id_i,'D');
+            
+        }
+        
+        
+        function feesDisliked(fees_id)
+        {
+            console.log("fees Disliked "+ fees_id);
+            saveUserActionFees(fees_id,'D');
+            
+        }
+        
+        function feesLiked(fees_id)
+        {
+            console.log("fees Disliked "+ fees_id);
+            saveUserActionFees(fees_id,'L');
             
         }
         

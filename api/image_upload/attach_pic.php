@@ -19,28 +19,42 @@ $review_id = $_POST['review_id'];
 
 try
 {
-    $filepath = 'attach_pic/'.$file_name.'.'.$type;    
-    $log->info(file_put_contents($filepath, base64_decode($data)));
+    $filepath = 'attach_pic/'.$file_name.'.'.$type;
+    $result = [];
     
+    $data = explode(',',$data);
     
+   if(false ==  file_put_contents($filepath, base64_decode($data[1])))  
+   {
+       
+           $log->info("failed to save file ");
+   }
+   else
+   {
+       
+        $log->info("Successfully saved image $filepath");
+       
+           $ret = $database->insert('tbl_review_attachment', [
+            'attachment_path'     => $filepath,
+            'attachment_type'    =>$type,
+            'id_review'         => $review_id   
+        ]);
+
+        if ($ret) {   
+            $result['code'] =1;
+           $log->info("Profile Pictorial uploaded succesfully at path ".$filepath);       
+        } else {
+            $result['code'] =0;
+           $log->info("Profile Pictorial uploaded failed at path ".$filepath);       
+        }
+
+       
+	   
+   } 
+
     //database save 
-     $ret = $database->insert('tbl_review_attachment', [
-        'attachment_path'     => $filepath,
-        'attachment_type'    =>$type,
-        'attachment_data'   => $data,
-        'id_review'         => $review_id   
-    ]);
-    
-    if ($ret) {   
-        $result['code'] =1;
-       $log->info("Profile Pictorial uploaded succesfully at path ".$filepath);       
-    } else {
-        $result['code'] =0;
-       $log->info("Profile Pictorial uploaded failed at path ".$filepath);       
-    }
-    
-    echo json_encode($result);
-    
+ 
+     echo json_encode($result);
 } 
 catch(Exception $ex)
 {

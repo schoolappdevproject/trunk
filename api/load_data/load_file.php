@@ -21,9 +21,8 @@ if ($method == 'POST') {
     else
     {
         
-      //$result = [];
-      //validating the user_id
-      $qry = "select attach_data,attach_type from tbl_fees_attachment where id_fees = $fees_id;";
+
+      $qry = "select attach_path,attach_type from tbl_fees_attachment where id_fees = $fees_id;";
        
       $result = $database->query($qry)->fetchAll();
       echo json_encode($result);

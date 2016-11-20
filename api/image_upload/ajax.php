@@ -1,29 +1,27 @@
 <?php
 
 $school_id = $_GET['school_id'];
-
+$filesoriginal = array();
 $dir = 'imageGallery//images//'.$school_id.'//';
+
+
 
 if (is_dir($dir)){
     $dhandle_ = opendir($dir);
-}
+    if ($dhandle_) {
+           while (false !== ($fname = readdir($dhandle_))) {
+              $ext = pathinfo($fname, PATHINFO_EXTENSION);
 
-$filesoriginal = array();
-
-
-if ($dhandle_) {
-   while (false !== ($fname = readdir($dhandle_))) {
-	  $ext = pathinfo($fname, PATHINFO_EXTENSION);
-
-      if (($fname != '.') && ($fname != '..') &&
-          ($fname != basename($_SERVER['PHP_SELF'])) &&
-		  (($ext == 'jpg')||($ext == 'gif'))
-		  ) {
-          $filesoriginal[] = (is_dir( "./$fname" )) ? "(Dir) {$fname}" : $fname;
-      }
-   }
-   sort($filesoriginal);
-   closedir($dhandle_);
+              if (($fname != '.') && ($fname != '..') &&
+                  ($fname != basename($_SERVER['PHP_SELF'])) &&
+                  (($ext == 'jpg')||($ext == 'gif'))
+                  ) {
+                  $filesoriginal[] = (is_dir( "./$fname" )) ? "(Dir) {$fname}" : $fname;
+              }
+           }
+           sort($filesoriginal);
+           closedir($dhandle_);
+    }
 }
 
 $_html="";

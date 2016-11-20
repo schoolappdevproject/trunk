@@ -37,6 +37,7 @@ if ($method == 'POST') {
         "tbl_fees_data.standard,".
         "tbl_fees_data.fees_txt,".
         "tbl_users.username,".
+        "tbl_users.pic,".
         "tbl_users.user_id ".
         "from tbl_fees_data,tbl_users where tbl_fees_data.user_id = tbl_users.user_id and tbl_fees_data.school_id  = $school_id";
        

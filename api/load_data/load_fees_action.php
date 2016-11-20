@@ -11,24 +11,21 @@ $log = new MyLogPHP();
 if ($method == 'POST') {
 
     
-    $review_id    = trim($_POST['review_id']);
+    $fees_id    = trim($_POST['fees_id']);
     
-    if(empty($review_id))
+    if(empty($fees_id))
     {
        $log->info("HTTP/1.1 400 Bad Request");
         header("HTTP/1.1 400 Bad Request");    
     }
     else
     {
-        
-      $qry = "select attachment_path from tbl_review_attachment where id_review = $review_id;";
-       
-      $result = $database->query($qry)->fetchAll();
-        
-//      $attach_path = 'attach_pic/'.$result['attachment_path'];
 
-  //    $ret['path'] = $attach_path;
-    
+      $qry = "select count(action) as count,action from tbl_fees_action where id_fees_data = $fees_id group by action"; 
+       
+      $log->info($qry);
+      $result = $database->query($qry)->fetchAll();
+      $log->info($result[0]['count']);
       echo json_encode($result);
         
     }
