@@ -1,5 +1,8 @@
 <?php
 
+require("../trace/MyLogPHP-1.2.1.class.php");
+$log = new MyLogPHP();
+
 /**
  * Calculates the great-circle distance between two points, with
  * the Haversine formula.
@@ -13,7 +16,7 @@ function haversineGreatCircleDistance(
   $latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo)
 {
   // convert from degrees to radians
-  $earthRadius = 6371000;
+  $earthRadius = 6371000.0;
   $latFrom = deg2rad($latitudeFrom);
   $lonFrom = deg2rad($longitudeFrom);
   $latTo = deg2rad($latitudeTo);
@@ -27,6 +30,25 @@ function haversineGreatCircleDistance(
   return $angle * $earthRadius;
 }
 
+
+
+function distance($lat1, $lon1, $lat2, $lon2, $unit) {
+
+  $theta = $lon1 - $lon2;
+  $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+  $dist = acos($dist);
+  $dist = rad2deg($dist);
+  $miles = $dist * 60 * 1.1515;
+  $unit = strtoupper($unit);
+
+  if ($unit == "K") {
+    return ($miles * 1.609344);
+  } else if ($unit == "N") {
+      return ($miles * 0.8684);
+    } else {
+        return $miles;
+      }
+}
 
 
 // Get parameters from URL
@@ -62,10 +84,13 @@ header("Content-type: text/xml");
 
 while ($row = @mysql_fetch_assoc($result)){
   
-  $distanceInKm = haversineGreatCircleDistance($center_lat,$center_lng,$row['latitude'],$row['longitude']);
-  
-  if($distanceInKm < $radius *1000)
-  {  
+ // $distanceInKm = //haversineGreatCircleDistance(floatval($center_lat),floatval($center_lng),floatval($row['latitude']),floatval($row['longitude']));
+   $distanceInKm = distance(floatval($center_lat),floatval($center_lng),floatval($row['latitude']),floatval($row['longitude']),"K");
+
+  if($distanceInKm <= $radius)
+  { 
+    //  $log->info("radius ".($radius));
+    //  $log->info("Distance ".$row['school_name']." ".$row['latitude']." ".$row['longitude']." ---".$distanceInKm);
     $node = $dom->createElement("marker");
     $newnode = $parnode->appendChild($node);
     $newnode->setAttribute("school_id", $row['school_id']);
@@ -83,12 +108,17 @@ while ($row = @mysql_fetch_assoc($result)){
     $newnode->setAttribute("board", $row['board']);
     $newnode->setAttribute("medium_of_teaching", $row['medium_of_teaching']);
     $newnode->setAttribute("mobility", $row['mobility']);
-    $newnode->setAttribute("religous_preference", $row['religous_preference']);
-    $newnode->setAttribute("small_description", $row['small_description']);
+    $newnode->setAttribute("religous_preference", $row['religous_preference']);  
+    $newnode->setAttribute("small_description", utf8_encode($row['small_description']));
     $newnode->setAttribute("profile_pic_data", base64_decode($row['profile_pic_data']));
+  }
+  else
+  {
+      // $log->info("Distance ".$row['school_name']." ".$row['latitude']." ".$row['longitude']." ---".$distanceInKm);
   }
 }
 
+//$log->info($dom->saveXML());
 echo $dom->saveXML();
 ?>
 

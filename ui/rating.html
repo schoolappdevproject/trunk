@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link rel="stylesheet" href="node_modules/jquery-bar-rating/dist/themes/fontawesome-stars.css">
     <script src="node_modules/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
+    
         
         <style>
         .floatClear {
@@ -223,26 +224,81 @@
                         for(i in data)
                             {
                                 
+                                isFiveStar = "";
+                                isFourHalfStar ="";
+                                isFourStar ="";
+                                isThreeHalfStar ="";
+                                isThreeStar ="";
+                                isTwoHalfStar ="";
+                                isTwoStar ="";
+                                isOneHalfStar ="";
+                                isOneStar ="";
+                                isHalStar ="";
+                                
+                                if(data[i].rating_points == "1")
+                                    {
+                                        isOneStar ="checked";
+                                    }
+                                else if (data[i].rating_points == "2")
+                                    {
+                                         isTwoStar ="checked";
+                                    }
+                                else if (data[i].rating_points == "3")
+                                    {
+                                          isThreeStar ="checked";
+                                    }
+                                else if (data[i].rating_points == "4")
+                                    {
+                                            isFourStar ="checked";
+                                    }
+                                else if(data[i].rating_points == "5")
+                                    {
+                                        isFiveStar = "checked";
+                                    }
+                                
+                                if(data[i].rating_type == "study")
+                                    {
+                                        description = "Studies and Academics";
+                                    }
+                                else if (data[i].rating_type == "sport")
+                                    {
+                                        description = "Sports Extracurriculam Activities ";
+                                    }
+                                else if (data[i].rating_type == "lab")
+                                    {
+                                        description = "Science and Mathematical Laboratories and Facilties";
+                                    }
+                                else if (data[i].rating_type == "teacher")
+                                    {
+                                        description = "Teaching and Ad Joint Learning Staff";
+                                    }
+                                 else if (data[i].rating_type == "lib")
+                                    {
+                                        description = "Library and Reading facilties ";
+                                    }
+                                
                                 console.log("Rating data "+ data[i]);
                                   var newElement = document.createElement('div');
         
-                                  newElement.innerHTML  = "<select class='star-rating' id='rating_id_"+data[i].id_rating+"' name='selector_"+data[i].id_rating+"'>"+
-                                ((data[i].rating_points == "1") ? "<option value='1' selected>1</option>" :"<option value='1'>1</option>")+
-                                ((data[i].rating_points == "2") ? "<option value='2' selected>2</option>" :"<option value='2'>2</option>")+
-                                ((data[i].rating_points == "3") ? "<option value='3' selected>3</option>" :"<option value='3'>3</option>")+
-                                ((data[i].rating_points == "4") ? "<option value='4' selected>4</option>" :"<option value='4'>4</option>")+
-                                ((data[i].rating_points == "5") ? "<option value='5' selected>5</option>" :"<option value='5'>5</option>")+
-                                "</select>"+
-                                "<h4>Rating on "+data[i].rating_type+"</h4>"+        
-                                 "<br>"+                     
-                                "<h4>By "+data[i].username+" on "+data[i].rating_date+"</h4>"+
+                                  newElement.innerHTML  = "<h4>"+description+"</h4>"+        
+                                "<fieldset class='rating_star' id='rating_id_"+data[i].id_rating+"'>"+
+                                        "<input type='radio' id='star5' name='rating"+data[i].id_rating+"' value='5' "+isFiveStar+" /><label class = 'full' for='star5'"+       "title='Awesome - 5 stars'></label>"+
+                                        "<input type='radio' id='star4half' name='rating"+data[i].id_rating+"' value='4 and a half' "+isFourHalfStar+" /><label class='half'"+ "for='star4half' title='Pretty good - 4.5 stars'></label>"+
+                                            "<input type='radio' id='star4' name='rating"+data[i].id_rating+"' value='4' "+isFourStar+" /><label class = 'full' for='star4'"+ "title='Pretty good - 4 stars'></label>"+
+                                        "<input type='radio' id='star3half' name='rating"+data[i].id_rating+"' value='3 and a half' "+isThreeHalfStar+" /><label class='half'"+ "for='star3half' title='Meh - 3.5 stars'></label>"+
+                                            "<input type='radio' id='star3' name='rating"+data[i].id_rating+"' value='3' "+isThreeStar+" /><label class = 'full' for='star3'"+ "title='Meh - 3 stars'></label>"+
+                                        "<input type='radio' id='star2half' name='rating"+data[i].id_rating+"' value='2 and a half' "+isTwoHalfStar+" /><label class='half'"+ "for='star2half' title='Kinda bad - 2.5 stars'></label>"+
+                                            "<input type='radio' id='star2' name='rating"+data[i].id_rating+"' value='2' "+isTwoStar+" /><label class = 'full' for='star2'"+ "title='Kinda bad - 2 stars'></label>"+
+                                        "<input type='radio' id='star1half' name='rating"+data[i].id_rating+"' value='1 and a half' "+isOneHalfStar+" /><label class='half'"+ "for='star1half' title='Meh - 1.5 stars'></label>"+
+                                            "<input type='radio' id='star1' name='rating"+data[i].id_rating+"' value='1' "+ isOneStar+" /><label class = 'full' for='star1'"+ "title='Sucks big time - 1 star'></label>"+
+                                        "<input type='radio' id='starhalf' name='rating"+data[i].id_rating+"' value='half' "+isHalStar+" /><label class='half' for='starhalf'"+ "title='Sucks big time - 0.5 stars'></label>"+
+                                "</fieldset>"+ "<br>"+
+                                "<h4>by "+data[i].username+" on "+data[i].rating_date+"</h4>"+ "<br>"+
                                  "<h4>"+ data[i].rating_desc +"</h4>"+
                                  "<hr>";
                                 
-                                    
-
-                                    var description_sections = document.getElementById("all_ratings");    
-                                    description_sections.appendChild(newElement);   
+                                var description_sections = document.getElementById("all_ratings");    
+                                description_sections.appendChild(newElement);   
                                      
                             }
                         
@@ -310,7 +366,7 @@
                             url         : '../api/save_data/save_school_rating.php', // the url where we want to POST
                             data        : formData, // our data object
                             dataType    : 'json', // what type of data do we expect back from the server
-                            encode          : true
+                            encode      : true
                         })
                             // using the done promise callback
                         .done(function(data) {

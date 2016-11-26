@@ -16,10 +16,26 @@
 	<link rel="shortcut icon" href="http://microsoftmsdn.com/schoolguru/images/favicon.png" type="image/x-icon">
 	
 	<!-- CSS -->
-	<link href="search/bootstrap.css" type="text/css" rel="stylesheet"><link href="search/colors.css" type="text/css" rel="stylesheet"><link href="search/font.css" type="text/css" rel="stylesheet"><link href="search/jquery.filer.css" type="text/css" rel="stylesheet"><link href="search/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet"><link href="search/component.css" type="text/css" rel="stylesheet"><link href="search/styles.min.css" type="text/css" rel="stylesheet"><link href="search/font-awesome.min.css" type="text/css" rel="stylesheet"><link type="text/css" rel="stylesheet" href="search/jquery.mmenu.all.css"><link href="search/mapbox.css" rel="stylesheet"><link href="search/chosen.css" rel="stylesheet"><link href="search/MarkerCluster.css" rel="stylesheet"><link href="search/MarkerCluster.Default.css" rel="stylesheet"><link href="search/main.css" type="text/css" rel="stylesheet">
+	<link href="search/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="search/colors.css" type="text/css" rel="stylesheet">
+ <!--   <link href="search/font.css" type="text/css" rel="stylesheet"> -->
+    <link href="search/jquery.filer.css" type="text/css" rel="stylesheet">
+    <link href="search/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet">
+    <link href="search/component.css" type="text/css" rel="stylesheet">
+    <link href="search/styles.min.css" type="text/css" rel="stylesheet">
+<!--<link href="search/font-awesome.min.css" type="text/css" rel="stylesheet">-->
+    <link type="text/css" rel="stylesheet" href="search/jquery.mmenu.all.css">
+    <link href="search/mapbox.css" rel="stylesheet">
+    <link href="search/chosen.css" rel="stylesheet">
+    <link href="search/MarkerCluster.css" rel="stylesheet">
+    <link href="search/MarkerCluster.Default.css" rel="stylesheet">
+    <link href="search/main.css" type="text/css" rel="stylesheet">
 
-<link href="ui-jquery/jquery-ui.css" type="text/css" rel="stylesheet">
-<link href="main/main.css" type="text/css" rel="stylesheet">
+    <link href="ui-jquery/jquery-ui.css" type="text/css" rel="stylesheet">
+    <link href="main/main.css" type="text/css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" type="text/css" rel="stylesheet">
+    <link href="css/common.css" type="text/css" rel="stylesheet">
+   
     <style>
     .user-text h3
     {
@@ -245,17 +261,7 @@ commented due to error
 					</div>
 				</div>
 		</div>
-<!--		<div class="page-heading listing-page archive-page ">
-			<div class="page-heading-inner-container text-center">
-				<h1>Search</h1>
-				<ul class="breadcrumbs">
-					<li><a href="http://microsoftmsdn.com/schoolguru/index.html">Home</a></li>
-					<li><span>Search</span></li>
-				</ul>
-			</div>
-			<div class="page-header-overlay"></div>
-		</div>
--->
+
 	</header>
 	
 	<section style="background:#EFF3F6;">
@@ -627,10 +633,10 @@ commented due to error
 				<div class="col-md-8">
                     <div><select id="locationSelect" style="width:100%;visibility:hidden"></select></div>
 					<!--map -->
-					    <div id="google_school_map" style="width: 100%; height: 200px "></div>
+					<div id="google_school_map" style="width: 100%; height: 300px "></div>
 					
 					
-					<div class="comments-container padding-left-0 padding-right-0 clearfix margin-top-50" style="background:none">
+					<div class="comments-container padding-left-0 padding-right-0 clearfix margin-top-30" style="background:none">
 					
 						<div class="comments-posts" id="comments-posts">        
 			         <!--../comments-posts-->
@@ -639,7 +645,7 @@ commented due to error
 					
 				</div>
 				
-			</section></div>
+            </div>
 		</div>
 	
 	<footer class="text-center">
@@ -721,6 +727,7 @@ commented due to error
     
     function load() {
         
+        
         if(typeof localStorage.getItem("sessionid") !== 'undefined')
         {
             username = localStorage.getItem("username");
@@ -739,7 +746,10 @@ commented due to error
         
         if(window.google){
             
+            console.log("connected to google");
            var startPos;
+            
+            /*
             var geoSuccess = function(position) {
                 
              startPos = position;
@@ -753,23 +763,29 @@ commented due to error
                 zoom: 8,
                 mapTypeId: 'roadmap',
                 mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
-              });
-                
-                
-                 var input = /** @type {!HTMLInputElement} */(
-                document.getElementById('school_location_search'));
-                autocompleteForSchoolName();
-        
-                if(window.google)
-                autocomplete(input);
-                
+              });          
                // searchLocationsNear(new google.maps.LatLng({lat : startPos.coords.latitude, lng: startPos.coords.longitude}));
                 
             };
+            */
             
-            navigator.geolocation.getCurrentPosition(geoSuccess);
-           
-           
+          map = new google.maps.Map(document.getElementById("google_school_map"), {
+            center: new google.maps.LatLng({lat : Math.round(12.9715), lng: Math.round(77.594)}),
+            zoom: 8,
+            mapTypeId: 'roadmap',
+            mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
+          });      
+            
+            //navigator.geolocation.getCurrentPosition(geoSuccess);// no longer works on http need https
+            
+            var input = /** @type {!HTMLInputElement} */(
+            document.getElementById('school_location_search'));
+            autocompleteForSchoolName();
+
+            if(window.google)
+               autocomplete(input); 
+            else
+                console.log("not able to connect server");
             
             var school_name = "";
             var school_address = "";
@@ -812,7 +828,46 @@ commented due to error
                              var geocoder = new google.maps.Geocoder();
                              geocoder.geocode({address: school_address}, function(results, status) {
                                if (status == google.maps.GeocoderStatus.OK) {
-                                searchLocationsNear(results[0].geometry.location);
+                                   
+                                   //call ajax call to check whether city is searched 
+                                     var formData = {
+                                            latitude     : results[0].geometry.location.lat(),
+                                            longitude    : results[0].geometry.location.lng()
+                                     };
+
+                                    console.log(formData);
+
+                                      // process the formf
+                                    $.ajax({
+                                        type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                                        url         : '../api/search_api/search_location.php', // the url where we want to POST
+                                        data        : formData, // our data object
+                                        dataType    : 'json', // what type of data do we expect back from the server
+                                        encode          : true
+                                    })
+                                        // using the done promise callback
+                                    .done(function(data) {   
+                                        
+                                        if(data['exist'] == 'yes')
+                                            {
+                                                searchLocationsNear(results[0].geometry.location,500);       
+                                            }
+                                        else
+                                            {
+                                                searchLocationsNear(results[0].geometry.location,5);       
+                                            }
+                                        
+                                         
+                                        // here we will handle errors and validation messages
+                                    }).fail(function( xhr, status, errorThrown ) {
+                                            console.log( "Query Failed" );
+                                            console.log( "Error: " + errorThrown );
+                                            console.log( "Status: " + status );
+                                            console.dir( xhr );
+                                            return false;
+                                    });
+                                   
+                              
                                } else {
                                  console.log("Map address :-"+school_address + " not found");
                                }
@@ -945,9 +1000,48 @@ commented due to error
                  var geocoder = new google.maps.Geocoder();
                  geocoder.geocode({address: school_address}, function(results, status) {
                    if (status == google.maps.GeocoderStatus.OK) {
-                    searchLocationsNear(results[0].geometry.location);
+                       
+                       
+                          //call ajax call to check whether city is searched 
+                                     var formData = {
+                                            latitude     : results[0].geometry.location.lat(),
+                                            longitude    : results[0].geometry.location.lng()
+                                     };
+
+                                    console.log(formData);
+
+                                      // process the formf
+                                    $.ajax({
+                                        type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                                        url         : '../api/search_api/search_location.php', // the url where we want to POST
+                                        data        : formData, // our data object
+                                        dataType    : 'json', // what type of data do we expect back from the server
+                                        encode          : true
+                                    })
+                                        // using the done promise callback
+                                    .done(function(data) {   
+                                        
+                                        if(data['exist'] == 'yes')
+                                            {
+                                                searchLocationsNear(results[0].geometry.location,500);       
+                                            }
+                                        else
+                                            {
+                                                searchLocationsNear(results[0].geometry.location,5);       
+                                            }
+                                        
+                                         
+                                        // here we will handle errors and validation messages
+                                    }).fail(function( xhr, status, errorThrown ) {
+                                            console.log( "Query Failed" );
+                                            console.log( "Error: " + errorThrown );
+                                            console.log( "Status: " + status );
+                                            console.dir( xhr );
+                                            return false;
+                                    });
+
                    } else {
-                     alert(address + ' not found');
+                       console.log("Not found");
                    }
                  });
             }
@@ -1061,6 +1155,11 @@ commented due to error
                            bounds.extend(latlng);
                            google.maps.event.trigger(markers[i], 'click');   
                         }
+                        else
+                            {
+                                console.log("Name not found "+name);
+                                console.log("Name not found "+school_name);
+                            }
 
                     }
                  }
@@ -1088,8 +1187,8 @@ commented due to error
                                        markerNodes = xml.documentElement.getElementsByTagName("marker"); 
                                         if(markerNodes.length > 0)
                                         {
-                                                 
-                                                    searchNameInMarkers(school_name,school_address);         
+                                            console.log(markerNodes)   ;
+                                            searchNameInMarkers(school_name,school_address);         
                                         }
                                     },
                                     dataType: "xml"//set to XML  
@@ -1119,12 +1218,13 @@ commented due to error
    }
 
 
-   function searchLocationsNear(center) {
+   function searchLocationsNear(center,radius) {
   
     console.log("search started "+center);
+    console.log("radius "+radius);
     clearLocations();
        
-     var radius = 5;   //5KM
+  //   var radius = 5;   //5KM
      var searchUrl = '../api/map_api/phpsqlsearch_genxml.php?lat=' + center.lat() + '&lng=' + center.lng() + '&radius=' + radius;
 	 
        
@@ -1208,11 +1308,11 @@ commented due to error
       markers.push(marker);
     }
         
-    function showDescription(school_id)
+    function showDescription(school_id,tab_id)
     {
         createCookie('school_id',school_id,7);
         console.log(school_id)    ;
-        window.location.href = "school_overview.html";
+        window.location.href = "school_overview.html#tabs-"+tab_id;
         return true;
     }
 
@@ -1242,22 +1342,27 @@ commented due to error
 									"<div class='comments-meta-box'>"+
 										"<div class='row'>"+
 											"<div class='col-md-10 col-xs-9'>"+
-												 "<h4 class='mt0'><a href='#' onclick='return showDescription("+school_id+");'>" +name+
+												 "<h4 class='mt0'><a href='#' onclick='return showDescription("+school_id+",0);'>" +name+
 "</a></h4>"+
 											
 											"<div class='comments-date'>"+
 												
-												"<div class='post-reviews ml0'>"+
-													"<i class='fa fa-star'></i>"+
-													"<i class='fa fa-star'></i>"+
-													"<i class='fa fa-star'></i>"+
-													"<i class='fa fa-star-o'></i>"+
-													"<i class='fa fa-star-o'></i>"+
-												"</div>"+
+											"<fieldset class='rating_star'>"+
+                                            "<input type='radio' id='star5' name='rating' value='5' /><label class = 'full' for='star5'"+ "title='Awesome - 5 stars'></label>"+
+                                            "<input type='radio' id='star4half' name='rating' value='4 and a half' /><label class='half'"+ "for='star4half' title='Pretty good - 4.5 stars'></label>"+
+                                            "<input type='radio' id='star4' name='rating' value='4' /><label class = 'full' for='star4'"+ "title='Pretty good - 4 stars'></label>"+
+                                            "<input type='radio' id='star3half' name='rating' value='3 and a half' /><label class='half'"+ "for='star3half' title='Meh - 3.5 stars'></label>"+
+                                            "<input type='radio' id='star3' name='rating' value='3' /><label class = 'full' for='star3'"+ "title='Meh - 3 stars'></label>"+
+                                            "<input type='radio' id='star2half' name='rating' value='2 and a half' /><label class='half'"+ "for='star2half' title='Kinda bad - 2.5 stars'></label>"+
+                                            "<input type='radio' id='star2' name='rating' value='2' /><label class = 'full' for='star2'"+ "title='Kinda bad - 2 stars'></label>"+
+                                            "<input type='radio' id='star1half' name='rating' value='1 and a half' /><label class='half'"+ "for='star1half' title='Meh - 1.5 stars'></label>"+
+                                            "<input type='radio' id='star1' name='rating' value='1' /><label class = 'full' for='star1'"+ "title='Sucks big time - 1 star'></label>"+
+                                            "<input type='radio' id='starhalf' name='rating' value='half' /><label class='half' for='starhalf'"+ "title='Sucks big time - 0.5 stars'></label>"+
+                                            "</fieldset>"+
 											"</div>"+
                                             "</div>"+
                                             "<div class='col-md-2 col-xs-3'><div class='text-right'>"+
-											"<a href=''>Review</a>"+
+											"<a href='#' onclick='return showDescription("+school_id+",0);'>Review</a>"+
 										"</div></div>"+
 										"</div>"+
 										
@@ -1265,17 +1370,18 @@ commented due to error
 									"<div class='comments-description'>"+
                                     "<div class='row'>"+
                                         "<div class='col-md-10 col-xs-9'>"+
-                                            small_description+
+                                            small_description.substring(0,100)+
+                                            " <a href='#' onclick='return showDescription("+school_id+",0);'>more</a>"+
                                         "</div>"+
                                     "</div>"+
                                     "<div class='row'>"+
                                     "<div class='col-md-4 col-xs-6'><a href=''>"+
 											"<img alt='map-marker' src='search/map-icon.png' class='icon icons8-Marker'>"+
 											"<span class='phone-number '>"+
-											"	 View  Map"+
+											"<a href='#' onclick='return showDescription("+school_id+",3);'>View Map</a>"+
 											"</span>"+
 										"</a></div>"+
-                                        "<div class='col-md-8 col-xs-6'><p class='text-right'><a href=''>Fees</a> |<a href=''> Blogs</a></p></div>"+
+                                        "<div class='col-md-8 col-xs-6'><p class='text-right'><a href='#' onclick='return showDescription("+school_id+",2);'>Fees</a></p></div>"+
                                     "</div>"+
                                     "</div>"+
 								"</div>"+
@@ -1464,15 +1570,18 @@ function runScript(e) {
 		<script type="text/javascript" src="search/main.js"></script>
     	<script type="text/javascript" src="ui-jquery/jquery-ui.js"></script>
         <script type="text/javascript" src="js/util.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="js/angular.min.js"></script>
+      
+        
    <script>
 
     $( "#accordion" ).accordion({
       heightStyle: "fill"
      
     });
+ 
        
-       
-      
+  
     
 
   </script>
@@ -1482,3 +1591,5 @@ function runScript(e) {
 
 
 </body></html>
+
+    

@@ -164,6 +164,27 @@ p span i
         var profile_pic_data ;
         var school_latlng;
         var map;
+        var marker;
+        
+        
+        
+        $(function(){
+             if(window.google){
+                    map = new google.maps.Map(document.getElementById("schoolmap"), {
+                    center: {lat: -34.397, lng: 150.644},
+                    zoom: 8,
+                    mapTypeId: 'roadmap',
+                    mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
+                  });
+                  marker = new google.maps.Marker({ 
+                        map: map, 
+                        position: {lat: -34.397, lng: 150.644} 
+                  });    
+                }
+        });
+        
+       
+        
         
          function loadProfileImage(user_id_i)
         {
@@ -290,16 +311,19 @@ p span i
                             var mobility                   =   response[i].mobility;
                             var admission_method           =   response[i].admission_method;
                             
-                         
+                            console.log("latitude and longitude" + latlng);
                     
                             if(window.google){
                                     map = new google.maps.Map(document.getElementById("schoolmap"), {
-                                    center: new google.maps.LatLng({lat : Math.round(latlng.latitude), lng: Math.round(latlng.longitude)}),
+                                    center: latlng,
                                     zoom: 8,
                                     mapTypeId: 'roadmap',
                                     mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
                                   });
-                                
+                                  marker = new google.maps.Marker({ 
+                                        map: map, 
+                                        position: latlng 
+                                  });    
                             }
                                 
                             $("#dtl_principal")         .html(principal_name);
@@ -1036,6 +1060,8 @@ p span i
             
            function load()
             {
+                 
+                
                  loadRatings();
                  $("#init_review_form").show();
                  $("#full_review_form").hide();

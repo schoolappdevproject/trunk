@@ -15,16 +15,17 @@
   <script type="text/javascript" charset="UTF-8" src="../../ui/js/cookie.js"></script>
   <script type="text/javascript">
       var school_id;
+      var galleries,effect = null;
       
   $(function() {
-	var galleries,effect = null;
-    load();
-	start();
-    function load()
-      {
-          school_id = readCookie('school_id');
-      }
-	function start(){
+	 
+     school_id = readCookie('school_id');
+	 start();   
+     
+  });    
+      
+      
+function start(){
 		var url = '../../api/image_upload/ajax.php?school_id='+school_id;
 		
 		$(".ad-thumb-list").load(url,{},function (responseText, textStatus, XMLHttpRequest) {
@@ -58,13 +59,8 @@
 					  }
 					);
 		}
-		);
+        );
 	}
-      
-       
-	
-  
-  });    
   </script>
 
   <style type="text/css">
@@ -189,6 +185,7 @@
                         if(data['code'] == '0')
                         {
                                 console.log('Image uploaded successfully '+school_id);
+                                start();
                                
                         }
                         else 
