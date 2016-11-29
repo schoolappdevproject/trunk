@@ -58,6 +58,7 @@ commented due to error
 <script type="text/javascript" charset="UTF-8" src="search/stats.js"></script>
     -->
 <script type="text/javascript" charset="UTF-8" src="js/cookie.js"></script>
+<!--<script type="text/babel" charset="UTF-8" src="js/getAvgRating.js"></script> -->
 
     </head>
 <body onload="load()"><nav class="attireMainNav"><button class="toggleBtn iconMenu" type="button">Toggle navigation</button><ul></ul></nav>
@@ -81,13 +82,13 @@ commented due to error
 					<div class="col-md-8 col-sm-8 text-left">
 						<ul class="lp-topbar-menu">
 							<li>
-								<a href="main.html">Home</a>
+								<a href="index.html">Home</a>
 							</li>
 							<li>
-								<a href="http://microsoftmsdn.com/schoolguru/about.html">About</a>
+								<a href="">About</a>
 							</li>
 							<li>
-								<a href="http://microsoftmsdn.com/schoolguru/contact.html">Contact</a>
+								<a href="">Contact</a>
 							</li>
 						</ul>
 					</div>
@@ -240,18 +241,18 @@ commented due to error
 						<div class="col-md-8 col-xs-12 lp-menu-container">
 							<div class="pull-right lp-add-listing-btn">
 								<ul>
-									<li><a href="http://microsoftmsdn.com/schoolguru/search.aspx#" style="line-height: 80px;"><i class="fa fa-plus"></i> Add Schools</a></li>
+									<li><a href="admin.html" style="line-height: 80px;"><i class="fa fa-plus"></i> Add Schools</a></li>
 								</ul>
 							</div>
 							<div class="lp-menu pull-right menu">
 								<ul>
-									<li><a href="http://microsoftmsdn.com/schoolguru/search.aspx#" style="line-height: 80px;">Schools </a>
+									<li><a href="search.html" style="line-height: 80px;">Schools </a>
 										
 									</li>
-									<li><a href="http://microsoftmsdn.com/schoolguru/search.aspx#" style="line-height: 80px;">Parents </a>
+									<li><a href="user_profile.html" style="line-height: 80px;">Parents </a>
 										
 									</li>
-                                    <li><a href="http://microsoftmsdn.com/schoolguru/search.aspx#" style="line-height: 80px;">Students </a>
+                                    <li><a href="user_profile.html" style="line-height: 80px;">Students </a>
 										
 									</li>
 								
@@ -654,10 +655,10 @@ commented due to error
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="footer-menu">
-							<li><a href="http://microsoftmsdn.com/schoolguru/index.html">Home</a></li>
-							<li><a href="http://microsoftmsdn.com/schoolguru/search.aspx#">Blog</a></li>
-							<li><a href="http://microsoftmsdn.com/schoolguru/search.aspx#">Contact</a></li>
-							<li><a href="http://microsoftmsdn.com/schoolguru/search.aspx#">Join Us</a></li>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="">Blog</a></li>
+							<li><a href="">Contact</a></li>
+							<li><a href="">Join Us</a></li>
 						</ul>
 					</div>
 				</div>
@@ -669,12 +670,13 @@ commented due to error
 					<div class="col-md-12">
 						<ul class="footer-about-company">
 							<li>Copyright © 2016 Schoolguru</li>
-							<li>schoolguru@example.com</li>
-							<li>Tel: +91 1234567891</li>
+							<li>gta4roy@gmail.com</li>
+							<li>Tel: +91 7829712286</li>
 						</ul>
-						<p class="credit-links"> Designed &amp; Developed by<a href="http://www.nextwebi.com/" target="_blank"> Nextwebi</a></p><a href="http://www.nextwebi.com/" target="_blank">
-						</a><ul class="social-icons footer-social-icons"><a href="http://www.nextwebi.com/" target="_blank">
-							</a><li><a href="http://www.nextwebi.com/" target="_blank"></a><a href="http://microsoftmsdn.com/schoolguru/search.aspx#">
+                        <div id='rating_div'></div>
+						<p class="credit-links">&amp;Developed by<a href="" target="_blank"> Gaurav & Abhijit</a></p><a href="" target="_blank">
+						</a><ul class="social-icons footer-social-icons"><a href="" target="_blank">
+							</a><li><a href="" target="_blank"></a><a href="http://microsoftmsdn.com/schoolguru/search.aspx#">
 								<img class="icon icons8-Facebook" src="search/facebook.png" alt="facebook"></a></li>
 							<li><a href="http://microsoftmsdn.com/schoolguru/search.aspx#">
 								<img class="icon icons8-Google-Plus" src="search/google-plus.png" alt="google-plus"></a></li>
@@ -1346,19 +1348,10 @@ commented due to error
 "</a></h4>"+
 											
 											"<div class='comments-date'>"+
-												
-											"<fieldset class='rating_star'>"+
-                                            "<input type='radio' id='star5' name='rating' value='5' /><label class = 'full' for='star5'"+ "title='Awesome - 5 stars'></label>"+
-                                            "<input type='radio' id='star4half' name='rating' value='4 and a half' /><label class='half'"+ "for='star4half' title='Pretty good - 4.5 stars'></label>"+
-                                            "<input type='radio' id='star4' name='rating' value='4' /><label class = 'full' for='star4'"+ "title='Pretty good - 4 stars'></label>"+
-                                            "<input type='radio' id='star3half' name='rating' value='3 and a half' /><label class='half'"+ "for='star3half' title='Meh - 3.5 stars'></label>"+
-                                            "<input type='radio' id='star3' name='rating' value='3' /><label class = 'full' for='star3'"+ "title='Meh - 3 stars'></label>"+
-                                            "<input type='radio' id='star2half' name='rating' value='2 and a half' /><label class='half'"+ "for='star2half' title='Kinda bad - 2.5 stars'></label>"+
-                                            "<input type='radio' id='star2' name='rating' value='2' /><label class = 'full' for='star2'"+ "title='Kinda bad - 2 stars'></label>"+
-                                            "<input type='radio' id='star1half' name='rating' value='1 and a half' /><label class='half'"+ "for='star1half' title='Meh - 1.5 stars'></label>"+
-                                            "<input type='radio' id='star1' name='rating' value='1' /><label class = 'full' for='star1'"+ "title='Sucks big time - 1 star'></label>"+
-                                            "<input type='radio' id='starhalf' name='rating' value='half' /><label class='half' for='starhalf'"+ "title='Sucks big time - 0.5 stars'></label>"+
-                                            "</fieldset>"+
+								            "<div id='rating_div'></div>"+				
+											"<div id='rating_star_"+school_id+"'>"+
+            
+                                            "</div>"+
 											"</div>"+
                                             "</div>"+
                                             "<div class='col-md-2 col-xs-3'><div class='text-right'>"+
@@ -1389,8 +1382,92 @@ commented due to error
                         
         
        description_sections.appendChild(newElement);
-        
+       getAvgRating(school_id,"rating_star_"+school_id);
     }
+        
+    function getAvgRating(school_id,divName)
+        {
+            var formData = {
+                    id_school     : school_id
+             };
+
+            console.log(formData);
+
+            // process the form
+            $.ajax({
+                type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url         : '../api/load_data/load_avg_rating.php', // the url where we want to POST
+                data        : formData, // our data object
+                dataType    : 'json', // what type of data do we expect back from the server
+                encode      : true
+            })
+                // using the done promise callback
+            .done(function(data) {   
+                    
+                isFiveStar = "";
+                isFourHalfStar ="";
+                isFourStar ="";
+                isThreeHalfStar ="";
+                isThreeStar ="";
+                isTwoHalfStar ="";
+                isTwoStar ="";
+                isOneHalfStar ="";
+                isOneStar ="";
+                isHalStar ="";
+
+                
+                if(data[0]['avg'] == '5')
+                    {
+                        isFiveStar = "checked";
+                    }
+                else if(data[0]['avg'] == '4')
+                    {
+                        isFourStar = "checked";
+                    }
+                else if(data[0]['avg'] == '3')
+                    {
+                        isThreeStar = "checked";
+                    }
+                else if(data[0]['avg'] == '2')
+                    {
+                        isTwoStar = "checked";
+                    }
+                else if(data[0]['avg'] == '1')
+                    {
+                        isOneStar = "checked";
+                    }
+            
+                
+                var html_str =   
+                        "<fieldset class='rating_star' id='rating_id_"+school_id+"'>"+
+                        "<input type='radio' id='star5' name='rating_"+school_id+"' value='5' "+isFiveStar+" /><label class =                                 'full' for='star5'"+ "title='Awesome - 5 stars'></label>"+
+                                            
+                                            "<input type='radio' id='star4' name='rating_"+school_id+"' value='4' "+isFourStar+"/><label class = 'full' for='star4'"+ "title='Pretty good - 4 stars'></label>"+
+                                           
+                                            "<input type='radio' id='star3' name='rating_"+school_id+"' value='3' "+isThreeStar+"/><label class = 'full' for='star3'"+ "title='Meh - 3 stars'></label>"+
+                                           
+                                            "<input type='radio' id='star2' name='rating_"+school_id+"' value='2' "+isTwoStar+"/><label class = 'full' for='star2'"+ "title='Kinda bad - 2 stars'></label>"+
+                                           
+                                            "<input type='radio' id='star1' name='rating_"+school_id+"' value='1' "+isOneStar+"/><label class = 'full' for='star1'"+ "title='Sucks big time - 1 star'></label> "+
+                                                "</fieldset>";
+                                           
+                
+                var description_sections = document.getElementById(divName);
+                var newElement = document.createElement('div');
+                newElement.innerHTML =html_str;
+                
+                description_sections.appendChild(newElement);
+                
+                // here we will handle errors and validation messages
+            }).fail(function( xhr, status, errorThrown ) {
+                    console.log( "Query Failed" );
+                    console.log( "Error: " + errorThrown );
+                    console.log( "Status: " + status );
+                    console.dir( xhr );
+                    return false;
+            });
+
+        }
 
     function downloadUrl(url, callback) {
       var request = window.ActiveXObject ?
@@ -1572,6 +1649,8 @@ function runScript(e) {
         <script type="text/javascript" src="js/util.js"></script>
         <script type="text/javascript" charset="UTF-8" src="js/angular.min.js"></script>
       
+        <script src="https://unpkg.com/react@15/dist/react.js"></script>
+        <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
         
    <script>
 

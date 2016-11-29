@@ -10,54 +10,6 @@
 	<!-- Mobile Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-
-    
-    
-	<!-- CSS -->
-<!--
-    <script type="text/javascript" src="ui-jquery/jquery.js"></script>
-    <script type="text/javascript" src="ui-jquery/jquery-ui.js"></script>
-    <script type="text/javascript" src="./school_overview_files/jquery-lib.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="js/angular.min.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="css/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="node_modules/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="js/cookie.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="js/util.js"></script>
-    <script type="text/javascript" src="./school_overview_files/jquery-migrate-1.3.0.min.js"></script>
-    <script type="text/javascript" src="./school_overview_files/mapbox.js"></script> 
-    <script type="text/javascript" src="./school_overview_files/leaflet.markercluster.js"></script>
-    <script type="text/javascript" src="./school_overview_files/build.min.js"></script>
-    <script type="text/javascript" src="./school_overview_files/chosen.jquery.js"></script>
-    <script type="text/javascript" src="./school_overview_files/slick.min.js"></script>
-    <script type="text/javascript" src="./school_overview_files/jquery.mmenu.min.all.js"></script>
-    <script type="text/javascript" src="./school_overview_files/jquery.magnific-popup.min.js"></script>
-    <script type="text/javascript" src="./school_overview_files/jquery.filer.min.js"></script>
-    <script type="text/javascript" src="./school_overview_files/bootstrap-rating.js"></script>
-    <script type="text/javascript" src="./school_overview_files/classie.js"></script>  
-    <script type="text/javascript" src="./school_overview_files/modalEffects.js"></script> 
-    <script type="text/javascript" src="./school_overview_files/main.js"></script> 
-    -->
-    	<!-- Favicon -->
-<!--	<link rel="shortcut icon" href="http://microsoftmsdn.com/schoolguru/images/favicon.png" type="image/x-icon">
-    <link href="./school_overview_files/jquery-ui.css" rel="stylesheet" type="text/css">
-    <link href="./school_overview_files/colors.css" type="text/css" rel="stylesheet">
-    <link href="css/bootstrap-3.3.7/dist/fonts/glyphicons-halflings-regular.ttf" type="text/css" rel="stylesheet">
-    
-    <link href="./school_overview_files/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet">
-    <link href="./school_overview_files/component.css" type="text/css" rel="stylesheet">
-    <link href="./school_overview_files/styles.min.css" type="text/css" rel="stylesheet">
-    <link href="./school_overview_files/font-awesome.min.css" type="text/css" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="./school_overview_files/jquery.mmenu.all.css">
-    <link href="./school_overview_files/mapbox.css" rel="stylesheet">
-    <link href="./school_overview_files/chosen.css" rel="stylesheet">
-    <link href="./school_overview_files/MarkerCluster.css" rel="stylesheet">
-    <link href="./school_overview_files/MarkerCluster.Default.css" rel="stylesheet">
-    <link href="./school_overview_files/main.css" type="text/css" rel="stylesheet">
-    <link href="css/common.css" type="text/css" rel="stylesheet">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <link rel="stylesheet" href="node_modules/jquery-bar-rating/dist/themes/fontawesome-stars.css">
-    <link href="css/bootstrap-3.3.7/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet"> 
-    -->
     
     <!-- Favicon -->
 	<link rel="shortcut icon" href="http://microsoftmsdn.com/schoolguru/images/favicon.png" type="image/x-icon"><link href="./school_overview_files/jquery-ui.css" rel="stylesheet" type="text/css">
@@ -316,7 +268,7 @@ p span i
                             if(window.google){
                                     map = new google.maps.Map(document.getElementById("schoolmap"), {
                                     center: latlng,
-                                    zoom: 8,
+                                    zoom: 18,
                                     mapTypeId: 'roadmap',
                                     mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
                                   });
@@ -395,7 +347,7 @@ p span i
 					<div class="col-md-8 col-sm-8 text-left">
 						<ul class="lp-topbar-menu">
 							<li>
-								<a href="#">Home</a>
+								<a href="index.html">Home</a>
 							</li>
 							<li>
 								<a href="#">About</a>
@@ -549,18 +501,18 @@ p span i
 						<div class="col-md-8 col-xs-12 lp-menu-container">
 							<div class="pull-right lp-add-listing-btn">
 								<ul>
-									<li><a href="#" style="line-height: 80px;"><i class="fa fa-plus"></i> Add Schools</a></li>
+									<li><a href="admin.html" style="line-height: 80px;"><i class="fa fa-plus"></i> Add Schools</a></li>
 								</ul>
 							</div>
 							<div class="lp-menu pull-right menu">
 								<ul>
-									<li><a href="#" style="line-height: 80px;">Schools </a>
+									<li><a href="search.html" style="line-height: 80px;">Schools </a>
 										
 									</li>
-									<li><a href="#" style="line-height: 80px;">Parents </a>
+									<li><a href="user_profile.html" style="line-height: 80px;">Parents </a>
 										
 									</li>
-                                    <li><a href="#" style="line-height: 80px;">Students </a>
+                                    <li><a href="user_profile.html" style="line-height: 80px;">Students </a>
 										
 									</li>
 								
@@ -595,17 +547,12 @@ p span i
                 <span id="dtl_sml_desc"></span>         
             </div>
            <div class="col-md-9" style="">
-                <h3> Ratings </h3>
-                <select class="star-rating" id="school-rating" name="school_selector" disabled="true">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-             <h4 class="rate_desc" id="school_rating_desc">
-
-             </h4>
+            
+               <div id="avg_school_rating">
+         
+             <h4 class="rate_desc" id="rating_desc"></h4>
+            </div>
+             
             </div>
            
           
@@ -816,7 +763,7 @@ p span i
       
     <!-- review Bloack ends -->
       
-    <!-- admission details -->
+    <!-- admission details -->               
     <!-- admission details -->
 
     <div class="col-sm-12">
@@ -989,7 +936,7 @@ p span i
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="footer-menu">
-							<li><a href="http://microsoftmsdn.com/schoolguru/index.html">Home</a></li>
+							<li><a href="index.html">Home</a></li>
 							<li><a href="#">Blog</a></li>
 							<li><a href="#">Contact</a></li>
 							<li><a href="#">Join Us</a></li>
@@ -1004,12 +951,12 @@ p span i
 					<div class="col-md-12">
 						<ul class="footer-about-company">
 							<li>Copyright © 2016 Schoolguru</li>
-							<li>schoolguru@example.com</li>
-							<li>Tel: +91 1234567891</li>
+							<li>gta4roy@gmail.com</li>
+							<li>Tel: +91 7829712286</li>
 						</ul>
-						<p class="credit-links"> Designed &amp; Developed by<a href="http://www.nextwebi.com/" target="_blank"> Nextwebi</a></p><a href="http://www.nextwebi.com/" target="_blank">
-						</a><ul class="social-icons footer-social-icons"><a href="http://www.nextwebi.com/" target="_blank">
-							</a><li><a href="http://www.nextwebi.com/" target="_blank"></a><a href="#">
+						<p class="credit-links"> Designed &amp; Developed by<a href="" target="_blank"> Gaurav & Abhijit</a></p><a href="" target="_blank">
+						</a><ul class="social-icons footer-social-icons"><a href="" target="_blank">
+							</a><li><a href="" target="_blank"></a><a href="#">
 								<img class="icon icons8-Facebook" src="./school_overview_files/facebook.png" alt="facebook"></a></li>
 							<li><a href="#">
 								<img class="icon icons8-Google-Plus" src="./school_overview_files/google-plus.png" alt="google-plus"></a></li>
@@ -1061,7 +1008,7 @@ p span i
            function load()
             {
                  
-                
+                 loadAvgRatings();
                  loadRatings();
                  $("#init_review_form").show();
                  $("#full_review_form").hide();
@@ -1164,6 +1111,96 @@ p span i
                 loadSchoolFees();
             }
         
+        function loadAvgRatings()
+        {
+             var  school_id  = readCookie('school_id');
+              var formData = {
+                    id_school     : school_id
+             };
+
+            console.log(formData);
+
+            // process the form
+            $.ajax({
+                type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url         : '../api/load_data/load_avg_rating.php', // the url where we want to POST
+                data        : formData, // our data object
+                dataType    : 'json', // what type of data do we expect back from the server
+                encode      : true
+            })
+                // using the done promise callback
+            .done(function(data) {   
+                    
+                isFiveStar = "";
+                isFourHalfStar ="";
+                isFourStar ="";
+                isThreeHalfStar ="";
+                isThreeStar ="";
+                isTwoHalfStar ="";
+                isTwoStar ="";
+                isOneHalfStar ="";
+                isOneStar ="";
+                isHalStar ="";
+
+                
+                if(data[0]['avg'] == '5')
+                    {
+                        isFiveStar = "checked";
+                        $("#rating_desc").html("Heavenly place to Study...");
+                    }
+                else if(data[0]['avg'] == '4')
+                    {
+                        isFourStar = "checked";
+                        $("#rating_desc").html("Great Place to Study...");
+                    }
+                else if(data[0]['avg'] == '3')
+                    {
+                        isThreeStar = "checked";
+                        $("#rating_desc").html("Prooved its Mettle...");
+                    }
+                else if(data[0]['avg'] == '2')
+                    {
+                        isTwoStar = "checked";
+                        $("#rating_desc").html("Gaining Popularity..");
+                    }
+                else if(data[0]['avg'] == '1')
+                    {
+                        isOneStar = "checked";
+                        $("#rating_desc").html("New In Bussiness..");
+                    }
+            
+                
+                var html_str =   
+                        "<fieldset class='rating_star' id='rating_id_"+school_id+"'>"+
+                        "<input type='radio' id='star5' name='rating_"+school_id+"' value='5' "+isFiveStar+" /><label class =                                 'full' for='star5'"+ "title='Awesome - 5 stars'></label>"+
+                                            
+                                            "<input type='radio' id='star4' name='rating_"+school_id+"' value='4' "+isFourStar+"/><label class = 'full' for='star4'"+ "title='Pretty good - 4 stars'></label>"+
+                                           
+                                            "<input type='radio' id='star3' name='rating_"+school_id+"' value='3' "+isThreeStar+"/><label class = 'full' for='star3'"+ "title='Meh - 3 stars'></label>"+
+                                           
+                                            "<input type='radio' id='star2' name='rating_"+school_id+"' value='2' "+isTwoStar+"/><label class = 'full' for='star2'"+ "title='Kinda bad - 2 stars'></label>"+
+                                           
+                                            "<input type='radio' id='star1' name='rating_"+school_id+"' value='1' "+isOneStar+"/><label class = 'full' for='star1'"+ "title='Sucks big time - 1 star'></label> "+
+                                                "</fieldset>";
+                                           
+                
+                var description_sections = document.getElementById('avg_school_rating');
+                var newElement = document.createElement('div');
+                newElement.innerHTML =html_str;
+                description_sections.appendChild(newElement);
+                
+                // here we will handle errors and validation messages
+            }).fail(function( xhr, status, errorThrown ) {
+                    console.log( "Query Failed" );
+                    console.log( "Error: " + errorThrown );
+                    console.log( "Status: " + status );
+                    console.dir( xhr );
+                    return false;
+            });
+
+        }
+
+        
         function loadRatings()
         {
             
@@ -1211,10 +1248,7 @@ p span i
             
          
             
-            $('#school-rating').change(function(){ 
-                var rated = getRating($('select[name=school_selector]').val());
-                $("#school_rating_desc").html("Rating : "+rated);
-            });
+          
             
             
         }

@@ -292,9 +292,10 @@
                                         "<input type='radio' id='star1half' name='rating"+data[i].id_rating+"' value='1 and a half' "+isOneHalfStar+" /><label class='half'"+ "for='star1half' title='Meh - 1.5 stars'></label>"+
                                             "<input type='radio' id='star1' name='rating"+data[i].id_rating+"' value='1' "+ isOneStar+" /><label class = 'full' for='star1'"+ "title='Sucks big time - 1 star'></label>"+
                                         "<input type='radio' id='starhalf' name='rating"+data[i].id_rating+"' value='half' "+isHalStar+" /><label class='half' for='starhalf'"+ "title='Sucks big time - 0.5 stars'></label>"+
-                                "</fieldset>"+ "<br>"+
+                                      
+                                "</fieldset>"+ 
                                 "<h4>by "+data[i].username+" on "+data[i].rating_date+"</h4>"+ "<br>"+
-                                 "<h4>"+ data[i].rating_desc +"</h4>"+
+                                    "<h4>"+ data[i].rating_desc +"</h4>"+
                                  "<hr>";
                                 
                                 var description_sections = document.getElementById("all_ratings");    

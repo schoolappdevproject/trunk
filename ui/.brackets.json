@@ -8,6 +8,7 @@
         "/var/www/html/dev_portal/trunk/ui/assets/fonts/jquery.filter-icons/build.min.js",
         "/var/www/html/dev_portal/trunk/ui/assets/fonts/jquery.filter-icons/slick.min.js",
         "/var/www/html/dev_portal/trunk/ui/school_overview_files/stats.js",
-        "/var/www/html/dev_portal/trunk/ui/ParentProfile_files/leaflet.markercluster.js"
+        "/var/www/html/dev_portal/trunk/ui/ParentProfile_files/leaflet.markercluster.js",
+        "/var/www/html/dev_portal/trunk/ui/search/search_impl.js"
     ]
 }
