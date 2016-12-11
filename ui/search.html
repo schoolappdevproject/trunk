@@ -255,6 +255,9 @@ commented due to error
                                     <li><a href="user_profile.html" style="line-height: 80px;">Students </a>
 										
 									</li>
+                                    <li><a href="compare.html" id="btn_add_compare" style="line-height: 80px;">Compare School </a>
+										
+									</li>
 								
 								</ul>
 							</div>
@@ -1025,11 +1028,13 @@ commented due to error
                                         
                                         if(data['exist'] == 'yes')
                                             {
-                                                searchLocationsNear(results[0].geometry.location,500);       
+                                                //if it is a city name 
+                                                searchLocationsNear(results[0].geometry.location,500);    
+                                                
                                             }
                                         else
                                             {
-                                                searchLocationsNear(results[0].geometry.location,5);       
+                                                searchLocationsNear(results[0].geometry.location,1);       
                                             }
                                         
                                          
@@ -1233,10 +1238,23 @@ commented due to error
      downloadUrl(searchUrl, function(data) {
      
            var xml = parseXml(data);
-           
-         
+      
            markerNodes = xml.documentElement.getElementsByTagName("marker");
            var bounds = new google.maps.LatLngBounds();
+         
+           console.log("marker nodes "+markerNodes.length);
+         
+           if(markerNodes.length == 0)
+           {
+                 var latlng = new google.maps.LatLng(
+                  parseFloat(center.lat()),
+                  parseFloat(center.lng()));
+                  bounds.extend(latlng);
+                  map.fitBounds(bounds);
+                  return;
+           }
+         
+            console.log("Markers found");
      
            for (var i = 0; i < markerNodes.length; i++) {
             
@@ -1355,7 +1373,7 @@ commented due to error
 											"</div>"+
                                             "</div>"+
                                             "<div class='col-md-2 col-xs-3'><div class='text-right'>"+
-											"<a href='#' onclick='return showDescription("+school_id+",0);'>Review</a>"+
+											"<a href='#' onclick='addToCompare("+school_id+") ;return false; ' ><img src='images/compare.png' width='50%' /></a><span id='addToCompare_"+school_id+"'></span><a href='#' onclick='return showDescription("+school_id+",0);'>Review</a>"+
 										"</div></div>"+
 										"</div>"+
 										
@@ -1468,6 +1486,53 @@ commented due to error
             });
 
         }
+        
+    function addToCompare(school_id)
+    {
+            var compare_count = readCookie('compare_count');
+            
+            if(compare_count)
+                {
+                    var cnt_i = parseInt(compare_count);
+                    if(cnt_i <= 3)
+                        {
+                            
+                            for(var i = 1 ; i <= cnt_i ; i++ )
+                                {
+                                    var old_school_id = readCookie('school_id_'+i);
+                                    if(old_school_id == school_id)
+                                        {
+                                            //already added then no need to add again 
+                                            alert("School is already added for comparison");
+                                            return;
+                                        }
+                                }
+                            
+                            if(cnt_i < 3)
+                                {
+                                       cnt_i ++;
+                                       createCookie('school_id_'+cnt_i,school_id,1);  
+                                       createCookie('compare_count',cnt_i.toString(),1);   
+                                       $('#addToCompare_'+school_id).text('('+cnt_i+')'); 
+                                    
+                                }
+                            else 
+                                {
+                                    alert("Please remove one of the schools from comparison");
+                                }
+                        }
+                    
+                }
+            else
+                {
+                    createCookie('compare_count','1',1);   
+                    createCookie('school_id_1',school_id,1);   
+                    $('#addToCompare_'+school_id).text('(1)');
+                    
+                }   
+        
+        return false;
+    }
 
     function downloadUrl(url, callback) {
       var request = window.ActiveXObject ?

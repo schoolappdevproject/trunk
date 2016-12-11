@@ -1,0 +1,1180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0055)http://microsoftmsdn.com/schoolguru/parent-profile.aspx -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="keywords" content="HTML5 Template"><meta name="description" content="Listingpro - Template HTML5"><meta name="author">
+	
+	<!-- Title -->
+	<title>
+	School Guru
+</title>
+	
+	<!-- Mobile Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+    <meta charset="utf-8">
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="http://microsoftmsdn.com/schoolguru/images/favicon.png" type="image/x-icon">
+    <link href="js/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet" type="text/css">
+
+
+	<!-- CSS -->
+	<link href="./ParentProfile_files/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="./ParentProfile_files/colors.css" type="text/css" rel="stylesheet">
+    <link href="./ParentProfile_files/font.css" type="text/css" rel="stylesheet">
+   
+    <link href="./ParentProfile_files/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet">
+    <link href="./ParentProfile_files/component.css" type="text/css" rel="stylesheet">
+    <link href="./ParentProfile_files/styles.min.css" type="text/css" rel="stylesheet">
+    <link href="./ParentProfile_files/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="./ParentProfile_files/jquery.mmenu.all.css">
+    <link href="./ParentProfile_files/mapbox.css" rel="stylesheet">
+    <link href="./ParentProfile_files/chosen.css" rel="stylesheet">
+    <link href="./ParentProfile_files/MarkerCluster.css" rel="stylesheet">
+    <link href="./ParentProfile_files/MarkerCluster.Default.css" rel="stylesheet">
+    <link href="./ParentProfile_files/main.css" type="text/css" rel="stylesheet">
+    
+     <link href="ui-jquery/jquery-ui.css" type="text/css" rel="stylesheet">
+    <link href="main/main.css" type="text/css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" type="text/css" rel="stylesheet">
+    <link href="css/common.css" type="text/css" rel="stylesheet">
+
+    
+    <style>
+    .user-text h3
+    {
+        margin-bottom:15px !important;
+    }
+    .page-container {
+    padding-bottom: 10px;
+}
+    </style>
+
+    
+<style>
+.form-control
+{
+    margin-bottom:15px;
+}
+.page-container-second {
+    padding-top: 30px;
+    padding-bottom: 60px
+}
+    
+    
+/* google map style */
+    
+    #map {
+        height: 300px;
+        width: 100%;
+      }
+      .controls {
+        margin-top: 10px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 300px;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      .pac-container {
+        font-family: Roboto;
+      }
+
+      #type-selector {
+        color: #fff;
+        background-color: #4d90fe;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #type-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+ 
+    
+/* Google map style*/
+</style>
+<!--  causing error
+<script type="text/javascript" charset="UTF-8" src="./ParentProfile_files/common.js">
+</script><script type="text/javascript" charset="UTF-8" src="./ParentProfile_files/util.js">
+</script><script type="text/javascript" charset="UTF-8" src="./ParentProfile_files/stats.js"></script>
+-->
+</head>
+<body><nav class="attireMainNav"><button class="toggleBtn iconMenu" type="button">Toggle navigation</button><ul></ul></nav>
+    <form method="post" action="#" id="form_id" onSubmit="return false">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE3OTk3MTgxMjRkZLg8PEAkusi4ZlcfuiGeVjsTLHojDXeRK0hOngGazPTa">
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="E4B3AF92">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdABg05+iJmPSsi8MrEp3rhXKcGesOOO7wi3Uzz+yy2Y0Kc7t0vKVmDtQYb7KLGs2qWD2fVFyO0cCPrpER53fgJQ2ef9ouzpSgh9JAYfaBgOBF1jbdtU+KanXQVlOfZzrpxsmCX8Lp7Gxx4o3+jPo9Eis3pQXh6ctc7d6Z8yTyIGLWqxQdbSkcOCjNLf/0uiwACmyROqJZ6VjZHAo4OubqQY60iQePsqwZBn0oj+rRyBHv15FzIkL/tSG/ylS5PBFydkoI1Ma7p+kCUrkeJGFDdBfuYE8qXcdAPFZsUblRg19QXlOXfF45eaOsi7KcgHjb4Ve9/ShFCA2bFWTnLYRgfETDOpiXbgSGI0DV3V9q7MvblRUcvf22VuxozB5Cft1ZVGUJjb7kHC9l5BGZOsRb1M53PIx6lV8ytF4pkUEFKchQKYpso3c0BNdidhpUx9B3c1INeSKFy2zxLVV4+zExdQxF5BPdHG87XtyblNclsuAS8Iw7t+aOQlJ+rpluCTaRNadLD3xijzncSADYhcTX/GmxTtKqu+65iXcAoaut6kDoIA==">
+</div>
+    <div>
+    <div id="page">
+    <header class="">
+		<div class="lp-topbar">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-sm-8 text-left">
+						<ul class="lp-topbar-menu">
+							<li>
+								<a href="index.html">Home</a>
+							</li>
+							<li>
+								<a href="">About</a>
+							</li>
+							<li>
+								<a href="">Contact</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-4 col-sm-4 text-right">
+						<div class="lp-join-now">
+							<span>
+								<!-- Contacts icon by Icons8 -->
+								<img class="icon icons8-Contacts" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAADNElEQVRoge2ZLWhbURTHn3iig8IiIiomIgqrqJiomJgIrCKiomKig4iKioiKioiJiEJExURFRGEbRERMVERkENhE5BgTGUxEVERkUBERURFR8Zu45+5durzk3feRm7H8IRB455z3u9/3nOd5a6317wjYAcrAOdAEroAqcAhsuOabK8AHKsBX5qsP7LrmnSlgE+gasCMZhRpwDJwCDeBGnk+Bt8COa/Y/AjaAn0YDDgA/xNYH3j8YoUaY/VIlPQvwHdiKYO8De0AdGItvcxms86AKwL38rOe9bAoTacyzLBijglQE4jpBjHOJ8TFNNluItkAcJ4ixKzGGKaJZQ/QEopgwDgApYcUC0NtpIWEc5w3R227shQrkVqEhn4ThdYIYTyXGrzTZbCH04fYmQYznEqOfJpstRFUg3qUQ4zJNNluIA4H4nCDGtcQop8lmC1ESiElM/7zcCgD20+azAdE33lpMfx+4kBjttPlsQAYCETu/AIoSo5cmmy1E4vmNylcgwX0tsVDpLMAQqMbwr4mv88XuAx0BuYnhr6/wXVwnV8Aj4IcAvbDweyk+37LksxKqUgJQt/Cpi89VlmxWMnaeCZCLYJ8zplVxCYjRRZCbdObNd1lXOiFzt+WGieC6ohuTn2GTMxoBsOeCda5Qta2pATkGTlAFioL8HxnPR66ZQ2WcCQPCpbNKdzn6IhFcAPOow7ItozBGnRUVYHulG0JQDZkusNvSdqxSydTzPA9VOdTTaWGCBLSMKeh+wcsoNI0pBXARwa9m2N9LjOVWGlHnwCuCO5aGaROUT4/m+O8bdq0HndAFjsjyGwqq6n5GUHgGdTpfAttiUzeeNVBnS15+JbHVqolPAVUInxjPxqhS6sJbgm0jysCt8aIB6pvH5gzbU+COcE2Bs5COqhDUynRH/WUbpwE+6oONVh84jOC3I6PTkd4dy/86EbJJ1Ce6vvHe1qxOs2mIXgd3wEnsQPHfXzZGt0ecnIUgBR0ia8CFUAfoUFjsslDgCcHiK2XEaMOj04QpNgVzgg84X7LDs5MxzaMvfuCDtVPGQu2GAC0bJ3OrXTXdRm1EbmEo93ocd2TXWut/1W9KptrZf/2YyAAAAABJRU5ErkJggg==" alt="join-now">
+							</span>
+							<a class=" md-trigger" data-modal="modal-3">Join Now</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!-- ../topbar -->
+		
+	<div class="md-modal md-effect-3" id="modal-3">
+			<div class="login-form-popup lp-border-radius-8">
+				<div class="siginincontainer">
+					<h2 class="text-center" style="font-size:30px;">Sign in</h2>
+					<div class="form-horizontal margin-top-20" method="post">
+						<div class="form-group">
+						
+                            <input name="ctl00$txt_uname" type="text" id="txt_uname" placeholder="Username or Email Address *" class="form-control" style="height:36px;">
+							
+						</div>
+						<div class="form-group">
+							
+							<input name="ctl00$TextBox1" type="password" id="TextBox1" placeholder="Password *" class="form-control" style="height:36px;"> 
+						</div>
+						
+						
+						<div class="form-group">
+                        <input type="submit" name="ctl00$Button1" value="Sign in" id="Button1" class="lp-secondary-btn width-full btn-first-hover" style="padding:8px 30px;">
+						
+						</div>
+					</div>	
+					<div class="pop-form-bottom">
+						<div class="bottom-links">
+							<a class="signUpClick">Not a member? Sign up</a>
+							<a class="forgetPasswordClick pull-right">Forgot Password</a>
+						</div>
+						<p class="margin-top-15">Connect with your Social Network</p>
+						<ul class="social-login list-style-none">
+							<li><button id="logingoogle" class="google flaticon-googleplus"><i class="fa fa-google-plus"></i><span>Sign In</span></button></li>
+							<li><button id="loginfacebook" class="facebook flaticon-facebook"><i class="fa fa-facebook"></i><span>Sign In</span></button></li>
+							
+						</ul>
+					</div>
+				<a class="md-close"><i class="fa fa-close"></i></a>
+				</div>
+				<div class="siginupcontainer">
+					<h2 class="text-center" style="font-size:30px;">Sign Up</h2>
+					<div class="form-horizontal margin-top-30" method="post">
+						<div class="form-group">
+							
+							<input name="ctl00$TextBox2" type="text" id="TextBox2" placeholder="Username *" class="form-control" style="height:36px;">
+						</div>
+						<div class="form-group">
+						
+							<input name="ctl00$TextBox3" type="text" id="TextBox3" placeholder="Email Address *" class="form-control" style="height:36px;">
+						</div>
+						<div class="form-group">
+							
+							<input name="ctl00$TextBox4" type="password" id="TextBox4" placeholder="Password *" class="form-control" style="height:36px;"> 
+						</div>
+						<div class="form-group">
+							<input type="submit" name="ctl00$Button2" value="Sign in" id="Button2" class="lp-secondary-btn width-full btn-first-hover" style="padding:8px 30px;"> 
+						</div>
+					</div>	
+					<div class="pop-form-bottom">
+						<div class="bottom-links">
+							<a class="signInClick"> have an account? Sign in</a>
+							<a class="forgetPasswordClick pull-right">Forgot Password</a>
+						</div>
+						<p class="margin-top-15">Connect with your Social Network</p>
+						<ul class="social-login list-style-none">
+							<li><button id="Button3" class="google flaticon-googleplus"><i class="fa fa-google-plus"></i><span>Sign Up</span></button></li>
+							<li><button id="Button4" class="facebook flaticon-facebook"><i class="fa fa-facebook"></i><span>Sign Up</span></button></li>
+							
+						</ul>
+					</div>
+				<a class="md-close"><i class="fa fa-close"></i></a>
+				</div>
+				<div class="forgetpasswordcontainer">
+                <h2 class="text-center" style="font-size:30px;">Forgot Password?</h2>
+					<h1 class="text-center"></h1>
+					<div class="form-horizontal margin-top-30" method="post">
+						<div class="form-group">
+						<input name="ctl00$TextBox5" type="text" id="TextBox5" placeholder="Enter Your Email Address" class="form-control" style="height:36px;">
+						</div>
+						<div class="form-group">
+							<input type="submit" name="ctl00$Button5" value="Get New Password" id="Button5" class="lp-secondary-btn width-full btn-first-hover" style="padding:8px 30px;"> 
+						</div>
+					</div>	
+					<div class="pop-form-bottom">
+						<div class="bottom-links">
+							<a class="cancelClick">Cancel</a>
+						</div>
+					</div>
+				<a class="md-close"><i class="fa fa-close"></i></a>
+				</div>
+			</div>	
+		</div>
+		
+		<!-- Popup Open -->
+		<div class="md-modal md-effect-3" id="modal-2">
+			<div class="container">
+				<div class="md-content ">
+					<div class="row popup-inner-left-padding ">
+						<div class="col-md-6 lp-insert-data">
+						</div>
+						<div class="col-md-6">
+							<div id="quickmap" class="quickmap"></div>
+							<a class="md-close widget-map-click"><i class="fa fa-close"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Popup Close -->
+		<div class="md-overlay"></div> <!-- Overlay for Popup -->
+							
+		<div class="lp-menu-bar  lp-menu-bar-color">
+			<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-xs-6 lp-logo-container">
+							<div class="lp-logo">
+								<a href="http://microsoftmsdn.com/schoolguru/index.html">
+									<img src="./ParentProfile_files/logo.png" alt="">
+								</a>
+							</div>
+						</div>
+						<div class="col-xs-6 mobile-nav-icon">
+							<a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#menu" class="nav-icon">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</a>
+						</div>
+						<div class="col-md-8 col-xs-12 lp-menu-container">
+							<div class="pull-right lp-add-listing-btn">
+								<ul>
+									<li><a href="admin.html" style="line-height: 80px;"><i class="fa fa-plus"></i> Add Schools</a></li>
+								</ul>
+							</div>
+							<div class="lp-menu pull-right menu">
+								<ul>
+									<li><a href="search.html" style="line-height: 80px;">Schools </a>
+										
+									</li>
+									<li><a href="user_profile.html" style="line-height: 80px;">Parents </a>
+										
+									</li>
+                                    <li><a href="user_profile.html" style="line-height: 80px;">Students </a>
+										
+									</li>
+								
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+		
+	</header>
+<!--        
+<div class="page-heading listing-page archive-page ">
+			<div class="page-heading-inner-container text-center">
+				<h1>Compare Schools</h1>
+				
+			</div>
+			<div class="page-header-overlay"></div>
+		</div>
+
+-->
+        <section class="aliceblue">
+		<div class="container page-container-second">
+	       <style>
+               .school_col
+               {
+                   padding-left: 10px;
+                   padding-top: 30px;
+                   padding-right: 10px;
+                 
+               }
+               
+               #main_col
+               {
+                   background-color: antiquewhite;
+                   font-family: cursive;
+
+               }
+               
+               #school_one
+               {
+                   background-color: beige;
+                   font-family: sans-serif;
+                   
+                       
+               }
+               
+               #school_two
+               {
+                   background-color:lightblue;
+                   font-family: sans-serif;
+               }
+               
+               #school_three
+               {
+                   background-color: aliceblue;
+                   font-family: sans-serif;
+               }
+               .row_head
+               {
+                   color: blueviolet;
+                   letter-spacing: 2px;
+                   text-transform: uppercase;
+                   float: :left;
+                    padding: 7px;
+               }
+               
+               .cancelIcon
+               {
+                   float: right;
+               }
+               .row_text
+               {
+                  /* color: black;*/
+                   
+               }
+               .main_table
+               {
+                  border-collapse: collapse;
+                  border-spacing: 0; 
+                   width: :100%
+               }
+               
+               .main_table th
+               {
+                   height:auto;
+                   width: 25%;
+                   text-align: left;
+                   border: 1px solid #CCC;
+                   background: #F3F3F3; /* Light grey background */
+                   font-weight: bold; /* Make sure they're bold */
+               }
+               
+               .table_row
+               {
+                   padding-bottom: 4em;
+                   
+               }
+               
+                .main_table td
+               {
+                   height:auto;
+                   width: 25%;
+                   text-align: left;
+                    border: 1px solid #CCC;
+                   padding: 7px;
+               }
+               
+               
+                /* Cells in even rows (2,4,6...) are one color */
+                .main_table tr:nth-child(even) td { background: #F1F1F1; }
+
+                /* Cells in odd rows (1,3,5...) are another (excludes header cells) */
+                .main_table tr:nth-child(odd) td { background: #FEFEFE; }
+
+                .main_table tr td:hover { background: #666; color: #FFF; } /* Hover cell effect! */
+            
+            </style>
+            <div class="row">
+				<div class="col-md-12  padding-40 blog-single-inner-container lp-border lp-border-radius-8">
+                 
+                    <table class="main_table">
+                        <tr class="table_row">
+                            <th>
+                                <span class="row_head"></span>
+                            </th>
+                            <th>
+                                <span id="sch_name_1" class="row_head"></span>
+                                <span class="cancelIcon" id="cancelIcon1"><a href="#" onclick="removeSchool(1)"><img src="images/cancel.png"/></a></span>
+                            </th>
+                            <th>
+                                <span id="sch_name_2" class="row_head"></span>
+                                <span class="cancelIcon" id="cancelIcon2"><a href="#" onclick="removeSchool(2)"><img src="images/cancel.png"/></a></span>
+                            </th>
+                            <th>
+                                <span id="sch_name_3" class="row_head"></span>
+                                <span class="cancelIcon" id="cancelIcon3"><a href="#" onclick="removeSchool(3)"><img src="images/cancel.png"/></a></span>
+                            </th>
+                        </tr>
+                        
+                        <tr class="table_row">
+                            <td>
+                                <span class="row_text"></span>
+                            </td>
+                            <td>
+                                <img id="img_sch_1" src="" width="80%" height="100px"/>
+                            </td>
+                            <td>
+                                <img id="img_sch_2" src="" width="80%" height="100px"/>
+                            </td>
+                            <td>
+                                <img id="img_sch_3" src="" width="80%" height="100px"/>
+                            </td>
+                        
+                        </tr>
+                        
+                         <tr class="table_row">
+                            <td>
+                                <span  class="row_head"> Avg Rating</span>
+                            </td>
+                            <td>
+                                <div id="sch_1_rating"></div>
+                            </td>
+                            <td>
+                                <div id="sch_2_rating"></div>
+                            </td>
+                            <td>
+                                <div id="sch_3_rating"></div>
+                            </td>
+                    
+                        </tr>
+                        
+                         <tr class="table_row">
+                            <td>
+                                <span  class="row_head"> Study Ratings</span>
+                            </td>
+                            <td>
+                                <div id="sch_1_study_rating"></div>
+                            </td>
+                            <td>
+                                <div id="sch_2_study_rating"></div>
+                            </td>
+                            <td>
+                                <div id="sch_3_study_rating"></div>
+                            </td>
+                    
+                        </tr>
+                        
+                        <tr class="table_row">
+                            <td>
+                                <span  class="row_head"> Library and Reading facilities Ratings</span>
+                            </td>
+                            <td>
+                                <div id="sch_1_lib_rating"></div>
+                            </td>
+                            <td>
+                                <div id="sch_2_lib_rating"></div>
+                            </td>
+                            <td>
+                                <div id="sch_3_lib_rating"></div>
+                            </td>
+                    
+                        </tr>
+                        
+                        <tr class="table_row">
+                            <td>
+                                <span  class="row_head"> Labs and Scientific Environment Ratings</span>
+                            </td>
+                            <td>
+                                <div id="sch_1_lab_rating"></div>
+                            </td>
+                            <td>
+                                <div id="sch_2_lab_rating"></div>
+                            </td>
+                            <td>
+                                <div id="sch_3_lab_rating"></div>
+                            </td>
+                    
+                        </tr>
+                        
+                        <tr class="table_row">
+                            <td>
+                                <span  class="row_head"> Sports and Extra Curriculars Ratings</span>
+                            </td>
+                            <td>
+                                <div id="sch_1_sports_rating"></div>
+                            </td>
+                            <td>
+                                <div id="sch_2_sports_rating"></div>
+                            </td>
+                            <td>
+                                <div id="sch_3_sports_rating"></div>
+                            </td>
+                    
+                        </tr>
+                        
+                        <tr class="table_row">
+                            <td>
+                                <span  class="row_head"> Teaching Staff Ratings</span>
+                            </td>
+                            <td>
+                                <div id="sch_1_teach_rating"></div>
+                            </td>
+                            <td>
+                                <div id="sch_2_teach_rating"></div>
+                            </td>
+                            <td>
+                                <div id="sch_3_teach_rating"></div>
+                            </td>
+                    
+                        </tr>
+                        
+                        <tr class="table_row">
+                            <td>
+                                <span  class="row_head"> Principal Name</span>
+                            </td>
+                            <td>
+                                <span id="sch_1_prn" class="row_text">  </span>
+                            </td>
+                            <td>
+                                <span id="sch_2_prn" class="row_text">  </span>
+                            </td>
+                            <td>
+                                <span id="sch_3_prn" class="row_text">  </span>
+                            </td>
+                    
+                        </tr>
+                        
+                        <tr class="table_row">
+                            <td>
+                                <span class="row_head"> Address</span>
+                            </td>
+                            <td>
+                                <span id="sch_1_add" class="row_text">  </span>
+                            </td>
+                            <td>
+                                <span id="sch_2_add" class="row_text">  </span>
+                            </td>
+                            <td>
+                                <span id="sch_3_add" class="row_text">  </span>
+                            </td>
+                    
+                        </tr>
+                        
+                        <tr class="table_row">
+                            <td>
+                                <span class="row_head"> Contact</span>
+                            </td>
+                            <td>
+                                <span id="sch_1_phn" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_2_phn" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_3_phn" class="row_text"> </span>
+                            </td>
+                    
+                        </tr>
+                        
+                        <tr class="table_row">
+                            <td>
+                                <span class="row_head"> Session Timmings </span>
+                            </td>
+                            <td>
+                                <span id="sch_1_sess" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_2_sess" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_3_sess" class="row_text"> </span>
+                            </td>
+                    
+                        </tr>
+                        
+                        <tr class="table_row">
+                            <td>
+                                <span class="row_head"> Category </span>
+                            </td>
+                            <td>
+                                <span id="sch_1_cat" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_2_cat" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_3_cat" class="row_text"> </span>
+                            </td>
+                    
+                        </tr>
+                        
+                        <tr class="table_row">
+                            <td>
+                                <span class="row_head"> Admission Method  </span>
+                            </td>
+                            <td>
+                                <span id="sch_1_adm_method" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_2_adm_method" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_3_adm_method" class="row_text"> </span>
+                            </td>
+                    
+                        </tr>
+                        
+                        <tr class="table_row">
+                            <td>
+                                <span class="row_head"> Courses  </span>
+                            </td>
+                            <td>
+                                <span id="sch_1_courses" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_2_courses" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_3_courses" class="row_text"> </span>
+                            </td>
+                    
+                        </tr>
+                        
+                        <tr class="table_row">
+                            <td>
+                                <span class="row_head"> School Size  </span>
+                            </td>
+                            <td>
+                                <span id="sch_1_size" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_2_size" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_3_size" class="row_text"> </span>
+                            </td>
+                    
+                        </tr>
+                        
+                        
+                        
+                        <tr class="table_row">
+                            <td>
+                                <span class="row_head"> Board  </span>
+                            </td>
+                            <td>
+                                <span id="sch_1_board" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_2_board" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_3_board" class="row_text"> </span>
+                            </td>
+                    
+                        </tr>
+                        
+                        <tr class="table_row">
+                            <td>
+                                <span class="row_head"> Medium of Teaching  </span>
+                            </td>
+                            <td>
+                                <span id="sch_1_medium" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_2_medium" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_3_medium" class="row_text"> </span>
+                            </td>
+                    
+                        </tr>
+                        
+                        <tr class="table_row">
+                            <td>
+                                <span class="row_head"> Mobility  </span>
+                            </td>
+                            <td>
+                                <span id="sch_1_mobility" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_2_mobility" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_3_mobility" class="row_text"> </span>
+                            </td>
+                    
+                        </tr>
+                        
+                        
+                        <tr class="table_row">
+                            <td>
+                                <span class="row_head"> Religous preferences  </span>
+                            </td>
+                            <td>
+                                <span id="sch_1_rel" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_2_rel" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_3_rel" class="row_text"> </span>
+                            </td>
+                    
+                        </tr>
+                        
+                        
+                        <tr class="table_row">
+                            <td>
+                                <span class="row_head"> Email </span>
+                            </td>
+                            <td>
+                                <span id="sch_1_email" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_2_email" class="row_text"> </span>
+                            </td>
+                            <td>
+                                <span id="sch_3_email" class="row_text"> </span>
+                            </td>
+                    
+                        </tr>
+                    
+                    </table>
+      
+                </div>			
+				</div>
+        
+			</div>
+            
+		</section></div>
+
+	
+
+        <footer class="text-center">
+		<div class="footer-upper-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="footer-menu">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="">Blog</a></li>
+							<li><a href="">Contact</a></li>
+							<li><a href="">Join Us</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div><!-- ../footer-upper-bar -->
+		<div class="footer-bottom-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="footer-about-company">
+							<li>Copyright © 2016 Schoolguru</li>
+							<li>gta4roy@gmail.com</li>
+							<li>Tel: +91 7829712286</li>
+						</ul>
+						<p class="credit-links"> Designed &amp; Developed by<a href="" target="_blank"> Gaurav & Abhijit</a></p><a href="" target="_blank">
+						</a><ul class="social-icons footer-social-icons"><a href="" target="_blank">
+							</a><li><a href="" target="_blank"></a><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#">
+								<img class="icon icons8-Facebook" src="./ParentProfile_files/facebook.png" alt="facebook"></a></li>
+							<li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#">
+								<img class="icon icons8-Google-Plus" src="./ParentProfile_files/google-plus.png" alt="google-plus"></a></li>
+							<li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#">
+								<img class="icon icons8-LinkedIn" src="./ParentProfile_files/linkidin.png" alt="linkedin"></a></li>
+							
+							<li><a href="http://microsoftmsdn.com/schoolguru/parent-profile.aspx#">
+								<img class="icon icons8-Tumblr" src="./ParentProfile_files/twitter.png" alt="twitter"></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<a href="#" class="add-listing-mobile lp-search-btn">Add listing</a>
+        </div>
+        
+     
+        	<!-- Jquery Library -->
+                 <script src="js/jquery-2.2.3.js"></script>  
+                 <script src="js/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+          <script type="text/javascript" src="search/bootstrap-rating.js"></script>
+          <script type="text/javascript" src="search/bootstrap-rating.js"></script>
+
+
+                 <script src="js/cookie.js"></script>
+                    <script src="js/util.js"></script>
+    
+    </form>
+    
+    <script>
+        
+     
+        $(document).ready(function() {
+            
+            $("#cancelIcon1").hide();
+            $("#cancelIcon2").hide();
+            $("#cancelIcon3").hide();
+            
+              var number_of_school = readCookie('compare_count');
+            
+            switch(number_of_school)
+                {
+                    case '1':
+                        var school_id_1 = readCookie('school_id_1');
+                        $("#cancelIcon1").show();
+                        fillSchoolData(school_id_1,1);
+                        break;
+                    case '2':
+                        var school_id_1 = readCookie('school_id_1');
+                        var school_id_2 = readCookie('school_id_2');
+                        fillSchoolData(school_id_1,1);
+                        fillSchoolData(school_id_2,2);
+                        $("#cancelIcon1").show();
+                        $("#cancelIcon2").show();
+                        
+                        break;
+                    case '3':
+                        var school_id_1 = readCookie('school_id_1');
+                        var school_id_2 = readCookie('school_id_2');
+                        var school_id_3 = readCookie('school_id_3');
+                        fillSchoolData(school_id_1,1);
+                        fillSchoolData(school_id_2,2);
+                        fillSchoolData(school_id_3,3);
+                        $("#cancelIcon1").show();
+                        $("#cancelIcon2").show();
+                        $("#cancelIcon3").show();
+                        break;
+                }
+            
+        });
+        
+        
+        function removeSchool(school_tab)
+        {
+            
+            var number_of_school = parseInt(readCookie('compare_count'));
+            if(number_of_school > 0 && number_of_school <= 3)
+                {
+                    number_of_school = number_of_school -1;
+                    eraseCookie('compare_count');
+                    createCookie('compare_count',number_of_school,1);
+                    
+                    switch(school_tab)
+                        {
+                            case 1:
+                                 eraseCookie('school_id_1');
+                              
+                                 if(readCookie('school_id_2'))
+                                 {
+                                    createCookie('school_id_1',readCookie('school_id_2'),1);
+                                    eraseCookie('school_id_2');
+                              
+                                    if(readCookie('school_id_3')) 
+                                    {
+                                        createCookie('school_id_2',readCookie('school_id_3'),1);
+                                        eraseCookie('school_id_3');
+                              
+                                    }
+                                
+                                 }
+                                 
+                                break;
+                                
+                            case 2:
+                                 eraseCookie('school_id_2');
+                                
+                                 if(readCookie('school_id_3'))
+                                 {
+                                    createCookie('school_id_2',readCookie('school_id_3'),1);
+                                    eraseCookie('school_id_3');        
+                                 }
+                                 
+                                break;
+                            case 3:
+                                eraseCookie('school_id_3');
+                                break;
+                        }
+                    
+                }
+            
+                $('#sch_'+school_tab+'_add')          .html('');  
+                $('#sch_'+school_tab+'_adm_method')   .html('');	
+                $('#sch_'+school_tab+'_board')        .html('');	
+                $('#sch_'+school_tab+'_cat')          .html('');	
+                $('#sch_'+school_tab+'_phn')          .html('');	
+                $('#sch_'+school_tab+'_courses')      .html('');	
+                $('#sch_'+school_tab+'_email')        .html('');	
+                $('#sch_'+school_tab+'_medium')       .html('');	
+                $('#sch_'+school_tab+'_mobility')     .html('');	
+                $('#sch_'+school_tab+'_prn')          .html('');	
+                $('#sch_'+school_tab+'_rel')          .html('');
+                $('#sch_name_'+school_tab)            .html('');	
+                $('#sch_'+school_tab+'_size')         .html('');	
+                $('#sch_'+school_tab+'_sess')         .html('');
+                $('#img_sch_'+school_tab)             .attr('src','');
+            
+        }
+        
+        function populateRatings(school_id)
+        {
+             var formData = {
+                    id_school     : school_id
+             };
+
+            console.log(formData);
+
+            // process the form
+            $.ajax({
+                type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url         : '../api/load_data/load_avg_rating_bytype.php', // the url where we want to POST
+                data        : formData, // our data object
+                dataType    : 'json', // what type of data do we expect back from the server
+                encode      : true
+            })
+                // using the done promise callback
+            .done(function(data) {   
+                
+                fillRatings(school_id,'lab',data[0]);
+                fillRatings(school_id,'lib',data[1]);
+                fillRatings(school_id,'sports',data[2]);
+                fillRatings(school_id,'study',data[3]);
+                fillRatings(school_id,'teach',data[4]);
+                
+                // here we will handle errors and validation messages
+            }).fail(function( xhr, status, errorThrown ) {
+                    console.log( "Query Failed" );
+                    console.log( "Error: " + errorThrown );
+                    console.log( "Status: " + status );
+                    console.dir( xhr );
+                    return false;
+            });
+        }
+        
+        
+        function fillRatings(school_id,type ,data)
+        {
+                isFiveStar = "";
+                isFourHalfStar ="";
+                isFourStar ="";
+                isThreeHalfStar ="";
+                isThreeStar ="";
+                isTwoHalfStar ="";
+                isTwoStar ="";
+                isOneHalfStar ="";
+                isOneStar ="";
+                isHalStar ="";
+
+                
+                if(data['avg'] == '5')
+                    {
+                        isFiveStar = "checked";
+                    }
+                else if(data['avg'] == '4')
+                    {
+                        isFourStar = "checked";
+                    }
+                else if(data['avg'] == '3')
+                    {
+                        isThreeStar = "checked";
+                    }
+                else if(data['avg'] == '2')
+                    {
+                        isTwoStar = "checked";
+                    }
+                else if(data['avg'] == '1')
+                    {
+                        isOneStar = "checked";
+                    }
+            
+                
+                var html_str =   
+                        "<fieldset class='rating_star' id='rating_id_"+school_id+type+"'>"+
+                        "<input type='radio' id='star5' name='rating_"+school_id+type+"' value='5' "+isFiveStar+" /><label class =                                 'full' for='star5'"+ "title='Awesome - 5 stars'></label>"+
+                                            
+                                            "<input type='radio' id='star4' name='rating_"+school_id+type+"' value='4' "+isFourStar+"/><label class = 'full' for='star4'"+ "title='Pretty good - 4 stars'></label>"+
+                                           
+                                            "<input type='radio' id='star3' name='rating_"+school_id+type+"' value='3' "+isThreeStar+"/><label class = 'full' for='star3'"+ "title='Meh - 3 stars'></label>"+
+                                           
+                                            "<input type='radio' id='star2' name='rating_"+school_id+type+"' value='2' "+isTwoStar+"/><label class = 'full' for='star2'"+ "title='Kinda bad - 2 stars'></label>"+
+                                           
+                                            "<input type='radio' id='star1' name='rating_"+school_id+type+"' value='1' "+isOneStar+"/><label class = 'full' for='star1'"+ "title='Sucks big time - 1 star'></label> "+
+                                                "</fieldset>";
+                                           
+                
+                var description_sections = document.getElementById('sch_'+school_id+'_'+type+'_rating');
+                var newElement = document.createElement('div');
+                newElement.innerHTML =html_str;
+                
+                description_sections.appendChild(newElement);
+        }
+        
+        
+        function fillSchoolData(school_id,school_tab)
+        {
+            
+            getAvgRating(school_id,'sch_'+school_tab+'_rating');
+            populateRatings(school_id);
+
+            // get the form data
+            // there are many ways to get this data using jQuery (you can use the class or id also)
+            var formData = {
+                  school_id           : school_id
+                  
+            };
+
+            // process the formf
+            $.ajax({
+                type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url         : '../api/search_api/search_id_compare.php', // the url where we want to POST
+                data        : formData, // our data object
+                dataType    : 'json' // what type of data do we expect back from the server
+                
+            })
+                // using the done promise callback
+            .done(function(data) {
+             
+
+                $('#sch_'+school_tab+'_add')          .html(data[0].address);  
+                $('#sch_'+school_tab+'_adm_method')   .html(getAdmissionMethodString(parseInt(data[0].admission_method)));	
+                $('#sch_'+school_tab+'_board')        .html(getSchoolBoardString    (parseInt(data[0].board)));	
+                $('#sch_'+school_tab+'_cat')          .html(getCategoryString       (parseInt(data[0].category)));	
+                $('#sch_'+school_tab+'_phn')          .html(data[0].contact);	
+                $('#sch_'+school_tab+'_courses')      .html(getCourseString         (parseInt(data[0].courses)));	
+                $('#sch_'+school_tab+'_email')        .html(data[0].email);	
+                $('#sch_'+school_tab+'_medium')       .html(getMediumOfTeachingString(parseInt(data[0].medium_of_teaching)));	
+                $('#sch_'+school_tab+'_mobility')     .html(data[0].mobility);	
+                $('#sch_'+school_tab+'_prn')          .html(data[0].principal_name);	
+                $('#sch_'+school_tab+'_rel')          .html(getReligousPreferencesString(parseInt(data[0].religous_preference)));
+                $('#sch_name_'+school_tab)            .html(data[0].school_name);	
+                $('#sch_'+school_tab+'_size')         .html(getSchoolSizeString(parseInt(data[0].school_size)));	
+                $('#sch_'+school_tab+'_sess')         .html(getSessionTimingString(parseInt(data[0].session_timmings)));
+                $('#img_sch_'+school_tab)             .attr('src',data[0].profile_pic_data);
+
+                
+             
+                // here we will handle errors and validation messages
+            }).fail(function( xhr, status, errorThrown ) {
+                console.log( "Query Failed" );
+                console.log( "Error: " + errorThrown );
+                console.log( "Status: " + status );
+                console.dir( xhr );
+                return false;
+            }); 
+        }
+        
+        
+       function getAvgRating(school_id,divName)
+        {
+            var formData = {
+                    id_school     : school_id
+             };
+
+            console.log(formData);
+
+            // process the form
+            $.ajax({
+                type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                url         : '../api/load_data/load_avg_rating.php', // the url where we want to POST
+                data        : formData, // our data object
+                dataType    : 'json', // what type of data do we expect back from the server
+                encode      : true
+            })
+                // using the done promise callback
+            .done(function(data) {   
+                    
+                isFiveStar = "";
+                isFourHalfStar ="";
+                isFourStar ="";
+                isThreeHalfStar ="";
+                isThreeStar ="";
+                isTwoHalfStar ="";
+                isTwoStar ="";
+                isOneHalfStar ="";
+                isOneStar ="";
+                isHalStar ="";
+
+                
+                if(data[0]['avg'] == '5')
+                    {
+                        isFiveStar = "checked";
+                    }
+                else if(data[0]['avg'] == '4')
+                    {
+                        isFourStar = "checked";
+                    }
+                else if(data[0]['avg'] == '3')
+                    {
+                        isThreeStar = "checked";
+                    }
+                else if(data[0]['avg'] == '2')
+                    {
+                        isTwoStar = "checked";
+                    }
+                else if(data[0]['avg'] == '1')
+                    {
+                        isOneStar = "checked";
+                    }
+            
+                
+                var html_str =   
+                        "<fieldset class='rating_star' id='rating_id_"+school_id+"'>"+
+                        "<input type='radio' id='star5' name='rating_"+school_id+"' value='5' "+isFiveStar+" /><label class =                                 'full' for='star5'"+ "title='Awesome - 5 stars'></label>"+
+                                            
+                                            "<input type='radio' id='star4' name='rating_"+school_id+"' value='4' "+isFourStar+"/><label class = 'full' for='star4'"+ "title='Pretty good - 4 stars'></label>"+
+                                           
+                                            "<input type='radio' id='star3' name='rating_"+school_id+"' value='3' "+isThreeStar+"/><label class = 'full' for='star3'"+ "title='Meh - 3 stars'></label>"+
+                                           
+                                            "<input type='radio' id='star2' name='rating_"+school_id+"' value='2' "+isTwoStar+"/><label class = 'full' for='star2'"+ "title='Kinda bad - 2 stars'></label>"+
+                                           
+                                            "<input type='radio' id='star1' name='rating_"+school_id+"' value='1' "+isOneStar+"/><label class = 'full' for='star1'"+ "title='Sucks big time - 1 star'></label> "+
+                                                "</fieldset>";
+                                           
+                
+                var description_sections = document.getElementById(divName);
+                var newElement = document.createElement('div');
+                newElement.innerHTML =html_str;
+                
+                description_sections.appendChild(newElement);
+                
+                // here we will handle errors and validation messages
+            }).fail(function( xhr, status, errorThrown ) {
+                    console.log( "Query Failed" );
+                    console.log( "Error: " + errorThrown );
+                    console.log( "Status: " + status );
+                    console.dir( xhr );
+                    return false;
+            });
+
+        }
+    
+ 
+    </script>
+    
+    <!-- Google map ends-->
+
+</body></html>

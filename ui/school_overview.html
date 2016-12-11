@@ -515,7 +515,9 @@ p span i
                                     <li><a href="user_profile.html" style="line-height: 80px;">Students </a>
 										
 									</li>
-								
+                                    <li><a href="compare.html" style="line-height: 80px;"><span id="compare_link">Compare School</span> </a>
+										
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -544,7 +546,14 @@ p span i
                     <div class="col-md-9"><h4 class="mt0"><span id="dtl_school_name"></span></h4></div>
                 
             <div class="col-md-9">
-                <span id="dtl_sml_desc"></span>         
+                <div class="col-md-8">
+                    <span id="dtl_sml_desc"></span>         
+                </div>
+                <div class="col-md-1">
+                <!--- add to comparison button -->
+                <input type="button" id="btn_add_compare" value="Add To Compare" onclick="addToCompare()" class="lp-search-btn" style="float:left;padding:8px 15px;"/>
+                    
+                </div>
             </div>
            <div class="col-md-9" style="">
             
@@ -1042,6 +1051,14 @@ p span i
                 }
 
                 var x = readCookie('school_id');
+                
+                var compare_count = readCookie('compare_count');
+                if(compare_count)
+                    {
+                        
+                          $('#compare_link').text('Compare School ('+compare_count+')');
+                            $('#btn_add_compare').val('Compare School ('+compare_count+')');
+                    }
                
                 if (x) { 
                     $("#init_review_form").show();
@@ -1198,6 +1215,58 @@ p span i
                     return false;
             });
 
+        }
+        
+        
+        function addToCompare()
+        {
+            var    school_id  = readCookie('school_id');
+            
+            var compare_count = readCookie('compare_count');
+            
+            if(compare_count)
+                {
+                    var cnt_i = parseInt(compare_count);
+                    if(cnt_i <= 3)
+                        {
+                            
+                            for(var i = 1 ; i <= cnt_i ; i++ )
+                                {
+                                    var old_school_id = readCookie('school_id_'+i);
+                                    if(old_school_id == school_id)
+                                        {
+                                            //already added then no need to add again 
+                                            alert("School is already added for comparison");
+                                            return;
+                                        }
+                                }
+                            
+                            if(cnt_i < 3)
+                                {
+                                       cnt_i ++;
+                                       createCookie('school_id_'+cnt_i,school_id,1);  
+                                       createCookie('compare_count',cnt_i.toString(),1);   
+                                        $('#compare_link').text('Compare School ('+cnt_i+')');
+                                        $('#btn_add_compare').val('Compare School ('+cnt_i+')');
+                                }
+                            else 
+                                {
+                                    alert("Please remove one of the schools from comparison");
+                                }
+                        }
+                    
+                }
+            else
+                {
+                    createCookie('compare_count','1',1);   
+                    createCookie('school_id_1',school_id,1);   
+                    
+                    $('#compare_link').text('Compare School (1)');
+                    $('#btn_add_compare').val('Compare School (1)');
+                }
+            
+            
+              
         }
 
         
