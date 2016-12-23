@@ -73,7 +73,7 @@ if (!$db_selected) {
   die ("Can\'t use db : " . mysql_error());
 }
                  
-$query = "SELECT school_id,address, school_name, latitude, longitude ,city, session_timmings,category,school_type,courses,school_size,board, medium_of_teaching, mobility, small_description,religous_preference,profile_pic_data FROM tbl_school_main_table";
+$query = "SELECT school_id,address, school_name, latitude, longitude ,city, session_timmings,category,school_type,courses,school_size,board, medium_of_teaching, mobility, small_description,religous_preference,profile_pic_data,admission_method FROM tbl_school_main_table";
 
 $result = mysql_query($query);
 if (!$result) {
@@ -111,6 +111,7 @@ while ($row = @mysql_fetch_assoc($result)){
     $newnode->setAttribute("religous_preference", $row['religous_preference']);  
     $newnode->setAttribute("small_description", utf8_encode($row['small_description']));
     $newnode->setAttribute("profile_pic_data", base64_decode($row['profile_pic_data']));
+    $newnode->setAttribute("admission_method", $row['admission_method']);
   }
   else
   {

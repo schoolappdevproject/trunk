@@ -45,10 +45,55 @@
     padding-bottom: 10px;
 }
         
-  .ui-autocomplete-loading {
-    background: white url("images/ui-anim_basic_16x16.gif") right center no-repeat;
-  }   
+  .ui-autocomplete {
+    position: absolute;
+    color: blue;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    float: left;
+    display: none;
+    min-width: 20%;   
+    padding: 4px 0;
+    margin: 0 0 10px 25px;
+    list-style: none;
+    background-color: #ffffff;
+    border-color: #ccc;
+    border-color: rgba(0, 0, 0, 0.2);
+    border-style: solid;
+    border-width: 1px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    *border-right-width: 2px;
+    *border-bottom-width: 2px;
+}
+
+    .ui-menu-item {
+        display: block;
+        padding: 3px 15px;
+        clear: both;
+        font-weight: normal;
+        line-height: 18px;
+        color:dimgray;
+        white-space: nowrap;
         
+    }
+    .ui-state-active, .ui-state-hover {
+      color: #ffffff;
+      text-decoration: none;
+      background-color: #0088cc;
+      border-radius: 0;
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      background-image: none;
+    }        
     </style>
     
     <!--
@@ -318,14 +363,14 @@ commented due to error
 								<ul class="user-abailable-table list-style-none">
 									<li>
 										<span class="timing-days">
-											<input id="school_timing" type="checkbox" name="school_timing" value="1" onclick="filter('school_timing')">
+											<input id="school_timing" type="checkbox" name="school_timing" value="1" onclick="filter()">
 											<span>Full day(9am ­ 4pm)</span>
 										</span>
 									</li>
 									<li>
 										<span class="timing-days">
 										
-											<input id="school_timing" type="checkbox" name="school_timing" value="2" onclick="filter('school_timing')">
+											<input id="school_timing" type="checkbox" name="school_timing" value="2" onclick="filter()">
 											<span>Half day(7am – 12 pm)</span>
 										</span>
 										
@@ -333,7 +378,7 @@ commented due to error
                                     	<li>
 										<span class="timing-days">
 										
-											<input id="school_timing" type="checkbox" name="school_timing" value="3"onclick="filter('school_timing')">
+											<input id="school_timing" type="checkbox" name="school_timing" value="3"onclick="filter()">
 											<span>Evening school(1 pm – 5 pm)</span>
 										</span>
 										
@@ -348,7 +393,7 @@ commented due to error
 									<li>
 										<span class="timing-days">
 										
-											<input id="category" type="checkbox" name="category" value="1" onclick="filter('category')">
+											<input id="category" type="checkbox" name="category" value="1" onclick="filter()">
 											<span>Government</span>
 										</span>
 										
@@ -356,7 +401,7 @@ commented due to error
 									<li>
 										<span class="timing-days">
 										
-											<input id="category" type="checkbox" name="category" value="2" onclick="filter('category')">
+											<input id="category" type="checkbox" name="category" value="2" onclick="filter()">
 											<span>Private</span>
 										</span>
 										
@@ -364,7 +409,7 @@ commented due to error
                                     	<li>
 										<span class="timing-days">
 										
-											<input id="category" type="checkbox" name="category" value="3" onclick="filter('category')">
+											<input id="category" type="checkbox" name="category" value="3" onclick="filter()">
 											<span>Semi Government</span>
 										</span>
 										
@@ -377,7 +422,7 @@ commented due to error
 									<li>
 										<span class="timing-days">
 										
-											<input id="courses" type="checkbox" name="courses" value="1" onclick="filter('courses')">
+											<input id="courses" type="checkbox" name="courses" value="1" onclick="filter()">
 											<span>Pre­Nursery</span>
 										</span>
 										
@@ -385,7 +430,7 @@ commented due to error
 									<li>
 										<span class="timing-days">
 										
-											<input id="courses" type="checkbox" name="courses" value="2" onclick="filter('courses')">
+											<input id="courses" type="checkbox" name="courses" value="2" onclick="filter()">
 											<span>Kindergarten</span>
 										</span>
 										
@@ -393,7 +438,7 @@ commented due to error
                                     	<li>
 										<span class="timing-days">
 										
-											<input id="courses" type="checkbox" name="courses" value="3" onclick="filter('courses')">
+											<input id="courses" type="checkbox" name="courses" value="3" onclick="filter()">
 											<span>Primary</span>
 										</span>
 										
@@ -401,7 +446,7 @@ commented due to error
                                     <li>
 										<span class="timing-days">
 										
-											<input id="courses" type="checkbox" name="courses" value="4" onclick="filter('courses')">
+											<input id="courses" type="checkbox" name="courses" value="4" onclick="filter()">
 											<span>Upper primary</span>
 										</span>
 										
@@ -409,7 +454,7 @@ commented due to error
                                     <li>
 										<span class="timing-days">
 										
-											<input id="courses" type="checkbox" name="courses" value="5" onclick="filter('courses')">
+											<input id="courses" type="checkbox" name="courses" value="5" onclick="filter()">
 											<span>PUC/12th</span>
 										</span>
 										
@@ -417,7 +462,7 @@ commented due to error
                                     <li>
 										<span class="timing-days">
 										
-											<input id="courses" type="checkbox" name="courses" value="6" onclick="filter('courses')">
+											<input id="courses" type="checkbox" name="courses" value="6" onclick="filter()">
 											<span>Special school for the handicap</span>
 										</span>
 										
@@ -431,7 +476,7 @@ commented due to error
 									<li>
 										<span class="timing-days">
 										
-											<input id="school_size" type="checkbox" name="school_size" value="1" onclick="filter('school_size')">
+											<input id="school_size" type="checkbox" name="school_size" value="1" onclick="filter()">
 											<span>3000+</span>
 										</span>
 										
@@ -439,7 +484,7 @@ commented due to error
 									<li>
 										<span class="timing-days">
 										
-											<input id="school_size" type="checkbox" name="school_size" value="2" onclick="filter('school_size')">
+											<input id="school_size" type="checkbox" name="school_size" value="2" onclick="filter()">
 											<span>2000+</span>
 										</span>
 										
@@ -447,7 +492,7 @@ commented due to error
                                     	<li>
 										<span class="timing-days">
 										
-											<input id="school_size" type="checkbox" name="school_size" value="3" onclick="filter('school_size')">
+											<input id="school_size" type="checkbox" name="school_size" value="3" onclick="filter()">
 											<span>1000+</span>
 										</span>
 										
@@ -455,7 +500,7 @@ commented due to error
                                     <li>
 										<span class="timing-days">
 										
-											<input id="school_size" type="checkbox" name="school_size" value="4" onclick="filter('school_size')">
+											<input id="school_size" type="checkbox" name="school_size" value="4" onclick="filter()">
 											<span>500+</span>
 										</span>
 										
@@ -463,7 +508,7 @@ commented due to error
                                     <li>
 										<span class="timing-days">
 										
-											<input id="school_size" type="checkbox" name="school_size" value="5" onclick="filter('school_size')">
+											<input id="school_size" type="checkbox" name="school_size" value="5" onclick="filter()">
 											<span> 500 and below</span>
 										</span>
 										
@@ -477,7 +522,7 @@ commented due to error
 									<li>
 										<span class="timing-days">
 										
-											<input id="board" type="checkbox" name="board" value="1" onclick="filter('board')">
+											<input id="board" type="checkbox" name="board" value="1" onclick="filter()">
 											<span>CBSE</span>
 										</span>
 										
@@ -485,7 +530,7 @@ commented due to error
 									<li>
 										<span class="timing-days">
 										
-											<input id="board" type="checkbox" name="board" value="2" onclick="filter('board')">
+											<input id="board" type="checkbox" name="board" value="2" onclick="filter()">
 											<span> ICSE</span>
 										</span>
 										
@@ -493,7 +538,7 @@ commented due to error
                                     	<li>
 										<span class="timing-days">
 										
-											<input id="board" type="checkbox" name="board" value="3" onclick="filter('board')">
+											<input id="board" type="checkbox" name="board" value="3" onclick="filter()">
 											<span>State board</span>
 										</span>
 										
@@ -507,7 +552,7 @@ commented due to error
 									<li>
 										<span class="timing-days">
 										
-											<input id="medium_of_teaching" type="checkbox" name="medium_of_teaching" value="1" onclick="filter('medium_of_teaching')">
+											<input id="medium_of_teaching" type="checkbox" name="medium_of_teaching" value="1" onclick="filter()">
 											<span>English</span>
 										</span>
 										
@@ -515,7 +560,7 @@ commented due to error
 									<li>
 										<span class="timing-days">
 										
-												<input id="medium_of_teaching" type="checkbox" name="medium_of_teaching" value="1" onclick="filter('medium_of_teaching')">
+												<input id="medium_of_teaching" type="checkbox" name="medium_of_teaching" value="2" onclick="filter()">
 											<span> Hindi</span>
 										</span>
 										
@@ -523,7 +568,7 @@ commented due to error
                                     	<li>
 										<span class="timing-days">
 										
-												<input id="medium_of_teaching" type="checkbox" name="medium_of_teaching" value="1" onclick="filter('medium_of_teaching')">
+												<input id="medium_of_teaching" type="checkbox" name="medium_of_teaching" value="3" onclick="filter()">
 											<span>Kannada</span>
 										</span>
 										
@@ -531,7 +576,7 @@ commented due to error
                                     <li>
 										<span class="timing-days">
 										
-											<input id="medium_of_teaching" type="checkbox" name="medium_of_teaching" value="1" onclick="filter('medium_of_teaching')">
+											<input id="medium_of_teaching" type="checkbox" name="medium_of_teaching" value="4" onclick="filter()">
 											<span>Others</span>
 										</span>
 										
@@ -544,7 +589,7 @@ commented due to error
 									<li>
 										<span class="timing-days">
 										
-											<input id="admission_method" type="checkbox" name="admission_method" value="1" onclick="filter('admission_method')">
+											<input id="admission_method" type="checkbox" name="admission_method" value="1" onclick="filter()">
 											<span>Interview</span>
 										</span>
 										
@@ -552,7 +597,7 @@ commented due to error
 									<li>
 										<span class="timing-days">
 										
-										<input id="admission_method" type="checkbox" name="admission_method" value="2" onclick="filter('admission_method')">
+										<input id="admission_method" type="checkbox" name="admission_method" value="2" onclick="filter()">
 											<span> Written test+ interview</span>
 										</span>
 										
@@ -560,7 +605,7 @@ commented due to error
                                     	<li>
 										<span class="timing-days">
 										
-											<input id="admission_method" type="checkbox" name="admission_method" value="3" onclick="filter('admission_method')">
+											<input id="admission_method" type="checkbox" name="admission_method" value="3" onclick="filter()">
 											<span>Percent criteria</span>
 										</span>
 										
@@ -568,7 +613,7 @@ commented due to error
                                     <li>
 										<span class="timing-days">
 										
-											<input id="admission_method" type="checkbox" name="admission_method" value="4" onclick="filter('admission_method')">
+											<input id="admission_method" type="checkbox" name="admission_method" value="4" onclick="filter()">
 											<span>Govt Procedure</span>
 										</span>
 										
@@ -576,7 +621,7 @@ commented due to error
                                      <li>
 										<span class="timing-days">
 										
-										<input id="admission_method" type="checkbox" name="admission_method" value="5">
+										<input id="admission_method" type="checkbox" name="admission_method" value="5" onclick="filter()">
 											<span>School prerogative</span>
 										</span>
 										
@@ -589,7 +634,7 @@ commented due to error
 									<li>
 										<span class="timing-days">
 										
-								           <input id="religous_preference" type="checkbox" name="religous_preference" value="1" onclick="filter('religous_preference')">
+								           <input id="religous_preference" type="checkbox" name="religous_preference" value="1" onclick="filter()">
 											<span>Govt Neutral</span>
 										</span>
 										
@@ -597,7 +642,7 @@ commented due to error
 									<li>
 										<span class="timing-days">
 										
-											<input id="religous_preference" type="checkbox" name="religous_preference" value="2" onclick="filter('religous_preference')">
+											<input id="religous_preference" type="checkbox" name="religous_preference" value="2" onclick="filter()">
 											<span>Hindu trust</span>
 										</span>
 										
@@ -605,7 +650,7 @@ commented due to error
                                     	<li>
 										<span class="timing-days">
 										
-												<input id="religous_preference" type="checkbox" name="religous_preference" value="3" onclick="filter('religous_preference')">
+												<input id="religous_preference" type="checkbox" name="religous_preference" value="3" onclick="filter()">
 											<span>Muslim trust/ Mosque school</span>
 										</span>
 										
@@ -613,7 +658,7 @@ commented due to error
                                     <li>
 										<span class="timing-days">
 										
-												<input id="religous_preference" type="checkbox" name="religous_preference" value="4" onclick="filter('religous_preference')">
+												<input id="religous_preference" type="checkbox" name="religous_preference" value="4" onclick="filter()">
 											<span>Sikh Gurdyara school</span>
 										</span>
 										
@@ -621,7 +666,7 @@ commented due to error
                                      <li>
 										<span class="timing-days">
 										
-											<input id="religous_preference" type="checkbox" name="religous_preference" value="5" onclick="filter('religous_preference')">
+											<input id="religous_preference" type="checkbox" name="religous_preference" value="5" onclick="filter()">
 											<span>Christian Missionary school</span>
 										</span>
 										
@@ -1034,7 +1079,7 @@ commented due to error
                                             }
                                         else
                                             {
-                                                searchLocationsNear(results[0].geometry.location,1);       
+                                                searchLocationsNear(results[0].geometry.location,5);       
                                             }
                                         
                                          
@@ -1150,6 +1195,7 @@ commented due to error
                     var religous_preference	=   markerNodes[i].getAttribute("religous_preference");
                     var small_description 	=   markerNodes[i].getAttribute("small_description");
                     var profile_pic_data    =   markerNodes[i].getAttribute("profile_pic_data");
+                    var admission_method    =   markerNodes[i].getAttribute("admission_method");
                     
                     console.log("Name "+ name + " school name for search "+ school_name);
                     if(school_name.trim())
@@ -1157,7 +1203,7 @@ commented due to error
                         if(name.includes(school_name))
                         {
                            populateData(school_id,name, distance,  i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,
-                                        small_description,profile_pic_data);
+                                        small_description,profile_pic_data,admission_method);
                            createMarker(latlng, name, address);
                            bounds.extend(latlng);
                            google.maps.event.trigger(markers[i], 'click');   
@@ -1251,6 +1297,7 @@ commented due to error
                   parseFloat(center.lng()));
                   bounds.extend(latlng);
                   map.fitBounds(bounds);
+                  alert("No Schools found in search !");
                   return;
            }
          
@@ -1276,6 +1323,7 @@ commented due to error
             var religous_preference	=   markerNodes[i].getAttribute("religous_preference");
             var small_description 	=   markerNodes[i].getAttribute("small_description");
             var profile_pic_data    =   markerNodes[i].getAttribute("profile_pic_data");
+            var admission_method    =   markerNodes[i].getAttribute("admission_method");
 
             var schoolNameforSearch = document.getElementById("school_name_search_txt").value;
             if(schoolNameforSearch.trim())
@@ -1291,7 +1339,7 @@ commented due to error
             
                 if(found)
                 {
-                    populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data);
+                    populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data,admission_method);
                     createMarker(latlng, name, address);
                     bounds.extend(latlng);
                     google.maps.event.trigger(markers[i], 'click');   
@@ -1299,7 +1347,7 @@ commented due to error
 
             }else{
                 
-                 populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data);
+                 populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data,admission_method);
                  createMarker(latlng, name, address);
                  bounds.extend(latlng);
                //  alert(markers[i]);
@@ -1338,7 +1386,7 @@ commented due to error
 
     function populateData(school_id,name, distance, num ,address,session_timings,
 						   city,category,school_type,courses,
-						   school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data) {
+						   school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data,admission_method) {
 
         //api needed to fetch the image now show the default image 
 		var school_timming      = document.getElementById("school_timing").value;
@@ -1409,7 +1457,7 @@ commented due to error
                     id_school     : school_id
              };
 
-            console.log(formData);
+            //console.log(formData);
 
             // process the form
             $.ajax({
@@ -1573,15 +1621,26 @@ commented due to error
 
  
     //populates the data according to the filer fields 
-    function filter(checkBoxName) {
+    function filter() {
+        
+   
        
-	 var $div = $('#comments-posts'); //cleanup the stack 
+        var $div = $('#comments-posts'); //cleanup the stack 
         $div.contents().remove();
  
 	      
-        var values = getCheckedCheckboxesFor(checkBoxName);
+        var sch_tim = getCheckedCheckboxesFor("school_timing");
+        var sch_cat = getCheckedCheckboxesFor("category");
+        var sch_cour = getCheckedCheckboxesFor("courses");
+        var sch_size = getCheckedCheckboxesFor("school_size");
+        var sch_brd = getCheckedCheckboxesFor("board");
+        var sch_mot = getCheckedCheckboxesFor("medium_of_teaching");
+        var sch_adm = getCheckedCheckboxesFor("admission_method");
+        var sch_rgr = getCheckedCheckboxesFor("religous_preference");
+        
+      
        var bounds = new google.maps.LatLngBounds();
-	var populated = 0;
+	   var populated = 0;
         
        for (var i = 0; i < markerNodes.length; i++) {
              var school_id  = 	markerNodes[i].getAttribute("school_id");
@@ -1602,74 +1661,81 @@ commented due to error
             var religous_preference	=   markerNodes[i].getAttribute("religous_preference");
             var small_description 	=   markerNodes[i].getAttribute("small_description");
             var profile_pic_data    =   markerNodes[i].getAttribute("profile_pic_data");
-	  
-
-	   if(checkBoxName.localeCompare("school_timing")== 0)
-	   {
-		if(-1 != $.inArray(session_timings, values))
-		{
-		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data);
-		}
-           }
-	   else  if(checkBoxName.localeCompare("category")== 0)
-	   {
-		if(-1 != $.inArray(category, values))
-		{
-		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data);
-		}
-           }
-	   else  if(checkBoxName.localeCompare("courses")== 0)
-	   {
-		if(-1 != $.inArray(courses, values))
-		{
-		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data);
-		}
-           }
-	   else  if(checkBoxName.localeCompare("school_size")== 0)
-	   {
-		if(-1 != $.inArray(session_size, values))
-		{
-		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data);
-		}
-           }
-	   else  if(checkBoxName.localeCompare("board")== 0)
-	   {
-		if(-1 != $.inArray(board, values))
-		{
-		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data);
-		}
-           }
-	   else  if(checkBoxName.localeCompare("medium_of_teaching")== 0)
-	   {
-		if(-1 != $.inArray(medium_of_teaching, values))
-		{
-		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data);
-		}
-           }
-	   else  if(checkBoxName.localeCompare("medium_of_teaching")== 0)
-	   {
-		if(-1 != $.inArray(medium_of_teaching, values))
-		{
-		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data);
-		}
-           }
-	  else  if(checkBoxName.localeCompare("religous_preferences")== 0)
-	   {
-		if(-1 != $.inArray(religous_preferences, values))
-		{
-		populated =1;
-            populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data);
-		}
-           }
-	
-
+	        var admission_method    =   markerNodes[i].getAttribute("admission_method");
+           console.log(name);
+           var isValid = true;
+           
+           if(isValid && sch_tim.length > 0)
+               {
+                   console.log("time");
+                   console.log(sch_tim);
+                   console.log(session_timings);
+                   if($.inArray(session_timings,sch_tim) == -1)
+                       isValid = false;
+               }
+           if(isValid && sch_cat.length > 0)
+               {
+                   console.log("cate");
+                   console.log(sch_cat);
+                   console.log(category);
+                   if($.inArray(category,sch_cat) == -1)
+                       isValid = false;
+               }
+           if(isValid && sch_cour.length > 0)
+               {
+                   console.log("course");
+                   console.log(sch_cour);
+                   console.log(courses);
+                   if($.inArray(courses,sch_cour) == -1)
+                       isValid = false;
+               }
+           if(isValid && sch_size.length > 0)
+               {
+                   console.log("size");
+                   console.log(sch_size);
+                   console.log(school_size);
+                   if($.inArray(school_size,sch_size) == -1)
+                       isValid = false;
+               }
+           if(isValid && sch_brd.length > 0)
+               {
+                   console.log("board");
+                   console.log(sch_brd);
+                   console.log(board);
+                   if($.inArray(board,sch_brd) == -1)
+                       isValid = false;
+               }
+           if(isValid && sch_mot.length > 0)
+               {
+                   console.log("mot");
+                   console.log(sch_mot);
+                   console.log(medium_of_teaching);
+                   if($.inArray(medium_of_teaching,sch_mot) == -1)
+                       isValid = false;
+               }
+           if(isValid && sch_adm.length > 0)
+               {
+                   console.log("adm");
+                   console.log(sch_adm);
+                   console.log(admission_method);
+                   if($.inArray(admission_method,sch_adm) == -1)
+                       isValid = false;
+               }
+           if(isValid && sch_rgr.length > 0)
+               {
+                   console.log("rgr");
+                   console.log(sch_rgr);
+                   console.log(religous_preference);
+                   if($.inArray(religous_preference,sch_rgr) == -1)
+                       isValid = false;
+               }
+           
+           if(isValid)
+               {
+                   populated =1;
+                   populateData(school_id,name, distance, i,address,session_timings,city,category,school_type,courses,school_size,board,medium_of_teaching,religous_preference,small_description,profile_pic_data,admission_method);
+              }
+           
              createMarker(latlng, name, address);
              bounds.extend(latlng);
              google.maps.event.trigger(markers[i], 'click');
@@ -1678,7 +1744,10 @@ commented due to error
 
 	if(populated == 0)
 	{
-	   searchLocations();	
+        if(values.length == 0)
+	       searchLocations();	
+        else 
+            alert("No School found having the selected condition !");
 	}
        map.fitBounds(bounds);
     }
