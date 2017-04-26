@@ -1,4 +1,5 @@
 
+use school_db_test;
 SELECT
 tbl_school_main_table.school_id,
 tbl_school_main_table.address, 

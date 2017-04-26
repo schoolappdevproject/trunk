@@ -1,5 +1,6 @@
 <?php
 
+include_once '../common/connection.php';
 require("../trace/MyLogPHP-1.2.1.class.php");
 $log = new MyLogPHP();
 
@@ -61,28 +62,18 @@ $dom = new DOMDocument("1.0");
 $node = $dom->createElement("markers");
 $parnode = $dom->appendChild($node);
 
-// Opens a connection to a mySQL server
-$connection=mysql_connect ("localhost", "root", "mysql");
-if (!$connection) {
-  die("Not connected : " . mysql_error());
-}
 
-// Set the active mySQL database
-$db_selected = mysql_select_db("school_db_test", $connection);
-if (!$db_selected) {
-  die ("Can\'t use db : " . mysql_error());
-}
                  
 $query = "SELECT school_id,address, school_name, latitude, longitude ,city, session_timmings,category,school_type,courses,school_size,board, medium_of_teaching, mobility, small_description,religous_preference,profile_pic_data,admission_method FROM tbl_school_main_table";
 
-$result = mysql_query($query);
-if (!$result) {
-  die("Invalid query: " . mysql_error());
-}
+
+$result = $database->query($query)->fetchAll();
+   
+   
 
 header("Content-type: text/xml");
 
-while ($row = @mysql_fetch_assoc($result)){
+foreach ($result as &$row){
   
  // $distanceInKm = //haversineGreatCircleDistance(floatval($center_lat),floatval($center_lng),floatval($row['latitude']),floatval($row['longitude']));
    $distanceInKm = distance(floatval($center_lat),floatval($center_lng),floatval($row['latitude']),floatval($row['longitude']),"K");
