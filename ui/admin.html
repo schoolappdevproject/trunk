@@ -313,30 +313,12 @@
 		</div>
         <section class="aliceblue">
 		<div class="container page-container-second">
-	
             <div class="row">
 				<div class="col-md-12  padding-40 blog-single-inner-container lp-border lp-border-radius-8">
                 <div class="row">
-            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Name of the School</b></p></div>
-            <div class="col-md-5"><input name="school_name" type="text" id="school_name" class="form-control"></div>
-            <div class="clearfix"></div>        
-            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Select a Profile Pic</b></p></div>
-            <div class="col-md-5">
-                
-            <img id="profile-pic" src="images/default_avatar_male.jpg" width="200px" height="150px" /> <br>
-       
-            <input id="file-upload" type="file" accept="image/*" hidden="true" value="Upload Profile Image" class="lp-search-btn" style="float:left;padding:8px 15px;"/>
-                    
-            </div>
-            <div class="clearfix"></div>
-            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Principal</b></p></div>
-            <div class="col-md-5"><input name="principal_name" type="text" id="principal_name" class="form-control mb5"></div>
-            <!--<div class="col-md-1 plr0"><img src="./ParentProfile_files/plus.png" class="mt8 "></div> -->
-            <div class="clearfix"></div>
-
-                    <!--Map -->
-            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Location (City State school name)</b></p></div>        
-            <div class="col-md-5">
+  			 <!-- MAP UI-->
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Search Your School (City State school name)</b></p></div>        
+            <div class="col-md-9">
                 <!-- Google map form -->
                 <input id="pac-input" class="controls" type="text"
                 placeholder="Enter a location">
@@ -354,8 +336,27 @@
               <label for="changetype-geocode">Geocodes</label>
             </div>
             <div id="map"></div>           
+            </div>     
+			<div class="clearfix"></div>    
+			<div class="clearfix"></div>    
+			   <!-- MAP UI-->
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Name of the School</b></p></div>
+            <div class="col-md-5"><input name="school_name" type="text" id="school_name" class="form-control"></div>
+            <div class="clearfix"></div>        
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Select a Profile Pic</b></p></div>
+            <div class="col-md-5">
+                
+            <img id="profile-pic" src="images/default_avatar_male.jpg" width="200px" height="150px" /> <br>
+       
+            <input id="file-upload" type="file" accept="image/*" hidden="true" value="Upload Profile Image" class="" style="float:left;padding:4px 10px;"/>
                     
             </div>
+            <div class="clearfix"></div>
+            <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Principal</b></p></div>
+            <div class="col-md-5"><input name="principal_name" type="text" id="principal_name" class="form-control mb5"></div>
+            <!--<div class="col-md-1 plr0"><img src="./ParentProfile_files/plus.png" class="mt8 "></div> -->
+            <div class="clearfix"></div>
+
                 
             <script>
           // This example requires the Places library. Include the libraries=places
@@ -427,6 +428,35 @@
                 ].join(' ');
               }
 
+			  if(place.types[0] == "school")
+			  {
+					$("#address").val(place.formatted_address);
+			  		$("#contact").val(place.formatted_phone_number);
+					$("#web_link").val(place.website);
+					$("#school_name").val(place.name);
+					$("#profile-pic").attr("src",place.icon);
+
+					for (i = 0; i < place.address_components.length; i++) { 
+						if(place.address_components[i].types[0] == "locality")
+						{
+							$("#city").val(place.address_components[i].long_name);	
+						}
+						else if(place.address_components[i].types[0] == "country")
+						{
+							$("#country").val(place.address_components[i].long_name);
+						}
+						else if(place.address_components[i].types[0] == "postal_code")
+						{
+							$("#pin").val(place.address_components[i].long_name);
+						}
+					}
+			  		console.log(place);
+			  }
+			  else 
+			  {
+				  console.log("Its not a school")
+			  }
+			  
               infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
               infowindow.open(map, marker);
             });
@@ -453,12 +483,14 @@
             <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Address</b></p></div>
             <div class="col-md-5"><input name="address" type="text" id="address" class="form-control"></div>       
             <div class="clearfix"></div>
+			<!--
             <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Latitude</b></p></div>
             <div class="col-md-5"><input name="lat" type="text" id="lat" class="form-control"></div>
             <div class="clearfix"></div>
             <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Longitude</b></p></div>
             <div class="col-md-5"><input name="lng" type="text" id="lng" class="form-control"></div>
             <div class="clearfix"></div>
+			-->
                     <!--Map ends-->
             <div class="clearfix"></div>
             <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Contact</b></p></div>
@@ -468,18 +500,11 @@
             <div class="col-md-5"><input name="email" type="text" id="email" class="form-control"></div>
             <div class="clearfix"></div>
             <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>City</b></p></div>
-            <div class="col-md-5"><select name="city" id="city" class="form-control">
-                    <option value="Bangalore">Bangalore</option>
-                    <option value="Mysore">Mysore</option>
-                    <option value="New Delhi">New Delhi</option>
-                    <option value="Lucknow">Lucknow</option>
-            </select></div>
+			<div class="col-md-5"><input name="city" type="text" id="city" class="form-control"></div>
+           
             <div class="clearfix"></div>
             <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Country</b></p></div>
-            <div class="col-md-5"><select name="country" id="country" class="form-control">
-                    <option value="India" selected="true">India</option>
-            </select>
-            </div>
+			<div class="col-md-5"><input name="country" type="text" id="country" class="form-control"></div>
             <div class="clearfix"></div>
             <div class="col-md-3"> <p class="mt0" style="font-size:18px;"><b>Pin</b></p></div>
             <div class="col-md-5"><input name="pin" type="text" id="pin" class="form-control mb5">
@@ -1006,8 +1031,8 @@
                       'country'                  : $('#country').val(),
                       'email'                    : $('input[name=email]').val(),
                       'pin'                      : $('input[name=pin]').val(),
-                      'latitude'                 : $('input[name=lat]').val(),
-                      'longitude'                : $('input[name=lng]').val(),
+                      'latitude'                 : map_location_latitude,
+                      'longitude'                : map_location_longitude,
                       'web_link'                 : $('input[name=web_link]').val(),
                     
                       'category'                 : $('input[name=category]:checked').val(),
@@ -1062,8 +1087,6 @@
                       $('#country').val('');
                       $('input[name=email]').val('');
                       $('input[name=pin]').val('');
-                      $('input[name=lat]').val('');
-                      $('input[name=lng]').val('');
                       $('input[name=web_link]').val('');
                     
                       $('input[name=category]:checked').val(false);
