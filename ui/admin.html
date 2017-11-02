@@ -1081,6 +1081,7 @@
 
         });
     function cleanUp()
+<<<<<<< HEAD
 	{
 				$('input[name=school_name]').val('');
 				$('input[name=principal_name]').val('');
@@ -1107,6 +1108,34 @@
 				$("#file-upload").replaceWith($("#file-upload").val('').clone(true));    
 				$('#profile-pic').attr('src', "images/default_avatar_male.jpg");
 	}
+=======
+            {
+                      $('input[name=school_name]').val('');
+                      $('input[name=principal_name]').val('');
+                      $('input[name=address]').val('');
+                      $('input[name=contact]').val('');
+                      $('#city').val('');     
+                      $('#country').val('');
+                      $('input[name=email]').val('');
+                      $('input[name=pin]').val('');
+                      $('input[name=web_link]').val('');
+                    
+                      $('input[name=category]:checked').val(false);
+                      $('input[name=session_timings]:checked').val(false);
+                      $('input[name=courses]:checked').val(false);
+                      $('input[name=school_size]:checked').val(false);
+                      $('input[name=board]:checked').val(false);
+                      $('input[name=religous_preference]:checked').val(false);
+                      $('input[name=admission_method]:checked').val(false);
+                      $('input[name=medium_of_teaching]:checked').val(false);
+                    
+                      $('input[name=mobility]').val('');
+                      $('#small_description').val('');
+                      $('#admission_description').val('');
+                      $("#file-upload").replaceWith($("#file-upload").val('').clone(true));    
+                      $('#profile-pic').attr('src', "images/default_avatar_male.jpg");
+            }
+>>>>>>> aa15fe95119e5010e357e44b645058f42c2d8cd8
     
 
 });
