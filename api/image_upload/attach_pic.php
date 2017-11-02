@@ -37,6 +37,7 @@ try
            $ret = $database->insert('tbl_review_attachment', [
             'attachment_path'     => $filepath,
             'attachment_type'    =>$type,
+            'file_name'          => $file_name,
             'id_review'         => $review_id   
         ]);
 

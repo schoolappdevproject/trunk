@@ -1,0 +1,481 @@
+<html>
+    <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>School Guru</title>
+
+    </head> 
+
+    <body>
+
+        <div ng-app="searchApp"  class="nopadding" >
+            <div class="container nopadding">
+                <div class="rows">
+
+                <div class="col-sm-7 nopadding">
+
+                 
+                    
+                                <ul class="nav nav-tabs">
+                                    <li ng-class="{'active':currentTab == 'Tab1'}">
+                                        <a data-toggle="tab" ng-click="onOverviewClick()">Overview</a>
+                                    </li>
+                                    <li ng-class="{'active':currentTab== 'Tab2'}">
+                                        <a data-toggle="tab" ng-click="onReviewClick()">Reviews</a>
+                                    </li>
+                                    <li ng-class="{'active':currentTab== 'Tab3'}">
+                                        <a data-toggle="tab" ng-click="currentTab = 'Tab3'">Ratings</a>
+                                    </li>
+                                     <li ng-class="{'active':currentTab== 'Tab4'}">
+                                        <a data-toggle="tab" ng-click="currentTab = 'Tab4'">Gallery</a>
+                                    </li>
+                                    <li ng-class="{'active':currentTab== 'Tab5'}">
+                                        <a data-toggle="tab" ng-click="onCompareClick()">Compare</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane" ng-class="{'active':currentTab == 'Tab1'}" id="Tab1">
+                                         
+
+                                                    <div class="media littlePadding">
+                                                    <div class="media-left">
+                                                        <img ng-src="{{  school_data.profile_pic_data }}" class="media-object" style="width:60px">
+                                                    </div>
+                                                    <div class="media-body">
+
+                                                        <div class="row">
+                                                            <div class="col-sm-9">
+                                                                  <h4 class="media-heading"> {{ school_data.name }} </h4>
+                                                            </div>
+                                                            <div class="col-sm-3"> 
+                                                                 <div class="btn-group">
+                                                                <button type="button" ng-click="addToCompare()" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                                                
+                                                                 <i class="fa fa-balance-scale" style="text-align:right" aria-hidden="true">Compare</i>
+                                                        
+                                                                </button>
+                            
+                                                            </div>
+                                                             </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                    <div class="star-rating">
+                                                                        <span class="fa fa-star icon-d" data-rating="1"></span>
+                                                                        <span class="fa fa-star icon-d" data-rating="2"></span>
+                                                                        <span class="fa fa-star icon-d" data-rating="3"></span>
+                                                                        <span class="fa fa-star icon-d" data-rating="4"></span>
+                                                                        <span class="fa fa-star icon-d" data-rating="5"></span>
+                                                                        <input type="hidden" name="whatever1" class="rating-value" value="{{ school_data.average_rating_score }}">
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                    {{ school_data.small_description }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-4">
+                                                                <h4>Principal Name</h4>
+                                                                {{ school_data.principal_name }}
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <h4>Contact </h4>
+                                                                {{school_data.contact}}
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <h4>Address </h4>
+                                                                {{school_data.address}}
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                                <div class="col-sm-4">
+                                                                <h4> Session Timmings</h4>
+                                                                {{ school_data.session_timmings }}
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <h4>Category </h4>
+                                                                    {{school_data.category}}
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <h4> Courses </h4>
+                                                                    {{school_data.courses}}
+                                                                </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                                <div class="col-sm-4">
+                                                                <h4> School Size</h4>
+                                                                {{ school_data.school_size }}
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <h4>Board </h4>
+                                                                    {{school_data.board}}
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <h4> Medium of teaching </h4>
+                                                                    {{school_data.medium_of_teaching}}
+                                                                </div>
+                                                        </div>
+
+                                                         <div class="row">
+                                                                <div class="col-sm-4">
+                                                                <h4> School Type</h4>
+                                                                {{ school_data.religous_preference }}
+                                                                </div>
+                                                               
+                                                                <div class="col-sm-4">
+                                                                    <h4>Bus Service </h4>
+                                                                    {{school_data.mobility}}
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <h4> Website </h4>
+                                                                    <a href="{{ school_data.weblink }}">  {{school_data.weblink}} </a>
+                                                                   
+                                                                </div>
+                                                        </div>
+
+                                                         <div class="row">
+                                                                <div class="col-sm-4">
+                                                                <h4> Admision Method</h4>
+                                                                {{ school_data.admission_method }}
+                                                                </div>
+
+                                                                 <div class="col-sm-4">
+                                                                    <h4>Email </h4>
+                                                                    {{school_data.email}}
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-4">
+                                                                    <h4> Admission Process </h4>
+                                                                   {{ school_data.admission_description }}
+                                                                   
+                                                                  </div>
+
+                                                      
+                                                        </div>
+
+                                                      
+                                                    
+                                                    </div>
+                                                    </div>
+
+                                            
+                                    </div>
+                                    <div class="tab-pane" ng-class="{'active':currentTab == 'Tab2'}" id="Tab2"> 
+
+                                    <div id="write_review_section">
+                                       
+                                     
+                                                     <div class="media">
+                                                        <div class="media-left">
+                                                            <img src="{{ imageUrl }}" class="media-object" style="width:50px;height:50px">
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <h4> {{ profileName }}</h4>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" placeholder="Heading" ng-model="review_heading" />
+                                                                <textarea class="form-control" placeholder="Write Your Review" ng-model="review_text" id="exampleTextarea" rows="3"></textarea>
+                                                                Upload Images:<input id="review_image-upload" onchange="angular.element(this).scope().imageUploaded(this)" ng-model="imageUploader" class="form-control" type="file" accept="image/*" value="Upload Pic"/>
+                                                                <div id ="review_pic_block">     
+                                                                </div>
+                                                                Upload Files<input id="fees_file_upload" onchange="angular.element(this).scope().fileUploaded(this)" type="file" ng-model="fileUploader" class="form-control" value="Upload File"/>
+                                                                <div id = "review_file_block">
+                                                                    <a href="" target="" ng-repeat="fileName in uploadedFilesList">{{ fileName }}</a> <br>
+                                                                </div>
+
+                                                                <button type="button" ng-click="saveReview()" class="btn btn-default">save</button>
+                                                            </div>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                    
+                                    </div>
+                                    <div id="review_section">
+
+
+                                        <div ng-repeat="reviewData in reviewDataListFromDatabase" class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="row">
+                                                <div class="col-sm-8">{{ reviewData.reviewTitle }}</div>
+                                                <div class="col-sm-4" style="text-align : right"> {{ reviewData.review_date }}</div>
+                                             </div>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                     {{ reviewData.reviewText  }}
+                                                </div>
+                                            </div> 
+                                            <hr>   
+                                            <div class="row">
+                                                <div class="col-sm-9"><img  src="{{ reviewData.userProfilePic }}" width="25px" height= "25px" />&nbsp; by {{ reviewData.userName }} </div>
+                                                <div class="col-sm-3" style="text-align :right">
+                                                <div class="row nopadding"> 
+                                                    <div class="col-sm-3"><i style="cursor: pointer" id='' ng-click="userActionOnReview(reviewData.reviewID,true)" class='glyphicon glyphicon-thumbs-up'  style='color:blue'></i> </div>
+                                                    <div class="col-sm-3"> {{ reviewData.likeCount  }} </div>
+                                                    <div class="col-sm-3"><i style="cursor: pointer" id='' ng-click="userActionOnReview(reviewData.reviewID,false)" class='glyphicon glyphicon-thumbs-down'  style='color:blue'></i></div>
+                                                    <div class="col-sm-3"> {{ reviewData.dislikeCount }} </div>                                                    
+                                                </div>    
+                  
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                        View Picture
+                                                        <table>
+                                                            <tr>
+                                                                <td ng-repeat="pic in reviewData.picCollection">
+                                                                       <a target="_blank" href="{{ pic.src }}"> <img class="img-thumbnail" src="{{ pic.src }}" width="80px" height="80px"> </a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                        Download Files
+                                                        <table>
+                                                            <tr>
+                                                                <td>
+                                                                <div  ng-repeat="file in reviewData.fileCollection">
+                                                                       <a target="_blank" href="{{ file.src }}">  {{ file.file_name }}{{ file.type }} </a>
+                                                                </div>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                </div>
+                                                <div class="col-sm-10">
+                                                        <b>Comments</b>
+                                                </div>
+                                            
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                </div>
+                                                <div class="col-sm-10">
+
+                                                    <div class="media nopadding" ng-repeat="comment in reviewData.commentCollection">
+                                                        <div class="media-left">
+                                                            <img src="{{ comment.user_pic_src }}" class="media-object" style="width:25px;height:25px">
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <div class="row">
+                                                                <div class="col-sm-9">
+                                                                        {{ comment.comment_text }}
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <small>{{ comment.user_name }}  {{ comment.data_time }} </small>
+                                                                </div>
+                                                            </div>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>    
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-2">
+                                                </div>
+                                                <div class="col-sm-10">
+
+                                                    <div class="media littlePadding" >
+                                                        <div class="media-left">
+                                                            <img src="{{ imageUrl }}" class="media-object" style="width:25px;height:25px">
+                                                        </div>
+                                                        <div class="media-body">
+                                                         <div id="{{ reviewData.reviewID }}_reviewCommentD">
+                                                             </div>
+                                                            <input type="text" ng-model="reviewComment" id="{{reviewData.reviewID}}_reviewComment" ng-keyup="$event.keyCode == 13 ? commentEntered($event) : null" class="form-control" placeholder="Write Comments">
+                                                        </div>
+                                                    </div>
+                                                </div>    
+                                            </div>      
+                                         </div>
+                                        </div>
+
+
+                                        <!-- review section closed -->
+                                    </div>
+                                    </div>
+                                      <div class="tab-pane" ng-class="{'active':currentTab == 'Tab3'}" id="Tab3"> 
+                                        
+                                            <div id="rating_section">
+                                                <div class="media">
+                                                <div class="media-left">
+                                                    <img src="{{ imageUrl }}" class="media-object" style="width:50px;height:50px">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4> {{ profileName }}</h4>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Heading" ng-model="rating_heading" />
+                                                        <textarea class="form-control" placeholder="Write Your Review" ng-model="rating_text" rows="3"></textarea>
+                                                            <p>My rating: 
+                                                            <div id="ratings"></div>
+                                                        </p>
+                                                        <button type="button" ng-click="saveRating()" class="btn btn-default">save</button>
+                                                
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                                    
+                                          </div>
+
+                                        <div id="all-ratings">
+
+                                            <div class="media" ng-repeat="ratingData in generalRatingDatabase">
+                                                <div class="media-left">
+                                                    <img src="{{ ratingData.pic }}" class="media-object" style="width:50px;height:50px">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4> {{ ratingData.username }}</h4>
+                
+                                                    <p><b><span id="ratingTitle">{{ ratingData.rating_title }}</span></b><p>
+                                                    <p><span id="ratingDesc"> {{ ratingData.rating_desc}} </span></p>
+                                                
+                                                    <div class="star-rating">
+                                                        <span class="fa fa-star-o" data-rating="1" ng-repeat="i in getRatingArray(ratingData.rating_points)" ></span>
+                                                    </div>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                                    
+                                          </div>
+
+
+                                    </div>
+                                      <div class="tab-pane" ng-class="{'active':currentTab == 'Tab4'}" id="Tab4"> 
+
+                                            <div id="nanoGallery1"></div>
+                                                <input type="file" name="file" custom-on-change="pictureUpload" id="file" class="inputfile" />
+                                                <label for="file">Add a image in the Gallery</label>                                     
+                                    </div>
+                                      <div class="tab-pane" ng-class="{'active':currentTab == 'Tab5'}" id="Tab5"> 
+                                        
+                                        <div class="row nopadding" > 
+                                            <div>   
+                                                 <table style="font-size:12px ; text-align:left" ng-show="isSchoolCompared" class="table">
+                                                    <thead>
+                                                    <tr>
+                                                        <th> </th>
+                                                        <th ng-repeat="schoolData in schoolCompareData" > {{ schoolData.name }} <i class="fa fa-times" ng-click='removeFromCompare(schoolData.school_id)' aria-hidden="true"></i> </th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>Ratings</td>
+                                                        <td ng-repeat="schoolData in schoolCompareData" >{{ schoolData.average_rating_score }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Brief</td>
+                                                        <td ng-repeat="schoolData in schoolCompareData" >{{ schoolData.small_description }} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Principal Name</td>
+                                                        <td ng-repeat="schoolData in schoolCompareData" >{{ schoolData.principal_name }} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Contact</td>
+                                                        <td ng-repeat="schoolData in schoolCompareData" >{{ schoolData.contact }} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Address</td>
+                                                        <td ng-repeat="schoolData in schoolCompareData" >{{ schoolData.address }} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Session Timmings</td>
+                                                        <td ng-repeat="schoolData in schoolCompareData" >{{ schoolData.session_timmings }} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Category</td>
+                                                        <td ng-repeat="schoolData in schoolCompareData" >{{ schoolData.category }} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Courses</td>
+                                                        <td ng-repeat="schoolData in schoolCompareData" >{{ schoolData.courses }} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>School Size</td>
+                                                        <td ng-repeat="schoolData in schoolCompareData" >{{ schoolData.school_size }} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Board</td>
+                                                        <td ng-repeat="schoolData in schoolCompareData" >{{ schoolData.board }} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Medium of teaching</td>
+                                                        <td ng-repeat="schoolData in schoolCompareData" >{{ schoolData.medium_of_teaching }} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>School Type</td>
+                                                        <td ng-repeat="schoolData in schoolCompareData" >{{ schoolData.school_type }} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Bus Service</td>
+                                                        <td ng-repeat="schoolData in schoolCompareData" >{{ schoolData.mobility }} </td>
+                                                      
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Website</td>
+                                                        <td ng-repeat="schoolData in schoolCompareData" >{{ schoolData.weblink }} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Admision Method</td>
+                                                        <td ng-repeat="schoolData in schoolCompareData" >{{ schoolData.admission_method }} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Admission Process</td>
+                                                        <td ng-repeat="schoolData in schoolCompareData" >{{ schoolData.admission_description }} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Email</td>
+                                                        <td ng-repeat="schoolData in schoolCompareData" >{{ schoolData.email }} </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>         
+                                            </div>
+                                        </div>    
+
+                                    </div>
+                               </div>
+                    
+                 
+                </div>
+
+                </div>
+
+
+            </div>
+        </div>
+          </body>
+    <script>
+    //Make sure that the dom is ready
+$(function () {
+ 
+  $("#ratings").rateYo({
+    rating: 0
+  });
+
+  $("#ratings").rateYo("option", "starWidth", "17px"); //returns a jQuery Element
+
+        	
+ 
+});
+
+
+// custom info button on viewer toolbar
+      function myViewerInfo(item, data) {
+        alert('Image URL: '+ item.thumbsrc);
+      }
+</script>
+
+
+  
+
+    
+</html>

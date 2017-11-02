@@ -21,13 +21,9 @@ if ($method == 'POST') {
     else
     {
         
-      $qry = "select attachment_path from tbl_review_attachment where id_review = $review_id;";
+      $qry = "select attachment_type ,attachment_path,file_name from tbl_review_attachment where id_review = $review_id;";
        
       $result = $database->query($qry)->fetchAll();
-        
-//      $attach_path = 'attach_pic/'.$result['attachment_path'];
-
-  //    $ret['path'] = $attach_path;
     
       echo json_encode($result);
         

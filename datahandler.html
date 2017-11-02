@@ -1,0 +1,425 @@
+<html>
+    <head>
+  <meta name="google-signin-client_id" content="342582228234-alm39kuup0grgqtrevifi95u0mrbgtp4.apps.googleusercontent.com">
+<script   src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+    <!-- Bootstrap Core JavaScript -->
+   <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<link rel="stylesheet" href="css/datahandler.css"/>
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+  <script type="text/javascript" charset="UTF-8" src="ui/js/cookie.js"></script>
+
+<link href="vendor/NanoGallery/css/nanogallery.min.css" rel="stylesheet" type="text/css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>School Guru</title>
+    </head> 
+
+    <body>
+
+        <div ng-app="searchApp" ng-controller="searchController" id="searchController">
+        <div class="container">
+            <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                <a class="navbar-brand" href="#">School Guru</a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                <li ng-show="isLoggedIn==true"><a href="#"><span class="glyphicon glyphicon-user"></span> {{ profileName }}</a></li>
+                  <li ng-show="isLoggedIn==false">
+                        <a data-toggle="modal" data-target="#myModal" href="#contact"> <span class="glyphicon glyphicon-log-in"></span>  Login</a>
+                    </li>
+                    <li ng-show="isLoggedIn==true">
+                        <a class="" href="#" onclick="signOut();"> <span class="glyphicon glyphicon-log-in"></span> Log Out</a>
+                    </li>
+                </ul>
+            </div>
+            </nav>
+        </div>
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="rows">
+                        <div class="col-sm-5"> <!-- Location Search Box -->
+                         <div class="datahandler-search-box">
+                                <div class="input-group col-md-12">
+                                <input type="text"  ng-keyup="$event.keyCode == 13 ? search() : null" id="school_location_search" ng-model="searchPlace" class="search-query form-control" placeholder="Search by Location"/>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger" type="button">
+                                        <span class=" glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-sm-3"> <!-- School Name Search -->
+                         <div class="datahandler-search-box">
+                                <div class="input-group col-md-12">
+                                     
+                                <div class="ui-widget">
+                                    <input type="text"  ng-keyup="$event.keyCode == 13 ? nameSearch() : null" id="school_name_search_txt" ng-model="school_name" ng-change="schoolNameAutocomplete()" class="search-query form-control" placeholder="Search by School Name" />
+                                </div>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger" type="button">
+                                        <span class=" glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-sm-4"> <!-- parameters search -->
+                              <form class="navbar-form navbar-left" role="search">
+                                <div class="form-group" >
+                                <select class="selectpicker" ng-change="search()" ng-model="filter_list" multiple="" ng-selected="filter_selected()">
+                                        <optgroup label="School Timings">
+                                        <option value="0">Full day</option>
+                                        <option value="1">Half day</option>
+                                        <option value="2">Evening school</option>
+                                        </optgroup>
+                                        <optgroup label="Category">
+                                            <option value="3">Government</option>
+                                            <option value="4">Private</option>
+                                            <option value="5">Semi Government</option>
+                                        </optgroup>
+                                        <optgroup label="courses">
+                                        <option value="6">Pre­Nursery</option>
+                                        <option value="7">Kindergarten</option>
+                                        <option value="8">Primary</option>
+                                        <option value="9">Upper primary</option>
+                                        <option value="10">PUC/12th</option>
+                                         <option value="11">Special school for the handicap</option>
+                                        </optgroup>
+                                         <optgroup label="school_size">
+                                            <option value="12">3000+</option>
+                                            <option value="13">< 2000</option>
+                                            <option value="14">< 1000</option>
+                                        </optgroup>
+                                        <optgroup label="board">
+                                            <option value="15">CBSC</option>
+                                            <option value="16">ICSC</option>
+                                            <option value="17">State Board</option>
+                                        </optgroup>
+                                        <optgroup label="medium_of_teaching">
+                                            <option value="18">English</option>
+                                            <option value="19">Hindi</option>
+                                            <option value="20">Kannada</option>
+                                            <option value="21">Other</option>
+                                        </optgroup>
+                                        <optgroup label="admission_method">
+                                            <option value="22">Interview</option>
+                                            <option value="23">Written test+ interview</option>
+                                            <option value="24">Percent criteria</option>
+                                            <option value="25">Govt Procedure</option>
+                                            <option value="26">School prerogative</option>
+                                        </optgroup>
+                                        <optgroup label="religous_preference">
+                                            <option value="27">Govt Neutral</option>
+                                            <option value="28">Hindu trust</option>
+                                            <option value="29">Muslim trust/ Mosque school</option>
+                                            <option value="30">Sikh Gurdyara school</option>
+                                            <option value="31">Christian Missionary school</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            
+                                   <button type="button" class="btn btn-default" ng-click="search()">
+                                        <span class="glyphicon glyphicon-search" ></span>Search
+                                    </button>
+                                
+                                </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- Search Bar completes -->
+
+        <div class="container">
+            <ol class="breadcrumb" >         
+                <li ng-repeat="bread in bread_crums_strings track by $index" class="breadcrumb-item"><a href="#">{{ bread }}</a></li>
+            </ol>
+        </div>
+
+         <div class="container"> 
+            <div class="rows"> 
+                <div class="col-sm-4 nopadding">
+                    <div class="panel panel-default">
+                    <div class="panel-body">
+
+                            <div id="area_map" class="map_class"></div>
+                            <div id="school_name_list" ng-show="isDataAvailable()">
+                                 <div class="list-group">
+                                    <!--  var school_data = { school_id: '' , school_name : '' , school_address : '' ,school_phone : '' }; -->
+                                 <a ng-click="schoolLinkClicked()" href="#school_id:{{ school_data.school_id }}" ng-repeat="school_data in filtered_dataSet | filter: school_name | startFrom:currentPage*pageSize | limitTo:pageSize" class="list-group-item"> {{ school_data.school_name }} </a>
+                                </div>
+                                 <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+                                     Previous
+                                </button>
+                                {{currentPage+1}}/{{numPages()}}
+                                <button ng-disabled="currentPage >= numPages()-1" ng-click="currentPage=currentPage+1">
+                                    Next
+                                </button>
+                            </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-sm-8 nopadding">
+                     <div class="panel panel-default" ng-show="showBorder()">
+                    <div class="panel-body">
+                            <div ng-view ng-show="isSchoolVisible">
+                            </div>
+                            <div id="schoolFilteredList" ng-show="schoolMainListVisible">
+                                <div class="list-group">
+
+                                    <div ng-repeat="school_data in filtered_dataSet | filter: school_name" class="list-group-item">
+
+                                            <div class="media">
+
+                                                <div class="media-left">
+                                                    <img src="{{ school_data.profile_pic }}" class="media-object" width="50px" height="50px">
+                                                </div>
+            
+                                                <div class="media-body">
+                                                    <h5 class="mt-0">   <a ng-click="schoolLinkClicked()" href="#school_id:{{ school_data.school_id }}"> {{ school_data.school_name }} </a> </h5>
+                                                    {{school_data.school_address}} ,{{school_data.school_phone }} 
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                               
+                            </div>                    
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+<!-- Login form -->
+ <div class="modal fade" id="myModal" tabindex="-1"  style="display:none;" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×</button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Login <a href="http://www.jquery2dotnet.com">schoolguru.com</a></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-8" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
+                            <li><a href="#Registration" data-toggle="tab">Registration</a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="Login">
+                                <form role="form" class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="loginEmail" class="col-sm-2 control-label">
+                                        Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" ng-keypress="return loginKeyPress(event)" class="form-control" id="loginEmail" placeholder="Email" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="loginPassword" class="col-sm-2 control-label">
+                                        Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" ng-keypress="return loginKeyPress(event)"   class="form-control" id="loginPassword" placeholder="Enter Your Password" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <button type="button" ng-click="callLogin()" class="btn btn-primary btn-sm">
+                                            Submit</button>
+                                        <a href="#ForgetPassword" data-toggle="tab">Forgot your password?</a>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                            
+                            <!-- forget password form -->
+                            <div class="tab-pane" id="ForgetPassword">
+                                <form role="form" class="form-horizontal">
+                               
+                                <div class="form-group">
+                                    <label for="frg_email" class="col-sm-2 control-label">
+                                        Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email"  onkeypress="" class="form-control" id="frg_email" placeholder="Email" />
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label for="frg_oldpass" class="col-sm-2 control-label">
+                                        Enter Your Old Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" onkeypress="" class="form-control" id="frg_oldpass" placeholder="Old Password" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="frg_newpass" class="col-sm-2 control-label">
+                                        Enter New Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" onkeypress="" class="form-control" id="frg_newpass" placeholder="Enter your new password" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="frg_reenterpass" class="col-sm-2 control-label">
+                                       ReEnter  New Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" onkeypress="" class="form-control" id="frg_reenterpass" placeholder="Re-enter your new password" />
+                                    </div>
+                                </div>    
+                                
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <button type="button" onclick="forgetPasswordClick()" id="frg_password" class="btn btn-primary btn-sm">
+                                            Save</button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                            <!-- forget passworf form -->
+                            
+                            <!--Registration form -->
+                            <div class="tab-pane" id="Registration">
+                                <form role="form" class="form-horizontal">
+                                 <div class="form-group">
+                                    <label for="profile Pic" class="col-sm-2 control-label">
+                                         Profile Pic</label>
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                             Upload Images:<input id="review_image-upload" onchange="profilePicUloaded(this)"  class="form-control" type="file" accept="image/*" value="Upload Pic"/>
+                                            <img id='profilePicImage' class='img-thumbnail' src='img/default-user-image.png' width='200px' height='200px' />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-2 control-label">
+                                        Name</label>
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <input type="text" id="reg_username" class="form-control" onkeypress="return registerScript(event)" placeholder="Name" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-2 control-label">
+                                        Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="reg_email" onkeypress="return registerScript(event)" placeholder="Email" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mobile" class="col-sm-2 control-label">
+                                        Mobile</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="reg_mobile" onkeypress="return registerScript(event)" placeholder="Mobile" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="col-sm-2 control-label">
+                                        Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password"  class="form-control" id="reg_password" onkeypress="return registerScript(event)" placeholder="Password" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <button type="button" id="SaveReg" class="btn btn-primary btn-sm">
+                                            Save & Continue</button>
+                                        <button type="button" class="btn btn-default btn-sm">
+                                            Cancel</button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="OR" class="hidden-xs">
+                            OR</div>
+                    </div>   
+                    <div class="col-md-4">
+                        <div class="row text-center sign-with">
+                            <div class="col-md-12">
+                                <h3>
+                                    Sign in with</h3>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="btn-group btn-group-justified">
+                                    <a href="#" class="btn btn-primary">Facebook</a>  
+                                    <div id="my-signin"></div>
+                                 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <script type="text/javascript" src="vendor/NanoGallery/jquery.nanogallery.min.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/datahandler.js"></script>
+    <script src="js/datahandlerService.js"></script>
+    <script src="js/saveCommentService.js"></script>
+    <script src="js/LikeDislikeService.js"></script>
+    <script src="js/loginLogoutService.js"></script>
+    <script src="js/saveratingservice.js"></script>
+    <script src="js/pictureGallery.js"></script>
+    <script src="js/compareService.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+    <script src="vendor/ui-bootstrap-tpls-2.5.0.min.js"></script>
+
+    <script type="text/javascript" charset="UTF-8" src="ui/js/cookie.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATQd6PfNXTkOI9cHvIo0eDPZAGKi9jSmI&libraries=places,Map"></script>
+        
+  
+
+    </body>
+
+    
+</html>

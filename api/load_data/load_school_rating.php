@@ -29,8 +29,9 @@ if ($method == 'POST') {
             "tbl_ratings_table.rating_date ".
             "from tbl_ratings_table,tbl_users where ".
             "tbl_ratings_table.user_id = tbl_users.user_id and tbl_ratings_table.id_school = $school_id";
- 
-       
+
+    $log->info($qry);
+
       $result = $database->query($qry)->fetchAll();
       echo json_encode($result);
         

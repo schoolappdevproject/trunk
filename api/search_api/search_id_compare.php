@@ -43,9 +43,9 @@ if (isset($_POST['school_id'])){
         $school_data->mobility               = $result[$i][21];
         $school_data->small_description      = $result[$i][22];
         $school_data->religous_preference    = $result[$i][23];
-        $school_data->profile_pic_data       = base64_decode($result[$i][24]);
+        $school_data->profile_pic_data       = $result[$i][24];
         $school_data->admission_method       = $result[$i][25];
-        
+       
         $log->info($school_data->admission_method);
         
         

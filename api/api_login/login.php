@@ -8,18 +8,19 @@ $log = new MyLogPHP();
 if ($method == 'POST') {
 
   $username = trim($_POST['username']);
-//  $email = trim($_POST['email']);
   $password = md5(trim($_POST['password']));
  
   $log->info("Login Request Username $username Password $password");
   if(empty($username) || empty($password)){
     $log->info("HTTP/1.1 400 Bad Request");
+    $log->info("Username Entered "+$username);
+    $log->info("Password Entered "+$password);
     header("HTTP/1.1 400 Bad Request");
   } else {
     $result = [];
 
     $validate_user = $database->get("tbl_users",[
-      "password","email","username","user_id"
+      "password","email","username","user_id","pic"
     ],[
       "OR" => [
         "username" => $username,
@@ -34,7 +35,9 @@ if ($method == 'POST') {
         $result['email']   = $validate_user['email'];
         $result['username'] = $validate_user['username'];
         $result['user_id'] = $validate_user['user_id'];
-          
+        $result['pic']     = $validate_user['pic'];
+        $log->info("Login Successfull through username and passowrd");  
+        $log->info($result);
       } else {
         $result['error'] = "Wrong password";
         $result['code']    = "0";

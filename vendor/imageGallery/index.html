@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title> jQuery Simple Image Gallery </title>
+
+<<!--link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"> -->
+<link rel="stylesheet" type="text/css" href="demo.css" />
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="./src/simplegallery.demo1.min.css" />
+<script type="text/javascript" src="./src/simplegallery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $('#gallery').simplegallery({
+            galltime : 400,
+            gallcontent: '.content',
+            gallthumbnail: '.thumbnail',
+            gallthumb: '.thumb'
+        });
+
+    });
+</script>
+
+</head>
+<body>
+    <section id="main">
+
+        <header class="header">
+            <h1> jQuery Simple Image Gallery Demo</h1>
+        </header>
+
+        <div class="clear"></div>
+
+        <section id="gallery" class="simplegallery">
+            <div class="content">
+                <img src="images/bigs/1.jpg" class="image_1" alt="" />
+                <img src="images/bigs/2.jpg" class="image_2" style="display:none" alt="" />
+                <img src="images/bigs/3.jpg" class="image_3" style="display:none" alt="" />
+                <img src="images/bigs/4.jpg" class="image_4" style="display:none" alt="" />
+            </div>
+
+            <div class="clear"></div>
+
+            <div class="thumbnail">
+                <div class="thumb">
+                    <a href="#" rel="1">
+                        <img src="images/thumbs/1.jpg" id="thumb_1" alt="" />
+                    </a>
+                </div>
+                <div class="thumb">
+                    <a href="#" rel="2">
+                        <img src="images/thumbs/2.jpg" id="thumb_2" alt="" />
+                    </a>
+                </div>
+                <div class="thumb">
+                    <a href="#" rel="3">
+                        <img src="images/thumbs/3.jpg" id="thumb_3" alt="" />
+                    </a>
+                </div>
+                <div class="thumb last">
+                    <a href="#" rel="4">
+                        <img src="images/thumbs/4.jpg" id="thumb_4" alt="" />
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="clear"></div>
+
+        
+
+    </section>
+    
+    
+</body>
+</html>

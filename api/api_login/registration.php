@@ -10,7 +10,25 @@ if ($method == 'POST') {
   $username = trim($_POST['username']);
   $email    = trim($_POST['email']);
   $password = md5(trim($_POST['password']));
+  $mobile = trim($_POST['mobile']);
+  $profile_pic_data = $_POST['profile_pic_data'];
+
+  
+  $filepath = 'profile_pic/'.$email.'.jpg';  
+
+  $profile_pic_data = explode(',',$profile_pic_data);
     
+  if(false ==  file_put_contents($filepath, base64_decode($profile_pic_data[1])))  
+  {    
+      $log->info("failed to save file ");
+      $filepath = "";
+  }
+   
+
+  $log->info("Registration data");
+  $log->info($username);
+  $log->info($email);
+  $log->info($mobile);
 
 
   if(empty($username) || empty($email) || empty($password)){
@@ -23,15 +41,24 @@ if ($method == 'POST') {
 
     if($duplicate_username) {
       $result['error'] = "Username already exists!";
+      $log->info("Username already exist");
     } else if ($duplicate_email) {
       $result['error'] = "Email already registered!";
+      $log->info("email already exist");
     } else {
+
+      $fileactualPath = "api/api_login/".$filepath;
       $user_id = $database->insert('tbl_users', [
         'username' => $username,
         'email' => $email,
         'password' => $password,
+        'mobile' => $mobile,
+        'pic'    => $fileactualPath,
+        'role'  => 'user',
         'isProfileUpdated' => 0
       ]);
+
+      $log->info($user_id);
 
       if($user_id){
           

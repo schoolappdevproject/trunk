@@ -1,0 +1,83 @@
+
+.datahandler-search-box {
+        margin:0;
+        margin-top: 10px;
+        padding: 0;
+    }
+ 
+    .datahandler-search-box .search-query {
+        padding-right: 3px;
+        padding-right: 4px \9;
+        padding-left: 3px;
+        padding-left: 4px \9;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+ 
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+ 
+    .datahandler-search-box button {
+        border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: relative;
+        left: -28px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        color:#D9230F;
+    }
+ 
+    .search-query:focus + button {
+        z-index: 3;   
+    }
+
+/* For filter form*/
+.bootstrap-select.btn-group:not(.input-group-btn), .bootstrap-select.btn-group[class*="span"] {
+    margin: 0 !important;
+   }
+
+.nopadding {
+   padding: 1px !important;
+   margin: 0 !important;
+}
+
+.littlePadding {
+    padding: 5px;
+}
+
+.map_class { 
+    height: 400px;
+    margin: 20px 0;
+    border-radius: 5px;
+    border: 1px solid silver;
+}
+
+.tab-content{
+    border: 1px solid silver;
+    border-top-color: transparent;
+}
+
+.star-rating {
+  line-height:32px;
+  font-size:1.25em;
+  color: yellow;
+}
+
+
+
+.star-rating .fa-star{color: yellow;}
+
+
+#rating-empty-clearable{width: 100px; height: 20px}
+
+/*Picture gallery*/
+
+
+/*Picture gallery*/

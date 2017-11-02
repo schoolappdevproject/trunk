@@ -14,26 +14,22 @@ if ($method == 'POST') {
   //find $user_id
 
 try{
-     
-     $ret = $database->update("tbl_review_action",[
-                'action' => $action
-            ],[
-                "AND" => [
-                    'id_review_data[=]'  => $review_id,
-                    'id_user[=]'         => $user_id
-                         ]
-            ]);
-    
-    if($ret == false)
+   
+    $ret = $database->query("update tbl_review_action set action ='$action' where id_review_data = $review_id and id_user = $user_id");
+    if($ret->rowCount() == 0)
     {
-        //in case a fresh user is doing like or dislike 
-        //insert new row 
-        $ret = $database->insert('tbl_review_action', [
-            'id_review_data'    => $review_id,
-            'id_user'           => $user_id,
-            'action'            => $action   
-        ]);
-        $log->info("Unable to update review");
+        $ret = $database->query("select count(*) from tbl_review_action where id_review_data = $review_id and action = '$action' and id_user = $user_id")->fetchAll();
+            if(!$ret)
+            {
+                        //in case a fresh user is doing like or dislike 
+                //insert new row 
+                $ret = $database->insert('tbl_review_action', [
+                    'id_review_data'    => $review_id,
+                    'id_user'           => $user_id,
+                    'action'            => $action   
+                ]);
+
+            }
     }
    
     $ret = $database->query("select count(*) from tbl_review_action where id_review_data = $review_id and action = 'L'")->fetchAll();

@@ -34,6 +34,7 @@ if ($method == 'POST') {
 	"and tbl_review_data.id_review_data = tbl_review_action.id_review_data ".
 	"and tbl_review_data.id_school = $school_id";
        
+    $log->info($qry);
      $result = $database->query($qry)->fetchAll();   
       echo json_encode($result);
         

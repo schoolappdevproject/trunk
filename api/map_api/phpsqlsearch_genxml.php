@@ -64,7 +64,7 @@ $parnode = $dom->appendChild($node);
 
 
                  
-$query = "SELECT school_id,address, school_name, latitude, longitude ,city, session_timmings,category,school_type,courses,school_size,board, medium_of_teaching, mobility, small_description,religous_preference,profile_pic_data,admission_method FROM tbl_school_main_table";
+$query = "SELECT school_id,address, school_name, contact ,latitude, longitude ,city, session_timmings,category,school_type,courses,school_size,board, medium_of_teaching, mobility, small_description,religous_preference,profile_pic_data,admission_method FROM tbl_school_main_table";
 
 
 $result = $database->query($query)->fetchAll();
@@ -86,6 +86,7 @@ foreach ($result as &$row){
     $newnode = $parnode->appendChild($node);
     $newnode->setAttribute("school_id", $row['school_id']);
     $newnode->setAttribute("name", $row['school_name']);
+    $newnode->setAttribute("contact",$row['contact']);
     $newnode->setAttribute("address", $row['address']);
     $newnode->setAttribute("lat", $row['latitude']);
     $newnode->setAttribute("lng", $row['longitude']);
@@ -101,7 +102,7 @@ foreach ($result as &$row){
     $newnode->setAttribute("mobility", $row['mobility']);
     $newnode->setAttribute("religous_preference", $row['religous_preference']);  
     $newnode->setAttribute("small_description", utf8_encode($row['small_description']));
-    $newnode->setAttribute("profile_pic_data", base64_decode($row['profile_pic_data']));
+    $newnode->setAttribute("profile_pic_data", $row['profile_pic_data']);
     $newnode->setAttribute("admission_method", $row['admission_method']);
   }
   else

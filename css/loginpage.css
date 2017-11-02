@@ -1,0 +1,174 @@
+
+/* ----------------------------------------------------- */
+/* Import */
+/* ----------------------------------------------------- */
+
+/* ----------------------------------------------------- */
+/* Basic Wordpress Styles */
+/* ----------------------------------------------------- */
+.hidden { display: none; }
+.alignleft { float: left; margin:0 20px 20px 0; }
+.alignright { float: right; margin:0 0px 20px 20px; }
+.aligncenter {margin-left: auto;margin-right: auto;display: block;clear: both;margin-bottom:20px;}
+
+.left p{
+	font-size: 13px;
+	font-weight: normal;
+	padding: 10px 25px 0 0;
+	line-height: 22px;
+}
+
+a{ 
+outline: none;
+color:#434242;
+text-decoration: none; 
+-webkit-transition: background-color 0.2s ease, border 0.2s ease, color 0.2s ease;
+-moz-transition: background-color 0.2s ease, border 0.2s ease, color 0.2s ease;
+-ms-transition: background-color 0.2s ease, border 0.2s ease, color 0.2s ease;
+-o-transition: background-color 0.2s ease, border 0.2s ease, color 0.2s ease;
+transition: background-color 0.2s ease, border 0.2s ease, color 0.2s ease;
+}
+a:hover{color:#457AA0;}
+a img{border: none; max-width:100%; }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {margin:0px;padding: 0;}
+img{ max-width:100%;}
+
+
+/* ----------------------------------------------------- */
+/* Main */
+/* ----------------------------------------------------- */
+
+html {
+margin:0px; padding:0px;	
+}
+
+body{
+	background-color: #ffffff;
+	color:#010101;
+	 font-family:Verdana, Geneva, sans-serif;
+	font-weight:400;
+	font-size:12px;
+	line-height:21px;
+	margin:0px; padding:0px;
+}
+
+.error{
+	color: #FF0000;
+	padding: 0 0 0 30px;
+	margin: 0 0 -20px 0;
+}
+
+.error_login{
+	color: #FF0000;
+	padding: 0 0 0 30px;
+	margin: 0 0 -20px 0;
+	text-align: center;
+}
+
+.wapper_regi{ width:781px; margin:0 auto; padding:0px; border:1px solid #00a5e3;}
+.wapper_regi .header{ width:100#; background:#00a5e3; height:41px;}
+.wapper_regi .header h1{ margin:0px; padding:0px 20px; font-size:22px; color:#fff; line-height:41px; text-align:left; font-weight:normal; letter-spacing:1px;}
+.wapper_regi .main_contant{ margin:0px; padding:35px 0px; width:100%;}
+.wapper_regi .left{ float:left; width:335px; margin:0px; padding:0px 0 0px 30px;}
+.wapper_regi .left img{ margin:0 0 22px 0;}
+.wapper_regi .left input{ margin:0 0 22px 0;}
+.wapper_regi .right{ float:left; width:444px; margin:0px; padding:0px 0 0px 0; border-left:1px solid #00a5e3; min-height:320px;}
+.wapper_regi .right .field{ margin:0 0 19px 0; padding:0px; width:100%}
+.wapper_regi .field label{ float:left; text-align:right; font-size:12px; width:167px; line-height:32px; font-weight:normal; padding:0 22px 0 0; letter-spacing:1px;}
+.wapper_regi .field div{ float:left; text-align:left; font-size:12px; width:248px;}
+.wapper_regi .field div span{ float:left; width:29px;}
+.wapper_regi .field div input[type="text"], input[type="password"]{
+ width:217px;
+ padding:0 10px;
+ height:32px;
+ -webkit-box-sizing:border-box;
+ -moz-box-sizing:border-box;
+ box-sizing:border-box;
+ border:1px solid #00a5e3; letter-spacing:0px;
+}
+.submit{background:url(../images/submit.jpg) top left no-repeat; height:35px; width:105px;  outline:none; text-indent:-99999px; border:none;  cursor:pointer; float:left; margin:0;}
+.submit:hover{ -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; filter: alpha(opacity=80); -moz-opacity: 0.8; -khtml-opacity: 0.8; opacity:0.8;}
+.cencel{background:url(../images/cancel.jpg) top left no-repeat; height:35px; width:105px;  outline:none; border:none;  cursor:pointer; float:left; margin:0px 10px;}
+.cencel:hover{ -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; filter: alpha(opacity=80); -moz-opacity: 0.8; -khtml-opacity: 0.8; opacity:0.8;}
+.wapper_regi .field div span.captcha{ float:left; width:70px; border:1px solid #00a5e3;letter-spacing:2px; line-height:30px; border:1px solid #00a5e3; border-right:none; text-align:center; background:#cfe6ee; border-radius:5px 0 0 5px;}
+.width{ width:178px !important;}
+.text1{ float:left; font-size:15px; font-weight:normal; text-align:left; padding:30px 0 0 30px;}
+.text2{ float:right; font-size:15px; font-weight:normal; text-align:right; padding:30px 30px 0 0;}
+.text1 a{ text-decoration:none; color:#720e9e;}
+.text2 a{ text-decoration:none; color:#005e81;}
+.blank{ height:30px !important;}
+/****/
+.wapper_login{ width:435px; margin:0 auto; padding:0px; border:1px solid #00a5e3;}
+.wapper_login .header{ width:100#; background:#00a5e3; height:41px;}
+.wapper_login .header h1{ margin:0px; padding:0px 20px; font-size:22px; color:#fff; line-height:41px; text-align:left; font-weight:normal; letter-spacing:1px;}
+
+.wapper_login .field{ margin:0 0 19px 0; padding:0px; width:100%}
+.wapper_login .field label{ float:left; text-align:right; font-size:12px; width:140px; line-height:32px; font-weight:normal; padding:0 22px 0 0; letter-spacing:1px;}
+.wapper_login .field div{ float:left; text-align:left; font-size:12px; width:248px;}
+.wapper_login .field div span{ float:left; width:29px;}
+.wapper_login .field div input[type="text"], input[type="password"]{
+ width:217px;
+ padding:0 10px;
+ height:32px;
+ -webkit-box-sizing:border-box;
+ -moz-box-sizing:border-box;
+ box-sizing:border-box;
+ border:1px solid #00a5e3;letter-spacing:1px;
+}
+
+.wapper_login .field div span.captcha{ float:left; width:70px; border:1px solid #00a5e3;letter-spacing:2px; line-height:30px; border:1px solid #00a5e3; border-right:none; text-align:center; background:#cfe6ee; border-radius:5px 0 0 5px;}
+.width{ width:178px !important;}
+.blank1{ padding:30px 0 22px 138px; }
+.blank1 img{ float:left; margin:0px 5px; padding:0px;}
+@media only screen and (min-width: 768px) and (max-width: 783px) {
+.wapper_regi{ width:766px; margin:0 auto; padding:0px; border:1px solid #00a5e3;}
+.wapper_regi .left{ float:left; width:335px; margin:0px; padding:0px 0 0px 20px;}
+.wapper_regi .left img{ margin:0 0 22px 0;}
+.wapper_regi .left input{ margin:0 0 22px 0;}
+.wapper_regi .right{ float:left; width:420px; margin:0px; padding:0px 0 0px 0; border-left:1px solid #00a5e3;}
+}
+
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+.wapper_regi{ width:598px;}
+.wapper_regi .left{ width:100%;}
+.wapper_regi .left img{ margin:0 0 22px 0;}
+.wapper_regi .left input{ margin:0 0 22px 0;}
+.wapper_regi .right{ width:100%; border:none; }
+.wapper_regi .field div{width:375px;}
+.wapper_regi .field div input[type="text"], input[type="password"]{
+ width:320px;
+}
+.width { width: 278px !important;}	
+}
+@media only screen and (min-width: 480px) and (max-width:599px) {
+.wapper_regi{ width:478px;}
+.wapper_regi .left{ width:100%;}
+.wapper_regi .left img{ margin:0 0 22px 0;}
+.wapper_regi .left input{ margin:0 0 22px 0;}
+.wapper_regi .right{ width:100%; border:none;}
+.wapper_regi .field div{width:255px;}
+.wapper_regi .field div input[type="text"], input[type="password"]{
+ width:210px;
+}
+.width { width: 168px !important;}		
+}
+@media only screen and (max-width:479px) {
+.wapper_regi{ width:318px;}
+.wapper_regi .left{ width:100%;}
+.wapper_regi .left img{ margin:0 0 22px 0;}
+.wapper_regi .left input{ margin:0 0 22px 0;}
+.wapper_regi .right{ width:100%; border:none; padding:0px 0 0px 30px;}
+.wapper_regi .field div{width:100%;}
+.wapper_regi .field label{ float:left; text-align:left; }
+.wapper_regi .field div input[type="text"], input[type="password"]{
+ width:225px;
+}	
+.width { width: 183px !important;}
+.text1{ float:left; font-size:15px; font-weight:normal; text-align:left; padding:10px 0 0 30px;}
+.text2{ float:left; font-size:15px; font-weight:normal; text-align:left; padding:10px 0 0 30px;}	
+}

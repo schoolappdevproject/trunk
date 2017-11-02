@@ -29,7 +29,7 @@ $i=0;
 foreach( $filesoriginal as $fname ){
     
 
-   $image_path = "../../api/image_upload/imageGallery/images/$school_id/$fname";
+   $image_path = "api/image_upload/imageGallery/images/$school_id/$fname";
    $_html .= "<li>";
    $_html .= "<a href='".$image_path."'>";
    $_html .= "<img title='image' src='".$image_path."' height='150px' width='200px'  class='image'>";  

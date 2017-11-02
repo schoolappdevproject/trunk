@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PHP Login/Registration System V 1.0</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+<link rel="stylesheet" href="css/style.css" type="text/css">    
+<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+<link rel="stylesheet" href="css/bootstrap-theme.css" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script> 		
+<script type="text/javascript" src="js/bootstrap.min.js"></script> 
+<script src="https://apis.google.com/js/api:client.js"></script>
+<script language="javascript" type="text/javascript">
+var validate = 0;
+
+function form_validate()
+{
+	if(document.reg.f_name.value == "")
+	{
+		document.getElementById('f_name_error').innerHTML="Please enter your first name.";
+		document.reg.f_name.focus();
+		validate = 0;
+		return false;
+	}else{
+		document.getElementById('f_name_error').innerHTML="";
+	}
+	
+	if(document.reg.l_name.value == "")
+	{
+		document.getElementById('l_name_error').innerHTML="Please enter your last name.";
+		document.reg.l_name.focus();
+		validate = 0;
+		return false;
+	}else{
+		document.getElementById('l_name_error').innerHTML="";
+	}
+	
+	if(document.reg.e_mail.value == "")
+	{
+		document.getElementById('e_mail_error').innerHTML="Please enter your email address.";
+		document.reg.e_mail.focus();
+		validate = 0;
+		return false;
+	}else{
+		document.getElementById('e_mail_error').innerHTML="";
+	}
+	
+	if (document.reg.e_mail.value != "") 
+	{
+		var str = document.reg.e_mail.value;
+		var re = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+		if (!str.match(re)) 
+		{
+			document.getElementById('e_mail_error').innerHTML="Please enter a valid email address";
+			document.reg.e_mail.focus();
+			return false;
+		}else{
+			document.getElementById('e_mail_error').innerHTML="";
+		}
+
+	}
+	
+	if(document.reg.u_name.value == "")
+	{
+		document.getElementById('u_name_error').innerHTML="Please enter your user name.";
+		document.reg.u_name.focus();
+		validate = 0;
+		return false;
+	}else{
+		document.getElementById('u_name_error').innerHTML="";
+	}
+	
+	if(document.reg.p_word.value == "")
+	{
+		document.getElementById('p_word_error').innerHTML="Please enter password.";
+		document.reg.p_word.focus();
+		validate = 0;
+		return false;
+	}else{
+		document.getElementById('p_word_error').innerHTML="";
+	}
+	
+	if(document.reg.cp_word.value == "")
+	{
+		document.getElementById('cp_word_error').innerHTML="Please enter confirm password.";
+		document.reg.cp_word.focus();
+		validate = 0;
+		return false;
+	}else{
+		document.getElementById('p_word_error').innerHTML="";
+	}
+	
+	if(document.reg.cp_word.value != document.reg.p_word.value)
+	{
+		document.getElementById('cp_word_error').innerHTML="Please enter confirm password again.";
+		document.reg.cp_word.value = "";
+		document.reg.cp_word.focus();
+		validate = 0;
+		return false;
+	}else{
+		document.getElementById('cp_word_error').innerHTML="";
+	}
+	
+	if(document.reg.v_code.value == "")
+	{
+		document.getElementById('v_code_error').innerHTML="Please enter verification code.";
+		document.reg.v_code.focus();
+		validate = 0;
+		return false;
+	}else{
+		document.getElementById('v_code_error').innerHTML="";
+		validate = 1;
+	}
+}
+
+
+$(document).ready(function(){
+$('#reg').submit(function() {
+if(validate ==1){
+$.post("submit_form.php?"+$("#reg").serialize(), { }, function(response){
+if(response==1){
+    clear_form();
+    self.location="login.php";
+}else if(response==2){
+	document.reg.e_mail.value = "";
+    document.reg.e_mail.focus();
+    document.getElementById('e_mail_error').innerHTML="Email already exist.";
+}else if(response==3){
+	document.reg.u_name.value = "";
+    document.reg.u_name.focus();
+    document.getElementById('u_name_error').innerHTML="User name already exist.";
+}else{
+	document.reg.v_code.focus();
+    document.getElementById('v_code_error').innerHTML="Wrong Answer.";
+}
+});
+}
+return false;
+
+});
+
+
+function clear_form(){
+  $("#f_name").val('');
+  $("#l_name").val('');
+  $("#e_mail").val('');
+  $("#u_name").val('');
+  $("#p_word").val('');
+  $("#cp_word").val('');
+  $("#v_code").val('');
+}
+});
+
+
+</script>
+</head>
+
+<body>
+
+<div class="wapper_regi">
+	<div class="header"><h1>Register now</h1></div>
+    <div class="main_contant clearfix">
+    	<div class="left">
+        	<a href="#null" onClick="fblogin();"><img src="images/cwf.png" alt="Facebook" name="Facebook" /></a>
+            <a href="?login&oauth_provider=twitter"><img src="images/cwt.png" alt="Twitter" name="Twitter" /></a>
+            <form id="linkedin_connect_form" action="/registration/registration.php" method="get">
+            <input type="hidden" name="lType" id="lType" value="initiate" />
+            <input type="image" src="images/cwl.png" alt="Linkedin" name="Linkedin" />
+            </form>
+            <a href="https://accounts.google.com/o/oauth2/auth?response_type=code&redirect_uri=http%3A%2F%2Fwww.a2zwebhelp.com%2Fregistration%2Fregistration.php&client_id=623959885862.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&access_type=offline&approval_prompt=force"><img src="images/cwg.png" alt="Google+" name="Google+" /></a>
+            <a href="https://open.login.yahooapis.com/openid/op/auth?openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.mode=checkid_setup&openid.return_to=http%3A%2F%2Fa2zwebhelp.com%2Fregistration%2Flogin-yahoo.php&openid.realm=http%3A%2F%2Fa2zwebhelp.com&openid.ns.ax=http%3A%2F%2Fopenid.net%2Fsrv%2Fax%2F1.0&openid.ax.mode=fetch_request&openid.ax.type.namePerson_first=http%3A%2F%2Faxschema.org%2FnamePerson%2Ffirst&openid.ax.type.namePerson_last=http%3A%2F%2Faxschema.org%2FnamePerson%2Flast&openid.ax.type.contact_email=http%3A%2F%2Faxschema.org%2Fcontact%2Femail&openid.ax.required=namePerson_first%2CnamePerson_last%2Ccontact_email&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select"><img src="images/cwy.png" alt="Yahoo" name="Yahoo" /></a>
+        </div>
+        <div class="right">
+        <form action="#null" name="reg" method="post" id="reg" onsubmit="return form_validate()">
+        	<div  class="field clearfix">
+            	<label>First Name</label>
+                <div>
+                	<span><img src="images/name.png" alt="" /></span>
+                    <input type="text" name="f_name" autocomplete="off" id="f_name" />
+                    <div class="error" id="f_name_error"></div>
+                </div>
+            </div>
+            <div  class="field clearfix">
+            	<label>Last Name</label>
+                <div>
+                	<span><img src="images/name.png" alt="" /></span>
+                    <input type="text" name="l_name" id="l_name" autocomplete="off"  />
+                    <div class="error" id="l_name_error"></div>
+                </div>
+            </div>
+            <div  class="field clearfix">
+            	<label>Email Address</label>
+                <div>
+                	<span><img src="images/email.png" alt="" /></span>
+                    <input type="text" name="e_mail" id="e_mail" autocomplete="off" />
+                    <div class="error" id="e_mail_error"></div>
+                </div>
+            </div>
+            <div  class="field clearfix">
+            	<label>User Name</label>
+                <div>
+                	<span><img src="images/user.png" alt="" /></span>
+                    <input type="text" name="u_name" id="u_name" autocomplete="off"  />
+                    <div class="error" id="u_name_error"></div>
+                </div>
+            </div>
+            <div  class="field clearfix">
+            	<label>Password</label>
+                <div>
+                	<span><img src="images/password.png" alt="" /></span>
+                    <input type="password" name="p_word" id="p_word"  />
+                    <div class="error" id="p_word_error"></div>
+                </div>
+            </div>
+            <div  class="field clearfix">
+            	<label>Confirm Password</label>
+                <div>
+                	<span><img src="images/password.png" alt="" /></span>
+                    <input type="password" name="cp_word" id="cp_word"  />
+                    <div class="error" id="cp_word_error"></div>
+                </div>
+            </div>
+            
+            <div  class="field clearfix">
+            	<label>Enter Answer</label>
+                <div>
+                	<span class="captcha">6 + 6=</span>
+                    <input type="text" name="v_code" id="v_code" class="width" autocomplete="off"  />
+                    <div class="error" id="v_code_error"></div>
+                </div>
+            </div>
+            <div  class="field clearfix" style="margin:0px;">
+            	<label>&nbsp;</label>
+                <div>                	
+                    <input type="reset" class="cencel" value="" />
+                    <input type="submit" class="submit" value="submit" name="submit" />
+                </div>
+            </div>
+            </form>
+            
+                        <div class="clearfix" >
+            	<p class="text1">&nbsp;</p>
+                <p class="text2"><a href="login.php">Already a Member?</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="fb-root" style="float:left; width:1px;"></div>
+<script>
+window.fbAsyncInit = function() {
+	FB.init({
+	    appId: '201403990060756',
+        cookie: true,
+       	xfbml: true,
+        oauth: true
+   });      
+};
+(function() {
+	var e = document.createElement('script'); e.async = true;
+    e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+    document.getElementById('fb-root').appendChild(e);
+}());
+
+function fblogin(){
+	FB.login(function(response){
+	 if (response.authResponse) {
+		  window.location='validatefb.php';
+	 }
+	},{scope: 'publish_stream'});
+}
+</script>
+   
+</div>
+</body>
+</html>

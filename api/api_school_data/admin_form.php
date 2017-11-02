@@ -26,12 +26,29 @@ if ($method == 'POST') {
   $admission_description= $_POST['admission_description'];
   $religous_preference  = $_POST['religous_preference'];
   $admission_method     = $_POST['admission_method'];
-  $profile_pic_data     = base64_encode($_POST['profile_pic']);
+  $profile_pic_data     = $_POST['profile_pic'];
+  $profile_pic_name     = $_POST['profile_pic_name'];
   $admission_method     = $_POST['admission_method'];
 
- 
 
 try{
+
+    $filepath = 'profile_pics/'.$profile_pic_name;
+
+    
+    $profile_pic_data = explode(',',$profile_pic_data);
+    
+   if(false ==  file_put_contents($filepath, base64_decode($profile_pic_data[1])))  
+   {
+       $filepath = "";
+           $log->info("failed to save file ");
+   }
+   else
+   {
+        $filepath = "api/api_school_data/".$filepath;
+   }
+
+
   $school_id = $database->insert('tbl_school_main_table', [
     'school_name'       => $school_name,
     'principal_name'    => $principal_name,
@@ -53,7 +70,7 @@ try{
     'small_description'          => $small_description,
     'admission_description'      => $admission_description,
     'religous_preference'        => $religous_preference,
-    'profile_pic_data'           => $profile_pic_data,
+    'profile_pic_data'           => $filepath,
     'admission_method'           => $admission_method,
     'email'                      => $email
   ]);

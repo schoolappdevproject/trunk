@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <meta name="google-signin-client_id" content="342582228234-alm39kuup0grgqtrevifi95u0mrbgtp4.apps.googleusercontent.com">
+
+    <title>School Guru</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/creative.css" rel="stylesheet">
+    <link href="css/autocomplete.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">SchoolGuru</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" ><span id="usernameText"></span></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services">Parents</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#portfolio">Schools</a>
+                    </li>
+                    <li>
+                        <a data-toggle="modal" data-target="#myModal" href="#contact">Login</a>
+                    </li>
+                    <li>
+                        <a class="" href="#" onclick="signOut();">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <div class="col-lg-12 text-center">
+                    
+                    
+                <h1 id="homeHeading">Find the best Schools in your Area</h1>
+                <!--search form -->
+                <form>
+                    <fieldset>
+                <div class="form-group col-lg-12 query_form_group">
+                    
+                    <input type="text" onkeypress="return runScript(event)"  class="query" name="location" id="school_location_search" placeholder="search by Location">
+                
+                     <input type="text" onkeypress="return runScript(event)"  class="query bs-autocomplete" name="school_name" id="school_name_search_txt" placeholder="search by School Name">            
+                </div>
+                
+                <a href="#" onclick="return startSearch()" class="btn btn-primary btn-xl page-scroll">Search</a>
+                    </fieldset>
+                </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">At Your Service</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
+                        <h3>Top Schools Listing</h3>
+                        <p class="text-muted">Find the best schools sorted by rankings.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
+                        <h3>Compare schools on Different Parameters </h3>
+                        <p class="text-muted">Different parameters can be used to compare schools.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
+                        <h3>Rate Schools</h3>
+                        <p class="text-muted">Schools can be rated on different paradigms.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-heart text-primary sr-icons"></i>
+                        <h3>Updates </h3>
+                        <p class="text-muted">Get the latest updates on your selected schools</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="no-padding" id="portfolio">
+        <div class="container-fluid">
+            <div class="row no-gutter popup-gallery">
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/fullsize/1.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/1.jpg" width="100%" height="100%" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    School Guru
+                                </div>
+                                <div class="project-name">
+                                    School Guru
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/fullsize/2.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/2.jpg" class="img-responsive image_gallery" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Happiness in Learning
+                                </div>
+                                <div class="project-name">
+                                    Education to common
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/fullsize/3.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/3.jpg" width="100%" height="100%" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    School Guru
+                                </div>
+                                <div class="project-name">
+                                    School Guru
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/fullsize/4.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/4.jpg" width="100%" height="100%" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    School Guru
+                                </div>
+                                <div class="project-name">
+                                    School Guru
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/fullsize/5.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/5.jpg" width="100%" height="100px" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="img/portfolio/fullsize/6.jpg" class="portfolio-box">
+                        <img src="img/portfolio/thumbnails/6.jpg" width="100%" height="100%" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    School Guru
+                                </div>
+                                <div class="project-name">
+                                    School Guru
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <aside class="bg-dark">
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h2>  Search The best Schools In Your Town</h2>
+                <a href="http://startbootstrap.com/template-overviews/creative/" class="btn btn-primary btn-xl sr-button">School Guru</a>
+            </div>
+        </div>
+    </aside>
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Let's Get In Touch!</h2>
+                    <hr class="primary">
+                    <p>To list your school please contact at the below address</p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <i class="fa fa-phone fa-3x sr-contact"></i>
+                    <p>7829712286</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fa fa-envelope-o fa-3x sr-contact"></i>
+                    
+                    <p><a href="mailto:your-email@your-domain.com">gta4roy@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!--Login Form-->
+    
+    <div class="modal fade" id="myModal" tabindex="-1"  style="display:none;" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×</button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Login <a href="http://www.jquery2dotnet.com">schoolguru.com</a></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-8" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
+                            <li><a href="#Registration" data-toggle="tab">Registration</a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="Login">
+                                <form role="form" class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="loginEmail" class="col-sm-2 control-label">
+                                        Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" onkeypress="return loginScript(event)" class="form-control" id="loginEmail" placeholder="Email" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="loginPassword" class="col-sm-2 control-label">
+                                        Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" onkeypress="return loginScript(event)"  class="form-control" id="loginPassword" placeholder="Enter Your Password" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <button type="button" id="loginSubmit" class="btn btn-primary btn-sm">
+                                            Submit</button>
+                                        <a href="#ForgetPassword" data-toggle="tab">Forgot your password?</a>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                            
+                            <!-- forget password form -->
+                            <div class="tab-pane" id="ForgetPassword">
+                                <form role="form" class="form-horizontal">
+                               
+                                <div class="form-group">
+                                    <label for="frg_email" class="col-sm-2 control-label">
+                                        Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email"  onkeypress="" class="form-control" id="frg_email" placeholder="Email" />
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label for="frg_oldpass" class="col-sm-2 control-label">
+                                        Enter Your Old Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" onkeypress="" class="form-control" id="frg_oldpass" placeholder="Old Password" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="frg_newpass" class="col-sm-2 control-label">
+                                        Enter New Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" onkeypress="" class="form-control" id="frg_newpass" placeholder="Enter your new password" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="frg_reenterpass" class="col-sm-2 control-label">
+                                       ReEnter  New Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" onkeypress="" class="form-control" id="frg_reenterpass" placeholder="Re-enter your new password" />
+                                    </div>
+                                </div>    
+                                
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <button type="button" onclick="forgetPasswordClick()" id="frg_password" class="btn btn-primary btn-sm">
+                                            Save</button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                            <!-- forget passworf form -->
+                            
+                            <!--Registration form -->
+                            <div class="tab-pane" id="Registration">
+                                <form role="form" class="form-horizontal">
+                                 <div class="form-group">
+                                    <label for="profile Pic" class="col-sm-2 control-label">
+                                         Profile Pic</label>
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                             Upload Images:<input id="review_image-upload" onchange="profilePicUloaded(this)"  class="form-control" type="file" accept="image/*" value="Upload Pic"/>
+                                            <img id='profilePicImage' class='img-thumbnail' src='img/default-user-image.png' width='200px' height='200px' />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-2 control-label">
+                                        Name</label>
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <input type="text" id="reg_username" class="form-control" onkeypress="return registerScript(event)" placeholder="Name" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-2 control-label">
+                                        Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="reg_email" onkeypress="return registerScript(event)" placeholder="Email" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mobile" class="col-sm-2 control-label">
+                                        Mobile</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="reg_mobile" onkeypress="return registerScript(event)" placeholder="Mobile" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="col-sm-2 control-label">
+                                        Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password"  class="form-control" id="reg_password" onkeypress="return registerScript(event)" placeholder="Password" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <button type="button" id="SaveReg" class="btn btn-primary btn-sm">
+                                            Save & Continue</button>
+                                        <button type="button" class="btn btn-default btn-sm">
+                                            Cancel</button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="OR" class="hidden-xs">
+                            OR</div>
+                    </div>   
+                    <div class="col-md-4">
+                        <div class="row text-center sign-with">
+                            <div class="col-md-12">
+                                <h3>
+                                    Sign in with</h3>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="btn-group btn-group-justified">
+                                    <a href="#" class="btn btn-primary">Facebook</a>  
+                                    <div id="my-signin"></div>
+                                 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Login form ends -->
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/jquery/jquery-ui.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/creative.js"></script>
+    <!-- Google Map Scripts-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATQd6PfNXTkOI9cHvIo0eDPZAGKi9jSmI&libraries=places"
+            type="text/javascript"></script>
+ 
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    
+    <script src="js/login.js"></script>
+    <script>
+    
+       var cache = {};
+       var school_name_id_map = {};
+  
+  //loading autocomplete function  
+        function load()
+        {
+            $("#profilePicImage").hide();
+              
+            var schoolLocation = /** @type {!HTMLInputElement} */(
+                document.getElementById('school_location_search'));
+
+            if(google)
+            {
+                var autocompleteLocation = new google.maps.places.Autocomplete(schoolLocation);
+                autocompleteLocation.addListener('place_changed', function() {
+                    var place = autocompleteLocation.getPlace();
+                    if (!place.geometry) {
+                        window.alert("Autocomplete's returned place contains no geometry");
+                        return;
+                    }
+                    
+                    var map_location_latitude = place.geometry.location.lat();
+                    var map_location_longitude = place.geometry.location.lng();  
+                    console.log(map_location_latitude);
+                    console.log(map_location_longitude);
+                });
+        
+            }
+                             
+            $( "#school_name_search_txt" ).autocomplete({
+              minLength: 2,
+              source: function( request, response ) {
+                var term = request.term;
+                if ( term in cache ) {
+                  response( cache[ term ] );
+                  return;
+                }
+
+                  var formData = {
+                                        session_timing    : -1,
+                                        category    : -1,
+                                        course  : -1,
+                                        school_size: -1,
+                                        school_board: -1,
+                                        medium :-1,
+                                        adm_method: -1,
+                                        religous : -1,
+                                        term :term
+                                    };
+
+                $.getJSON( "api/search_api/search_school_name.php", request, function( data, status, xhr ) {
+                  cache[ term ] = data;  
+                  response(data);
+                });
+
+
+                    $.ajax({
+                        type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                        url         : 'api/search_api/search_school_name.php', // the url where we want to POST
+                        data        : formData, // our data object
+                        dataType    : 'json', // what type of data do we expect back from the server
+                        encode      : true
+                    })
+                        // using the done promise callback
+                    .done(function(data) {   
+                            console.log("Autocomplete ran on school name search");
+                            var results = [];
+
+                            for ( i = 0; i < data.length ; i++)
+                            {
+                                school_name_id_map[data[i]['school_name']] = data[i]['school_id'];
+                                results.push(data[i]['school_name']);
+
+                            }
+
+                            console.log(results);
+                            console.log(school_name_id_map);
+                            cache[ term ] = results;  
+                            response(results);
+
+                        // here we will handle errors and validation messages
+                    }).fail(function( xhr, status, errorThrown ) {
+                            console.log( "Query Failed" );
+                            console.log( "Error: " + errorThrown );
+                            console.log( "Status: " + status );
+                            console.dir( xhr );
+                            return false;
+                    });
+
+
+
+
+              },
+                messages: {
+                    noResults: '',
+                    results: function() {}
+                }
+            });
+        }
+        
+        function startSearch()
+        {
+           console.log("Start Search");
+            var schoolLocation = document.getElementById("school_location_search").value;
+            var schoolName     = document.getElementById("school_name_search_txt").value;
+                
+            localStorage.setItem("school_location", schoolLocation);
+            localStorage.setItem("school_name", schoolName);
+
+            if(schoolName)
+            {
+                //school name is there find id 
+                var school_id = school_name_id_map[schoolName];
+                window.location.href = "datahandler.html#/school_id:"+school_id;
+            }
+            else
+            {
+                //location search 
+
+            localStorage.setItem("isLocationSearch","1");
+            window.location.href = "datahandler.html";
+            console.log("is location saerch");
+
+            }
+
+           return true;
+           
+        }
+    
+     function runScript(e) {
+         console.log(e.keyCode);
+        if (e.keyCode == 13) {
+        startSearch();  //Fire Search event on Enter Click
+            return true;
+        }
+     }
+        
+        window.onload = function() {
+          localStorage.clear();
+          load();
+        };
+    
+    </script>
+
+</body>
+
+</html>
